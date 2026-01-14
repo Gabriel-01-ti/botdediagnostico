@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Diagnóstico de Plantas</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🌽🤖 Diagnóstico Inteligente de Doenças Agrícolas</h1>
+
+
+    <label>Cultura:</label>
+    <select id="cultura">
+      <option value="milho">Milho</option>
+      <option value="soja">Soja</option>
+      <option value="feijao">Feijão</option>
+    </select>
+
+    <input type="file" id="foto" accept="image/*">
+
+    <button onclick="analisar()">📷 Analisar imagem</button>
+    <button onclick="reiniciar()" class="btn-reiniciar">🔄 Reiniciar</button>
+
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

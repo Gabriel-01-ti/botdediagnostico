@@ -1,0 +1,47 @@
+{
+  "milho": {
+    "mancha_branca": {
+     "nome": "Mancha Branca do milho",
+      "nome_biologico": "Phaeosphaeria maydis (fungo) e Pantoea ananatis (bactéria)",
+      "descricao": "Doença foliar importante do milho, conhecida também como mancha-foliar-de-Phaeosphaeria ou pinta-branca. Em condições favoráveis, pode causar perdas de até 60% da produtividade.",
+      "condicoes_favoraveis": "Temperaturas amenas (14 a 20°C), alta umidade do ar, presença de água livre nas folhas, plantio direto com palhada e cultivo na safrinha.",
+   "sintomas": [
+  "manchas brancas nas folhas do milho",
+  " manchas claras ou esbranquiçadas com bordas irregulares",
+  " lesões pequenas com aspecto encharcado no início",
+  " pontos pretos no centro das manchas",
+  " folhas com aparência de queimadas",
+  " secamento das folhas iniciando na parte inferior da planta",
+  " manchas que aumentam e se espalham rapidamente",
+  " redução da área verde das folhas",
+  " presença de necrose foliar",
+  " folhas rasgadas ou quebradiças nas áreas afetadas"
+],
+
+      "danos": "Redução da área foliar, queda da fotossíntese, grãos menores e redução significativa da produtividade.",
+      "manejo_preventivo": "Evitar plantios tardios, usar híbridos resistentes, monitorar a lavoura principalmente no florescimento e considerar o histórico da área.",
+      "controle": "Aplicação de fungicidas, principalmente misturas de estrobilurina + triazol associadas a protetores como mancozebe, com aplicações entre V6–V8 e pré-pendoamento."
+      
+   }
+  },
+
+  "soja": {
+    "ferrugem asiática": {
+      "nome": "Ferrugem Asiática da Soja",
+      "o_que_e": "Doença fúngica agressiva que causa desfolha precoce.",
+      "por_que_acontece": "Alta umidade e temperaturas entre 18°C e 26°C.",
+      "tratamento": "Aplicação de fungicidas sistêmicos.",
+      "prevencao": "Vazio sanitário e monitoramento."
+    }
+  },
+
+  "feijao": {
+    "antracnose": {
+      "nome": "Antracnose do Feijão",
+      "o_que_e": "Doença fúngica que causa manchas escuras nas folhas e vagens.",
+      "por_que_acontece": "Sementes contaminadas e alta umidade.",
+      "tratamento": "Fungicidas específicos.",
+      "prevencao": "Uso de sementes certificadas."
+    }
+  }
+}
