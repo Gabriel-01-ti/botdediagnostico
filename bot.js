@@ -1,4 +1,3 @@
-
 let baseDados = null;
 
 // carregar JSON
@@ -48,7 +47,6 @@ function diagnosticar() {
 
     sintomasPraticos.forEach(sintoma => {
       const palavrasSintoma = normalizar(sintoma).split(/\s+/);
-
       palavrasSintoma.forEach(p => {
         if (palavrasUsuario.includes(p)) {
           pontos++;
@@ -67,23 +65,32 @@ function diagnosticar() {
     return;
   }
 
-  // 👉 EXIBIÇÃO: PRÁTICOS + TÉCNICOS
+  // 👉 EXIBIR TUDO DO JSON
   resultado.innerHTML = `
     <h3>🦠 ${melhorDoenca.nome}</h3>
 
     <p><b>Nome científico:</b> ${melhorDoenca.nome_biologico}</p>
-    <p><b>Descrição:</b> ${melhorDoenca.descricao}</p>
-    <p><b>Condições favoráveis:</b> ${melhorDoenca.condicoes_favoraveis}</p>
+
+    <p><b>Descrição:</b><br>
+    ${melhorDoenca.descricao}</p>
+
+    <p><b>Condições favoráveis:</b><br>
+    ${melhorDoenca.condicoes_favoraveis}</p>
 
     <p><b>Sintomas observados no campo:</b><br>
-      ${melhorDoenca.sintomas.praticos.join(", ")}
-    </p>
+    ${melhorDoenca.sintomas.praticos.join(", ")}</p>
 
-    <p><b>Sintomas técnicos (referência agronômica):</b><br>
-      ${melhorDoenca.sintomas.tecnicos.join(", ")}
-    </p>
+    <p><b>Sintomas técnicos (referência):</b><br>
+    ${melhorDoenca.sintomas.tecnicos.join(", ")}</p>
 
-    <p><b>Controle recomendado:</b> ${melhorDoenca.controle}</p>
+    <p><b>Danos causados:</b><br>
+    ${melhorDoenca.danos}</p>
+
+    <p><b>Manejo preventivo:</b><br>
+    ${melhorDoenca.manejo_preventivo}</p>
+
+    <p><b>Controle:</b><br>
+    ${melhorDoenca.controle}</p>
 
     <small>⚠️ Diagnóstico de apoio técnico. Consulte um engenheiro agrônomo.</small>
   `;
