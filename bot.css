@@ -90,7 +90,15 @@ h1 {
   border: 1px solid #a5d6a7;
 }
 
-/* INPUT DE SINTOMAS */
+/* ... MANTENHA TODO O SEU CSS ANTERIOR ATÉ A LINHA 'INPUT DE SINTOMAS' ... */
+
+/* INPUT WRAPPER (Para posicionar a lista relativa a ele) */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* INPUT DE SINTOMAS (Ajustado) */
 input[type="text"],
 select {
   width: 100%;
@@ -101,66 +109,41 @@ select {
   border: 1px solid #bbb;
 }
 
-/* ÁREA DOS BOTÕES */
-.botoes {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-  flex-wrap: wrap;
+/* LISTA DE SUGESTÕES (AUTOCOMPLETE) */
+.lista-sugestoes {
+  position: absolute;
+  top: 100%; /* Fica logo abaixo do input */
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none; /* Oculto por padrão */
 }
 
-/* BOTÕES */
-button {
-  padding: 10px 18px;   /* menor largura/altura */
-  font-size: 15px;
-  border-radius: 8px;
-  border: none;
+/* ITEM DA LISTA */
+.lista-sugestoes li {
+  padding: 10px 12px;
   cursor: pointer;
-  font-weight: bold;
-
-  background: #2e7d32;
-  color: white;
-
-  transition: background 0.3s, transform 0.1s;
+  border-bottom: 1px solid #eee;
+  color: #333;
 }
 
-button:hover {
-  background: #256628;
-  transform: scale(1.03);
+.lista-sugestoes li:last-child {
+  border-bottom: none;
 }
 
-/* BOTÃO REINICIAR */
-button.reiniciar {
-  background: #c62828;
+.lista-sugestoes li:hover {
+  background-color: #e8f5e9; /* Verde claro ao passar o mouse */
+  color: #1b5e20;
 }
 
-button.reiniciar:hover {
-  background: #b71c1c;
-}
+/* ... MANTENHA O RESTANTE DO SEU CSS (BOTOES, MEDIA QUERIES) ... */
 
-/* TEXTO AUXILIAR */
-small {
-  margin-top: 12px;
-  color: #444;
-  font-size: 14px;
-  text-align: center;
-}
-
-/* 📱 RESPONSIVO */
-@media (max-width: 600px) {
-  body {
-    padding: 8px;
-  }
-
-  .container {
-    padding: 16px;
-  }
-
-  .chat-box {
-    max-height: 220px;
-  }
-
-  button {
-    width: 100%;
-  }
-}
