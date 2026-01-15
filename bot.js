@@ -6,7 +6,7 @@ fetch("base.json")
   .then(res => res.json())
   .then(data => baseDados = data);
 
-// normalizar texto (tirar acentos, caixa baixa)
+// normalizar texto
 function normalizar(texto) {
   return texto
     .toLowerCase()
@@ -25,6 +25,11 @@ function diagnosticar() {
     return;
   }
 
+  if (!baseDados || !baseDados[cultura]) {
+    resultado.innerHTML = "❌ Base de dados não carregada ou cultura inválida.";
+    return;
+  }
+
   resultado.innerHTML = "⏳ Analisando sintomas...";
 
   const palavrasUsuario = normalizar(textoUsuario).split(/\s+/);
@@ -38,7 +43,10 @@ function diagnosticar() {
     const doenca = doencas[chave];
     let pontos = 0;
 
-    doenca.sintomas.forEach(sintoma => {
+    // 🔒 DIAGNÓSTICO: SOMENTE SINTOMAS PRÁTICOS
+    const sintomasPraticos = doenca.sintomas.praticos;
+
+    sintomasPraticos.forEach(sintoma => {
       const palavrasSintoma = normalizar(sintoma).split(/\s+/);
 
       palavrasSintoma.forEach(p => {
@@ -59,14 +67,25 @@ function diagnosticar() {
     return;
   }
 
+  // 👉 EXIBIÇÃO: PRÁTICOS + TÉCNICOS
   resultado.innerHTML = `
     <h3>🦠 ${melhorDoenca.nome}</h3>
-    <p><b>Nome biológico:</b> ${melhorDoenca.nome_biologico}</p>
+
+    <p><b>Nome científico:</b> ${melhorDoenca.nome_biologico}</p>
     <p><b>Descrição:</b> ${melhorDoenca.descricao}</p>
     <p><b>Condições favoráveis:</b> ${melhorDoenca.condicoes_favoraveis}</p>
-    <p><b>Sintomas comuns:</b> ${melhorDoenca.sintomas.join(", ")}</p>
-    <p><b>Controle:</b> ${melhorDoenca.controle}</p>
-    <small>⚠️ Diagnóstico de apoio técnico. Não substitui um engenheiro agrônomo.</small>
+
+    <p><b>Sintomas observados no campo:</b><br>
+      ${melhorDoenca.sintomas.praticos.join(", ")}
+    </p>
+
+    <p><b>Sintomas técnicos (referência agronômica):</b><br>
+      ${melhorDoenca.sintomas.tecnicos.join(", ")}
+    </p>
+
+    <p><b>Controle recomendado:</b> ${melhorDoenca.controle}</p>
+
+    <small>⚠️ Diagnóstico de apoio técnico. Consulte um engenheiro agrônomo.</small>
   `;
 }
 
@@ -75,4 +94,3 @@ function reiniciar() {
   document.getElementById("sintomas").value = "";
   document.getElementById("resultado").innerHTML = "";
 }
-
