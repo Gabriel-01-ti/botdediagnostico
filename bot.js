@@ -11,7 +11,7 @@ const resultadoDiv = document.getElementById("resultado");
 // --- 1. CARREGAMENTO DA BASE EXTERNA ---
 console.log("Iniciando carregamento da base.json...");
 
-fetch("base.json") // O "./" garante que busque na mesma pasta
+fetch("./base.json") // O "./" garante que busque na mesma pasta
   .then(response => {
     if (!response.ok) {
       throw new Error(`Erro HTTP! Status: ${response.status} - ${response.statusText}`);
@@ -392,6 +392,7 @@ function reiniciar() {
   document.getElementById("resultado").innerHTML = "";
   document.getElementById("lista-sugestoes").style.display = "none";
 }
+
 
 
 
