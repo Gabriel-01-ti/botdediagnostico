@@ -1,11 +1,7 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-/* BODY */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  /* fundo agro + tecnologia */
   background: linear-gradient(135deg, #e0f2f1, #e3f2fd);
   margin: 0;
   padding: 16px;
@@ -15,210 +11,111 @@ body {
   min-height: 100vh;
 }
 
-/* CONTAINER PRINCIPAL */
 .container {
-  max-width: 900px;
+  max-width: 800px;
   width: 100%;
   background: #f9fff9;
   padding: 24px;
   border-radius: 16px;
   border: 2px solid #1b5e20;
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.12),
-    0 0 12px rgba(46, 125, 50, 0.18);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
   display: flex;
   flex-direction: column;
 }
 
-/* TÍTULO */
 h1 {
-  font-family: 'Poppins', sans-serif;
   text-align: center;
-  font-size: clamp(24px, 4.5vw, 36px);
   color: #1b5e20;
   margin-bottom: 20px;
-  text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000,
-     0 0 8px rgba(46, 125, 50, 0.6);
 }
 
-/* --- ÁREA DE INPUT E AUTOCOMPLETE (NOVO) --- */
+label {
+  font-weight: bold;
+  color: #2e7d32;
+  margin-top: 15px;
+  display: block;
+}
 
-/* Wrapper para posicionar a lista flutuante relativa ao input */
+/* --- AUTOCOMPLETE E INPUTS --- */
 .input-wrapper {
-  position: relative;
+  position: relative; /* Essencial para a lista flutuar */
   width: 100%;
 }
 
-/* INPUT DE SINTOMAS E SELECT */
-input[type="text"],
-textarea,
-select {
+input[type="text"], select {
   width: 100%;
   padding: 12px;
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 16px;
   border-radius: 6px;
   border: 1px solid #bbb;
-  font-family: inherit; /* Mantém a fonte do body */
 }
 
-/* LISTA FLUTUANTE DE SUGESTÕES */
+/* A lista de sugestões flutuante */
 .lista-sugestoes {
   position: absolute;
-  top: 100%; /* Fica exatamente abaixo do input */
+  top: 100%;
   left: 0;
   width: 100%;
-  background: #fff;
+  background: white;
   border: 1px solid #ccc;
-  border-top: none; /* Remove borda dupla com o input */
   border-radius: 0 0 6px 6px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  max-height: 200px; /* Limita altura para não ocupar a tela toda */
-  overflow-y: auto;  /* Scroll se tiver muitos itens */
-  z-index: 1000;     /* Garante que fique acima dos botões */
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 9999; /* Garante que fique em cima de tudo */
   list-style: none;
   padding: 0;
   margin: 0;
-  display: none;     /* Oculto inicialmente */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: none; /* Escondido por padrão */
 }
 
-/* ITEM DA LISTA DE SUGESTÕES */
 .lista-sugestoes li {
-  padding: 10px 14px;
+  padding: 10px;
   cursor: pointer;
   border-bottom: 1px solid #eee;
   color: #333;
-  transition: background 0.2s;
-}
-
-.lista-sugestoes li:last-child {
-  border-bottom: none;
 }
 
 .lista-sugestoes li:hover {
-  background-color: #e8f5e9; /* Verde bem claro ao passar o mouse */
+  background-color: #e8f5e9;
   color: #1b5e20;
-  font-weight: 500;
+  font-weight: bold;
 }
+/* ----------------------------- */
 
-/* --- FIM DA ÁREA DE AUTOCOMPLETE --- */
-
-
-/* ÁREA DOS BOTÕES */
 .botoes {
   display: flex;
   gap: 10px;
-  margin-top: 16px;
-  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
-/* BOTÕES GERAIS */
 button {
-  padding: 12px 20px;
+  padding: 12px;
   font-size: 16px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  font-weight: bold;
   background: #2e7d32;
   color: white;
-  transition: background 0.3s, transform 0.1s;
-  flex: 1; /* Botões ocupam largura igual */
+  font-weight: bold;
+  flex: 1;
 }
 
-button:hover {
-  background: #256628;
-  transform: scale(1.02);
-}
+button:hover { background: #256628; }
+button:disabled { background: #ccc; cursor: not-allowed; }
 
-/* BOTÃO REINICIAR (VERMELHO) */
-button.reiniciar {
-  background: #c62828;
-  max-width: 150px; /* O reiniciar pode ser menor */
-}
+button.reiniciar { background: #c62828; max-width: 120px;}
+button.reiniciar:hover { background: #b71c1c; }
 
-button.reiniciar:hover {
-  background: #b71c1c;
-}
-
-/* --- ÁREA DE RESULTADOS --- */
-
-#resultado {
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: 2px dashed #a5d6a7;
-  animation: fadeIn 0.5s ease-in;
-}
-
-/* Estilo para os títulos gerados pelo JS (Sugestão 1, 2...) */
-#resultado h3 {
-  color: #1b5e20;
-  background-color: #e8f5e9;
-  padding: 8px 12px;
-  border-radius: 6px;
-  margin-top: 20px;
+/* RESULTADOS */
+#resultado { margin-top: 20px; }
+.doenca-card {
+  background: #fff;
   border-left: 5px solid #2e7d32;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
+.doenca-card h3 { margin-top: 0; color: #1b5e20; }
 
-#resultado p {
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-#resultado b {
-  color: #2e7d32;
-}
-
-/* Linha divisória entre doenças */
-#resultado hr {
-  border: 0;
-  height: 1px;
-  background: #ddd;
-  margin: 20px 0;
-}
-
-/* Texto auxiliar (aviso legal) */
-small {
-  display: block;
-  margin-top: 20px;
-  color: #666;
-  font-size: 13px;
-  text-align: center;
-  font-style: italic;
-  background: #fff3e0;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ffe0b2;
-}
-
-/* ANIMAÇÃO SIMPLES */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 📱 RESPONSIVO */
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
-  .container {
-    padding: 16px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  button {
-    width: 100%;
-    flex: 100%; /* Botões empilhados no mobile */
-    max-width: none;
-  }
-}
