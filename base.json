@@ -1,80 +1,97 @@
 {
   "milho": {
     "mancha_branca": {
-      "nome": "Mancha Branca do milho",
-      "nome_biologico": "Phaeosphaeria maydis e Pantoea ananatis",
-      "descricao": "Doença foliar importante do milho, comum em regiões de clima ameno e úmido, podendo causar perdas significativas de produtividade.",
-      "condicoes_favoraveis": "Temperaturas entre 14°C e 20°C, alta umidade, presença de orvalho prolongado e plantio na safrinha.",
-      "sintomas": [
-        "manchas pequenas e encharcadas no início da infecção",
-        "manchas que evoluem para coloração branca ou palha",
-        "bordas irregulares e pouco definidas",
-        "presença de pontuações escuras no centro das lesões",
-        "lesões distribuídas de forma irregular na folha",
-        "coalescência das manchas em ataques severos",
-        "aspecto esbranquiçado predominante na lâmina foliar"
-      ],
-      "danos": "Redução da área fotossintética, secamento precoce das folhas e diminuição do enchimento de grãos.",
-      "manejo_preventivo": "Uso de híbridos resistentes, evitar plantios tardios e realizar monitoramento frequente da lavoura.",
-      "controle": "Aplicação de fungicidas recomendados para a cultura conforme nível de severidade da doença."
+      "nome": "Mancha Branca do Milho",
+      "nome_biologico": "Phaeosphaeria maydis / Pantoea ananatis",
+      "descricao": "Doença foliar comum em clima ameno e úmido, podendo causar perdas de produtividade.",
+      "condicoes_favoraveis": "Temperaturas entre 14°C e 20°C e alta umidade prolongada.",
+      "sintomas": {
+        "praticos": [
+          "manchas claras ou esbranquiçadas nas folhas",
+          "parece que a folha perdeu o verde em algumas áreas",
+          "manchas começam pequenas e aumentam",
+          "manchas podem se juntar e cobrir grande parte da folha",
+          "ocorre primeiro nas folhas mais velhas"
+        ],
+        "tecnicos": [
+          "lesões inicialmente aquosas que se tornam cloróticas/esbranquiçadas",
+          "manchas com bordas irregulares",
+          "centro das lesões pode ter pontos escuros",
+          "as lesões podem coalescer em áreas maiores"
+        ]
+      },
+      "danos": "Redução da área verde das folhas e menor capacidade de fotossíntese.",
+      "manejo_preventivo": "Uso de híbridos tolerantes e monitoramento da lavoura.",
+      "controle": "Aplicação de fungicidas conforme orientação técnica."
     },
 
     "helmintosporiose": {
       "nome": "Helmintosporiose do Milho",
       "nome_biologico": "Exserohilum turcicum",
-      "descricao": "Doença fúngica amplamente disseminada nas áreas de cultivo de milho, com maior severidade em cultivares suscetíveis e plantios de safrinha.",
-      "condicoes_favoraveis": "Alta umidade, temperaturas entre 18°C e 27°C, excesso de nitrogênio e uso de cultivares suscetíveis.",
-      "sintomas": [
-        "lesões alongadas e elípticas nas folhas",
-        "coloração inicial verde-acinzentada evoluindo para palha ou castanha",
-        "bordas bem definidas e formato regular",
-        "lesões orientadas paralelamente às nervuras",
-        "centro das lesões amarelado a cinza",
-        "escurecimento das lesões com frutificação do fungo",
-        "coalescência das lesões causando aspecto de folha queimada"
-      ],
-      "danos": "Redução severa da área foliar, queda da fotossíntese e perdas de rendimento que podem ultrapassar 50%.",
-      "manejo_preventivo": "Uso de cultivares resistentes, escolha adequada da época de plantio e adubação equilibrada.",
-      "controle": "Aplicação de fungicidas quando a severidade justificar, associada a práticas culturais."
+      "descricao": "Doença fúngica que causa manchas compridas nas folhas, parecendo queimadas.",
+      "condicoes_favoraveis": "Alta umidade, temperaturas de 18°C a 27°C e cultivares suscetíveis.",
+      "sintomas": {
+        "praticos": [
+          "manchas longas nas folhas, parecendo riscos escuros",
+          "folha parece queimada ou ressecada em linhas",
+          "manchas começam normalmente nas folhas de baixo",
+          "folhas com manchas grandes podem secar"
+        ],
+        "tecnicos": [
+          "lesões elípticas a estreitas parallelamente às nervuras",
+          "coloração castanha ou cinzenta",
+          "coalescência das lesões forma grandes áreas necróticas"
+        ]
+      },
+      "danos": "Diminuição da área foliar e queda da fotossíntese, com prejuízo na produtividade.",
+      "manejo_preventivo": "Uso de cultivares resistentes e adubação equilibrada.",
+      "controle": "Aplicação de fungicidas em estádios compatíveis."
     },
 
     "cercosporiose": {
       "nome": "Cercosporiose do Milho",
       "nome_biologico": "Cercospora zeae-maydis",
-      "descricao": "Doença foliar do milho amplamente distribuída no Centro-Sul do Brasil, podendo causar perdas superiores a 80% em cultivares suscetíveis.",
-      "condicoes_favoraveis": "Alta umidade, presença de restos culturais de milho, plantio sucessivo de milho e desequilíbrio nutricional.",
-      "sintomas": [
-        "manchas de coloração cinza a cinza-claro",
-        "lesões retangulares bem delimitadas",
-        "lesões alinhadas paralelamente às nervuras",
-        "manchas que não atravessam as nervuras",
-        "bordas bem definidas e aspecto seco",
-        "distribuição uniforme das lesões na folha",
-        "secamento progressivo da lâmina foliar"
-      ],
-      "danos": "Redução drástica da área foliar, acamamento das plantas em ataques severos e perdas de produtividade acima de 80%.",
-      "manejo_preventivo": "Uso de cultivares resistentes, rotação de culturas e manejo adequado dos restos culturais.",
-      "controle": "Aplicação de fungicidas conforme recomendação técnica, aliada a práticas culturais."
+      "descricao": "Doença que causa manchas retangulares ou quadradas nas folhas do milho.",
+      "condicoes_favoraveis": "Alta umidade e presença de restos de cultura.",
+      "sintomas": {
+        "praticos": [
+          "manchas retangulares ou quadradas nas folhas",
+          "manchas de coloração acinzentada ou marrom clara",
+          "manchas parecem alinhadas com as ‘linhas’ da folha",
+          "em ataques fortes, folhas secam e caem"
+        ],
+        "tecnicos": [
+          "lesões retangulares a irregulares paralelas às nervuras",
+          "manchas não atravessam nervuras principais",
+          "necrose progressiva da lâmina foliar"
+        ]
+      },
+      "danos": "Redução da área foliar, podendo provocar queda precoce das folhas.",
+      "manejo_preventivo": "Rotação de culturas e manejo dos restos culturais.",
+      "controle": "Aplicação de fungicidas quando necessário."
     },
 
     "ferrugem_polisora": {
       "nome": "Ferrugem Polisora do Milho",
       "nome_biologico": "Puccinia polysora",
-      "descricao": "Doença fúngica considerada a mais agressiva do milho na região central do Brasil, podendo causar perdas de até 65%.",
-      "condicoes_favoraveis": "Temperaturas elevadas, alta umidade, regiões com altitude inferior a 650 metros e plantios tardios.",
-      "sintomas": [
-        "pústulas pequenas e circulares a elípticas nas folhas",
-        "pústulas de coloração amarela a dourada nas fases iniciais",
-        "pústulas marrom-escuras em estádios avançados",
-        "liberação de esporos com aspecto de pó dourado",
-        "pústulas na face superior do limbo e da bainha foliar",
-        "ocorrência de pústulas nas brácteas das espigas",
-        "ataque severo atingindo o pendão",
-        "morte precoce das folhas em cultivares suscetíveis"
-      ],
-      "danos": "Destruição intensa da área foliar, redução da fotossíntese, morte prematura das plantas e perdas de produtividade de até 65%.",
-      "manejo_preventivo": "Uso de cultivares resistentes, escolha correta da época e local de plantio e evitar plantios tardios em regiões favoráveis à doença.",
-      "controle": "Aplicação de fungicidas registrados para a cultura, associada ao uso de híbridos resistentes."
+      "descricao": "Doença fúngica agressiva que causa pontos alaranjados nas folhas, parecendo ferrugem.",
+      "condicoes_favoraveis": "Dias quentes e úmidos, especialmente em regiões de baixa altitude.",
+      "sintomas": {
+        "praticos": [
+          "pontinhos alaranjados ou amarelados nas folhas",
+          "folha parece ter ‘poeira de ferrugem’",
+          "produção de pó marrom/amarelado quando esfrega a folha",
+          "em casos graves, folhas secam rapidamente"
+        ],
+        "tecnicos": [
+          "urédiosporos e teliósporos visíveis como massas pulverulentas",
+          "pústulas distribuídas pela lâmina foliar",
+          "perda de área fotossintética rápida"
+        ]
+      },
+      "danos": "Perda intensa da área foliar e queda acentuada na produtividade.",
+      "manejo_preventivo": "Uso de cultivares resistentes e evitar épocas favoráveis ao fungo.",
+      "controle": "Aplicação de fungicidas registrados para a cultura."
     }
   },
 
@@ -82,16 +99,22 @@
     "ferrugem_asiatica": {
       "nome": "Ferrugem Asiática da Soja",
       "nome_biologico": "Phakopsora pachyrhizi",
-      "descricao": "Doença fúngica agressiva que causa desfolha precoce e grandes perdas de produtividade.",
+      "descricao": "Doença fúngica que provoca pontinhos escuros e queda precoce das folhas da soja.",
       "condicoes_favoraveis": "Alta umidade e temperaturas entre 18°C e 26°C.",
-      "sintomas": [
-        "pontos pequenos de coloração castanha na face inferior da folha",
-        "pústulas elevadas com liberação de esporos",
-        "amarelecimento e queda precoce das folhas"
-      ],
-      "danos": "Desfolha intensa, redução do enchimento de grãos e queda de produtividade.",
-      "manejo_preventivo": "Cumprimento do vazio sanitário e monitoramento constante.",
-      "controle": "Aplicação de fungicidas sistêmicos conforme recomendação técnica."
+      "sintomas": {
+        "praticos": [
+          "pontos pequenos e escuros na parte de baixo da folha",
+          "manchas que podem parecer sujeira escura",
+          "folhas amarelam e caem cedo"
+        ],
+        "tecnicos": [
+          "pústulas elevadas com liberação de esporos",
+          "desfolha intensa"
+        ]
+      },
+      "danos": "Perda de área foliar e redução da produção.",
+      "manejo_preventivo": "Vazio sanitário e monitoramento constante.",
+      "controle": "Aplicação de fungicidas sistêmicos conforme recomendação."
     }
   },
 
@@ -99,16 +122,22 @@
     "antracnose": {
       "nome": "Antracnose do Feijão",
       "nome_biologico": "Colletotrichum lindemuthianum",
-      "descricao": "Doença fúngica que atinge folhas, hastes e vagens do feijoeiro.",
-      "condicoes_favoraveis": "Alta umidade, temperaturas amenas e uso de sementes contaminadas.",
-      "sintomas": [
-        "manchas escuras e deprimidas nas folhas",
-        "lesões alongadas nas vagens",
-        "escurecimento das nervuras"
-      ],
-      "danos": "Redução da produção e perda da qualidade dos grãos.",
+      "descricao": "Doença que causa manchas escuras nas folhas e vagens do feijão.",
+      "condicoes_favoraveis": "Alta umidade e uso de sementes contaminadas.",
+      "sintomas": {
+        "praticos": [
+          "manchas escuras simples nas folhas",
+          "manchas alongadas nas vagens",
+          "folhas parecem queimadas ou com manchas pretas"
+        ],
+        "tecnicos": [
+          "lesões acervuladas com frutificação fúngica",
+          "necrose em hastes e vagens"
+        ]
+      },
+      "danos": "Redução da produção e qualidade dos grãos.",
       "manejo_preventivo": "Uso de sementes certificadas e rotação de culturas.",
-      "controle": "Aplicação de fungicidas específicos para a cultura."
+      "controle": "Aplicação de fungicidas específicos."
     }
   }
 }
