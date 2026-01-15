@@ -1,12 +1,10 @@
 let baseDados = null;
-let baseCarregada = false;
 
 // carregar JSON
 fetch("base.json")
   .then(res => res.json())
   .then(data => {
     baseDados = data;
-    baseCarregada = true;
     console.log("Base carregada com sucesso");
   })
   .catch(err => {
@@ -23,6 +21,8 @@ function normalizar(texto) {
 
 // FUNÇÃO PARA OBTER SUGESTÕES
 function obterSugestoes(cultura, textoNorm, limite = 4) {
+  if (!baseDados || !baseDados[cultura]) return [];
+
   const doencas = baseDados[cultura];
   const sugestoes = [];
 
@@ -73,17 +73,10 @@ function diagnosticar() {
     return;
   }
 
-  if (!baseCarregada) {
-    resultado.innerHTML = "⏳ Aguarde, base de dados carregando...";
+  if (!baseDados || !baseDados[cultura]) {
+    resultado.innerHTML = "❌ Base de dados não carregada ou cultura não encontrada.";
     return;
   }
-
-  if (!baseDados[cultura]) {
-    resultado.innerHTML = "❌ Cultura não encontrada na base.";
-    return;
-  }
-
-  resultado.innerHTML = "⏳ Analisando sintomas...";
 
   const textoNorm = normalizar(textoUsuario);
 
@@ -130,4 +123,18 @@ function diagnosticar() {
 function reiniciar() {
   document.getElementById("sintomas").value = "";
   document.getElementById("resultado").innerHTML = "";
+}      <hr>
+    `;
+  });
+
+  html += `<small>⚠️ Diagnóstico de apoio técnico. Consulte um engenheiro agrônomo.</small>`;
+
+  resultado.innerHTML = html;
 }
+
+// botão reiniciar
+function reiniciar() {
+  document.getElementById("sintomas").value = "";
+  document.getElementById("resultado").innerHTML = "";
+}
+
