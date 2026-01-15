@@ -4,65 +4,148 @@
       "nome": "Mancha Branca do Milho",
       "nome_biologico": "Phaeosphaeria maydis / Pantoea ananatis",
       "descricao": "Doença foliar comum em clima ameno e úmido, podendo causar perdas de produtividade.",
-      "condicoes_favoraveis": "Temperaturas entre 14°C e 20°C e alta umidade prolongada.",
+      "condicoes_favoraveis": "Temperaturas entre 14°C e 20°C, alta umidade e orvalho prolongado.",
       "sintomas": {
         "praticos": [
           "manchas claras ou esbranquiçadas nas folhas",
-          "parece que a folha perdeu o verde em algumas áreas",
-          "manchas começam pequenas e aumentam",
-          "manchas podem se juntar e cobrir grande parte da folha",
-          "ocorre primeiro nas folhas mais velhas"
+          "folha parece desbotada em algumas áreas",
+          "manchas começam pequenas e aumentam com o tempo",
+          "manchas se juntam e cobrem grande parte da folha",
+          "aparece primeiro nas folhas mais velhas"
         ],
         "tecnicos": [
-          "lesões inicialmente aquosas que se tornam cloróticas/esbranquiçadas",
-          "manchas com bordas irregulares",
-          "centro das lesões pode ter pontos escuros",
-          "as lesões podem coalescer em áreas maiores"
+          "lesões inicialmente aquosas que evoluem para coloração esbranquiçada",
+          "bordas irregulares e mal definidas",
+          "pontos escuros no centro das lesões",
+          "coalescência das lesões em ataques severos"
         ]
       },
-      "danos": "Redução da área verde das folhas e menor capacidade de fotossíntese.",
-      "manejo_preventivo": "Uso de híbridos tolerantes e monitoramento da lavoura.",
-      "controle": "Aplicação de fungicidas conforme orientação técnica."
+      "danos": "Redução da área fotossintética, secamento precoce das folhas e queda de produtividade.",
+      "manejo_preventivo": "Uso de híbridos tolerantes, evitar plantios tardios e monitorar a lavoura.",
+      "controle": "Aplicação de fungicidas recomendados para a cultura conforme nível de severidade."
     },
 
     "helmintosporiose": {
       "nome": "Helmintosporiose do Milho",
       "nome_biologico": "Exserohilum turcicum",
-      "descricao": "Doença fúngica que causa manchas compridas nas folhas, parecendo queimadas.",
-      "condicoes_favoraveis": "Alta umidade, temperaturas de 18°C a 27°C e cultivares suscetíveis.",
+      "descricao": "Doença fúngica que causa manchas longas nas folhas, com aspecto de queimadura.",
+      "condicoes_favoraveis": "Alta umidade, temperaturas entre 18°C e 27°C e cultivares suscetíveis.",
       "sintomas": {
         "praticos": [
-          "manchas longas nas folhas, parecendo riscos escuros",
-          "folha parece queimada ou ressecada em linhas",
-          "manchas começam normalmente nas folhas de baixo",
-          "folhas com manchas grandes podem secar"
+          "manchas longas e escuras nas folhas",
+          "parece que a folha foi queimada em faixas",
+          "manchas seguem o comprimento da folha",
+          "começa nas folhas de baixo",
+          "folhas muito atacadas secam"
         ],
         "tecnicos": [
-          "lesões elípticas a estreitas parallelamente às nervuras",
-          "coloração castanha ou cinzenta",
-          "coalescência das lesões forma grandes áreas necróticas"
+          "lesões elípticas e alongadas paralelas às nervuras",
+          "coloração castanha a cinzenta",
+          "coalescência formando grandes áreas necróticas"
         ]
       },
-      "danos": "Diminuição da área foliar e queda da fotossíntese, com prejuízo na produtividade.",
+      "danos": "Redução intensa da área foliar e queda da fotossíntese.",
       "manejo_preventivo": "Uso de cultivares resistentes e adubação equilibrada.",
-      "controle": "Aplicação de fungicidas em estádios compatíveis."
+      "controle": "Aplicação de fungicidas em estádios recomendados."
     },
 
     "cercosporiose": {
       "nome": "Cercosporiose do Milho",
       "nome_biologico": "Cercospora zeae-maydis",
-      "descricao": "Doença que causa manchas retangulares ou quadradas nas folhas do milho.",
-      "condicoes_favoraveis": "Alta umidade e presença de restos de cultura.",
+      "descricao": "Doença foliar que causa manchas retangulares bem definidas nas folhas.",
+      "condicoes_favoraveis": "Alta umidade, presença de restos culturais e monocultivo.",
       "sintomas": {
         "praticos": [
           "manchas retangulares ou quadradas nas folhas",
-          "manchas de coloração acinzentada ou marrom clara",
-          "manchas parecem alinhadas com as ‘linhas’ da folha",
-          "em ataques fortes, folhas secam e caem"
+          "manchas acinzentadas ou marrom claro",
+          "manchas alinhadas com as linhas da folha",
+          "manchas não atravessam as nervuras",
+          "folhas secam aos poucos"
         ],
         "tecnicos": [
-          "lesões retangulares a irregulares paralelas às nervuras",
-          "manchas não atravessam nervuras principais",
+          "lesões retangulares paralelas às nervuras",
+          "bordas bem definidas",
+          "necrose progressiva da lâmina foliar"
+        ]
+      },
+      "danos": "Queda precoce das folhas e perdas de produtividade.",
+      "manejo_preventivo": "Rotação de culturas e manejo adequado dos restos culturais.",
+      "controle": "Aplicação de fungicidas quando houver risco econômico."
+    },
+
+    "ferrugem_polisora": {
+      "nome": "Ferrugem Polisora do Milho",
+      "nome_biologico": "Puccinia polysora",
+      "descricao": "Doença fúngica agressiva que provoca pontos alaranjados nas folhas.",
+      "condicoes_favoraveis": "Clima quente e úmido, regiões de baixa altitude e plantios tardios.",
+      "sintomas": {
+        "praticos": [
+          "pontinhos alaranjados ou amarelados nas folhas",
+          "parece que a folha tem poeira de ferrugem",
+          "quando esfrega a folha solta um pó",
+          "pontos aumentam e se espalham rápido",
+          "folhas secam rapidamente em ataques fortes"
+        ],
+        "tecnicos": [
+          "pústulas pulverulentas com liberação de esporos",
+          "distribuição intensa na lâmina foliar",
+          "rápida perda da área fotossintética"
+        ]
+      },
+      "danos": "Destruição da área foliar e redução significativa da produtividade.",
+      "manejo_preventivo": "Uso de cultivares resistentes e evitar épocas favoráveis ao fungo.",
+      "controle": "Aplicação de fungicidas registrados para a cultura."
+    }
+  },
+
+  "soja": {
+    "ferrugem_asiatica": {
+      "nome": "Ferrugem Asiática da Soja",
+      "nome_biologico": "Phakopsora pachyrhizi",
+      "descricao": "Doença fúngica que causa queda precoce das folhas da soja.",
+      "condicoes_favoraveis": "Alta umidade e temperaturas entre 18°C e 26°C.",
+      "sintomas": {
+        "praticos": [
+          "pontinhos escuros no verso da folha",
+          "manchas pequenas parecendo sujeira",
+          "folhas amarelam e caem cedo",
+          "planta fica rala rapidamente"
+        ],
+        "tecnicos": [
+          "pústulas com liberação de esporos",
+          "desfolha intensa"
+        ]
+      },
+      "danos": "Redução drástica da produção de grãos.",
+      "manejo_preventivo": "Cumprimento do vazio sanitário e monitoramento constante.",
+      "controle": "Aplicação de fungicidas sistêmicos conforme recomendação técnica."
+    }
+  },
+
+  "feijao": {
+    "antracnose": {
+      "nome": "Antracnose do Feijão",
+      "nome_biologico": "Colletotrichum lindemuthianum",
+      "descricao": "Doença que causa manchas escuras em folhas e vagens do feijão.",
+      "condicoes_favoraveis": "Alta umidade e sementes contaminadas.",
+      "sintomas": {
+        "praticos": [
+          "manchas escuras nas folhas",
+          "manchas alongadas nas vagens",
+          "folhas parecem queimadas",
+          "manchas pretas nas nervuras"
+        ],
+        "tecnicos": [
+          "lesões necróticas com frutificação fúngica",
+          "necrose em hastes e vagens"
+        ]
+      },
+      "danos": "Queda da produção e perda da qualidade dos grãos.",
+      "manejo_preventivo": "Uso de sementes certificadas e rotação de culturas.",
+      "controle": "Aplicação de fungicidas específicos para a cultura."
+    }
+  }
+}          "manchas não atravessam nervuras principais",
           "necrose progressiva da lâmina foliar"
         ]
       },
@@ -141,3 +224,4 @@
     }
   }
 }
+
