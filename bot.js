@@ -21,6 +21,47 @@ function normalizar(texto) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+// FUNÇÃO PARA OBTER SUGESTÕES
+function obterSugestoes(cultura, textoNorm, limite = 4) {
+  const doencas = baseDados[cultura];
+  const sugestoes = [];
+
+  for (const chave in doencas) {
+    const doenca = doencas[chave];
+    if (!doenca.sintomas || !doenca.sintomas.praticos) continue;
+
+    let pontos = 0;
+
+    doenca.sintomas.praticos.forEach(sintoma => {
+      const sintomaNorm = normalizar(sintoma);
+      if (textoNorm.includes(sintomaNorm)) {
+        pontos += 3;
+      } else {
+        sintomaNorm.split(" ").forEach(p => {
+          if (textoNorm.includes(p)) pontos += 1;
+        });
+      }
+    });
+
+    sugestoes.push({ doenca, pontos });
+  }
+
+  // ordenar por pontuação decrescente
+  sugestoes.sort((a, b) => b.pontos - a.pontos);
+
+  // pegar as top sugestões não repetindo
+  const topSugestoes = [];
+  const nomes = new Set();
+  for (let i = 0; i < sugestoes.length && topSugestoes.length < limite; i++) {
+    if (sugestoes[i].pontos > 0 && !nomes.has(sugestoes[i].doenca.nome)) {
+      topSugestoes.push(sugestoes[i].doenca);
+      nomes.add(sugestoes[i].doenca.nome);
+    }
+  }
+
+  return topSugestoes;
+}
+
 // BOT PRINCIPAL
 function diagnosticar() {
   const cultura = document.getElementById("cultura").value.toLowerCase();
@@ -46,72 +87,47 @@ function diagnosticar() {
 
   const textoNorm = normalizar(textoUsuario);
 
-  let melhorDoenca = null;
-  let maiorPontuacao = 0;
+  // obter sugestões (máx 4)
+  const sugestoes = obterSugestoes(cultura, textoNorm, 4);
 
-  const doencas = baseDados[cultura];
-
-  for (const chave in doencas) {
-    const doenca = doencas[chave];
-    let pontos = 0;
-
-    if (!doenca.sintomas || !doenca.sintomas.praticos) continue;
-
-    doenca.sintomas.praticos.forEach(sintoma => {
-      const sintomaNorm = normalizar(sintoma);
-
-      // ⭐ match por frase
-      if (textoNorm.includes(sintomaNorm)) {
-        pontos += 3;
-      } else {
-        // match parcial por palavras
-        sintomaNorm.split(" ").forEach(p => {
-          if (textoNorm.includes(p)) {
-            pontos += 1;
-          }
-        });
-      }
-    });
-
-    if (pontos > maiorPontuacao) {
-      maiorPontuacao = pontos;
-      melhorDoenca = doenca;
-    }
-  }
-
-  if (!melhorDoenca || maiorPontuacao < 2) {
+  if (sugestoes.length === 0) {
     resultado.innerHTML = "❌ Nenhuma doença compatível encontrada.";
     return;
   }
 
-  // EXIBIR RESULTADO
-  resultado.innerHTML = `
-    <h3>🦠 ${melhorDoenca.nome}</h3>
+  // exibir resultados das sugestões
+  let html = "";
+  sugestoes.forEach((doenca, index) => {
+    html += `
+      <h3>🦠 Sugestão ${index + 1}: ${doenca.nome}</h3>
 
-    <p><b>Nome científico:</b> ${melhorDoenca.nome_biologico}</p>
+      <p><b>Nome científico:</b> ${doenca.nome_biologico}</p>
 
-    <p><b>Descrição:</b><br>${melhorDoenca.descricao}</p>
+      <p><b>Descrição:</b><br>${doenca.descricao}</p>
 
-    <p><b>Condições favoráveis:</b><br>${melhorDoenca.condicoes_favoraveis}</p>
+      <p><b>Condições favoráveis:</b><br>${doenca.condicoes_favoraveis}</p>
 
-    <p><b>Sintomas observados:</b><br>
-    ${melhorDoenca.sintomas.praticos.join(", ")}</p>
+      <p><b>Sintomas observados:</b><br>${doenca.sintomas.praticos.join(", ")}</p>
 
-    <p><b>Sintomas técnicos:</b><br>
-    ${melhorDoenca.sintomas.tecnicos.join(", ")}</p>
+      <p><b>Sintomas técnicos:</b><br>${doenca.sintomas.tecnicos.join(", ")}</p>
 
-    <p><b>Danos:</b><br>${melhorDoenca.danos}</p>
+      <p><b>Danos:</b><br>${doenca.danos}</p>
 
-    <p><b>Manejo preventivo:</b><br>${melhorDoenca.manejo_preventivo}</p>
+      <p><b>Manejo preventivo:</b><br>${doenca.manejo_preventivo}</p>
 
-    <p><b>Controle:</b><br>${melhorDoenca.controle}</p>
+      <p><b>Controle:</b><br>${doenca.controle}</p>
 
-    <small>⚠️ Diagnóstico de apoio técnico. Consulte um engenheiro agrônomo.</small>
-  `;
+      <hr>
+    `;
+  });
+
+  html += `<small>⚠️ Diagnóstico de apoio técnico. Consulte um engenheiro agrônomo.</small>`;
+
+  resultado.innerHTML = html;
 }
 
 // botão reiniciar
 function reiniciar() {
   document.getElementById("sintomas").value = "";
   document.getElementById("resultado").innerHTML = "";
-                                      }
+}
