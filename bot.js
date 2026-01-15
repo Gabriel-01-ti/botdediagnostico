@@ -1,81 +1,88 @@
 let baseDados = null;
-let todosSintomasCultura = []; // Armazena sintomas únicos da cultura selecionada
+let sintomasAtuais = []; // Lista temporária de sintomas da cultura escolhida
 
-// Elementos do DOM
 const inputSintomas = document.getElementById("sintomas");
 const listaSugestoes = document.getElementById("lista-sugestoes");
+const selectCultura = document.getElementById("cultura");
+const btnDiagnosticar = document.getElementById("btn-diagnosticar");
 
-// Carregar JSON
+// 1. CARREGAR JSON AO INICIAR
 fetch("base.json")
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error("Erro ao ler arquivo");
+    return res.json();
+  })
   .then(data => {
     baseDados = data;
-    console.log("Base carregada com sucesso");
+    console.log("✅ Base carregada!");
+    
+    // Libera os inputs
+    inputSintomas.placeholder = "Digite um sintoma (ex: manchas, folhas...)";
+    inputSintomas.disabled = false;
+    btnDiagnosticar.disabled = false;
   })
   .catch(err => {
-    console.error("Erro ao carregar base:", err);
+    console.error(err);
+    inputSintomas.placeholder = "❌ Erro: base.json não encontrado.";
+    alert("Erro: O arquivo base.json não foi carregado. Verifique se ele está na mesma pasta.");
   });
 
-// Normalizar texto (remove acentos e caixa baixa)
-function normalizar(texto) {
-  return texto
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+// Funcao auxiliar: Normalizar texto (tira acentos e maiúsculas)
+function normalizar(txt) {
+  return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-// --- NOVO: Função para extrair sintomas da cultura selecionada ---
-function atualizarListaSintomas() {
-  const cultura = document.getElementById("cultura").value.toLowerCase();
-  todosSintomasCultura = []; // Limpa lista anterior
-  
-  if (!baseDados || !baseDados[cultura]) return;
+// 2. ATUALIZAR LISTA DE AUTOCOMPLETE QUANDO MUDAR A CULTURA
+selectCultura.addEventListener("change", () => {
+  const cultura = selectCultura.value.toLowerCase();
+  sintomasAtuais = []; // Limpa lista
+  inputSintomas.value = ""; // Limpa input
+
+  if (!baseDados || !cultura || !baseDados[cultura]) return;
 
   const doencas = baseDados[cultura];
-  const setSintomas = new Set(); // Set evita duplicatas
+  const setSintomas = new Set();
 
-  // Varre todas as doenças e pega os sintomas práticos
-  for (const chave in doencas) {
-    const doenca = doencas[chave];
-    if (doenca.sintomas && doenca.sintomas.praticos) {
-      doenca.sintomas.praticos.forEach(s => setSintomas.add(s));
+  // Varre todas as doenças da cultura e pega os sintomas
+  for (let chave in doencas) {
+    const d = doencas[chave];
+    if (d.sintomas && d.sintomas.praticos) {
+      d.sintomas.praticos.forEach(s => setSintomas.add(s));
     }
   }
+  
+  // Converte para array e ordena
+  sintomasAtuais = Array.from(setSintomas).sort();
+  console.log(`Sintomas carregados para ${cultura}:`, sintomasAtuais.length);
+});
 
-  // Converte Set para Array e ordena
-  todosSintomasCultura = Array.from(setSintomas).sort();
-}
-
-// --- NOVO: Evento de Digitação (Autocomplete) ---
+// 3. AUTOCOMPLETE (Evento de digitar)
 inputSintomas.addEventListener("input", function() {
-  const textoDigitado = this.value;
+  const texto = this.value;
   listaSugestoes.innerHTML = ""; // Limpa sugestões antigas
   
-  if (!textoDigitado) {
+  // Se não tiver cultura selecionada ou texto vazio
+  if (!texto || sintomasAtuais.length === 0) {
     listaSugestoes.style.display = "none";
     return;
   }
 
-  const textoNorm = normalizar(textoDigitado);
+  const textoNorm = normalizar(texto);
 
-  // Filtra sintomas que contêm o texto digitado
-  const sugestoes = todosSintomasCultura.filter(sintoma => 
-    normalizar(sintoma).includes(textoNorm)
-  );
+  // Filtra os sintomas que contém o que foi digitado
+  const encontrados = sintomasAtuais.filter(s => normalizar(s).includes(textoNorm));
 
-  if (sugestoes.length > 0) {
+  if (encontrados.length > 0) {
     listaSugestoes.style.display = "block";
-    sugestoes.forEach(sintoma => {
+    
+    // Cria os itens da lista
+    encontrados.forEach(sintoma => {
       const li = document.createElement("li");
       li.textContent = sintoma;
-      
-      // Ao clicar na sugestão
       li.onclick = () => {
-        inputSintomas.value = sintoma; // Preenche o input
-        listaSugestoes.style.display = "none"; // Esconde lista
-        listaSugestoes.innerHTML = "";
+        inputSintomas.value = sintoma; // Preenche o campo
+        listaSugestoes.style.display = "none"; // Esconde a lista
       };
-      
       listaSugestoes.appendChild(li);
     });
   } else {
@@ -84,26 +91,67 @@ inputSintomas.addEventListener("input", function() {
 });
 
 // Esconder lista se clicar fora
-document.addEventListener('click', function(e) {
+document.addEventListener("click", (e) => {
   if (!inputSintomas.contains(e.target) && !listaSugestoes.contains(e.target)) {
-    listaSugestoes.style.display = 'none';
+    listaSugestoes.style.display = "none";
   }
 });
 
-// --- LÓGICA DE DIAGNÓSTICO (Mantida e ajustada) ---
-function obterSugestoes(cultura, textoNorm, limite = 4) {
-  if (!baseDados || !baseDados[cultura]) return [];
+// 4. DIAGNÓSTICO
+function diagnosticar() {
+  const cultura = selectCultura.value.toLowerCase();
+  const textoUsuario = inputSintomas.value;
+  const divResultado = document.getElementById("resultado");
 
+  if (!cultura || !textoUsuario) {
+    divResultado.innerHTML = "<p style='color:red'>⚠️ Selecione a cultura e descreva o sintoma.</p>";
+    return;
+  }
+
+  const textoNorm = normalizar(textoUsuario);
   const doencas = baseDados[cultura];
-  const sugestoes = [];
+  let sugestoes = [];
 
-  for (const chave in doencas) {
-    const doenca = doencas[chave];
-    if (!doenca.sintomas || !doenca.sintomas.praticos) continue;
-
+  for (let chave in doencas) {
+    const d = doencas[chave];
     let pontos = 0;
+    
+    // Sistema simples de pontuação
+    d.sintomas.praticos.forEach(s => {
+      const sNorm = normalizar(s);
+      if (textoNorm.includes(sNorm) || sNorm.includes(textoNorm)) pontos += 10;
+    });
 
-    doenca.sintomas.praticos.forEach(sintoma => {
+    if (pontos > 0) sugestoes.push({ dados: d, pontos });
+  }
+
+  sugestoes.sort((a, b) => b.pontos - a.pontos);
+
+  // Exibir
+  if (sugestoes.length === 0) {
+    divResultado.innerHTML = "<p>❌ Nenhuma doença encontrada com esse sintoma específico.</p>";
+  } else {
+    let html = "";
+    sugestoes.slice(0, 3).forEach(item => {
+      html += `
+        <div class="doenca-card">
+          <h3>🦠 ${item.dados.nome}</h3>
+          <p><b>Nome Científico:</b> ${item.dados.nome_biologico}</p>
+          <p><b>Sintomas:</b> ${item.dados.sintomas.praticos.join(", ")}</p>
+          <p><b>Controle:</b> ${item.dados.controle}</p>
+        </div>
+      `;
+    });
+    divResultado.innerHTML = html;
+  }
+}
+
+function reiniciar() {
+  selectCultura.value = "";
+  inputSintomas.value = "";
+  document.getElementById("resultado").innerHTML = "";
+  listaSugestoes.style.display = "none";
+}
       const sintomaNorm = normalizar(sintoma);
       // Se o sintoma for exato ou conter a frase inteira, pontua mais
       if (textoNorm.includes(sintomaNorm) || sintomaNorm.includes(textoNorm)) {
@@ -183,3 +231,4 @@ function reiniciar() {
   document.getElementById("resultado").innerHTML = "";
   document.getElementById("lista-sugestoes").style.display = "none";
 }
+
