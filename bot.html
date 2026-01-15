@@ -12,7 +12,7 @@
   <div class="container">
     <h1>🤖 Bot de Diagnóstico por Sintomas</h1>
 
-    <label>Escolha a cultura:</label>
+    <label for="cultura">Escolha a cultura:</label>
     <select id="cultura">
       <option value="">Selecione</option>
       <option value="milho">Milho</option>
@@ -20,7 +20,7 @@
       <option value="feijao">Feijão</option>
     </select>
 
-    <label>Descreva os sintomas observados:</label>
+    <label for="sintomas">Descreva os sintomas observados:</label>
     <textarea id="sintomas" placeholder="Ex: manchas brancas nas folhas, folhas secando..."></textarea>
 
     <div class="botoes">
@@ -31,6 +31,7 @@
     <div id="resultado" class="resultado"></div>
   </div>
 
+  <!-- Script externo -->
   <script src="bot.js"></script>
 </body>
 </html>
