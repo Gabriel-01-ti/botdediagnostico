@@ -1,6 +1,11 @@
 let baseDados = null;
+let todosSintomasCultura = []; // Armazena sintomas únicos da cultura selecionada
 
-// carregar JSON
+// Elementos do DOM
+const inputSintomas = document.getElementById("sintomas");
+const listaSugestoes = document.getElementById("lista-sugestoes");
+
+// Carregar JSON
 fetch("base.json")
   .then(res => res.json())
   .then(data => {
@@ -11,7 +16,7 @@ fetch("base.json")
     console.error("Erro ao carregar base:", err);
   });
 
-// normalizar texto
+// Normalizar texto (remove acentos e caixa baixa)
 function normalizar(texto) {
   return texto
     .toLowerCase()
@@ -19,7 +24,73 @@ function normalizar(texto) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-// FUNÇÃO PARA OBTER SUGESTÕES
+// --- NOVO: Função para extrair sintomas da cultura selecionada ---
+function atualizarListaSintomas() {
+  const cultura = document.getElementById("cultura").value.toLowerCase();
+  todosSintomasCultura = []; // Limpa lista anterior
+  
+  if (!baseDados || !baseDados[cultura]) return;
+
+  const doencas = baseDados[cultura];
+  const setSintomas = new Set(); // Set evita duplicatas
+
+  // Varre todas as doenças e pega os sintomas práticos
+  for (const chave in doencas) {
+    const doenca = doencas[chave];
+    if (doenca.sintomas && doenca.sintomas.praticos) {
+      doenca.sintomas.praticos.forEach(s => setSintomas.add(s));
+    }
+  }
+
+  // Converte Set para Array e ordena
+  todosSintomasCultura = Array.from(setSintomas).sort();
+}
+
+// --- NOVO: Evento de Digitação (Autocomplete) ---
+inputSintomas.addEventListener("input", function() {
+  const textoDigitado = this.value;
+  listaSugestoes.innerHTML = ""; // Limpa sugestões antigas
+  
+  if (!textoDigitado) {
+    listaSugestoes.style.display = "none";
+    return;
+  }
+
+  const textoNorm = normalizar(textoDigitado);
+
+  // Filtra sintomas que contêm o texto digitado
+  const sugestoes = todosSintomasCultura.filter(sintoma => 
+    normalizar(sintoma).includes(textoNorm)
+  );
+
+  if (sugestoes.length > 0) {
+    listaSugestoes.style.display = "block";
+    sugestoes.forEach(sintoma => {
+      const li = document.createElement("li");
+      li.textContent = sintoma;
+      
+      // Ao clicar na sugestão
+      li.onclick = () => {
+        inputSintomas.value = sintoma; // Preenche o input
+        listaSugestoes.style.display = "none"; // Esconde lista
+        listaSugestoes.innerHTML = "";
+      };
+      
+      listaSugestoes.appendChild(li);
+    });
+  } else {
+    listaSugestoes.style.display = "none";
+  }
+});
+
+// Esconder lista se clicar fora
+document.addEventListener('click', function(e) {
+  if (!inputSintomas.contains(e.target) && !listaSugestoes.contains(e.target)) {
+    listaSugestoes.style.display = 'none';
+  }
+});
+
+// --- LÓGICA DE DIAGNÓSTICO (Mantida e ajustada) ---
 function obterSugestoes(cultura, textoNorm, limite = 4) {
   if (!baseDados || !baseDados[cultura]) return [];
 
@@ -34,11 +105,14 @@ function obterSugestoes(cultura, textoNorm, limite = 4) {
 
     doenca.sintomas.praticos.forEach(sintoma => {
       const sintomaNorm = normalizar(sintoma);
-      if (textoNorm.includes(sintomaNorm)) {
-        pontos += 3;
-      } else {
+      // Se o sintoma for exato ou conter a frase inteira, pontua mais
+      if (textoNorm.includes(sintomaNorm) || sintomaNorm.includes(textoNorm)) {
+        pontos += 10;
+      } 
+      // Comparação palavra por palavra (fallback)
+      else {
         sintomaNorm.split(" ").forEach(p => {
-          if (textoNorm.includes(p)) pontos += 1;
+          if (p.length > 3 && textoNorm.includes(p)) pontos += 1;
         });
       }
     });
@@ -46,10 +120,8 @@ function obterSugestoes(cultura, textoNorm, limite = 4) {
     sugestoes.push({ doenca, pontos });
   }
 
-  // ordenar por pontuação decrescente
   sugestoes.sort((a, b) => b.pontos - a.pontos);
 
-  // pegar as top sugestões não repetindo
   const topSugestoes = [];
   const nomes = new Set();
   for (let i = 0; i < sugestoes.length && topSugestoes.length < limite; i++) {
@@ -62,79 +134,52 @@ function obterSugestoes(cultura, textoNorm, limite = 4) {
   return topSugestoes;
 }
 
-// BOT PRINCIPAL
 function diagnosticar() {
   const cultura = document.getElementById("cultura").value.toLowerCase();
   const textoUsuario = document.getElementById("sintomas").value.trim();
   const resultado = document.getElementById("resultado");
 
+  if (!cultura) {
+    resultado.innerHTML = "⚠️ Selecione uma cultura primeiro.";
+    return;
+  }
+  
   if (!textoUsuario) {
-    resultado.innerHTML = "⚠️ Descreva os sintomas observados.";
+    resultado.innerHTML = "⚠️ Descreva ou selecione um sintoma.";
     return;
   }
 
   if (!baseDados || !baseDados[cultura]) {
-    resultado.innerHTML = "❌ Base de dados não carregada ou cultura não encontrada.";
+    resultado.innerHTML = "❌ Base de dados carregando ou cultura inválida.";
     return;
   }
 
   const textoNorm = normalizar(textoUsuario);
-
-  // obter sugestões (máx 4)
   const sugestoes = obterSugestoes(cultura, textoNorm, 4);
 
   if (sugestoes.length === 0) {
-    resultado.innerHTML = "❌ Nenhuma doença compatível encontrada.";
+    resultado.innerHTML = "❌ Nenhuma doença compatível encontrada com esse sintoma.";
     return;
   }
 
-  // exibir resultados das sugestões
   let html = "";
   sugestoes.forEach((doenca, index) => {
     html += `
       <h3>🦠 Sugestão ${index + 1}: ${doenca.nome}</h3>
-
       <p><b>Nome científico:</b> ${doenca.nome_biologico}</p>
-
-      <p><b>Descrição:</b><br>${doenca.descricao}</p>
-
-      <p><b>Condições favoráveis:</b><br>${doenca.condicoes_favoraveis}</p>
-
-      <p><b>Sintomas observados:</b><br>${doenca.sintomas.praticos.join(", ")}</p>
-
-      <p><b>Sintomas técnicos:</b><br>${doenca.sintomas.tecnicos.join(", ")}</p>
-
-      <p><b>Danos:</b><br>${doenca.danos}</p>
-
-      <p><b>Manejo preventivo:</b><br>${doenca.manejo_preventivo}</p>
-
-      <p><b>Controle:</b><br>${doenca.controle}</p>
-
+      <p><b>Sintomas:</b> ${doenca.sintomas.praticos.join(", ")}</p>
+      <p><b>Controle:</b> ${doenca.controle}</p>
       <hr>
     `;
   });
-
-  html += `<small>⚠️ Diagnóstico de apoio técnico. Consulte um engenheiro agrônomo.</small>`;
-
+  
+  html += `<small>⚠️ Diagnóstico de apoio técnico.</small>`;
   resultado.innerHTML = html;
 }
 
-// botão reiniciar
 function reiniciar() {
   document.getElementById("sintomas").value = "";
+  document.getElementById("cultura").value = "";
   document.getElementById("resultado").innerHTML = "";
-}      <hr>
-    `;
-  });
-
-  html += `<small>⚠️ Diagnóstico de apoio técnico. Consulte um engenheiro agrônomo.</small>`;
-
-  resultado.innerHTML = html;
+  document.getElementById("lista-sugestoes").style.display = "none";
 }
-
-// botão reiniciar
-function reiniciar() {
-  document.getElementById("sintomas").value = "";
-  document.getElementById("resultado").innerHTML = "";
-}
-
