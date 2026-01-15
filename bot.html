@@ -2,36 +2,36 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Bot de Diagnóstico por Sintomas</title>
+  <title>Bot Agro - Diagnóstico</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="bot.css">
 </head>
 <body>
 
   <div class="container">
-    <h1>🤖 Bot de Diagnóstico por Sintomas</h1>
+    <h1>🤖 Bot de Diagnóstico</h1>
 
-    <label for="cultura">Escolha a cultura:</label>
-    <select id="cultura" onchange="atualizarListaSintomas()">
-      <option value="">Selecione</option>
+    <label for="cultura">1. Escolha a cultura:</label>
+    <select id="cultura">
+      <option value="">Selecione...</option>
       <option value="milho">Milho</option>
       <option value="soja">Soja</option>
       <option value="feijao">Feijão</option>
     </select>
 
-    <label for="sintomas">Descreva ou selecione os sintomas:</label>
-    
+    <label for="sintomas">2. Descreva ou selecione o sintoma:</label>
     <div class="input-wrapper">
-      <input type="text" id="sintomas" placeholder="Comece a digitar um sintoma..." autocomplete="off">
+      <input type="text" id="sintomas" placeholder="⏳ Carregando base de dados..." disabled autocomplete="off">
+      
       <ul id="lista-sugestoes" class="lista-sugestoes"></ul>
     </div>
 
     <div class="botoes">
-      <button onclick="diagnosticar()">🔍 Diagnosticar</button>
+      <button onclick="diagnosticar()" id="btn-diagnosticar" disabled>🔍 Diagnosticar</button>
       <button onclick="reiniciar()" class="reiniciar">🔄 Reiniciar</button>
     </div>
 
-    <div id="resultado" class="resultado"></div>
+    <div id="resultado"></div>
   </div>
 
   <script src="bot.js"></script>
