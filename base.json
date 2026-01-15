@@ -2,56 +2,113 @@
   "milho": {
     "mancha_branca": {
       "nome": "Mancha Branca do milho",
-      "nome_biologico": "Phaeosphaeria maydis (fungo) e Pantoea ananatis (bactéria)",
-      "descricao": "Doença foliar importante do milho, conhecida como pinta-branca. Pode causar perdas expressivas de produtividade em condições favoráveis.",
-      "condicoes_favoraveis": "Temperaturas amenas (14 a 20°C), alta umidade, presença de água livre nas folhas e plantio na safrinha.",
+      "nome_biologico": "Phaeosphaeria maydis e Pantoea ananatis",
+      "descricao": "Doença foliar importante do milho, comum em regiões de clima ameno e úmido, podendo causar perdas significativas de produtividade.",
+      "condicoes_favoraveis": "Temperaturas entre 14°C e 20°C, alta umidade, presença de orvalho prolongado e plantio na safrinha.",
       "sintomas": [
-        "manchas brancas ou esbranquiçadas nas folhas",
-        "manchas com bordas irregulares",
-        "lesões pequenas com aspecto encharcado no início",
-        "pontos escuros no centro das manchas",
-        "secamento progressivo das folhas"
+        "manchas pequenas e encharcadas no início da infecção",
+        "manchas que evoluem para coloração branca ou palha",
+        "bordas irregulares e pouco definidas",
+        "presença de pontuações escuras no centro das lesões",
+        "lesões distribuídas de forma irregular na folha",
+        "coalescência das manchas em ataques severos",
+        "aspecto esbranquiçado predominante na lâmina foliar"
       ],
-      "danos": "Redução da área foliar, diminuição da fotossíntese e queda da produtividade.",
-      "manejo_preventivo": "Uso de híbridos resistentes, evitar plantios tardios e monitorar a lavoura.",
-      "controle": "Aplicação de fungicidas, especialmente misturas de estrobilurina + triazol, conforme recomendação técnica."
+      "danos": "Redução da área fotossintética, secamento precoce das folhas e diminuição do enchimento de grãos.",
+      "manejo_preventivo": "Uso de híbridos resistentes, evitar plantios tardios e realizar monitoramento frequente da lavoura.",
+      "controle": "Aplicação de fungicidas recomendados para a cultura conforme nível de severidade da doença."
     },
 
     "helmintosporiose": {
       "nome": "Helmintosporiose do Milho",
       "nome_biologico": "Exserohilum turcicum",
-      "descricao": "Doença fúngica amplamente disseminada no cultivo do milho, com maior severidade em plantios de safrinha, podendo causar perdas superiores a 50%.",
-      "condicoes_favoraveis": "Alta umidade, temperaturas entre 18°C e 27°C, cultivares suscetíveis e excesso de nitrogênio.",
+      "descricao": "Doença fúngica amplamente disseminada nas áreas de cultivo de milho, com maior severidade em cultivares suscetíveis e plantios de safrinha.",
+      "condicoes_favoraveis": "Alta umidade, temperaturas entre 18°C e 27°C, excesso de nitrogênio e uso de cultivares suscetíveis.",
       "sintomas": [
         "lesões alongadas e elípticas nas folhas",
-        "manchas de coloração palha a castanha",
-        "bordas bem definidas nas lesões",
-        "coalescência das lesões dando aspecto de queima",
-        "secamento precoce das folhas"
+        "coloração inicial verde-acinzentada evoluindo para palha ou castanha",
+        "bordas bem definidas e formato regular",
+        "lesões orientadas paralelamente às nervuras",
+        "centro das lesões amarelado a cinza",
+        "escurecimento das lesões com frutificação do fungo",
+        "coalescência das lesões causando aspecto de folha queimada"
       ],
       "danos": "Redução severa da área foliar, queda da fotossíntese e perdas de rendimento que podem ultrapassar 50%.",
       "manejo_preventivo": "Uso de cultivares resistentes, escolha adequada da época de plantio e adubação equilibrada.",
-      "controle": "Uso integrado de cultivares resistentes e aplicação de fungicidas quando necessário."
+      "controle": "Aplicação de fungicidas quando a severidade justificar, associada a práticas culturais."
+    },
+
+    "cercosporiose": {
+      "nome": "Cercosporiose do Milho",
+      "nome_biologico": "Cercospora zeae-maydis",
+      "descricao": "Doença foliar do milho amplamente distribuída no Centro-Sul do Brasil, podendo causar perdas superiores a 80% em cultivares suscetíveis.",
+      "condicoes_favoraveis": "Alta umidade, presença de restos culturais de milho, plantio sucessivo de milho e desequilíbrio nutricional.",
+      "sintomas": [
+        "manchas de coloração cinza a cinza-claro",
+        "lesões retangulares bem delimitadas",
+        "lesões alinhadas paralelamente às nervuras",
+        "manchas que não atravessam as nervuras",
+        "bordas bem definidas e aspecto seco",
+        "distribuição uniforme das lesões na folha",
+        "secamento progressivo da lâmina foliar"
+      ],
+      "danos": "Redução drástica da área foliar, acamamento das plantas em ataques severos e perdas de produtividade acima de 80%.",
+      "manejo_preventivo": "Uso de cultivares resistentes, rotação de culturas e manejo adequado dos restos culturais.",
+      "controle": "Aplicação de fungicidas conforme recomendação técnica, aliada a práticas culturais."
+    },
+
+    "ferrugem_polisora": {
+      "nome": "Ferrugem Polisora do Milho",
+      "nome_biologico": "Puccinia polysora",
+      "descricao": "Doença fúngica considerada a mais agressiva do milho na região central do Brasil, podendo causar perdas de até 65%.",
+      "condicoes_favoraveis": "Temperaturas elevadas, alta umidade, regiões com altitude inferior a 650 metros e plantios tardios.",
+      "sintomas": [
+        "pústulas pequenas e circulares a elípticas nas folhas",
+        "pústulas de coloração amarela a dourada nas fases iniciais",
+        "pústulas marrom-escuras em estádios avançados",
+        "liberação de esporos com aspecto de pó dourado",
+        "pústulas na face superior do limbo e da bainha foliar",
+        "ocorrência de pústulas nas brácteas das espigas",
+        "ataque severo atingindo o pendão",
+        "morte precoce das folhas em cultivares suscetíveis"
+      ],
+      "danos": "Destruição intensa da área foliar, redução da fotossíntese, morte prematura das plantas e perdas de produtividade de até 65%.",
+      "manejo_preventivo": "Uso de cultivares resistentes, escolha correta da época e local de plantio e evitar plantios tardios em regiões favoráveis à doença.",
+      "controle": "Aplicação de fungicidas registrados para a cultura, associada ao uso de híbridos resistentes."
     }
   },
 
   "soja": {
-    "ferrugem asiática": {
+    "ferrugem_asiatica": {
       "nome": "Ferrugem Asiática da Soja",
-      "o_que_e": "Doença fúngica agressiva que causa desfolha precoce.",
-      "por_que_acontece": "Alta umidade e temperaturas entre 18°C e 26°C.",
-      "tratamento": "Aplicação de fungicidas sistêmicos.",
-      "prevencao": "Vazio sanitário e monitoramento."
+      "nome_biologico": "Phakopsora pachyrhizi",
+      "descricao": "Doença fúngica agressiva que causa desfolha precoce e grandes perdas de produtividade.",
+      "condicoes_favoraveis": "Alta umidade e temperaturas entre 18°C e 26°C.",
+      "sintomas": [
+        "pontos pequenos de coloração castanha na face inferior da folha",
+        "pústulas elevadas com liberação de esporos",
+        "amarelecimento e queda precoce das folhas"
+      ],
+      "danos": "Desfolha intensa, redução do enchimento de grãos e queda de produtividade.",
+      "manejo_preventivo": "Cumprimento do vazio sanitário e monitoramento constante.",
+      "controle": "Aplicação de fungicidas sistêmicos conforme recomendação técnica."
     }
   },
 
   "feijao": {
     "antracnose": {
       "nome": "Antracnose do Feijão",
-      "o_que_e": "Doença fúngica que causa manchas escuras nas folhas e vagens.",
-      "por_que_acontece": "Sementes contaminadas e alta umidade.",
-      "tratamento": "Fungicidas específicos.",
-      "prevencao": "Uso de sementes certificadas."
+      "nome_biologico": "Colletotrichum lindemuthianum",
+      "descricao": "Doença fúngica que atinge folhas, hastes e vagens do feijoeiro.",
+      "condicoes_favoraveis": "Alta umidade, temperaturas amenas e uso de sementes contaminadas.",
+      "sintomas": [
+        "manchas escuras e deprimidas nas folhas",
+        "lesões alongadas nas vagens",
+        "escurecimento das nervuras"
+      ],
+      "danos": "Redução da produção e perda da qualidade dos grãos.",
+      "manejo_preventivo": "Uso de sementes certificadas e rotação de culturas.",
+      "controle": "Aplicação de fungicidas específicos para a cultura."
     }
   }
 }
