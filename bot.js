@@ -1,9 +1,17 @@
 let baseDados = null;
+let baseCarregada = false;
 
 // carregar JSON
 fetch("base.json")
   .then(res => res.json())
-  .then(data => baseDados = data);
+  .then(data => {
+    baseDados = data;
+    baseCarregada = true;
+    console.log("Base carregada com sucesso");
+  })
+  .catch(err => {
+    console.error("Erro ao carregar base:", err);
+  });
 
 // normalizar texto
 function normalizar(texto) {
@@ -24,14 +32,19 @@ function diagnosticar() {
     return;
   }
 
-  if (!baseDados || !baseDados[cultura]) {
-    resultado.innerHTML = "❌ Base de dados não carregada ou cultura inválida.";
+  if (!baseCarregada) {
+    resultado.innerHTML = "⏳ Aguarde, base de dados carregando...";
+    return;
+  }
+
+  if (!baseDados[cultura]) {
+    resultado.innerHTML = "❌ Cultura não encontrada na base.";
     return;
   }
 
   resultado.innerHTML = "⏳ Analisando sintomas...";
 
-  const palavrasUsuario = normalizar(textoUsuario).split(/\s+/);
+  const textoNorm = normalizar(textoUsuario);
 
   let melhorDoenca = null;
   let maiorPontuacao = 0;
@@ -42,16 +55,22 @@ function diagnosticar() {
     const doenca = doencas[chave];
     let pontos = 0;
 
-    // 🔒 DIAGNÓSTICO: SOMENTE SINTOMAS PRÁTICOS
-    const sintomasPraticos = doenca.sintomas.praticos;
+    if (!doenca.sintomas || !doenca.sintomas.praticos) continue;
 
-    sintomasPraticos.forEach(sintoma => {
-      const palavrasSintoma = normalizar(sintoma).split(/\s+/);
-      palavrasSintoma.forEach(p => {
-        if (palavrasUsuario.includes(p)) {
-          pontos++;
-        }
-      });
+    doenca.sintomas.praticos.forEach(sintoma => {
+      const sintomaNorm = normalizar(sintoma);
+
+      // ⭐ match por frase
+      if (textoNorm.includes(sintomaNorm)) {
+        pontos += 3;
+      } else {
+        // match parcial por palavras
+        sintomaNorm.split(" ").forEach(p => {
+          if (textoNorm.includes(p)) {
+            pontos += 1;
+          }
+        });
+      }
     });
 
     if (pontos > maiorPontuacao) {
@@ -65,32 +84,27 @@ function diagnosticar() {
     return;
   }
 
-  // 👉 EXIBIR TUDO DO JSON
+  // EXIBIR RESULTADO
   resultado.innerHTML = `
     <h3>🦠 ${melhorDoenca.nome}</h3>
 
     <p><b>Nome científico:</b> ${melhorDoenca.nome_biologico}</p>
 
-    <p><b>Descrição:</b><br>
-    ${melhorDoenca.descricao}</p>
+    <p><b>Descrição:</b><br>${melhorDoenca.descricao}</p>
 
-    <p><b>Condições favoráveis:</b><br>
-    ${melhorDoenca.condicoes_favoraveis}</p>
+    <p><b>Condições favoráveis:</b><br>${melhorDoenca.condicoes_favoraveis}</p>
 
-    <p><b>Sintomas observados no campo:</b><br>
+    <p><b>Sintomas observados:</b><br>
     ${melhorDoenca.sintomas.praticos.join(", ")}</p>
 
-    <p><b>Sintomas técnicos (referência):</b><br>
+    <p><b>Sintomas técnicos:</b><br>
     ${melhorDoenca.sintomas.tecnicos.join(", ")}</p>
 
-    <p><b>Danos causados:</b><br>
-    ${melhorDoenca.danos}</p>
+    <p><b>Danos:</b><br>${melhorDoenca.danos}</p>
 
-    <p><b>Manejo preventivo:</b><br>
-    ${melhorDoenca.manejo_preventivo}</p>
+    <p><b>Manejo preventivo:</b><br>${melhorDoenca.manejo_preventivo}</p>
 
-    <p><b>Controle:</b><br>
-    ${melhorDoenca.controle}</p>
+    <p><b>Controle:</b><br>${melhorDoenca.controle}</p>
 
     <small>⚠️ Diagnóstico de apoio técnico. Consulte um engenheiro agrônomo.</small>
   `;
@@ -100,4 +114,4 @@ function diagnosticar() {
 function reiniciar() {
   document.getElementById("sintomas").value = "";
   document.getElementById("resultado").innerHTML = "";
-}
+                                      }
