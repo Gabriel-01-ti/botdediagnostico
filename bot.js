@@ -1,5 +1,5 @@
 let baseDados = null;
-let sintomasAtuais = []; // Lista para o autocomplete
+let sintomasAtuais = []; // Lis. ta para o autocomplete
 
 // Elementos da tela
 const inputSintomas = document.getElementById("sintomas");
@@ -392,6 +392,7 @@ function reiniciar() {
   document.getElementById("resultado").innerHTML = "";
   document.getElementById("lista-sugestoes").style.display = "none";
 }
+
 
 
 
