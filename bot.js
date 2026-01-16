@@ -1,111 +1,102 @@
 let baseDados = null;
-let sintomasAtuais = []; // Lis. ta para o autocomplete
+let sintomasAtuais = [];
 
-// Elementos da tela
+// ELEMENTOS
 const inputSintomas = document.getElementById("sintomas");
 const listaSugestoes = document.getElementById("lista-sugestoes");
 const selectCultura = document.getElementById("cultura");
-const btnDiagnosticar = document.getElementById("btn-diagnosticar");
 const resultadoDiv = document.getElementById("resultado");
 
-// --- 1. CARREGAMENTO DA BASE EXTERNA ---
-console.log("Iniciando carregamento da base.json...");
-
-fetch("./base.json") // O "./" garante que busque na mesma pasta
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`Erro HTTP! Status: ${response.status} - ${response.statusText}`);
-    }
-    return response.json();
-  })
-  .then(data => {
-    baseDados = data;
-    console.log("✅ Base carregada com sucesso:", data);
-    
-    // Habilita a interface
-    inputSintomas.placeholder = "Selecione uma cultura para começar...";
-    // inputSintomas continua desabilitado até selecionar a cultura
-  })
-  .catch(error => {
-    console.error("❌ Erro fatal ao carregar base:", error);
-    resultadoDiv.innerHTML = `
-      <div style="background:#ffcdd2; color:#b71c1c; padding:15px; border-radius:8px;">
-        <strong>Erro ao carregar base de dados!</strong><br>
-        O arquivo 'base.json' não foi encontrado ou está com erro de sintaxe.<br>
-        <small>Detalhe: ${error.message}</small>
-      </div>
-    `;
-  });
-
-// Funcao para limpar texto (acentos, maiusculas)
+// NORMALIZAR TEXTO
 function normalizar(txt) {
   return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-// --- 2. MUDANÇA DE CULTURA (Prepara o Autocomplete) ---
+// 🔹 CARREGAR JSON
+fetch("base.json")
+  .then(res => {
+    if (!res.ok) throw new Error("Erro ao carregar JSON");
+    return res.json();
+  })
+  .then(data => {
+    baseDados = data;
+    console.log("✅ Base carregada:", baseDados);
+  })
+  .catch(err => {
+    console.error("❌ ERRO:", err);
+    resultadoDiv.innerHTML = "❌ Erro ao carregar base.json";
+  });
+
+// 🔹 MUDANÇA DE CULTURA
 selectCultura.addEventListener("change", () => {
   const cultura = selectCultura.value.toLowerCase();
-  
-  // Limpezas
   inputSintomas.value = "";
-  listaSugestoes.style.display = "none";
+  listaSugestoes.innerHTML = "";
   sintomasAtuais = [];
 
-  // Verificações de segurança
-  if (!baseDados) {
-    alert("A base de dados ainda não carregou. Aguarde um instante.");
-    return;
-  }
-  
-  if (!cultura) {
-    inputSintomas.disabled = true;
-    inputSintomas.placeholder = "Selecione uma cultura...";
-    return;
+  if (!baseDados || !baseDados[cultura]) return;
+
+  const set = new Set();
+  for (let d in baseDados[cultura]) {
+    baseDados[cultura][d].sintomas.praticos.forEach(s => set.add(s));
   }
 
-  if (!baseDados[cultura]) {
-    console.warn(`Cultura '${cultura}' não encontrada no JSON.`);
-    inputSintomas.disabled = true;
-    return;
-  }
-
-  // Se tudo ok, libera o input
+  sintomasAtuais = [...set].sort();
   inputSintomas.disabled = false;
-  inputSintomas.placeholder = `Digite um sintoma de ${cultura}...`;
-  inputSintomas.focus();
-
-  // Extrai sintomas únicos do JSON para a memória
-  const doencas = baseDados[cultura];
-  const setSintomas = new Set();
-
-  for (let id in doencas) {
-    const d = doencas[id];
-    if (d.sintomas && d.sintomas.praticos) {
-      d.sintomas.praticos.forEach(s => setSintomas.add(s));
-    }
-  }
-  
-  sintomasAtuais = Array.from(setSintomas).sort();
-  console.log(`Sintomas carregados para ${cultura}:`, sintomasAtuais);
 });
 
-// --- 3. EVENTO DE DIGITAR (O Autocomplete) ---
-inputSintomas.addEventListener("input", function() {
-  const texto = this.value;
-  listaSugestoes.innerHTML = ""; // Limpa lista anterior
-  
-  if (!texto || sintomasAtuais.length === 0) {
-    listaSugestoes.style.display = "none";
+// 🔹 AUTOCOMPLETE
+inputSintomas.addEventListener("input", () => {
+  const texto = normalizar(inputSintomas.value);
+  listaSugestoes.innerHTML = "";
+
+  if (!texto) return;
+
+  sintomasAtuais
+    .filter(s => normalizar(s).includes(texto))
+    .forEach(s => {
+      const li = document.createElement("li");
+      li.textContent = s;
+      li.onclick = () => {
+        inputSintomas.value = s;
+        listaSugestoes.innerHTML = "";
+      };
+      listaSugestoes.appendChild(li);
+    });
+});
+
+// 🔹 DIAGNÓSTICO
+function diagnosticar() {
+  const cultura = selectCultura.value.toLowerCase();
+  const texto = normalizar(inputSintomas.value);
+
+  if (!cultura || !texto) {
+    resultadoDiv.innerHTML = "⚠️ Selecione cultura e sintoma.";
     return;
   }
 
-  const textoNorm = normalizar(texto);
-  
-  // Filtra: procura o texto digitado dentro dos sintomas
-  const encontrados = sintomasAtuais.filter(s => 
-    normalizar(s).includes(textoNorm)
-  );
+  let resultados = [];
 
+  for (let d in baseDados[cultura]) {
+    let pontos = 0;
+    baseDados[cultura][d].sintomas.praticos.forEach(s => {
+      if (normalizar(s).includes(texto)) pontos += 10;
+    });
+    if (pontos > 0) resultados.push({ ...baseDados[cultura][d], pontos });
+  }
+
+  resultados.sort((a, b) => b.pontos - a.pontos);
+
+  resultadoDiv.innerHTML = resultados.length
+    ? resultados.slice(0, 4).map(d => `
+        <div class="doenca-card">
+          <h3>${d.nome}</h3>
+          <p><b>Sintomas:</b> ${d.sintomas.praticos.join(", ")}</p>
+          <p><b>Controle:</b> ${d.controle}</p>
+        </div>
+      `).join("")
+    : "❌ Nenhuma doença encontrada.";
+}
   if (encontrados.length > 0) {
     listaSugestoes.style.display = "block";
     
@@ -392,6 +383,7 @@ function reiniciar() {
   document.getElementById("resultado").innerHTML = "";
   document.getElementById("lista-sugestoes").style.display = "none";
 }
+
 
 
 
