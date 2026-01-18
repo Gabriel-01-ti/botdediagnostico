@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Bot Agro - Chat</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="bot.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Agro - Diagnóstico</title>
+    <link rel="stylesheet" href="bot.css">
 </head>
 <body>
 
-  <div class="container">
-    <h1>🤖 Bot Agro</h1>
+    <div class="container">
+        <h1>🤖 Bot Agro</h1>
+        
+        <div id="chat"></div>
 
-    <div id="chat" class="chat"></div>
-
-    <div class="input-area">
-      <input type="text" id="mensagem" placeholder="Digite sua mensagem..." autocomplete="off">
-      <button onclick="enviar()">Enviar</button>
+        <div class="input-area">
+            <input type="text" id="sintomas" placeholder="Carregando base de dados..." disabled autocomplete="off">
+            <button id="btn-diagnosticar">Enviar</button>
+        </div>
     </div>
-  </div>
 
-  <script src="bot.js"></script>
+    <script src="bot.js"></script>
+
 </body>
 </html>
