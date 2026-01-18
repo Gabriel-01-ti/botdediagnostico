@@ -2,20 +2,26 @@ let baseDados = null;
 
 // ELEMENTOS
 const inputSintomas = document.getElementById("sintomas");
-const listaSugestoes = document.getElementById("lista-sugestoes");
-const selectCultura = document.getElementById("cultura");
 const btnEnviar = document.getElementById("btn-diagnosticar");
 const chatDiv = document.getElementById("chat");
 
-// CARREGAR BASE
+// 1. CARREGAR BASE EXTERNA (JSON)
 fetch("base.json")
   .then(res => res.json())
   .then(data => {
     baseDados = data;
     inputSintomas.disabled = false;
-    inputSintomas.placeholder = "Digite aqui...";
-    iniciarBot();
+    inputSintomas.placeholder = "Digite 'Oi' para começar...";
+    // NÃO inicia o bot aqui. Espera o usuário falar.
+  })
+  .catch(err => {
+    console.error("Erro ao carregar base.json:", err);
+    addMsg("❌ Erro ao carregar a base de dados.", "bot");
   });
+
+// VARIÁVEIS DE CONTROLE
+let etapa = 0; // 0 = Standby | 1 = Esperando Cultura | 2 = Esperando Sintomas
+let culturaSelecionada = "";
 
 // NORMALIZAR TEXTO
 function normalizar(txt) {
@@ -31,14 +37,9 @@ function addMsg(texto, tipo) {
   chatDiv.scrollTop = chatDiv.scrollHeight;
 }
 
-// VARIÁVEL DE CONTROLE DE FLUXO
-let etapa = 0;
-let culturaSelecionada = "";
-let sintomasUsuario = "";
-
-// INICIAR BOT
+// INICIAR INTERAÇÃO
 function iniciarBot() {
-  addMsg("🤖 Olá! Tudo bem? 🌱<br>Qual é a cultura que você deseja analisar?", "bot");
+  addMsg("🤖 Olá! Tudo bem? 🌱<br>Qual é a cultura que você deseja analisar? (Ex: Milho, Soja...)", "bot");
   etapa = 1;
 }
 
@@ -47,33 +48,57 @@ btnEnviar.addEventListener("click", () => {
   const texto = inputSintomas.value.trim();
   if (!texto) return;
 
+  // 1. Exibe msg do usuário
   addMsg("Você: " + texto, "usuario");
+  inputSintomas.value = "";
 
+  // 2. Se for a primeira interação (Etapa 0)
+  if (etapa === 0) {
+    iniciarBot();
+    return;
+  }
+
+  // Se o usuário quiser reiniciar no meio
+  const comando = normalizar(texto);
+  if (['oi', 'ola', 'reiniciar', 'inicio'].includes(comando)) {
+    iniciarBot();
+    return;
+  }
+
+  // 3. Identificar Cultura
   if (etapa === 1) {
-    // Usuário respondeu a cultura
     const culturaNorm = normalizar(texto);
-    if (!baseDados[culturaNorm]) {
-      addMsg("⚠️ Cultura não encontrada. Tente novamente.", "bot");
-      inputSintomas.value = "";
+    
+    // Verifica se carregou a base e se a cultura existe
+    if (!baseDados) {
+      addMsg("⚠️ A base de dados ainda não carregou. Aguarde um instante.", "bot");
       return;
     }
+
+    if (!baseDados[culturaNorm]) {
+      addMsg("⚠️ Cultura não encontrada na base (Tente: Milho, Soja, Feijão).", "bot");
+      return;
+    }
+    
     culturaSelecionada = culturaNorm;
-    addMsg(`Ótimo! Você escolheu <b>${texto}</b>.<br>Agora, descreva os sintomas observados na lavoura.`, "bot");
+    addMsg(`Certo! Vamos analisar <b>${texto}</b>.<br>Descreva os sintomas que você está vendo.`, "bot");
     etapa = 2;
-    inputSintomas.value = "";
-  } else if (etapa === 2) {
-    // Usuário respondeu os sintomas
-    sintomasUsuario = texto;
-    etapa = 3;
-    diagnosticar(culturaSelecionada, sintomasUsuario);
+  } 
+  
+  // 4. Diagnosticar
+  else if (etapa === 2) {
+    addMsg("🔍 Analisando...", "bot");
+    // Pequeno delay visual
+    setTimeout(() => {
+      diagnosticar(culturaSelecionada, texto);
+    }, 500);
   }
 });
 
-// FUNÇÃO DIAGNOSTICAR
+// FUNÇÃO DIAGNOSTICAR COMPLETA
 function diagnosticar(cultura, textoUsuario) {
   const textoNorm = normalizar(textoUsuario);
   const palavras = textoNorm.split(" ");
-
   let resultados = [];
 
   for (let id in baseDados[cultura]) {
@@ -94,21 +119,52 @@ function diagnosticar(cultura, textoUsuario) {
   resultados.sort((a, b) => b.pontos - a.pontos);
 
   if (resultados.length === 0) {
-    addMsg("❌ Não encontrei doença compatível.", "bot");
+    addMsg("❌ Não encontrei doença compatível com a descrição.", "bot");
   } else {
+    // Exibe as doenças encontradas com TODOS os detalhes
     resultados.slice(0, 3).forEach(d => {
-      addMsg(`
-        <b>🦠 ${d.nome}</b><br>
-        <b>Descrição:</b> ${d.descricao}<br>
-        <b>Sintomas técnicos:</b> ${d.sintomas.tecnicos.join(", ")}<br>
-        <b>Danos:</b> ${d.danos}<br>
-        <b>Controle:</b> ${d.controle}
-      `, "bot");
+      const htmlCompleto = `
+        <div style="background: #f9f9f9; padding: 10px; border-radius: 8px; margin-top: 10px; border: 1px solid #ddd;">
+          <h3 style="margin: 0 0 10px 0; color: #2c3e50;">🦠 ${d.nome}</h3>
+          
+          <p><b>🔬 Nome Biológico:</b> <i>${d.nome_biologico}</i></p>
+          <p><b>📝 Descrição:</b> ${d.descricao}</p>
+          <p><b>🌡️ Condições Favoráveis:</b> ${d.condicoes_favoraveis}</p>
+          
+          <hr style="border: 0; border-top: 1px solid #ccc;">
+          
+          <p><b>👀 Sintomas Práticos:</b></p>
+          <ul style="margin: 5px 0 10px 20px; padding: 0;">
+            ${d.sintomas.praticos.map(s => `<li>${s}</li>`).join('')}
+          </ul>
+
+          <p><b>🧪 Sintomas Técnicos:</b></p>
+          <ul style="margin: 5px 0 10px 20px; padding: 0;">
+             ${d.sintomas.tecnicos.map(s => `<li>${s}</li>`).join('')}
+          </ul>
+
+          <hr style="border: 0; border-top: 1px solid #ccc;">
+
+          <p><b>⚠️ Danos:</b> ${d.danos}</p>
+          <p><b>🛡️ Manejo Preventivo:</b> ${d.manejo_preventivo}</p>
+          <p><b>💊 Controle Químico:</b> ${d.controle}</p>
+        </div>
+      `;
+      addMsg(htmlCompleto, "bot");
     });
   }
 
-  // Resetar para nova análise
-  addMsg("Se quiser analisar outra cultura, digite o nome da cultura.", "bot");
-  etapa = 1;
-  inputSintomas.value = "";
+  // Prepara para o próximo ciclo
+  setTimeout(() => {
+    addMsg("<br>🏁 <b>Análise concluída.</b><br>Para analisar outra cultura, digite o nome dela abaixo (ou 'Oi' para reiniciar).", "bot");
+    etapa = 1; 
+  }, 2000);
 }
+
+// Enviar com Enter
+inputSintomas.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    btnEnviar.click();
+  }
+});
