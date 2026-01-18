@@ -118,4 +118,99 @@ button.reiniciar:hover { background: #b71c1c; }
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 .doenca-card h3 { margin-top: 0; color: #1b5e20; }
+/* ========== RESPONSIVIDADE ========== */
+
+/* Tablets e celulares médios */
+@media (max-width: 900px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  input[type="text"], select {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .doenca-card {
+    padding: 12px;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 600px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .container {
+    margin-top: 20px;
+    padding: 14px;
+  }
+
+  .botoes {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  button.reiniciar {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  label {
+    font-size: 0.95rem;
+  }
+
+  input[type="text"], select {
+    font-size: 14px;
+    padding: 9px;
+  }
+
+  .lista-sugestoes li {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .doenca-card h3 {
+    font-size: 1rem;
+  }
+
+  .doenca-card p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Celulares muito pequenos */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 9px;
+  }
+}
+
 
