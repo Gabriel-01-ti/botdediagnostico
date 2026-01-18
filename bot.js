@@ -136,15 +136,15 @@ function diagnosticar() {
   `).join("");
 }
 
-// REINICIAR
 function reiniciar() {
   selectCultura.value = "";
   inputSintomas.value = "";
-  inputSintomas.disabled = true;
-  inputSintomas.placeholder = "Carregando base de dados...";
+  inputSintomas.disabled = false; // NÃO bloquear mais
+  inputSintomas.placeholder = "Digite o sintoma (ex: mancha)";
   resultadoDiv.innerHTML = "";
   listaSugestoes.style.display = "none";
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("btn-diagnosticar");
   if (btn) {
@@ -152,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Botão de diagnóstico conectado!");
   }
 });
+
 
 
 
