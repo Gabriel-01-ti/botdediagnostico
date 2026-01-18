@@ -145,3 +145,5 @@ function reiniciar() {
   resultadoDiv.innerHTML = "";
   listaSugestoes.style.display = "none";
 }
+document.getElementById("btn-diagnosticar").onclick = diagnosticar;
+
