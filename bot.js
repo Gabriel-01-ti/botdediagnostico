@@ -4,7 +4,7 @@ let baseDados = null;
 const inputSintomas = document.getElementById("sintomas");
 const listaSugestoes = document.getElementById("lista-sugestoes");
 const selectCultura = document.getElementById("cultura");
-const btnDiagnosticar = document.getElementById("btn-diagnosticar");
+const btnEnviar = document.getElementById("btn-diagnosticar");
 const chatDiv = document.getElementById("chat");
 
 // CARREGAR BASE
@@ -13,7 +13,8 @@ fetch("base.json")
   .then(data => {
     baseDados = data;
     inputSintomas.disabled = false;
-    inputSintomas.placeholder = "Descreva o sintoma (ex: manchas brancas nas folhas)";
+    inputSintomas.placeholder = "Digite aqui...";
+    iniciarBot();
   });
 
 // NORMALIZAR TEXTO
@@ -21,7 +22,7 @@ function normalizar(txt) {
   return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-// MENSAGENS NO CHAT
+// ADICIONAR MENSAGEM AO CHAT
 function addMsg(texto, tipo) {
   const div = document.createElement("div");
   div.className = "msg " + tipo;
@@ -30,59 +31,46 @@ function addMsg(texto, tipo) {
   chatDiv.scrollTop = chatDiv.scrollHeight;
 }
 
-// BOT INICIAL
-window.onload = () => {
-  addMsg("🤖 Olá! Bom dia 🌱<br>Escolha a cultura e descreva os sintomas da lavoura.", "bot");
-};
+// VARIÁVEL DE CONTROLE DE FLUXO
+let etapa = 0;
+let culturaSelecionada = "";
+let sintomasUsuario = "";
 
-// AUTOCOMPLETE INTELIGENTE
-inputSintomas.addEventListener("input", () => {
-  const cultura = selectCultura.value;
-  const texto = normalizar(inputSintomas.value);
-  listaSugestoes.innerHTML = "";
+// INICIAR BOT
+function iniciarBot() {
+  addMsg("🤖 Olá! Tudo bem? 🌱<br>Qual é a cultura que você deseja analisar?", "bot");
+  etapa = 1;
+}
 
-  if (!baseDados || !cultura || texto.length < 2) {
-    listaSugestoes.style.display = "none";
-    return;
+// BOTÃO ENVIAR
+btnEnviar.addEventListener("click", () => {
+  const texto = inputSintomas.value.trim();
+  if (!texto) return;
+
+  addMsg("Você: " + texto, "usuario");
+
+  if (etapa === 1) {
+    // Usuário respondeu a cultura
+    const culturaNorm = normalizar(texto);
+    if (!baseDados[culturaNorm]) {
+      addMsg("⚠️ Cultura não encontrada. Tente novamente.", "bot");
+      inputSintomas.value = "";
+      return;
+    }
+    culturaSelecionada = culturaNorm;
+    addMsg(`Ótimo! Você escolheu <b>${texto}</b>.<br>Agora, descreva os sintomas observados na lavoura.`, "bot");
+    etapa = 2;
+    inputSintomas.value = "";
+  } else if (etapa === 2) {
+    // Usuário respondeu os sintomas
+    sintomasUsuario = texto;
+    etapa = 3;
+    diagnosticar(culturaSelecionada, sintomasUsuario);
   }
-
-  let sugestoes = [];
-
-  for (let id in baseDados[cultura]) {
-    baseDados[cultura][id].sintomas.praticos.forEach(s => {
-      if (normalizar(s).includes(texto)) sugestoes.push(s);
-    });
-  }
-
-  sugestoes = [...new Set(sugestoes)];
-
-  sugestoes.forEach(s => {
-    const li = document.createElement("li");
-    li.textContent = s;
-    li.onclick = () => {
-      inputSintomas.value = s;
-      listaSugestoes.style.display = "none";
-    };
-    listaSugestoes.appendChild(li);
-  });
-
-  listaSugestoes.style.display = sugestoes.length ? "block" : "none";
 });
 
-// BOTÃO DIAGNOSTICAR
-btnDiagnosticar.addEventListener("click", diagnosticar);
-
-function diagnosticar() {
-  const cultura = selectCultura.value;
-  const textoUsuario = inputSintomas.value.trim();
-
-  if (!cultura || !textoUsuario) {
-    addMsg("⚠️ Informe a cultura e descreva o sintoma.", "bot");
-    return;
-  }
-
-  addMsg("Você: " + textoUsuario, "usuario");
-
+// FUNÇÃO DIAGNOSTICAR
+function diagnosticar(cultura, textoUsuario) {
   const textoNorm = normalizar(textoUsuario);
   const palavras = textoNorm.split(" ");
 
@@ -94,11 +82,9 @@ function diagnosticar() {
 
     d.sintomas.praticos.forEach(s => {
       const sNorm = normalizar(s);
-
       palavras.forEach(p => {
         if (p.length > 3 && sNorm.includes(p)) pontos += 3;
       });
-
       if (sNorm.includes(textoNorm) || textoNorm.includes(sNorm)) pontos += 15;
     });
 
@@ -109,18 +95,20 @@ function diagnosticar() {
 
   if (resultados.length === 0) {
     addMsg("❌ Não encontrei doença compatível.", "bot");
-    return;
+  } else {
+    resultados.slice(0, 3).forEach(d => {
+      addMsg(`
+        <b>🦠 ${d.nome}</b><br>
+        <b>Descrição:</b> ${d.descricao}<br>
+        <b>Sintomas técnicos:</b> ${d.sintomas.tecnicos.join(", ")}<br>
+        <b>Danos:</b> ${d.danos}<br>
+        <b>Controle:</b> ${d.controle}
+      `, "bot");
+    });
   }
 
-  resultados.slice(0, 3).forEach(d => {
-    addMsg(`
-      <b>🦠 ${d.nome}</b><br>
-      <b>Descrição:</b> ${d.descricao}<br>
-      <b>Sintomas técnicos:</b> ${d.sintomas.tecnicos.join(", ")}<br>
-      <b>Danos:</b> ${d.danos}<br>
-      <b>Controle:</b> ${d.controle}
-    `, "bot");
-  });
-
+  // Resetar para nova análise
+  addMsg("Se quiser analisar outra cultura, digite o nome da cultura.", "bot");
+  etapa = 1;
   inputSintomas.value = "";
 }
