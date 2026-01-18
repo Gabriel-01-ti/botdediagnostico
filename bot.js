@@ -145,5 +145,14 @@ function reiniciar() {
   resultadoDiv.innerHTML = "";
   listaSugestoes.style.display = "none";
 }
-document.getElementById("btn-diagnosticar").onclick = diagnosticar;
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("btn-diagnosticar");
+  if (btn) {
+    btn.addEventListener("click", diagnosticar);
+    console.log("Botão conectado!");
+  } else {
+    console.log("Botão NÃO encontrado!");
+  }
+});
+
 
