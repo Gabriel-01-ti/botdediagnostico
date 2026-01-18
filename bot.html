@@ -2,39 +2,23 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Bot Agro - Diagnóstico</title>
+  <title>Bot Agro - Chat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="bot.css">
 </head>
 <body>
 
   <div class="container">
-    <h1>🤖 Bot de Diagnóstico</h1>
+    <h1>🤖 Bot Agro</h1>
 
-    <label for="cultura">1. Escolha a cultura:</label>
-    <select id="cultura">
-      <option value="">Selecione...</option>
-      <option value="milho">Milho</option>
-      <option value="soja">Soja</option>
-      <option value="feijao">Feijão</option>
-    </select>
+    <div id="chat" class="chat"></div>
 
-    <label for="sintomas">2. Descreva ou selecione o sintoma:</label>
-    <div class="input-wrapper">
-      <input type="text" id="sintomas" placeholder="⏳ Carregando base de dados..." disabled autocomplete="off">
-      
-      <ul id="lista-sugestoes" class="lista-sugestoes"></ul>
+    <div class="input-area">
+      <input type="text" id="mensagem" placeholder="Digite sua mensagem..." autocomplete="off">
+      <button onclick="enviar()">Enviar</button>
     </div>
-
-    <div class="botoes">
-     <button id="btn-diagnosticar" type="button">Diagnosticar</button>
-     <button onclick="reiniciar()" class="reiniciar">🔄 Reiniciar</button>
-    </div>
-
-    <div id="resultado"></div>
   </div>
 
   <script src="bot.js"></script>
 </body>
 </html>
-
