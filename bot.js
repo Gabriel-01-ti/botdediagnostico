@@ -1,34 +1,30 @@
+// VARIÁVEIS DE CONTROLE
 let baseDados = null;
-
-// ELEMENTOS
 const inputSintomas = document.getElementById("sintomas");
 const btnEnviar = document.getElementById("btn-diagnosticar");
 const chatDiv = document.getElementById("chat");
+let etapa = 0; 
+let culturaSelecionada = "";
 
-// 1. CARREGAR BASE EXTERNA (JSON)
-fetch("./base.json")
+// 1. CARREGAR BASE
+fetch("base.json")
   .then(res => res.json())
   .then(data => {
     baseDados = data;
     inputSintomas.disabled = false;
     inputSintomas.placeholder = "Digite 'Oi' para começar...";
-    // NÃO inicia o bot aqui. Espera o usuário falar.
   })
   .catch(err => {
-    console.error("Erro ao carregar base.json:", err);
-    addMsg("❌ Erro ao carregar a base de dados.", "bot");
+    console.error("Erro:", err);
+    addMsg("❌ Erro ao carregar base de dados.", "bot");
   });
 
-// VARIÁVEIS DE CONTROLE
-let etapa = 0; // 0 = Standby | 1 = Esperando Cultura | 2 = Esperando Sintomas
-let culturaSelecionada = "";
-
-// NORMALIZAR TEXTO
+// NORMALIZAR
 function normalizar(txt) {
   return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-// ADICIONAR MENSAGEM AO CHAT
+// ADICIONAR MENSAGEM
 function addMsg(texto, tipo) {
   const div = document.createElement("div");
   div.className = "msg " + tipo;
@@ -37,9 +33,9 @@ function addMsg(texto, tipo) {
   chatDiv.scrollTop = chatDiv.scrollHeight;
 }
 
-// INICIAR INTERAÇÃO
+// INICIAR
 function iniciarBot() {
-  addMsg("🤖 Olá! Tudo bem? 🌱<br>Qual é a cultura que você deseja analisar? (Ex: Milho, Soja...)", "bot");
+  addMsg("🤖 Olá! Tudo bem? 🌱<br>Qual é a cultura? (Ex: Milho, Soja...)", "bot");
   etapa = 1;
 }
 
@@ -48,145 +44,117 @@ btnEnviar.addEventListener("click", () => {
   const texto = inputSintomas.value.trim();
   if (!texto) return;
 
-  // 1. Exibe msg do usuário
   addMsg("Você: " + texto, "usuario");
   inputSintomas.value = "";
 
-  // 2. Se for a primeira interação (Etapa 0)
-  if (etapa === 0) {
-    iniciarBot();
-    return;
-  }
-
-  // Se o usuário quiser reiniciar no meio
   const comando = normalizar(texto);
   if (['oi', 'ola', 'reiniciar', 'inicio'].includes(comando)) {
     iniciarBot();
     return;
   }
 
-  // 3. Identificar Cultura
-  if (etapa === 1) {
+  if (etapa === 0) {
+    iniciarBot();
+  } else if (etapa === 1) {
     const culturaNorm = normalizar(texto);
-    
-    // Verifica se carregou a base e se a cultura existe
-    if (!baseDados) {
-      addMsg("⚠️ A base de dados ainda não carregou. Aguarde um instante.", "bot");
+    if (!baseDados || !baseDados[culturaNorm]) {
+      addMsg("⚠️ Cultura não encontrada. Tente: Milho, Soja ou Feijão.", "bot");
       return;
     }
-
-    if (!baseDados[culturaNorm]) {
-      addMsg("⚠️ Cultura não encontrada na base (Tente: Milho, Soja, Feijão).", "bot");
-      return;
-    }
-    
     culturaSelecionada = culturaNorm;
-    addMsg(`Certo! Vamos analisar <b>${texto}</b>.<br>Descreva os sintomas que você está vendo.`, "bot");
+    addMsg(`Certo! Analisando <b>${texto}</b>.<br>Descreva os sintomas.`, "bot");
     etapa = 2;
-  } 
-  
-  // 4. Diagnosticar
-  else if (etapa === 2) {
-    addMsg("🔍 Analisando...", "bot");
-    // Pequeno delay visual
-    setTimeout(() => {
-      diagnosticar(culturaSelecionada, texto);
-    }, 500);
+  } else if (etapa === 2) {
+    diagnosticar(culturaSelecionada, texto);
   }
 });
 
-// FUNÇÃO DIAGNOSTICAR COMPLETA
+// --- FUNÇÃO PRINCIPAL DE DIAGNÓSTICO ---
 function diagnosticar(cultura, textoUsuario) {
-  const textoNorm = normalizar(textoUsuario);
+  const textoNorm = normalizar(textoUsuario).replace(/s\b/g, ""); 
   const palavras = textoNorm.split(" ");
   let resultados = [];
 
   for (let id in baseDados[cultura]) {
     const d = baseDados[cultura][id];
     let pontos = 0;
-    
-    // ==========================================================
-    // 1. REGRA DE OURO: O usuário digitou o NOME da doença?
-    // ==========================================================
-    const nomeDoencaNorm = normalizar(d.nome); // ex: "mancha branca do milho"
-    
-    // Se o usuário digitou "mancha branca", e o nome contém isso:
-    if (nomeDoencaNorm.includes(textoNorm)) {
-      pontos += 1000; // Pontuação "Game Over" para as outras
+    const nomeDoencaNorm = normalizar(d.nome).replace(/s\b/g, "");
+
+    // 1. Identificação por Nome (Peso Máximo)
+    if (textoNorm.includes(nomeDoencaNorm) || nomeDoencaNorm.includes(textoNorm)) {
+      pontos += 500;
     }
 
-    // ==========================================================
-    // 2. REGRA DOS SINTOMAS
-    // ==========================================================
+    // 2. Identificação por Sintomas
     d.sintomas.praticos.forEach(s => {
-      const sNorm = normalizar(s);
-      
-      // A. Frase Exata nos sintomas (Ex: "manchas claras")
-      // Vale muito, mas menos que o nome da doença
-      if (sNorm.includes(textoNorm) && textoUsuario.length > 4) {
-        pontos += 50; 
-      }
-
-      // B. Palavras soltas (Ex: "mancha")
-      // Vale POUCO. Assim, "mancha" sozinha não define o jogo.
+      const sNorm = normalizar(s).replace(/s\b/g, "");
+      if (textoNorm.includes(sNorm)) pontos += 50;
       palavras.forEach(p => {
-        if (p.length > 3 && sNorm.includes(p)) {
-            pontos += 5; 
-        }
+        if (p.length > 3 && sNorm.includes(p)) pontos += 5;
       });
     });
 
     if (pontos > 0) resultados.push({ ...d, pontos });
   }
 
-  // Ordena pelo maior placar
   resultados.sort((a, b) => b.pontos - a.pontos);
 
-  // FILTRO DE SEGURANÇA:
-  // Se o primeiro colocado tem mais de 500 pontos (match de nome),
-  // ignore todo o resto e mostre só ele. É certeza absoluta.
-  if (resultados.length > 0 && resultados[0].pontos >= 500) {
-     resultados = [resultados[0]];
-  } 
-  // Caso contrário, usa a regra dos 50% de relevância
-  else if (resultados.length > 0) {
-     const maiorPontuacao = resultados[0].pontos;
-     resultados = resultados.filter(r => r.pontos >= maiorPontuacao * 0.5);
-  }
-
-  // --- EXIBIÇÃO ---
   if (resultados.length === 0) {
-    addMsg("❌ Não encontrei doença compatível.", "bot");
+    addMsg("❌ Não identifiquei a doença. Tente detalhar mais.", "bot");
   } else {
-    resultados.slice(0, 3).forEach(d => {
-      const htmlCompleto = `
-        <div class="doenca-card">
-          <h3>🦠 ${d.nome}</h3>
-          <p><b>📝 Descrição:</b> ${d.descricao}</p>
-          <hr>
-          <p><b>👀 Sintomas Práticos:</b> ${d.sintomas.praticos.join(", ")}</p>
-          <p><b>🧪 Sintomas Técnicos:</b> ${d.sintomas.tecnicos.join(", ")}</p>
-          <p><b>⚠️ Danos:</b> ${d.danos}</p>
-          <p><b>💊 Controle:</b> ${d.controle}</p>
+    // PEGA SÓ O PRIMEIRO (O VENCEDOR)
+    const d = resultados[0];
+
+    // Formata listas (Práticos e Técnicos)
+    const listaPraticos = d.sintomas.praticos.map(s => `<li>${s}</li>`).join("");
+    const listaTecnicos = d.sintomas.tecnicos.map(s => `<li>${s}</li>`).join("");
+
+    // MONTA O HTML COM TUDO O QUE TEM NO JSON
+    const htmlCompleto = `
+      <div class="doenca-card destaque">
+        <h3>🦠 ${d.nome}</h3>
+        <p class="subtitulo"><i>Nome Biológico: ${d.nome_biologico}</i></p>
+        
+        <p><b>📝 Descrição:</b><br>${d.descricao}</p>
+        
+        <div class="info-box">
+           <p><b>🌡️ Condições Favoráveis:</b><br>${d.condicoes_favoraveis}</p>
         </div>
-      `;
-      addMsg(htmlCompleto, "bot");
-    });
+
+        <div class="secao-sintomas">
+            <p><b>👀 Sintomas Práticos (Campo):</b></p>
+            <ul>${d.sintomas.praticos.join(", ")}</ul>
+        </div>
+
+        <div class="secao-tecnica">
+            <p><b>🔬 Sintomas Técnicos (Laboratório/Análise):</b></p>
+            <ul>${d.sintomas.tecnicos.join(", ")}</ul>
+        </div>
+
+        <p><b>⚠️ Danos:</b><br>${d.danos}</p>
+
+        <div class="secao-prevencao">
+           <p><b>🛡️ Manejo Preventivo:</b><br>${d.manejo_preventivo}</p>
+        </div>
+        
+        <div class="secao-controle">
+            <p><b>💊 Controle Recomendado:</b><br>${d.controle}</p>
+        </div>
+      </div>
+    `;
+    addMsg(htmlCompleto, "bot");
   }
 
-  // Reiniciar
   setTimeout(() => {
-    addMsg("<br>🏁 <b>Análise concluída.</b><br>Digite a próxima cultura ou 'Oi' para reiniciar.", "bot");
+    addMsg("<br>🏁 <b>Análise feita.</b><br>Digite a próxima cultura ou 'Oi' para reiniciar.", "bot");
     etapa = 1; 
-  }, 2000);
+  }, 2500);
 }
 
-// Enviar com Enter
+// Enter para enviar
 inputSintomas.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     btnEnviar.click();
   }
 });
-
-
