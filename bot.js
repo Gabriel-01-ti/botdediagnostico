@@ -35,10 +35,10 @@ function addMsg(texto, tipo) {
 
 // INICIAR
 function iniciarBot() {
-  addMsg("🤖 Olá! Tudo bem? 🌱<br>Qual é a cultura? (Ex: Milho, Soja...)", "bot");
+  // Agora ele se apresenta formalmente
+  addMsg("🤖 <b>Olá! Sou o AgroBot.</b><br>Estou aqui para ajudar você a diagnosticar sua lavoura.<br><br>Para começar, qual é a cultura? (Ex: Milho, Soja...)", "bot");
   etapa = 1;
 }
-
 // BOTÃO ENVIAR
 btnEnviar.addEventListener("click", () => {
   const texto = inputSintomas.value.trim();
@@ -158,3 +158,4 @@ inputSintomas.addEventListener("keypress", (e) => {
     btnEnviar.click();
   }
 });
+
