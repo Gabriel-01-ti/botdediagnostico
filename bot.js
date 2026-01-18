@@ -12,7 +12,22 @@ function normalizar(txt) {
   return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-// CARREGAR JSON (AGORA FUNCIONAL)
+// FUNÇÃO DE SIMILARIDADE
+function similaridade(a, b) {
+  const A = normalizar(a).split(" ");
+  const B = normalizar(b).split(" ");
+  let pontos = 0;
+
+  A.forEach(p => {
+    B.forEach(q => {
+      if (q.includes(p) || p.includes(q)) pontos++;
+    });
+  });
+
+  return pontos;
+}
+
+// CARREGAR JSON
 fetch("./base.json")
   .then(res => {
     if (!res.ok) throw new Error("Erro ao carregar JSON");
@@ -20,7 +35,7 @@ fetch("./base.json")
   })
   .then(data => {
     baseDados = data;
-    inputSintomas.placeholder = "Digite o sintoma (ex: mancha)";
+    inputSintomas.placeholder = "Digite o sintoma (ex: manchas brancas)";
     inputSintomas.disabled = false;
     console.log("Base carregada com sucesso!");
   })
@@ -47,9 +62,9 @@ selectCultura.addEventListener("change", () => {
   }
 });
 
-// AUTOCOMPLETE (4 DOENÇAS DIFERENTES)
+// AUTOCOMPLETE INTELIGENTE
 inputSintomas.addEventListener("input", () => {
-  const texto = normalizar(inputSintomas.value);
+  const texto = inputSintomas.value;
   listaSugestoes.innerHTML = "";
 
   if (!texto || sintomasAtuais.length === 0) {
@@ -61,13 +76,12 @@ inputSintomas.addEventListener("input", () => {
   const usadas = new Set();
 
   sintomasAtuais.forEach(d => {
-    for (let s of d.sintomas) {
-      if (normalizar(s).includes(texto) && !usadas.has(d.nomeDoenca)) {
+    d.sintomas.forEach(s => {
+      if (similaridade(texto, s) > 0 && !usadas.has(d.nomeDoenca)) {
         sugestoes.push(s);
         usadas.add(d.nomeDoenca);
-        break;
       }
-    }
+    });
   });
 
   if (sugestoes.length === 0) {
@@ -76,15 +90,18 @@ inputSintomas.addEventListener("input", () => {
   }
 
   listaSugestoes.style.display = "block";
-  sugestoes.slice(0, 4).forEach(s => {
-    const li = document.createElement("li");
-    li.textContent = s;
-    li.onclick = () => {
-      inputSintomas.value = s;
-      listaSugestoes.style.display = "none";
-    };
-    listaSugestoes.appendChild(li);
-  });
+  sugestoes
+    .sort((a, b) => similaridade(texto, b) - similaridade(texto, a))
+    .slice(0, 4)
+    .forEach(s => {
+      const li = document.createElement("li");
+      li.textContent = s;
+      li.onclick = () => {
+        inputSintomas.value = s;
+        listaSugestoes.style.display = "none";
+      };
+      listaSugestoes.appendChild(li);
+    });
 });
 
 // FECHAR LISTA
@@ -97,7 +114,7 @@ document.addEventListener("click", e => {
 // DIAGNÓSTICO
 function diagnosticar() {
   const cultura = selectCultura.value.toLowerCase();
-  const texto = normalizar(inputSintomas.value);
+  const texto = inputSintomas.value;
 
   if (!cultura || !texto) {
     resultadoDiv.innerHTML = "⚠️ Selecione a cultura e o sintoma.";
@@ -111,9 +128,7 @@ function diagnosticar() {
     const d = baseDados[cultura][id];
 
     d.sintomas.praticos.forEach(s => {
-      if (normalizar(s).includes(texto) || texto.includes(normalizar(s))) {
-        pontos += 10;
-      }
+      pontos += similaridade(texto, s);
     });
 
     if (pontos > 0) resultados.push({ ...d, pontos });
@@ -136,15 +151,17 @@ function diagnosticar() {
   `).join("");
 }
 
+// REINICIAR
 function reiniciar() {
   selectCultura.value = "";
   inputSintomas.value = "";
-  inputSintomas.disabled = false; // NÃO bloquear mais
+  inputSintomas.disabled = false;
   inputSintomas.placeholder = "Digite o sintoma (ex: mancha)";
   resultadoDiv.innerHTML = "";
   listaSugestoes.style.display = "none";
 }
 
+// BOTÃO
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("btn-diagnosticar");
   if (btn) {
@@ -152,8 +169,3 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Botão de diagnóstico conectado!");
   }
 });
-
-
-
-
-
