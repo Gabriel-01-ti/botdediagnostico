@@ -1,119 +1,126 @@
 let baseDados = null;
 
-// ESTADOS DO CHAT
-let estado = "inicio";   // inicio | cultura | sintomas
-let culturaAtual = "";
-
 // ELEMENTOS
-const input = document.getElementById("mensagem");
-const chat = document.getElementById("chat");
+const inputSintomas = document.getElementById("sintomas");
+const listaSugestoes = document.getElementById("lista-sugestoes");
+const selectCultura = document.getElementById("cultura");
+const btnDiagnosticar = document.getElementById("btn-diagnosticar");
+const chatDiv = document.getElementById("chat");
+
+// CARREGAR BASE
+fetch("base.json")
+  .then(res => res.json())
+  .then(data => {
+    baseDados = data;
+    inputSintomas.disabled = false;
+    inputSintomas.placeholder = "Descreva o sintoma (ex: manchas brancas nas folhas)";
+  });
 
 // NORMALIZAR TEXTO
 function normalizar(txt) {
   return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-// CARREGAR JSON
-fetch("./base.json")
-  .then(r => r.json())
-  .then(d => {
-    baseDados = d;
-    bot("🤖 Bot Agro pronto! Diga: Bom dia 👋");
-  })
-  .catch(() => bot("❌ Erro ao carregar base de dados."));
-
-// MOSTRAR MSG DO BOT
-function bot(texto) {
+// MENSAGENS NO CHAT
+function addMsg(texto, tipo) {
   const div = document.createElement("div");
-  div.className = "bot";
-  div.innerText = texto;
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
+  div.className = "msg " + tipo;
+  div.innerHTML = texto;
+  chatDiv.appendChild(div);
+  chatDiv.scrollTop = chatDiv.scrollHeight;
 }
 
-// MOSTRAR MSG DO USUÁRIO
-function user(texto) {
-  const div = document.createElement("div");
-  div.className = "user";
-  div.innerText = texto;
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
-}
+// BOT INICIAL
+window.onload = () => {
+  addMsg("🤖 Olá! Bom dia 🌱<br>Escolha a cultura e descreva os sintomas da lavoura.", "bot");
+};
 
-// ENVIAR MENSAGEM
-function enviar() {
-  const msg = input.value.trim();
-  if (!msg) return;
+// AUTOCOMPLETE INTELIGENTE
+inputSintomas.addEventListener("input", () => {
+  const cultura = selectCultura.value;
+  const texto = normalizar(inputSintomas.value);
+  listaSugestoes.innerHTML = "";
 
-  user(msg);
-  input.value = "";
-
-  const resposta = responder(msg);
-  setTimeout(() => bot(resposta), 400);
-}
-
-// LÓGICA PRINCIPAL
-function responder(mensagem) {
-  const texto = normalizar(mensagem);
-
-  if (estado === "inicio") {
-    estado = "cultura";
-    return "Olá! Bom dia 👨‍🌾 Qual cultura deseja diagnosticar? (milho, soja ou feijão)";
+  if (!baseDados || !cultura || texto.length < 2) {
+    listaSugestoes.style.display = "none";
+    return;
   }
 
-  if (estado === "cultura") {
-    if (!baseDados[texto]) {
-      return "Não reconheci essa cultura. Pode informar: milho, soja ou feijão?";
-    }
-    culturaAtual = texto;
-    estado = "sintomas";
-    return "Perfeito! Agora descreva os sintomas que você está vendo na lavoura.";
+  let sugestoes = [];
+
+  for (let id in baseDados[cultura]) {
+    baseDados[cultura][id].sintomas.praticos.forEach(s => {
+      if (normalizar(s).includes(texto)) sugestoes.push(s);
+    });
   }
 
-  if (estado === "sintomas") {
-    return diagnosticarConversacional(texto);
+  sugestoes = [...new Set(sugestoes)];
+
+  sugestoes.forEach(s => {
+    const li = document.createElement("li");
+    li.textContent = s;
+    li.onclick = () => {
+      inputSintomas.value = s;
+      listaSugestoes.style.display = "none";
+    };
+    listaSugestoes.appendChild(li);
+  });
+
+  listaSugestoes.style.display = sugestoes.length ? "block" : "none";
+});
+
+// BOTÃO DIAGNOSTICAR
+btnDiagnosticar.addEventListener("click", diagnosticar);
+
+function diagnosticar() {
+  const cultura = selectCultura.value;
+  const textoUsuario = inputSintomas.value.trim();
+
+  if (!cultura || !textoUsuario) {
+    addMsg("⚠️ Informe a cultura e descreva o sintoma.", "bot");
+    return;
   }
-}
 
-// DIAGNÓSTICO INTELIGENTE
-function diagnosticarConversacional(texto) {
+  addMsg("Você: " + textoUsuario, "usuario");
 
-  const stop = ["a","o","e","de","do","da","dos","das","com","na","no","nos","nas",
-                "folha","folhas","planta","tem","esta","ta","uns","umas","alguns",
-                "algumas","parece","muito"];
+  const textoNorm = normalizar(textoUsuario);
+  const palavras = textoNorm.split(" ");
 
-  const palavras = texto.split(" ").filter(p => p.length > 2 && !stop.includes(p));
+  let resultados = [];
 
-  let melhor = null, maior = 0;
-
-  for (let id in baseDados[culturaAtual]) {
-    const d = baseDados[culturaAtual][id];
+  for (let id in baseDados[cultura]) {
+    const d = baseDados[cultura][id];
     let pontos = 0;
 
     d.sintomas.praticos.forEach(s => {
-      const sint = normalizar(s);
+      const sNorm = normalizar(s);
+
       palavras.forEach(p => {
-        if (sint.includes(p)) pontos += 5;
+        if (p.length > 3 && sNorm.includes(p)) pontos += 3;
       });
+
+      if (sNorm.includes(textoNorm) || textoNorm.includes(sNorm)) pontos += 15;
     });
 
-    if (pontos > maior) {
-      maior = pontos;
-      melhor = d;
-    }
+    if (pontos > 0) resultados.push({ ...d, pontos });
   }
 
-  if (!melhor || maior === 0) {
-    return "Não consegui identificar bem. Pode descrever um pouco mais os sintomas?";
+  resultados.sort((a, b) => b.pontos - a.pontos);
+
+  if (resultados.length === 0) {
+    addMsg("❌ Não encontrei doença compatível.", "bot");
+    return;
   }
 
-  return `
-🦠 ${melhor.nome}
-Nome científico: ${melhor.nome_biologico}
-Descrição: ${melhor.descricao}
-Condições favoráveis: ${melhor.condicoes_favoraveis}
-Danos: ${melhor.danos}
-Manejo: ${melhor.manejo_preventivo}
-Controle: ${melhor.controle}
-`;
+  resultados.slice(0, 3).forEach(d => {
+    addMsg(`
+      <b>🦠 ${d.nome}</b><br>
+      <b>Descrição:</b> ${d.descricao}<br>
+      <b>Sintomas técnicos:</b> ${d.sintomas.tecnicos.join(", ")}<br>
+      <b>Danos:</b> ${d.danos}<br>
+      <b>Controle:</b> ${d.controle}
+    `, "bot");
+  });
+
+  inputSintomas.value = "";
 }
