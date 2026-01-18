@@ -6,25 +6,11 @@ const inputSintomas = document.getElementById("sintomas");
 const listaSugestoes = document.getElementById("lista-sugestoes");
 const selectCultura = document.getElementById("cultura");
 const resultadoDiv = document.getElementById("resultado");
+const btnDiagnosticar = document.getElementById("btn-diagnosticar");
 
 // NORMALIZAR TEXTO
 function normalizar(txt) {
   return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-
-// FUNÇÃO DE SIMILARIDADE
-function similaridade(a, b) {
-  const A = normalizar(a).split(" ");
-  const B = normalizar(b).split(" ");
-  let pontos = 0;
-
-  A.forEach(p => {
-    B.forEach(q => {
-      if (q.includes(p) || p.includes(q)) pontos++;
-    });
-  });
-
-  return pontos;
 }
 
 // CARREGAR JSON
@@ -35,9 +21,9 @@ fetch("./base.json")
   })
   .then(data => {
     baseDados = data;
-    inputSintomas.placeholder = "Digite o sintoma (ex: manchas brancas)";
+    inputSintomas.placeholder = "Digite o sintoma (ex: manchas claras na folha)";
     inputSintomas.disabled = false;
-    console.log("Base carregada com sucesso!");
+    console.log("Base carregada!");
   })
   .catch(err => {
     console.error(err);
@@ -62,9 +48,9 @@ selectCultura.addEventListener("change", () => {
   }
 });
 
-// AUTOCOMPLETE INTELIGENTE
+// AUTOCOMPLETE INTELIGENTE (4 DOENÇAS)
 inputSintomas.addEventListener("input", () => {
-  const texto = inputSintomas.value;
+  const texto = normalizar(inputSintomas.value);
   listaSugestoes.innerHTML = "";
 
   if (!texto || sintomasAtuais.length === 0) {
@@ -76,12 +62,13 @@ inputSintomas.addEventListener("input", () => {
   const usadas = new Set();
 
   sintomasAtuais.forEach(d => {
-    d.sintomas.forEach(s => {
-      if (similaridade(texto, s) > 0 && !usadas.has(d.nomeDoenca)) {
+    for (let s of d.sintomas) {
+      if (normalizar(s).includes(texto) && !usadas.has(d.nomeDoenca)) {
         sugestoes.push(s);
         usadas.add(d.nomeDoenca);
+        break;
       }
-    });
+    }
   });
 
   if (sugestoes.length === 0) {
@@ -90,62 +77,71 @@ inputSintomas.addEventListener("input", () => {
   }
 
   listaSugestoes.style.display = "block";
-  sugestoes
-    .sort((a, b) => similaridade(texto, b) - similaridade(texto, a))
-    .slice(0, 4)
-    .forEach(s => {
-      const li = document.createElement("li");
-      li.textContent = s;
-      li.onclick = () => {
-        inputSintomas.value = s;
-        listaSugestoes.style.display = "none";
-      };
-      listaSugestoes.appendChild(li);
-    });
+  sugestoes.slice(0, 4).forEach(s => {
+    const li = document.createElement("li");
+    li.textContent = s;
+    li.onclick = () => {
+      inputSintomas.value = s;
+      listaSugestoes.style.display = "none";
+    };
+    listaSugestoes.appendChild(li);
+  });
 });
 
-// FECHAR LISTA
+// FECHAR LISTA AO CLICAR FORA
 document.addEventListener("click", e => {
   if (!inputSintomas.contains(e.target) && !listaSugestoes.contains(e.target)) {
     listaSugestoes.style.display = "none";
   }
 });
 
-// DIAGNÓSTICO
+// DIAGNÓSTICO COMPLETO
 function diagnosticar() {
   const cultura = selectCultura.value.toLowerCase();
-  const texto = inputSintomas.value;
+  const texto = normalizar(inputSintomas.value);
 
-  if (!cultura || !texto) {
-    resultadoDiv.innerHTML = "⚠️ Selecione a cultura e o sintoma.";
+  if (!cultura) {
+    resultadoDiv.innerHTML = "⚠️ Selecione a cultura.";
     return;
   }
 
   let resultados = [];
 
   for (let id in baseDados[cultura]) {
-    let pontos = 0;
     const d = baseDados[cultura][id];
+    let pontos = 0;
 
     d.sintomas.praticos.forEach(s => {
-      pontos += similaridade(texto, s);
+      const sint = normalizar(s);
+      if (sint.includes(texto) || texto.includes(sint)) pontos += 10;
     });
+
+    if (texto.length === 0) pontos += 1;
 
     if (pontos > 0) resultados.push({ ...d, pontos });
   }
-
-  resultados.sort((a, b) => b.pontos - a.pontos);
 
   if (resultados.length === 0) {
     resultadoDiv.innerHTML = "❌ Nenhuma doença encontrada.";
     return;
   }
 
-  resultadoDiv.innerHTML = resultados.slice(0, 4).map(d => `
+  resultados.sort((a, b) => b.pontos - a.pontos);
+
+  resultadoDiv.innerHTML = resultados.map(d => `
     <div class="doenca-card">
       <h3>🦠 ${d.nome}</h3>
       <p><b>Nome científico:</b> ${d.nome_biologico}</p>
-      <p><b>Sintomas:</b> ${d.sintomas.praticos.join(", ")}</p>
+      <p><b>Descrição:</b> ${d.descricao}</p>
+      <p><b>Condições favoráveis:</b> ${d.condicoes_favoraveis}</p>
+
+      <p><b>Sintomas técnicos:</b></p>
+      <ul>
+        ${d.sintomas.tecnicos.map(s => `<li>${s}</li>`).join("")}
+      </ul>
+
+      <p><b>Danos:</b> ${d.danos}</p>
+      <p><b>Manejo preventivo:</b> ${d.manejo_preventivo}</p>
       <p><b>Controle:</b> ${d.controle}</p>
     </div>
   `).join("");
@@ -156,16 +152,10 @@ function reiniciar() {
   selectCultura.value = "";
   inputSintomas.value = "";
   inputSintomas.disabled = false;
-  inputSintomas.placeholder = "Digite o sintoma (ex: mancha)";
+  inputSintomas.placeholder = "Digite o sintoma";
   resultadoDiv.innerHTML = "";
   listaSugestoes.style.display = "none";
 }
 
 // BOTÃO
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("btn-diagnosticar");
-  if (btn) {
-    btn.addEventListener("click", diagnosticar);
-    console.log("Botão de diagnóstico conectado!");
-  }
-});
+btnDiagnosticar.addEventListener("click", diagnosticar);
