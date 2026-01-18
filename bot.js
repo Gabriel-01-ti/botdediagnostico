@@ -6,7 +6,7 @@ const btnEnviar = document.getElementById("btn-diagnosticar");
 const chatDiv = document.getElementById("chat");
 
 // 1. CARREGAR BASE EXTERNA (JSON)
-fetch("base.json")
+fetch("./base.json")
   .then(res => res.json())
   .then(data => {
     baseDados = data;
@@ -168,3 +168,4 @@ inputSintomas.addEventListener("keypress", (e) => {
     btnEnviar.click();
   }
 });
+
