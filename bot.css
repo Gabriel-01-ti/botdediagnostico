@@ -212,6 +212,36 @@ button.reiniciar:hover { background: #b71c1c; }
     padding: 9px;
   }
 }
+/* CHAT */
+#chat {
+  margin-top: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.msg {
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 80%;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.usuario {
+  align-self: flex-end;
+  background: #c8e6c9;
+  border-radius: 12px 12px 0 12px;
+}
+
+.bot {
+  align-self: flex-start;
+  background: #e3f2fd;
+  border-radius: 12px 12px 12px 0;
+}
+
 
 
 
