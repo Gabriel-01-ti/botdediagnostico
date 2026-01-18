@@ -104,59 +104,79 @@ function diagnosticar(cultura, textoUsuario) {
   for (let id in baseDados[cultura]) {
     const d = baseDados[cultura][id];
     let pontos = 0;
+    
+    // ==========================================================
+    // 1. REGRA DE OURO: O usuário digitou o NOME da doença?
+    // ==========================================================
+    const nomeDoencaNorm = normalizar(d.nome); // ex: "mancha branca do milho"
+    
+    // Se o usuário digitou "mancha branca", e o nome contém isso:
+    if (nomeDoencaNorm.includes(textoNorm)) {
+      pontos += 1000; // Pontuação "Game Over" para as outras
+    }
 
+    // ==========================================================
+    // 2. REGRA DOS SINTOMAS
+    // ==========================================================
     d.sintomas.praticos.forEach(s => {
       const sNorm = normalizar(s);
+      
+      // A. Frase Exata nos sintomas (Ex: "manchas claras")
+      // Vale muito, mas menos que o nome da doença
+      if (sNorm.includes(textoNorm) && textoUsuario.length > 4) {
+        pontos += 50; 
+      }
+
+      // B. Palavras soltas (Ex: "mancha")
+      // Vale POUCO. Assim, "mancha" sozinha não define o jogo.
       palavras.forEach(p => {
-        if (p.length > 3 && sNorm.includes(p)) pontos += 3;
+        if (p.length > 3 && sNorm.includes(p)) {
+            pontos += 5; 
+        }
       });
-      if (sNorm.includes(textoNorm) || textoNorm.includes(sNorm)) pontos += 15;
     });
 
     if (pontos > 0) resultados.push({ ...d, pontos });
   }
 
+  // Ordena pelo maior placar
   resultados.sort((a, b) => b.pontos - a.pontos);
 
+  // FILTRO DE SEGURANÇA:
+  // Se o primeiro colocado tem mais de 500 pontos (match de nome),
+  // ignore todo o resto e mostre só ele. É certeza absoluta.
+  if (resultados.length > 0 && resultados[0].pontos >= 500) {
+     resultados = [resultados[0]];
+  } 
+  // Caso contrário, usa a regra dos 50% de relevância
+  else if (resultados.length > 0) {
+     const maiorPontuacao = resultados[0].pontos;
+     resultados = resultados.filter(r => r.pontos >= maiorPontuacao * 0.5);
+  }
+
+  // --- EXIBIÇÃO ---
   if (resultados.length === 0) {
-    addMsg("❌ Não encontrei doença compatível com a descrição.", "bot");
+    addMsg("❌ Não encontrei doença compatível.", "bot");
   } else {
-    // Exibe as doenças encontradas com TODOS os detalhes
     resultados.slice(0, 3).forEach(d => {
       const htmlCompleto = `
-        <div style="background: #f9f9f9; padding: 10px; border-radius: 8px; margin-top: 10px; border: 1px solid #ddd;">
-          <h3 style="margin: 0 0 10px 0; color: #2c3e50;">🦠 ${d.nome}</h3>
-          
-          <p><b>🔬 Nome Biológico:</b> <i>${d.nome_biologico}</i></p>
+        <div class="doenca-card">
+          <h3>🦠 ${d.nome}</h3>
           <p><b>📝 Descrição:</b> ${d.descricao}</p>
-          <p><b>🌡️ Condições Favoráveis:</b> ${d.condicoes_favoraveis}</p>
-          
-          <hr style="border: 0; border-top: 1px solid #ccc;">
-          
-          <p><b>👀 Sintomas Práticos:</b></p>
-          <ul style="margin: 5px 0 10px 20px; padding: 0;">
-            ${d.sintomas.praticos.map(s => `<li>${s}</li>`).join('')}
-          </ul>
-
-          <p><b>🧪 Sintomas Técnicos:</b></p>
-          <ul style="margin: 5px 0 10px 20px; padding: 0;">
-             ${d.sintomas.tecnicos.map(s => `<li>${s}</li>`).join('')}
-          </ul>
-
-          <hr style="border: 0; border-top: 1px solid #ccc;">
-
+          <hr>
+          <p><b>👀 Sintomas Práticos:</b> ${d.sintomas.praticos.join(", ")}</p>
+          <p><b>🧪 Sintomas Técnicos:</b> ${d.sintomas.tecnicos.join(", ")}</p>
           <p><b>⚠️ Danos:</b> ${d.danos}</p>
-          <p><b>🛡️ Manejo Preventivo:</b> ${d.manejo_preventivo}</p>
-          <p><b>💊 Controle Químico:</b> ${d.controle}</p>
+          <p><b>💊 Controle:</b> ${d.controle}</p>
         </div>
       `;
       addMsg(htmlCompleto, "bot");
     });
   }
 
-  // Prepara para o próximo ciclo
+  // Reiniciar
   setTimeout(() => {
-    addMsg("<br>🏁 <b>Análise concluída.</b><br>Para analisar outra cultura, digite o nome dela abaixo (ou 'Oi' para reiniciar).", "bot");
+    addMsg("<br>🏁 <b>Análise concluída.</b><br>Digite a próxima cultura ou 'Oi' para reiniciar.", "bot");
     etapa = 1; 
   }, 2000);
 }
@@ -168,4 +188,5 @@ inputSintomas.addEventListener("keypress", (e) => {
     btnEnviar.click();
   }
 });
+
 
