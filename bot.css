@@ -168,7 +168,12 @@ button:hover {
         padding: 15px;
     }
 
-    h1 { font-size: 1.4rem; }
+   h1 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #1b5e20; /* Verde escuro institucional */
+    font-size: 1.8rem;
+}
 
     .input-area {
         flex-direction: column; /* Em telas muito pequenas, botão vai para baixo */
@@ -241,4 +246,34 @@ button:hover {
     margin-top: 20px;
     border-left: 5px solid #2196f3;
     font-weight: 500;
+}
+/* =========================================
+   CABEÇALHO E DESCRIÇÃO DO AGROBOT
+   ========================================= */
+
+/* Container do topo (Título + Texto) */
+.header {
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0; /* Linha cinza fina para separar do chat */
+}
+
+/* Ajuste fino no Título Principal */
+
+
+/* O texto de apresentação ("Olá esse é o agrobot...") */
+.descricao-app {
+    margin: 0 auto;   /* Centraliza o bloco */
+    color: #555;      /* Cinza escuro para boa leitura */
+    font-size: 15px;
+    line-height: 1.5; /* Altura da linha para não ficar embolado */
+    max-width: 95%;   /* Não deixa encostar nas bordas do card */
+}
+
+/* Em telas pequenas (celular), diminui um pouco a letra */
+@media (max-width: 600px) {
+    .descricao-app {
+        font-size: 14px;
+    }
 }
