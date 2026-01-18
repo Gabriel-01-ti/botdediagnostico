@@ -1,247 +1,180 @@
-* { box-sizing: border-box; }
-
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e0f2f1, #e3f2fd);
-  margin: 0;
-  padding: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+/* =========================================
+   RESET E CONFIGURAÇÕES GERAIS
+   ========================================= */
+* { 
+    box-sizing: border-box; 
 }
 
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e0f2f1, #e3f2fd);
+    margin: 0;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* =========================================
+   CONTAINER PRINCIPAL
+   ========================================= */
 .container {
-  max-width: 1100px;
-  width: 100%;
-  background: #f9fff9;
-  padding: 24px;
-  border-radius: 16px;
-  border: 2px solid #1b5e20;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  display: flex;
-  flex-direction: column;
+    max-width: 800px; /* Ajustei levemente para ficar melhor em telas largas */
+    width: 100%;
+    background: #f9fff9;
+    padding: 24px;
+    border-radius: 16px;
+    border: 2px solid #1b5e20;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    height: 90vh; /* Ocupa boa parte da altura da tela */
 }
 
 h1 {
-  text-align: center;
-  color: #1b5e20;
-  margin-bottom: 20px;
+    text-align: center;
+    color: #1b5e20;
+    margin-bottom: 20px;
+    margin-top: 0;
 }
 
-label {
-  font-weight: bold;
-  color: #2e7d32;
-  margin-top: 15px;
-  display: block;
+/* =========================================
+   ÁREA DO CHAT (MENSAGENS)
+   ========================================= */
+#chat {
+    flex: 1; /* Faz o chat ocupar todo o espaço disponível */
+    overflow-y: auto; /* Barra de rolagem */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
 }
 
-/* --- AUTOCOMPLETE E INPUTS --- */
-.input-wrapper {
-  position: relative; /* Essencial para a lista flutuar */
-  width: 100%;
+/* Balões de Mensagem */
+.msg {
+    padding: 12px 16px;
+    border-radius: 12px;
+    max-width: 85%;
+    font-size: 15px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    position: relative;
+    animation: fadeIn 0.3s ease;
 }
 
-input[type="text"], select {
-  width: 100%;
-  padding: 12px;
-  margin-top: 5px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #bbb;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* A lista de sugestões flutuante */
-.lista-sugestoes {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 0 0 6px 6px;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 9999; /* Garante que fique em cima de tudo */
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  display: none; /* Escondido por padrão */
+/* Estilo do Usuário */
+.usuario {
+    align-self: flex-end;
+    background: #c8e6c9; /* Verde claro */
+    color: #1b5e20;
+    border-radius: 12px 12px 0 12px;
+    border-right: 4px solid #2e7d32;
 }
 
-.lista-sugestoes li {
-  padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #eee;
-  color: #333;
+/* Estilo do Bot */
+.bot {
+    align-self: flex-start;
+    background: #e3f2fd; /* Azul claro */
+    color: #0d47a1;
+    border-radius: 12px 12px 12px 0;
+    border-left: 4px solid #1565c0;
 }
 
-.lista-sugestoes li:hover {
-  background-color: #e8f5e9;
-  color: #1b5e20;
-  font-weight: bold;
+/* =========================================
+   ÁREA DE INPUT (Onde digita e envia)
+   ========================================= */
+.input-area {
+    display: flex;
+    gap: 10px;
+    width: 100%;
 }
-/* ----------------------------- */
 
-.botoes {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
+input[type="text"] {
+    flex: 1; /* Ocupa o máximo de espaço */
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #2e7d32;
+    box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
 }
 
 button {
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background: #2e7d32;
-  color: white;
-  font-weight: bold;
-  flex: 1;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #2e7d32;
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s;
 }
 
-button:hover { background: #256628; }
-button:disabled { background: #ccc; cursor: not-allowed; }
+button:hover {
+    background: #1b5e20;
+}
 
-button.reiniciar { background: #c62828; max-width: 120px;}
-button.reiniciar:hover { background: #b71c1c; }
-
-/* RESULTADOS */
-#resultado { margin-top: 20px; }
+/* =========================================
+   ESTILOS DOS RESULTADOS (Cards Gerados pelo JS)
+   ========================================= */
 .doenca-card {
-  background: #fff;
-  border-left: 5px solid #2e7d32;
-  padding: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-.doenca-card h3 { margin-top: 0; color: #1b5e20; }
-/* ========== RESPONSIVIDADE ========== */
-
-/* Tablets e celulares médios */
-@media (max-width: 900px) {
-  body {
-    padding: 10px;
-  }
-
-  .container {
-    padding: 18px;
-    border-radius: 14px;
-  }
-
-  h1 {
-    font-size: 1.6rem;
-  }
-
-  input[type="text"], select {
-    font-size: 15px;
-    padding: 10px;
-  }
-
-  button {
-    font-size: 15px;
-    padding: 10px;
-  }
-
-  .doenca-card {
-    padding: 12px;
-  }
+    background: #fff;
+    border-left: 5px solid #ff9800; /* Laranja para destaque */
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* Celulares pequenos */
+.doenca-card h3 {
+    margin-top: 0;
+    color: #e65100;
+    font-size: 1.1rem;
+}
+
+.doenca-card ul {
+    margin: 5px 0 10px 20px;
+    padding: 0;
+}
+
+.doenca-card hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 10px 0;
+}
+
+/* =========================================
+   RESPONSIVIDADE (Celulares)
+   ========================================= */
 @media (max-width: 600px) {
-  body {
-    align-items: flex-start;
-  }
+    .container {
+        height: 95vh;
+        padding: 15px;
+    }
 
-  .container {
-    margin-top: 20px;
-    padding: 14px;
-  }
+    h1 { font-size: 1.4rem; }
 
-  .botoes {
-    flex-direction: column;
-    gap: 12px;
-  }
+    .input-area {
+        flex-direction: column; /* Em telas muito pequenas, botão vai para baixo */
+    }
 
-  button.reiniciar {
-    max-width: 100%;
-  }
-
-  h1 {
-    font-size: 1.4rem;
-  }
-
-  label {
-    font-size: 0.95rem;
-  }
-
-  input[type="text"], select {
-    font-size: 14px;
-    padding: 9px;
-  }
-
-  .lista-sugestoes li {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .doenca-card h3 {
-    font-size: 1rem;
-  }
-
-  .doenca-card p {
-    font-size: 0.9rem;
-  }
+    button { width: 100%; }
+    
+    .msg { max-width: 90%; font-size: 14px; }
 }
-
-/* Celulares muito pequenos */
-@media (max-width: 400px) {
-  h1 {
-    font-size: 1.2rem;
-  }
-
-  .container {
-    padding: 12px;
-  }
-
-  button {
-    font-size: 14px;
-    padding: 9px;
-  }
-}
-/* CHAT */
-#chat {
-  margin-top: 20px;
-  max-height: 400px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.msg {
-  padding: 10px 14px;
-  border-radius: 12px;
-  max-width: 80%;
-  font-size: 15px;
-  line-height: 1.4;
-}
-
-.usuario {
-  align-self: flex-end;
-  background: #c8e6c9;
-  border-radius: 12px 12px 0 12px;
-}
-
-.bot {
-  align-self: flex-start;
-  background: #e3f2fd;
-  border-radius: 12px 12px 12px 0;
-}
-
-
-
-
