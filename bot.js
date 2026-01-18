@@ -12,11 +12,22 @@ function normalizar(txt) {
   return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-// CARREGAR JSON
+// CARREGAR JSON (AGORA FUNCIONAL)
 fetch("./base.json")
-  .then(res => res.json())
-  .then(data => baseDados = data)
-  .catch(() => resultadoDiv.innerHTML = "❌ Erro ao carregar base.json");
+  .then(res => {
+    if (!res.ok) throw new Error("Erro ao carregar JSON");
+    return res.json();
+  })
+  .then(data => {
+    baseDados = data;
+    inputSintomas.placeholder = "Digite o sintoma (ex: mancha)";
+    inputSintomas.disabled = false;
+    console.log("Base carregada com sucesso!");
+  })
+  .catch(err => {
+    console.error(err);
+    resultadoDiv.innerHTML = "❌ Erro ao carregar base.json";
+  });
 
 // MUDANÇA DE CULTURA
 selectCultura.addEventListener("change", () => {
@@ -34,11 +45,9 @@ selectCultura.addEventListener("change", () => {
       sintomas: doencas[id].sintomas.praticos
     });
   }
-
-  inputSintomas.disabled = false;
 });
 
-// AUTOCOMPLETE INTELIGENTE (4 doenças diferentes)
+// AUTOCOMPLETE (4 DOENÇAS DIFERENTES)
 inputSintomas.addEventListener("input", () => {
   const texto = normalizar(inputSintomas.value);
   listaSugestoes.innerHTML = "";
@@ -78,7 +87,7 @@ inputSintomas.addEventListener("input", () => {
   });
 });
 
-// FECHAR LISTA AO CLICAR FORA
+// FECHAR LISTA
 document.addEventListener("click", e => {
   if (!inputSintomas.contains(e.target) && !listaSugestoes.contains(e.target)) {
     listaSugestoes.style.display = "none";
@@ -132,7 +141,7 @@ function reiniciar() {
   selectCultura.value = "";
   inputSintomas.value = "";
   inputSintomas.disabled = true;
+  inputSintomas.placeholder = "Carregando base de dados...";
   resultadoDiv.innerHTML = "";
   listaSugestoes.style.display = "none";
 }
-
