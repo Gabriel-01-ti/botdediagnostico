@@ -13,7 +13,7 @@ function normalizar(txt) {
 }
 
 // CARREGAR JSON
-fetch("base.json")
+fetch("./base.json")
   .then(res => res.json())
   .then(data => baseDados = data)
   .catch(() => resultadoDiv.innerHTML = "❌ Erro ao carregar base.json");
@@ -135,3 +135,4 @@ function reiniciar() {
   resultadoDiv.innerHTML = "";
   listaSugestoes.style.display = "none";
 }
+
