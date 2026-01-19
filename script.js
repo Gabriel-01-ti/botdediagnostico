@@ -1,7 +1,7 @@
 console.log("JS carregado com sucesso");
 
 // 🔗 LINK DO MODELO (Teachable Machine)
-const MODEL_URL = "./my-models/";
+const MODEL_URL = "./modelos/milho";
 
 let model;
 
@@ -114,3 +114,4 @@ function reiniciar() {
   // opcional: limpa seleção da cultura
   document.getElementById("cultura").selectedIndex = 0;
 }
+
