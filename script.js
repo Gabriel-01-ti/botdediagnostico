@@ -1,33 +1,67 @@
 console.log("JS carregado com sucesso");
 
-// 🔗 LINK DO MODELO (Teachable Machine)
-const MODEL_URL = "./modelos/milho";
-
 let model;
+let modeloCarregando = false; // Trava para evitar cliques enquanto carrega
 
+// Elementos do DOM
+const selectCultura = document.getElementById("cultura");
+const divResultado = document.getElementById("resultado");
 
-// carregar modelo
-async function carregarModelo() {
-  model = await tmImage.load(
-    MODEL_URL + "model.json",
-    MODEL_URL + "metadata.json"
-  );
-  console.log("Modelo carregado");
+// 1. Função dinâmica para carregar modelo
+async function carregarModelo(cultura) {
+  // Evita erros se a cultura estiver vazia
+  if (!cultura) return;
+
+  modeloCarregando = true;
+  divResultado.innerHTML = `<p class="info">🔄 Carregando modelo de <b>${cultura}</b>...</p>`;
+  console.log(`Iniciando carregamento do modelo: ${cultura}`);
+
+  try {
+    // Constrói o caminho dinamicamente: ./modelos/milho/ ou ./modelos/soja/
+    const modelURL = `./modelos/${cultura}/`;
+
+    model = await tmImage.load(
+      modelURL + "model.json",
+      modelURL + "metadata.json"
+    );
+
+    console.log(`Modelo de ${cultura} carregado com sucesso!`);
+    divResultado.innerHTML = `<p class="sucesso">✅ Modelo de ${cultura} pronto.</p>`;
+  } catch (error) {
+    console.error("Erro ao carregar modelo:", error);
+    divResultado.innerHTML = `<p class="erro">❌ Erro ao carregar o modelo da pasta <b>${cultura}</b>. Verifique se os arquivos existem.</p>`;
+    model = null; // Garante que não use um modelo antigo ou quebrado
+  } finally {
+    modeloCarregando = false;
+  }
 }
 
-carregarModelo();
+// 2. Carregar o modelo inicial (padrão do select) ao abrir a página
+window.addEventListener('DOMContentLoaded', () => {
+    const culturaInicial = selectCultura.value.toLowerCase().trim();
+    carregarModelo(culturaInicial);
+});
 
+// 3. Monitorar mudança no <select> para trocar o modelo
+selectCultura.addEventListener("change", (e) => {
+    const novaCultura = e.target.value.toLowerCase().trim();
+    carregarModelo(novaCultura);
+});
+
+
+// Função Analisar (Ajustada)
 async function analisar() {
-  const resultado = document.getElementById("resultado");
+  
+  // Verificações de segurança antes de começar
+  if (modeloCarregando) {
+    alert("Aguarde, o modelo ainda está carregando...");
+    return;
+  }
 
-resultado.innerHTML = `
-  <p class="analisando">⏳ Analisando a imagem… aguarde</p>
-`;
-
-  console.log("Botão analisar clicado");
-  const cultura = document.getElementById("cultura").value
-    .toLowerCase()
-    .trim();
+  if (!model) {
+    alert("O modelo não foi carregado corretamente. Verifique a pasta dos arquivos.");
+    return;
+  }
 
   const input = document.getElementById("foto");
   const file = input.files[0];
@@ -37,13 +71,17 @@ resultado.innerHTML = `
     return;
   }
 
+  divResultado.innerHTML = `
+    <p class="analisando">⏳ Analisando a imagem com IA...</p>
+  `;
+
   const img = document.createElement("img");
   img.src = URL.createObjectURL(file);
 
   img.onload = async () => {
+    // Predição usando o modelo atual carregado
     const predictions = await model.predict(img);
 
-    // pega a melhor predição
     const melhor = predictions.reduce((a, b) =>
       a.probability > b.probability ? a : b
     );
@@ -51,67 +89,79 @@ resultado.innerHTML = `
     const classeOriginal = melhor.className;
     const prob = melhor.probability;
 
-    // padroniza nome da classe (Mancha Branca → mancha_branca)
+    // Normalização do nome da classe
     const classe = classeOriginal
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/\s+/g, "_");
 
-    console.log("Classe detectada:", classe);
-    console.log("Probabilidade:", prob);
+    console.log("Classe:", classe, "| Prob:", prob);
 
-    mostrarResultado(cultura, classe, prob);
+    // Pega o valor atual do select para buscar no JSON
+    const culturaAtual = selectCultura.value.toLowerCase().trim();
+    mostrarResultado(culturaAtual, classe, prob);
   };
 }
 
 async function mostrarResultado(cultura, classe, prob) {
   const res = document.getElementById("resultado");
 
-  const base = await fetch("base.json").then(r => r.json());
+  try {
+    const base = await fetch("base.json").then(r => r.json());
 
-  if (!base[cultura] || !base[cultura][classe]) {
+    // Verifica se a cultura e a doença existem no JSON
+    if (!base[cultura] || !base[cultura][classe]) {
+      res.innerHTML = `
+        <div class="erro-box">
+            <p>⚠️ Doença identificada: <b>${classe}</b> (${(prob * 100).toFixed(1)}%)</p>
+            <p>Mas não encontrei detalhes no arquivo base.json para a cultura <b>${cultura}</b>.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const d = base[cultura][classe];
+
+    // Formata a lista de sintomas (Pega os práticos para mostrar ao usuário)
+    let listaSintomas = "";
+    if (d.sintomas && d.sintomas.praticos) {
+      listaSintomas = "<ul>" + d.sintomas.praticos.map(s => `<li>${s}</li>`).join("") + "</ul>";
+    } else {
+      listaSintomas = d.sintomas; // Caso seja apenas texto antigo
+    }
+
     res.innerHTML = `
-      <p>⚠️ Não foi possível identificar a doença com segurança.</p>
-      <p>Tente outra imagem ou verifique se a cultura está correta.</p>
+      <div class="resultado-card">
+          <h3>${d.nome}</h3>
+          <p class="probabilidade"><b>Confiança da IA:</b> ${(prob * 100).toFixed(1)}%</p>
+          
+          <p><b>Nome biológico:</b> <i>${d.nome_biologico}</i></p>
+          <p><b>Descrição:</b> ${d.descricao}</p>
+
+          <div class="secao-sintomas">
+              <b>Sintomas Principais:</b>
+              ${listaSintomas}
+          </div>
+
+          <p><b>🌧️ Condições favoráveis:</b> ${d.condicoes_favoraveis}</p>
+          <p><b>⚠️ Danos:</b> ${d.danos}</p>
+          <p><b>🛡️ Manejo preventivo:</b> ${d.manejo_preventivo}</p>
+          <p><b>💊 Controle:</b> ${d.controle}</p>
+
+          <small class="aviso-legal">
+            ⚠️ Diagnóstico por IA é apenas um auxílio. Consulte sempre um engenheiro agrônomo.
+          </small>
+      </div>
     `;
-    return;
+  } catch (err) {
+    console.error(err);
+    res.innerHTML = "<p>Erro ao ler base de dados. Verifique o JSON.</p>";
   }
-
-  const d = base[cultura][classe];
-
-  res.innerHTML = `
-    <h3>${d.nome}</h3>
-
-    <p><b>Probabilidade:</b> ${(prob * 100).toFixed(1)}%</p>
-
-    <p><b>Nome biológico:</b> ${d.nome_biologico}</p>
-
-    <p><b>Descrição:</b> ${d.descricao}</p>
-
-    <p><b>Condições favoráveis:</b> ${d.condicoes_favoraveis}</p>
-
-    <p><b>Sintomas:</b> ${d.sintomas}</p>
-
-    <p><b>Danos:</b> ${d.danos}</p>
-
-    <p><b>Manejo preventivo:</b> ${d.manejo_preventivo}</p>
-
-    <p><b>Controle:</b> ${d.controle}</p>
-
-    <small>
-      ⚠️ Diagnóstico por imagem é um apoio técnico e não substitui a avaliação de um engenheiro agrônomo.
-    </small>
-  `;
 }
+
 function reiniciar() {
-  // limpa resultado
   document.getElementById("resultado").innerHTML = "";
-
-  // limpa input da foto
   document.getElementById("foto").value = "";
-
-  // opcional: limpa seleção da cultura
-  document.getElementById("cultura").selectedIndex = 0;
+  // Não reiniciamos o select para não forçar o recarregamento do modelo sem necessidade
 }
-
