@@ -9,26 +9,33 @@ const divResultado = document.getElementById("resultado");
 
 // 1. Função dinâmica para carregar modelo
 async function carregarModelo(cultura) {
-  if (!cultura) return;
+  // --- CORREÇÃO AQUI ---
+  // Se a cultura for vazia ou "selecione", não faz nada e sai da função.
+  if (!cultura || cultura === "selecione") {
+      console.log("Aguardando seleção de cultura...");
+      return;
+  }
 
-  console.log("--- INICIANDO CARREGAMENTO ---");
-  console.log(`1. Cultura selecionada: "${cultura}"`);
-
-  const modelURL = `./modelos/${cultura}/`;
-  console.log(`2. Caminho construído: ${modelURL}`);
-  console.log(`3. Tentando baixar: ${modelURL}model.json`);
+  modeloCarregando = true;
+  divResultado.innerHTML = `<p class="info">🔄 Carregando modelo de <b>${cultura}</b>...</p>`;
+  console.log(`Iniciando carregamento do modelo: ${cultura}`);
 
   try {
+    const modelURL = `./modelos/${cultura}/`;
+
     model = await tmImage.load(
       modelURL + "model.json",
       modelURL + "metadata.json"
     );
-    console.log("✅ SUCESSO: Modelo carregado!");
-    document.getElementById("resultado").innerHTML = `<p style="color:green">Modelo de ${cultura} carregado.</p>`;
-    
+
+    console.log(`Modelo de ${cultura} carregado com sucesso!`);
+    divResultado.innerHTML = `<p class="sucesso">✅ Modelo de ${cultura} pronto.</p>`;
   } catch (error) {
-    console.error("❌ ERRO FATAL:", error);
-    alert(`Erro ao carregar modelo! \n\nO navegador tentou buscar em:\n${modelURL}model.json\n\nVerifique o console (F12) para ver o erro detalhado.`);
+    console.error("Erro ao carregar modelo:", error);
+    divResultado.innerHTML = `<p class="erro">❌ Erro ao carregar o modelo da pasta <b>${cultura}</b>.</p>`;
+    model = null;
+  } finally {
+    modeloCarregando = false;
   }
 }
 
@@ -161,4 +168,5 @@ function reiniciar() {
   document.getElementById("foto").value = "";
   // Não reiniciamos o select para não forçar o recarregamento do modelo sem necessidade
 }
+
 
