@@ -148,23 +148,36 @@ async function mostrarResultado(cultura, classe, prob) {
     }
 
     res.innerHTML = `
-      <div class="resultado-card">
-          <h3>${d.nome}</h3>
-          <p class="probabilidade"><b>Confiança da IA:</b> ${(prob * 100).toFixed(1)}%</p>
-          
-          <p><b>Nome biológico:</b> <i>${d.nome_biologico}</i></p>
-          <p><b>Descrição:</b> ${d.descricao}</p>
+       <div class="doenca-card destaque">
+        <h3>🦠 ${d.nome}</h3>
+        <p class="subtitulo"><i>Nome Biológico: ${d.nome_biologico}</i></p>
+        
+        <p><b>📝 Descrição:</b><br>${d.descricao}</p>
+        
+        <div class="info-box">
+           <p><b>🌡️ Condições Favoráveis:</b><br>${d.condicoes_favoraveis}</p>
+        </div>
 
-          <div class="secao-sintomas">
-              <b>Sintomas Principais:</b>
-              ${listaSintomas}
-          </div>
+        <div class="secao-sintomas">
+            <p><b>👀 Sintomas Práticos (Campo):</b></p>
+            <ul>${d.sintomas.praticos.join(", ")}</ul>
+        </div>
 
-          <p><b>🌧️ Condições favoráveis:</b> ${d.condicoes_favoraveis}</p>
-          <p><b>⚠️ Danos:</b> ${d.danos}</p>
-          <p><b>🛡️ Manejo preventivo:</b> ${d.manejo_preventivo}</p>
-          <p><b>💊 Controle:</b> ${d.controle}</p>
+        <div class="secao-tecnica">
+            <p><b>🔬 Sintomas Técnicos (Laboratório/Análise):</b></p>
+            <ul>${d.sintomas.tecnicos.join(", ")}</ul>
+        </div>
 
+        <p><b>⚠️ Danos:</b><br>${d.danos}</p>
+
+        <div class="secao-prevencao">
+           <p><b>🛡️ Manejo Preventivo:</b><br>${d.manejo_preventivo}</p>
+        </div>
+        
+        <div class="secao-controle">
+            <p><b>💊 Controle Recomendado:</b><br>${d.controle}</p>
+        </div>
+      
           <small class="aviso-legal">
             ⚠️ Diagnóstico por IA é apenas um auxílio. Consulte sempre um engenheiro agrônomo.
           </small>
@@ -181,6 +194,7 @@ function reiniciar() {
   document.getElementById("foto").value = "";
   // Não reiniciamos o select para não forçar o recarregamento do modelo sem necessidade
 }
+
 
 
 
