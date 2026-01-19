@@ -89,8 +89,21 @@ async function analisar() {
       a.probability > b.probability ? a : b
     );
 
-    const classeOriginal = melhor.className;
-    const prob = melhor.probability;
+  const classeOriginal = melhor.className;
+const prob = melhor.probability;
+
+// REGRA DE CONFIANÇA
+if (prob < 0.80) {
+  divResultado.innerHTML = `
+    <div class="erro-box">
+      <p>❌ Não foi possível identificar a doença com segurança.</p>
+      <p>Confiança da IA: ${(prob * 100).toFixed(1)}%</p>
+      <p>Tente enviar outra foto da folha.</p>
+    </div>
+  `;
+  return; // PARA AQUI, não chama mostrarResultado
+}
+
 
     // Normalização do nome da classe
     const classe = classeOriginal
@@ -168,5 +181,6 @@ function reiniciar() {
   document.getElementById("foto").value = "";
   // Não reiniciamos o select para não forçar o recarregamento do modelo sem necessidade
 }
+
 
 
