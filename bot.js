@@ -165,7 +165,7 @@ function diagnosticar(cultura, textoUsuario) {
         <h3>🦠 ${d.nome}</h3>
         <p class="subtitulo"><i>Nome Biológico: ${d.nome_biologico}</i></p>
 
-        ${d.imagem ? `<img src="${d.imagem}" class="imagem-doenca">` : ""}
+        ${d.imagem ? `<img src="${d.imagem}" alt="Imagem da ${d.nome}" class="imagem-doenca">` : ""}
 
         <p><b>📝 Descrição:</b><br>${d.descricao}</p>
 
@@ -207,3 +207,4 @@ function diagnosticar(cultura, textoUsuario) {
 inputSintomas.addEventListener("keypress", e => {
   if (e.key === "Enter") btnEnviar.click();
 });
+
