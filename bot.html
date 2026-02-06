@@ -2,31 +2,27 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bot Agro - Diagnóstico</title>
+    <title>AgroBot Diagnóstico</title>
     <link rel="stylesheet" href="bot.css">
 </head>
 <body>
 
-    <div class="container">
-        
-        <div class="header">
-            <h1>🤖 AgroBot</h1>
-            <p class="descricao-app">
-                Olá! Este é o <b>AgroBot</b>, o assistente digital construído para ajudar o agricultor a identificar doenças na lavoura de forma rápida e simples.
-            </p>
-        </div>
-        
-        <div id="chat"></div>
-
-        <div class="input-area">
-            <input type="text" id="sintomas" placeholder="Carregando base de dados..." disabled autocomplete="off">
-            <button id="btn-diagnosticar">Enviar</button>
-        </div>
+<div class="container">
+    <div class="header">
+        <h1>🤖 AgroBot</h1>
+        <p class="descricao-app">
+            Olá! Este é o <b>AgroBot</b>, o assistente digital construído para ajudar o agricultor a identificar doenças na lavoura de forma rápida e simples.
+        </p>
     </div>
 
-    <script src="bot.js"></script>
+    <div id="chat"></div>
 
+    <div class="input-area">
+        <input type="text" id="sintomas" disabled placeholder="Carregando base de dados...">
+        <button id="btn-diagnosticar">Enviar</button>
+    </div>
+</div>
+
+<script src="bot.js"></script>
 </body>
 </html>
-
