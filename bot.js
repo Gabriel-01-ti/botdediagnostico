@@ -22,6 +22,37 @@ fetch("base.json")
     addMsg("❌ Erro ao carregar base de dados.", "bot");
   });
 
+function abrirGuiaRapido() {
+  if (!baseDados) return;
+
+  const listaDiv = document.getElementById("listaGuiaDoencas");
+  listaDiv.innerHTML = "";
+
+  for (let cultura in baseDados) {
+    const titulo = document.createElement("h3");
+    titulo.textContent = "🌱 " + cultura.charAt(0).toUpperCase() + cultura.slice(1);
+    titulo.style.color = "#2e7d32";
+    titulo.style.marginTop = "15px";
+    listaDiv.appendChild(titulo);
+
+    for (let id in baseDados[cultura]) {
+      const d = baseDados[cultura][id];
+      const sintomaPrincipal = d.sintomas.praticos[0] || "Sintoma não informado";
+
+      const item = document.createElement("div");
+      item.className = "item-guia";
+      item.innerHTML = `<strong>${d.nome}</strong><br><small>👀 ${sintomaPrincipal}</small>`;
+      listaDiv.appendChild(item);
+    }
+  }
+
+  document.getElementById("painelGuia").style.display = "flex";
+}
+
+function fecharGuiaRapido() {
+  document.getElementById("painelGuia").style.display = "none";
+}
+
 // ================= FUNÇÕES UTIL =================
 function normalizar(txt) {
   return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -235,6 +266,7 @@ function diagnosticar(cultura, textoUsuario) {
 inputSintomas.addEventListener("keypress", e => {
   if (e.key === "Enter") btnEnviar.click();
 });
+
 
 
 
