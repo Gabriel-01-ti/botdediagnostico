@@ -139,9 +139,14 @@ btnEnviar.addEventListener("click", () => {
     }
     culturaSelecionada = culturaNorm;
     addMsg(`Certo! Analisando <b>${texto}</b>. 🌱`, "bot");
-    addMsg(`Como você prefere fazer o diagnóstico?<br><br>
-      <button onclick="escolherModo('texto')">✍️ Descrever sintomas</button>
-      <button onclick="escolherModo('selecao')">✅ Escolher sintomas</button>`, "bot");
+    addMsg(`
+  Como você prefere fazer o diagnóstico?<br><br>
+  <div class="botoes-opcao">
+      <button onclick="modoDescricao()">✍️ Descrever sintomas</button>
+      <button onclick="modoEscolha()">📋 Escolher sintomas</button>
+  </div>
+`, "bot");
+
     etapa = 2;
   }
 
@@ -230,5 +235,6 @@ function diagnosticar(cultura, textoUsuario) {
 inputSintomas.addEventListener("keypress", e => {
   if (e.key === "Enter") btnEnviar.click();
 });
+
 
 
