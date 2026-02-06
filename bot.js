@@ -142,8 +142,8 @@ btnEnviar.addEventListener("click", () => {
     addMsg(`
   Como você prefere fazer o diagnóstico?<br><br>
   <div class="botoes-opcao">
-      <button onclick="modoDescricao()">✍️ Descrever sintomas</button>
-      <button onclick="modoEscolha()">📋 Escolher sintomas</button>
+      <button onclick="escolherModo('texto')">✍️ Descrever sintomas</button>
+      <button onclick="escolherModo('lista')">📋 Escolher sintomas</button>
   </div>
 `, "bot");
 
@@ -235,6 +235,7 @@ function diagnosticar(cultura, textoUsuario) {
 inputSintomas.addEventListener("keypress", e => {
   if (e.key === "Enter") btnEnviar.click();
 });
+
 
 
 
