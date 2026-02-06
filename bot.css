@@ -20,7 +20,7 @@ body {
    CONTAINER PRINCIPAL
    ========================================= */
 .container {
-    max-width: 800px; /* Ajustei levemente para ficar melhor em telas largas */
+    max-width: 800px;
     width: 100%;
     background: #f9fff9;
     padding: 24px;
@@ -29,7 +29,7 @@ body {
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     display: flex;
     flex-direction: column;
-    height: 90vh; /* Ocupa boa parte da altura da tela */
+    height: 90vh;
 }
 
 h1 {
@@ -40,11 +40,11 @@ h1 {
 }
 
 /* =========================================
-   ÁREA DO CHAT (MENSAGENS)
+   ÁREA DO CHAT
    ========================================= */
 #chat {
-    flex: 1; /* Faz o chat ocupar todo o espaço disponível */
-    overflow-y: auto; /* Barra de rolagem */
+    flex: 1;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -55,7 +55,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Balões de Mensagem */
 .msg {
     padding: 12px 16px;
     border-radius: 12px;
@@ -63,7 +62,6 @@ h1 {
     font-size: 15px;
     line-height: 1.5;
     word-wrap: break-word;
-    position: relative;
     animation: fadeIn 0.3s ease;
 }
 
@@ -72,26 +70,24 @@ h1 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Estilo do Usuário */
 .usuario {
     align-self: flex-end;
-    background: #c8e6c9; /* Verde claro */
+    background: #c8e6c9;
     color: #1b5e20;
     border-radius: 12px 12px 0 12px;
     border-right: 4px solid #2e7d32;
 }
 
-/* Estilo do Bot */
 .bot {
     align-self: flex-start;
-    background: #e3f2fd; /* Azul claro */
+    background: #e3f2fd;
     color: #0d47a1;
     border-radius: 12px 12px 12px 0;
     border-left: 4px solid #1565c0;
 }
 
 /* =========================================
-   ÁREA DE INPUT (Onde digita e envia)
+   INPUT AREA
    ========================================= */
 .input-area {
     display: flex;
@@ -100,18 +96,12 @@ h1 {
 }
 
 input[type="text"] {
-    flex: 1; /* Ocupa o máximo de espaço */
+    flex: 1;
     padding: 12px;
     font-size: 16px;
     border-radius: 8px;
     border: 1px solid #bbb;
     outline: none;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus {
-    border-color: #2e7d32;
-    box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
 }
 
 button {
@@ -123,157 +113,111 @@ button {
     background: #2e7d32;
     color: white;
     font-weight: bold;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: #1b5e20;
 }
 
 /* =========================================
-   ESTILOS DOS RESULTADOS (Cards Gerados pelo JS)
+   CARDS DE DOENÇA
    ========================================= */
 .doenca-card {
     background: #fff;
-    border-left: 5px solid #ff9800; /* Laranja para destaque */
+    border-left: 5px solid #ff9800;
     padding: 15px;
     margin-top: 10px;
     border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.doenca-card h3 {
-    margin-top: 0;
-    color: #e65100;
-    font-size: 1.1rem;
-}
-
-.doenca-card ul {
-    margin: 5px 0 10px 20px;
-    padding: 0;
-}
-
-.doenca-card hr {
-    border: 0;
-    border-top: 1px solid #eee;
-    margin: 10px 0;
-}
-
-/* =========================================
-   RESPONSIVIDADE (Celulares)
-   ========================================= */
-@media (max-width: 600px) {
-    .container {
-        height: 95vh;
-        padding: 15px;
-    }
-
-   h1 {
-    margin-top: 0;
-    margin-bottom: 8px;
-    color: #1b5e20; /* Verde escuro institucional */
-    font-size: 1.8rem;
-}
-
-    .input-area {
-        flex-direction: column; /* Em telas muito pequenas, botão vai para baixo */
-    }
-
-    button { width: 100%; }
-    
-    .msg { max-width: 90%; font-size: 14px; }
-}
 .doenca-card.destaque {
     border-left: 6px solid #2e7d32;
-    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.doenca-card h3 {
-    margin-top: 0;
-    color: #1b5e20;
-    font-size: 1.4rem;
-    margin-bottom: 5px;
 }
 
 .subtitulo {
     color: #555;
     font-size: 0.9rem;
-    margin-top: 0;
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
 }
 
-/* CAIXAS DE INFORMAÇÃO */
 .info-box, .secao-prevencao {
     background-color: #f9f9f9;
     padding: 10px;
     border-radius: 6px;
     margin-bottom: 10px;
-    font-size: 14px;
 }
 
-/* LISTAS DE SINTOMAS */
 .secao-sintomas ul {
-    background: #f1f8e9; /* Fundo verdinho suave para campo */
+    background: #f1f8e9;
     padding: 15px 15px 15px 35px;
     border-radius: 8px;
     border: 1px solid #c5e1a5;
-    margin-bottom: 15px;
 }
 
 .secao-tecnica ul {
-    background: #fff3e0; /* Fundo laranja suave para técnico */
+    background: #fff3e0;
     padding: 15px 15px 15px 35px;
     border-radius: 8px;
     border: 1px solid #ffe0b2;
-    margin-bottom: 15px;
 }
 
-.secao-sintomas p, .secao-tecnica p {
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-/* DESTAQUE DE CONTROLE */
 .secao-controle {
-    background-color: #e3f2fd; /* Azul forte */
+    background-color: #e3f2fd;
     padding: 15px;
     border-radius: 8px;
     margin-top: 20px;
     border-left: 5px solid #2196f3;
-    font-weight: 500;
 }
-/* =========================================
-   CABEÇALHO E DESCRIÇÃO DO AGROBOT
-   ========================================= */
 
-/* Container do topo (Título + Texto) */
+/* =========================================
+   CABEÇALHO
+   ========================================= */
 .header {
     text-align: center;
     margin-bottom: 15px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #e0e0e0; /* Linha cinza fina para separar do chat */
+    border-bottom: 1px solid #e0e0e0;
 }
 
-/* Ajuste fino no Título Principal */
-
-
-/* O texto de apresentação ("Olá esse é o agrobot...") */
 .descricao-app {
-    margin: 0 auto;   /* Centraliza o bloco */
-    color: #555;      /* Cinza escuro para boa leitura */
+    margin: 0 auto;
+    color: #555;
     font-size: 15px;
-    line-height: 1.5; /* Altura da linha para não ficar embolado */
-    max-width: 95%;   /* Não deixa encostar nas bordas do card */
+    line-height: 1.5;
+    max-width: 95%;
 }
 
-/* Em telas pequenas (celular), diminui um pouco a letra */
-@media (max-width: 600px) {
-    .descricao-app {
-        font-size: 14px;
-    }
+/* =========================================
+   📸 IMAGEM DA DOENÇA (NOVO)
+   ========================================= */
+.imagem-doenca {
+    width: 100%;
+    max-width: 320px;
+    display: block;
+    margin: 10px auto 20px;
+    border-radius: 10px;
+    border: 2px solid #2e7d32;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* =========================================
+   🌿 BOTÕES DE SINTOMAS (NOVO)
+   ========================================= */
+.sintomas-botoes {
+    margin-top: 10px;
+}
+
+.sintomas-botoes button {
+    margin: 5px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #2e7d32;
+    background: #f1f8e9;
+    color: #1b5e20;
+    font-weight: normal;
+}
+
+.sintomas-botoes button.ativo {
+    background: #2e7d32;
+    color: white;
 }
