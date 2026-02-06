@@ -39,7 +39,23 @@ function addMsg(texto, tipo) {
 function iniciarBot() {
   addMsg("🤖 <b>Olá! Sou o AgroBot.</b><br>Vou te ajudar a diagnosticar doenças na sua lavoura.<br><br>Qual é a cultura? (Ex: Milho, Soja...)", "bot");
   etapa = 1;
+} 
+function finalizarDiagnostico() {
+  addMsg(`
+    🌿 <b>Diagnóstico finalizado com sucesso!</b><br><br>
+    Foi um prazer ajudar você a cuidar da sua lavoura 💚<br>
+    Sempre que precisar, estarei por aqui 🌱<br><br>
+    ✨ <i>O histórico foi limpo. Digite <b>Oi</b> para começar um novo diagnóstico.</i>
+  `, "bot");
+
+  // Espera a mensagem aparecer e depois limpa tudo
+  setTimeout(() => {
+    chatDiv.innerHTML = "";
+    etapa = 0;
+    culturaSelecionada = "";
+  }, 2500);
 }
+
 
 // ================= ESCOLHER MODO =================
 function escolherModo(modo) {
@@ -105,8 +121,15 @@ btnEnviar.addEventListener("click", () => {
     iniciarBot();
     return;
   }
+  // 🛑 COMANDOS PARA FINALIZAR O DIAGNÓSTICO
+  if (['finalizar', 'encerrar', 'parar', 'sair', 'cancelar'].includes(comando)) {
+    finalizarDiagnostico();
+    return;
+   }
+
 
   if (etapa === 0) iniciarBot();
+    
 
   else if (etapa === 1) {
     const culturaNorm = normalizar(texto);
@@ -207,4 +230,5 @@ function diagnosticar(cultura, textoUsuario) {
 inputSintomas.addEventListener("keypress", e => {
   if (e.key === "Enter") btnEnviar.click();
 });
+
 
