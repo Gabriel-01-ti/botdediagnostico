@@ -221,3 +221,40 @@ button {
     background: #2e7d32;
     color: white;
 }
+
+/* ===== Botões de modo de diagnóstico ===== */
+.botoes-opcao {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.botoes-opcao button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #2e7d32;
+    background: #ffffff;
+    color: #2e7d32;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botoes-opcao button:hover {
+    background: #2e7d32;
+    color: white;
+}
+
+/* 📱 No celular fica um embaixo do outro */
+@media (max-width: 600px) {
+    .botoes-opcao {
+        flex-direction: column;
+    }
+
+    .botoes-opcao button {
+        width: 100%;
+        font-size: 16px; /* evita zoom */
+        padding: 12px;
+    }
+}
