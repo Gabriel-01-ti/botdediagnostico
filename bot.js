@@ -226,7 +226,7 @@ function diagnosticar(cultura, textoUsuario) {
   }
 
   setTimeout(() => {
-    addMsg("🏁 Análise feita. Digite outra cultura ou 'Oi' para reiniciar.", "bot");
+    addMsg("🏁 Análise feita. Digite outra cultura para novo diagnóstico ou 'encerrar' para finalizar.", "bot");
     etapa = 1;
   }, 2500);
 }
@@ -235,6 +235,7 @@ function diagnosticar(cultura, textoUsuario) {
 inputSintomas.addEventListener("keypress", e => {
   if (e.key === "Enter") btnEnviar.click();
 });
+
 
 
 
