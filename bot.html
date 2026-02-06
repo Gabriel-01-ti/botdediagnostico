@@ -6,6 +6,18 @@
     <title>AgroBot Diagnóstico</title>
     <link rel="stylesheet" href="bot.css">
 </head>
+    <!-- BOTÃO FLUTUANTE GUIA RÁPIDO -->
+<div id="btnGuiaRapido" onclick="abrirGuiaRapido()">!</div>
+
+<!-- PAINEL GUIA RÁPIDO -->
+<div id="painelGuia" class="painel-guia">
+  <div class="painel-conteudo">
+    <span class="fechar-guia" onclick="fecharGuiaRapido()">✖</span>
+    <h2>🌿 Guia Rápido de Doenças</h2>
+    <div id="listaGuiaDoencas"></div>
+  </div>
+</div>
+
 <body>
 
 <div class="container">
@@ -27,4 +39,5 @@
 <script src="bot.js"></script>
 </body>
 </html>
+
 
