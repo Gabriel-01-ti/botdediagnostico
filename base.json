@@ -3,6 +3,7 @@
     "mancha_branca": {
       "nome": "Mancha Branca do Milho",
       "nome_biologico": "Phaeosphaeria maydis / Pantoea ananatis",
+      "imagem": "imagens/mancha_branca.jpeg",
       "descricao": "Doença foliar comum em clima ameno e úmido, podendo causar perdas de produtividade.",
       "condicoes_favoraveis": "Temperaturas entre 14°C e 20°C, alta umidade e orvalho prolongado.",
       "sintomas": {
@@ -146,5 +147,6 @@
     }
   }
 }          
+
 
 
