@@ -53,7 +53,7 @@ function finalizarDiagnostico() {
     chatDiv.innerHTML = "";
     etapa = 0;
     culturaSelecionada = "";
-  }, 2500);
+  }, 5500);
 }
 
 
@@ -235,6 +235,7 @@ function diagnosticar(cultura, textoUsuario) {
 inputSintomas.addEventListener("keypress", e => {
   if (e.key === "Enter") btnEnviar.click();
 });
+
 
 
 
