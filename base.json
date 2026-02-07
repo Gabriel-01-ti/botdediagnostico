@@ -245,8 +245,11 @@
       "manejo_preventivo": "Uso de sementes certificadas e rotação de culturas.",
       "controle": "Aplicação de fungicidas específicos para a cultura."
     }
-  }
-}          
+  },
+ "trigo": {
+ }
+}
+
 
 
 
