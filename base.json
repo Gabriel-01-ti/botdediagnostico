@@ -347,8 +347,116 @@
 },
   
  "trigo": {
- }
+  "oidio": {
+    "nome": "Oídio do Trigo",
+    "nome_biologico": "Blumeria graminis f. sp. tritici",
+    "imagem": "imagens/trigo.oidio.jpg",
+    "descricao": "Doença fúngica de grande importância econômica no trigo, podendo causar perdas de até 40% na produtividade. No Brasil ocorre principalmente na Região Sul, sendo favorecida por clima ameno. O fungo enfraquece as plantas ao reduzir a fotossíntese e aumentar a respiração e a transpiração.",
+    "condicoes_favoraveis": "Clima ameno, alta umidade relativa do ar, presença frequente de orvalho, lavouras densas com pouca ventilação e adubação nitrogenada excessiva.",
+    "sintomas": {
+      "praticos": [
+        "pó branco nas folhas",
+        "folhas parecem polvilhadas com farinha",
+        "manchas brancas que aumentam e se espalham",
+        "folhas podem amarelar ao redor das manchas",
+        "em ataques fortes atinge espigas e aristas",
+        "plantas ficam fracas e menores"
+      ],
+      "tecnicos": [
+        "crescimento superficial de micélio e conídios com aspecto pulverulento",
+        "colonização principalmente na face superior das folhas",
+        "clorose na face oposta às lesões e formação de halo necrótico em folhas velhas",
+        "formação de cleistotécios escuros em lesões antigas",
+        "infecção restrita às células epidérmicas"
+      ]
+    },
+    "danos": "Redução da fotossíntese, aumento da respiração e transpiração, enfraquecimento das plantas, espigas menores e perdas de rendimento que podem chegar a 40%.",
+    "manejo_preventivo": "Uso de cultivares com resistência genética, rotação de culturas com espécies não hospedeiras, eliminação de plantas voluntárias e gramíneas hospedeiras próximas, evitar excesso de nitrogênio e reduzir restos culturais infectados.",
+    "controle": "Aplicação de fungicidas específicos para oídio conforme recomendação técnica e nível de severidade. Pode-se utilizar tratamento de sementes com fungicidas sistêmicos. A rotação de ingredientes ativos é importante devido à variabilidade e resistência do fungo."
+  },
+
+  "ferrugem_folha": {
+    "nome": "Ferrugem da Folha do Trigo",
+    "nome_biologico": "Puccinia triticina",
+    "imagem": "imagens/trigo.ferrugem_folha.jpg",
+    "descricao": "É a ferrugem mais comum do trigo, ocorrendo em diversas regiões produtoras do Brasil. Pode causar perdas de até 50% no rendimento de grãos, dependendo da suscetibilidade da cultivar e das condições ambientais.",
+    "condicoes_favoraveis": "Temperaturas amenas, alta umidade, presença de orvalho frequente e cultivares suscetíveis.",
+    "sintomas": {
+      "praticos": [
+        "pontinhos alaranjados nas folhas",
+        "parece ferrugem em pó quando esfrega",
+        "manchas pequenas que aumentam com o tempo",
+        "aparece principalmente nas folhas",
+        "folhas muito atacadas secam mais cedo"
+      ],
+      "tecnicos": [
+        "urédias pequenas, arredondadas e amarelo-alaranjadas",
+        "ocorrência predominante na face superior das folhas",
+        "infecção também em bainhas foliares",
+        "formação posterior de pústulas teliais pretas e ovais",
+        "teliósporos permanecem recobertos pela epiderme até o final do ciclo"
+      ]
+    },
+    "danos": "Redução da área fotossintética, enfraquecimento das plantas e perdas de produtividade que podem chegar a 50% em cultivares suscetíveis.",
+    "manejo_preventivo": "Uso de cultivares resistentes e eliminação de plantas voluntárias de trigo que servem como fonte de inóculo.",
+    "controle": "Aplicação de fungicidas sistêmicos, como triazóis, em cultivares suscetíveis, conforme recomendação técnica e uso de produtos registrados para a cultura."
+  },
+
+  "mancha_amarela": {
+    "nome": "Mancha Amarela do Trigo",
+    "nome_biologico": "Drechslera tritici-repentis",
+    "imagem": "imagens/trigo.mancha_amarela.jpg",
+    "descricao": "Principal mancha foliar do trigo, com aumento de importância em áreas de plantio direto e monocultura. Pode comprometer severamente a área foliar e a produtividade.",
+    "condicoes_favoraveis": "Sistema de plantio direto, monocultura de trigo, presença de restos culturais infectados, clima úmido e temperaturas amenas.",
+    "sintomas": {
+      "praticos": [
+        "manchas amarelas nas folhas",
+        "manchas aumentam e ficam com centro marrom",
+        "manchas alongadas em formato oval",
+        "folha parece queimada no centro da mancha",
+        "folhas atacadas secam mais cedo"
+      ],
+      "tecnicos": [
+        "lesões inicialmente cloróticas evoluindo para necrose parda no centro",
+        "lesões elípticas podendo atingir até 12 mm de comprimento",
+        "presença de halo amarelo ao redor das lesões",
+        "formação de conidióforos e conídios no centro das manchas",
+        "redução progressiva da área fotossintética"
+      ]
+    },
+    "danos": "Redução da área foliar ativa, seca precoce das folhas e queda no rendimento de grãos.",
+    "manejo_preventivo": "Rotação de culturas com espécies não hospedeiras, eliminação de plantas voluntárias e manejo adequado dos restos culturais. Não há cultivares com resistência efetiva disponível no Brasil.",
+    "controle": "Tratamento de sementes com fungicidas protetores e aplicação de fungicidas sistêmicos, como triazóis, quando a incidência nas folhas atingir níveis elevados, conforme recomendação técnica."
+  },
+
+  "ferrugem_amarela": {
+    "nome": "Ferrugem Linear do Trigo",
+    "nome_biologico": "Puccinia striiformis",
+    "imagem": "imagens/trigo.ferrugem_amarela.jpg",
+    "descricao": "Doença fúngica conhecida como ferrugem amarela do trigo. Tem ocorrência esporádica no Brasil, mas pode causar perdas significativas, variando de 5% a 50% conforme a severidade da infecção.",
+    "condicoes_favoraveis": "Clima ameno a frio, alta umidade, presença frequente de orvalho e cultivares suscetíveis.",
+    "sintomas": {
+      "praticos": [
+        "listras amarelas compridas nas folhas",
+        "fileiras de pontinhos amarelos alinhados",
+        "manchas seguem o sentido das nervuras",
+        "folhas ficam amareladas e enfraquecidas",
+        "plantas muito atacadas produzem menos"
+      ],
+      "tecnicos": [
+        "urédias amarelas dispostas em estrias lineares paralelas às nervuras",
+        "distribuição organizada das pústulas ao longo da lâmina foliar",
+        "clorose e posterior necrose do tecido foliar",
+        "redução da área fotossintética em ataques severos"
+      ]
+    },
+    "danos": "Redução da área fotossintética, enfraquecimento das plantas e perdas de produtividade que podem variar de 5% a 50% conforme a intensidade da doença.",
+    "manejo_preventivo": "Uso de cultivares resistentes e eliminação de plantas voluntárias de trigo que servem como fonte de inóculo.",
+    "controle": "Aplicação de fungicidas específicos e registrados para a cultura, conforme recomendação técnica e monitoramento da lavoura."
+  }
 }
+
+
 
 
 
