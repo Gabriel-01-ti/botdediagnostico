@@ -224,31 +224,132 @@
 
 
   "feijao": {
-    "antracnose": {
-      "nome": "Antracnose do Feijão",
-      "nome_biologico": "Colletotrichum lindemuthianum",
-      "descricao": "Doença que causa manchas escuras em folhas e vagens do feijão.",
-      "condicoes_favoraveis": "Alta umidade e sementes contaminadas.",
-      "sintomas": {
-        "praticos": [
-          "manchas escuras nas folhas",
-          "manchas alongadas nas vagens",
-          "folhas parecem queimadas",
-          "manchas pretas nas nervuras"
-        ],
-        "tecnicos": [
-          "lesões necróticas com frutificação fúngica",
-          "necrose em hastes e vagens"
-        ]
-      },
-      "danos": "Queda da produção e perda da qualidade dos grãos.",
-      "manejo_preventivo": "Uso de sementes certificadas e rotação de culturas.",
-      "controle": "Aplicação de fungicidas específicos para a cultura."
-    }
+  "antracnose": {
+    "nome": "Antracnose do Feijoeiro",
+    "nome_biologico": "Colletotrichum lindemuthianum",
+    "imagem": "imagens/feijao.antracnose.jpg",
+    "descricao": "Uma das doenças mais importantes do feijoeiro, podendo causar perdas de até 100%. Ocorre principalmente em regiões de clima temperado e subtropical, sendo favorecida por temperaturas baixas a moderadas e alta umidade.",
+    "condicoes_favoraveis": "Alta umidade, temperaturas amenas, sementes infectadas, restos culturais contaminados e cultivo contínuo da cultura na mesma área.",
+    "sintomas": {
+      "praticos": [
+        "manchas escuras nas nervuras das folhas",
+        "folhas podem entortar para baixo",
+        "manchas escuras e afundadas nas vagens",
+        "vagens com centro mais claro ou rosado",
+        "manchas escuras no caule e pecíolos",
+        "plântulas podem morrer logo após nascer",
+        "sementes manchadas e descoloridas"
+      ],
+      "tecnicos": [
+        "lesões necróticas marrom-escuras nas nervuras da face inferior das folhas",
+        "clorose ao redor das lesões quando visíveis na face superior",
+        "necrose do limbo foliar em ataques severos",
+        "lesões alongadas, escuras e deprimidas em caule e pecíolos",
+        "lesões circulares e deprimidas nas vagens com bordos escuros e anel pardo-avermelhado",
+        "esporulação rosada no centro das lesões em vagens",
+        "infecção de cotilédones com lesões marrons ou pretas",
+        "estrangulamento do hipocótilo e morte de plântulas",
+        "sementes descoloridas com lesões levemente deprimidas"
+      ]
+    },
+    "danos": "Pode afetar toda a parte aérea da planta, causar morte de plântulas, redução severa da área foliar, infecção de vagens e sementes, resultando em perdas que podem chegar a 100% da produção.",
+    "manejo_preventivo": "Uso de sementes sadias, tratamento de sementes, rotação de culturas por no mínimo um ano, eliminação de restos culturais infectados e uso de cultivares resistentes.",
+    "controle": "Aplicação de fungicidas deve considerar o nível tecnológico da lavoura, o potencial produtivo, o retorno econômico e a presença de condições climáticas favoráveis à doença."
   },
+
+  "ferrugem": {
+    "nome": "Ferrugem do Feijoeiro",
+    "nome_biologico": "Uromyces appendiculatus",
+    "imagem": "imagens/feijao.ferrugem.jpg",
+    "descricao": "Doença fúngica de ampla distribuição que pode causar perdas importantes quando ocorre cedo no ciclo da cultura.",
+    "condicoes_favoraveis": "Alta umidade, presença frequente de orvalho e temperaturas moderadas, especialmente durante o pré-florescimento e florescimento.",
+    "sintomas": {
+      "praticos": [
+        "pontinhos claros nas folhas que depois ficam amarelos",
+        "pequenas bolinhas marrom-avermelhadas nas folhas",
+        "parece que a folha tem poeira de ferrugem",
+        "quando esfrega a folha sai um pozinho laranja ou marrom",
+        "folhas amarelam e secam antes do tempo"
+      ],
+      "tecnicos": [
+        "pontuações esbranquiçadas levemente salientes poucos dias após a infecção",
+        "lesões evoluem para coloração amarelada",
+        "formação de pústulas pardo-avermelhadas",
+        "pústulas de 1 a 2 mm de diâmetro com liberação de uredósporos",
+        "presença de halo clorótico ao redor das pústulas"
+      ]
+    },
+    "danos": "Redução da área fotossintética, desfolha precoce e perdas de produtividade, principalmente quando a infecção ocorre nas fases iniciais da cultura.",
+    "manejo_preventivo": "Rotação de culturas, eliminação de restos culturais e plantas voluntárias hospedeiras, além de ajuste da época de plantio para evitar períodos prolongados de umidade.",
+    "controle": "Aplicação de fungicidas registrados para a cultura ao surgimento das primeiras pústulas, conforme recomendação técnica e monitoramento da lavoura."
+  },
+
+  "mancha_angular": {
+    "nome": "Mancha Angular do Feijoeiro",
+    "nome_biologico": "Phaeoisariopsis griseola",
+    "imagem": "imagens/feijao.manchaangular.jpg",
+    "descricao": "Doença que tem aumentado em frequência nas regiões produtoras e pode causar grandes prejuízos quando surge cedo na lavoura. É especialmente importante na região Sul durante o cultivo da safrinha.",
+    "condicoes_favoraveis": "Alta umidade, temperaturas amenas, presença de restos culturais infectados, sementes contaminadas e cultivo contínuo de feijão na área.",
+    "sintomas": {
+      "praticos": [
+        "manchas marrons nas folhas que depois ficam escuras",
+        "manchas com formato meio quadrado ou angular",
+        "folhas ficam amareladas quando a doença avança",
+        "folhas podem cair quando tem muita mancha",
+        "manchas escuras também podem aparecer nas vagens",
+        "sementes podem ficar enrugadas e mal formadas"
+      ],
+      "tecnicos": [
+        "lesões inicialmente circulares de coloração castanha nas folhas primárias",
+        "lesões necróticas acinzentadas e irregulares em folhas trifoliadas",
+        "lesões angulares delimitadas pelas nervuras, de coloração marrom-escura",
+        "esporulação do fungo na face inferior das folhas",
+        "coalescência das lesões causando clorose e desfolha",
+        "lesões alongadas e escuras em ramos e pecíolos",
+        "lesões superficiais castanho-escuras nas vagens, podendo coalescer",
+        "infecção de sementes pelo hilo, resultando em sementes enrugadas e mal desenvolvidas"
+      ]
+    },
+    "danos": "Redução da área foliar, desfolha precoce, infecção de vagens e sementes, queda na germinação e perdas de produtividade que podem variar de 7% a 70%, dependendo das condições.",
+    "manejo_preventivo": "Uso de cultivares com melhor nível de resistência, rotação de culturas com gramíneas, eliminação e incorporação de restos culturais, controle de plantas daninhas e uso de sementes de alta qualidade tratadas com fungicidas.",
+    "controle": "Tratamento de sementes com fungicidas registrados e aplicações foliares preventivas iniciando entre 20 e 30 dias após a emergência, com intervalos de 10 a 15 dias conforme recomendação técnica."
+  },
+
+  "crestamento_bacteriano": {
+    "nome": "Crestamento Bacteriano Comum",
+    "nome_biologico": "Xanthomonas axonopodis pv. phaseoli",
+    "imagem": "imagens/feijao.crestamento.jpg",
+    "descricao": "Importante bacteriose do feijoeiro presente em quase todas as regiões produtoras. Pode comprometer severamente a lavoura quando ocorre em condições favoráveis.",
+    "condicoes_favoraveis": "Alta umidade, chuvas frequentes, presença de sementes infectadas, restos culturais contaminados e disseminação por respingos de água e insetos.",
+    "sintomas": {
+      "praticos": [
+        "manchas encharcadas nas folhas que depois ficam marrons",
+        "folhas com aparência de queimadas",
+        "bordas amareladas ao redor das manchas",
+        "folhas podem cair em ataques fortes",
+        "vagens com manchas úmidas e escuras",
+        "sementes enrugadas ou apodrecidas"
+      ],
+      "tecnicos": [
+        "lesões aquosas que evoluem para necrose marrom com halo clorótico estreito",
+        "coalescência das lesões formando grandes áreas necrosadas",
+        "desfolha em infecções severas",
+        "manchas e estrias úmidas em caules com possível rachadura e exsudação bacteriana",
+        "lesões encharcadas em vagens com presença de exsudato bacteriano",
+        "infecção de sementes resultando em podridão ou enrugamento",
+        "danos ao meristema apical de plântulas originadas de sementes infectadas"
+      ]
+    },
+    "danos": "Redução da área foliar, desfolha, infecção de vagens e sementes, queda na germinação e desenvolvimento de plantas raquíticas ou morte de plântulas.",
+    "manejo_preventivo": "Uso de sementes sadias e de boa qualidade sanitária, rotação de culturas com espécies não hospedeiras, incorporação de restos culturais infectados, eliminação de plantas voluntárias e controle de insetos vetores.",
+    "controle": "Tratamento de sementes com produtos registrados para a cultura e adoção de medidas preventivas no campo, pois o controle curativo é limitado após a instalação da doença."
+  }
+},
+  
  "trigo": {
  }
 }
+
 
 
 
