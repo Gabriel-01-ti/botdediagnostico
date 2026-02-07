@@ -30,7 +30,7 @@
   "helmintosporiose": {
     "nome": "Helmintosporiose do Milho",
     "nome_biologico": "Exserohilum turcicum",
-    "imagem": "imagens/helmintosporiose_milho.jpeg",
+    "imagem": "imagens/milho.helmintospiriose.jpg",
     "descricao": "Doença fúngica que causa manchas alongadas nas folhas, com aspecto de queimadura, podendo comprometer severamente a fotossíntese.",
     "condicoes_favoraveis": "Alta umidade, temperaturas entre 18°C e 27°C e cultivares suscetíveis.",
     "sintomas": {
@@ -56,7 +56,7 @@
   "cercosporiose": {
     "nome": "Cercosporiose do Milho",
     "nome_biologico": "Cercospora zeae-maydis",
-    "imagem": "imagens/cercosporiose_milho.jpeg",
+    "imagem": "imagens/milho.cercospiriose.jpg",
     "descricao": "Doença foliar que causa manchas retangulares bem definidas, podendo levar à seca precoce das folhas.",
     "condicoes_favoraveis": "Alta umidade, presença de restos culturais infectados e monocultivo.",
     "sintomas": {
@@ -82,7 +82,7 @@
   "ferrugem_polisora": {
     "nome": "Ferrugem Polisora do Milho",
     "nome_biologico": "Puccinia polysora",
-    "imagem": "imagens/ferrugem_polisora_milho.jpeg",
+    "imagem": "imagens/ferrugem.milho.jpg",
     "descricao": "Doença fúngica agressiva que provoca pústulas alaranjadas nas folhas e pode se espalhar rapidamente em condições favoráveis.",
     "condicoes_favoraveis": "Clima quente e úmido, regiões de baixa altitude e plantios tardios.",
     "sintomas": {
@@ -110,7 +110,7 @@
   "ferrugem_asiatica": {
     "nome": "Ferrugem Asiática da Soja",
     "nome_biologico": "Phakopsora pachyrhizi",
-    "imagem": "imagens/ferrugem_asiatica_soja.jpeg",
+    "imagem": "imagens/soja.ferrugem.jpg",
     "descricao": "Doença fúngica agressiva que causa desfolha precoce na soja e pode provocar grandes perdas de produtividade.",
     "condicoes_favoraveis": "Alta umidade, longos períodos de molhamento foliar, presença de orvalho frequente e temperaturas entre 18°C e 26°C.",
     "sintomas": {
@@ -139,7 +139,7 @@
   "mancha_alvo": {
     "nome": "Mancha Alvo",
     "nome_biologico": "Corynespora cassiicola",
-    "imagem": "imagens/mancha_alvo_soja.jpeg",
+    "imagem": "imagens/soja.manchaalvo.png",
     "descricao": "Doença de final de ciclo também conhecida como crestamento foliar, causada por um fungo cosmopolita e altamente polífago.",
     "condicoes_favoraveis": "Alta umidade, temperaturas elevadas e presença de restos culturais infectados no solo.",
     "sintomas": {
@@ -168,7 +168,7 @@
   "antracnose": {
     "nome": "Antracnose da Soja",
     "nome_biologico": "Colletotrichum dematium var. truncata",
-    "imagem": "imagens/antracnose_soja.jpeg",
+    "imagem": "imagens/soja.antracnose.png",
     "descricao": "Doença que afeta a soja principalmente na fase inicial de formação das vagens, podendo causar perdas severas em anos chuvosos.",
     "condicoes_favoraveis": "Alta precipitação, temperaturas elevadas, sementes infectadas, atraso na colheita e deficiência de potássio.",
     "sintomas": {
@@ -197,7 +197,7 @@
   "oidio": {
     "nome": "Oídio da Soja",
     "nome_biologico": "Erysiphe diffusa",
-    "imagem": "imagens/oidio_soja.jpeg",
+    "imagem": "imagens/soja.oidio.jpg",
     "descricao": "Doença fúngica causada por um parasita obrigatório que se desenvolve em toda a parte aérea da soja. Pode se tornar severa em períodos de estiagem.",
     "condicoes_favoraveis": "Períodos de estiagem, temperaturas amenas, cultivares suscetíveis, semeaduras tardias e presença do patógeno em plantas voluntárias.",
     "sintomas": {
@@ -247,6 +247,7 @@
     }
   }
 }          
+
 
 
 
