@@ -58,13 +58,18 @@ function normalizar(txt) {
   return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-function addMsg(texto, tipo) {
+function addMsg(texto, tipo, rolar = true) {
   const div = document.createElement("div");
   div.className = "msg " + tipo;
   div.innerHTML = texto;
   chatDiv.appendChild(div);
-  chatDiv.scrollTop = chatDiv.scrollHeight;
+
+  // Só rola pro final se permitido
+  if (rolar) {
+    chatDiv.scrollTop = chatDiv.scrollHeight;
+  }
 }
+
 
 // ================= INÍCIO =================
 function iniciarBot() {
@@ -253,11 +258,11 @@ function diagnosticar(cultura, textoUsuario) {
         </div>
       </div>
     `;
-    addMsg(htmlCompleto, "bot");
+    addMsg(htmlCompleto, "bot", false);
   }
 
   setTimeout(() => {
-    addMsg("🏁 Análise feita. Digite outra cultura para novo diagnóstico ou 'encerrar' para finalizar.", "bot");
+    addMsg("🏁 Análise feita. Digite outra cultura para novo diagnóstico ou 'encerrar' para finalizar.", "bot", false);
     etapa = 1;
   }, 2500);
 }
@@ -266,6 +271,7 @@ function diagnosticar(cultura, textoUsuario) {
 inputSintomas.addEventListener("keypress", e => {
   if (e.key === "Enter") btnEnviar.click();
 });
+
 
 
 
