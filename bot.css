@@ -50,10 +50,11 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 15px;
+  padding: 5px;
   border-radius: 8px;
   margin-bottom: 20px;
-  overflow: visible; /* chat cresce com o container */
+  overflow: visible;
+  background:#1f1f1f /* chat cresce com o container */
 }
 
 /* =========================================
@@ -434,4 +435,5 @@ RESPONSIVO
     top: 18px;
   }
 }
+
 
