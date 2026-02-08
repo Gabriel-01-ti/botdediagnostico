@@ -339,8 +339,8 @@ button {
 }
 
 .rodape {
-  background: #0b3d2e;
-  color: white;
+ 
+  color: black;
   padding: 6px 10px;
   margin-top: 10px;
   border-radius: 14px;
@@ -348,16 +348,11 @@ button {
   align-items: center;
   justify-content: center;
   gap: 15px;
-
   flex-wrap: wrap; /* se a tela for muito pequena, quebra bonito */
   text-align: center;
   font-size: 13px;
 }
 
-.logo-rodape {
-  width: 45px;
-  margin: 0;
-}
 
 
 
@@ -386,6 +381,7 @@ button {
   50% { transform: scale(1.05); opacity: 0.7; }
   100% { transform: scale(1); opacity: 1; }
 }
+
 
 
 
