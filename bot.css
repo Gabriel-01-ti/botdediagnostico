@@ -94,7 +94,7 @@ BOT COM LOGO LATERAL
 .msg-bot-wrapper {
   position: relative;
   padding-left: 70px;
-  margin: 18px 0;
+  margin: 8px 0;
 }
 
 .bot-avatar {
@@ -422,6 +422,7 @@ RESPONSIVO
     padding: 12px;
   }
 }
+
 
 
 
