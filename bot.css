@@ -84,9 +84,6 @@ MENSAGENS
 }
 
 /* =========================================
-BOT COM LOGO LATERAL
-========================================= */
-/* =========================================
 BOT COM AVATAR EM CIMA E BOLHA OCUPANDO TODO O CONTAINER
 ========================================= */
 .msg-bot-wrapper {
@@ -118,6 +115,7 @@ BOT COM AVATAR EM CIMA E BOLHA OCUPANDO TODO O CONTAINER
   width: 100%;  /* ocupa todo o container */
   box-sizing: border-box;
   position: relative;
+  margin-top: 0;
 }
 
 /* Rabinho apontando pra cima */
@@ -131,10 +129,6 @@ BOT COM AVATAR EM CIMA E BOLHA OCUPANDO TODO O CONTAINER
   background: #e3f2fd;
   transform: rotate(45deg);
 }
-
-/* =========================================
-RESPONSIVO CELULAR
-========================================= */
 
 /* =========================================
 INPUT AREA
@@ -417,15 +411,39 @@ RODAPÉ
 RESPONSIVO CELULAR
 ========================================= */
 @media (max-width: 600px) {
+  .container {
+    min-height: 90vh;
+    padding: 16px;
+  }
+
+  .botoes-opcao {
+    flex-direction: column;
+  }
+
+  .botoes-opcao button {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  /* Mensagens do bot no celular */
+  .msg-bot-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 6px 0;
+    width: 100%;
+  }
+
   .bot-avatar {
     width: 48px;
     height: 48px;
-    margin-bottom: 4px;
+    margin-bottom: 6px; /* espaço entre avatar e bolha */
   }
 
   .bot-bubble {
-    width: 100%; /* ocupa todo o container no celular também */
-    padding: 16px 18px;
+    width: 100%; /* ocupa todo o container */
+    padding: 14px 16px;
+    margin-top: 0;
   }
 
   .bot-bubble::before {
@@ -433,4 +451,3 @@ RESPONSIVO CELULAR
     left: 12px; /* rabinho ajustado no celular */
   }
 }
-
