@@ -415,13 +415,21 @@ RESPONSIVO
 }
 
 @media (max-width: 600px) {
-  .bot-bubble {
-    width: 100%;           /* ocupa todo o container */
-    max-width: 100%;       /* garante que não fique menor */
+  #chat {
+    width: 100%;        /* garante que o chat ocupe todo o container */
   }
 
   .msg-bot-wrapper {
-    padding-left: 70px;    /* mantém avatar fora do azul */
+    padding-left: 70px; /* mantém avatar flutuando do lado */
+    width: 100%;        /* wrapper ocupa todo o espaço do chat */
+  }
+
+  .bot-bubble {
+    width: 100%;        /* bolha ocupa todo o wrapper */
+    max-width: 100%;
+    min-width: auto;
   }
 }
+
+
 
