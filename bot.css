@@ -1,6 +1,6 @@
 /* =========================================
 RESET E CONFIGURAÇÕES GERAIS
-========================================= */
+========================================= */ 
 html, body {
   margin: 0;
   padding: 0;
@@ -50,7 +50,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 5px;
+  padding: 15px;
   border-radius: 8px;
   margin-bottom: 20px;
   overflow: visible;
@@ -84,24 +84,23 @@ MENSAGENS
 }
 
 /* =========================================
-BOT COM AVATAR LATERAL
+BOT COM LOGO LATERAL
 ========================================= */
 .msg-bot-wrapper {
   position: relative;
-  width: 100%;
   margin: 4px 0;
-  display: flex;
-  align-items: flex-start;
 }
 
 .bot-avatar {
+  position: absolute;
+  left: 0;
+  top: 6px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-  flex-shrink: 0;
 }
 
 .bot-bubble {
@@ -111,10 +110,10 @@ BOT COM AVATAR LATERAL
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border-left: 4px solid #1565c0;
-  margin-left: 10px;
-  flex-grow: 1;
-  min-width: 0;
   position: relative;
+  margin-left: 70px;           
+  max-width: calc(100% - 70px);
+  min-width: auto;
 }
 
 .bot-bubble::before {
@@ -388,7 +387,9 @@ RODAPÉ
 
 /* =========================================
 RESPONSIVO CELULAR
+========================================= */
 @media (max-width: 600px) {
+
   .container {
     min-height: 90vh;
     padding: 16px;
@@ -404,27 +405,27 @@ RESPONSIVO CELULAR
     padding: 12px;
   }
 
-  /* MENSAGENS DO BOT NO CELULAR */
+  /* Mensagens do bot no celular */
   .msg-bot-wrapper {
     position: relative;
     width: 100%;
     margin: 4px 0;
     display: flex;
     align-items: flex-start;
+    padding-left: 0;
   }
 
   .bot-avatar {
+    position: absolute;
+    left: -8px;  /* avatar um pouco mais à esquerda */
+    top: 6px;
     width: 48px;
     height: 48px;
-    position: absolute;
-    left: -12px; /* avatar mais à esquerda */
-    top: 6px;
   }
 
   .bot-bubble {
-    margin-left: 40px;                /* mantém espaço do avatar */
-    flex-grow: 1;
-    width: calc(100% - 30px);         /* aumenta 10px para a direita */
+    margin-left: 40px;           /* distância do avatar */
+    width: calc(100% - 30px);    /* aumenta bolha 10px para a direita */
     max-width: calc(100% - 30px);
     min-width: 0;
     padding: 14px 16px;
@@ -432,9 +433,7 @@ RESPONSIVO CELULAR
   }
 
   .bot-bubble::before {
-    left: -8px; /* rabinho continua saindo da bolha */
+    left: -8px;
     top: 14px;
   }
 }
-
-
