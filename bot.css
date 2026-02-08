@@ -56,16 +56,30 @@ h1 {
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
 
-    /* FUNDO COM IMAGEM */
-    background-image: url("fundo.jpg"); /* coloque o caminho certo da imagem */
-    background-size: contain;      /* cobre toda a área */
-    background-position: center; /* centraliza */
+/* IMAGEM DE FUNDO */
+#chat::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("fundo.jpg"); /* imagem em alta resolução */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    
-    /* opcional: efeito vidro pra melhorar leitura */
-    background-color: rgba(255, 255, 255, 0.75);
-   ;
+    z-index: -2;
+}
+
+/* CAMADA CLARA POR CIMA */
+#chat::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.65);
+    z-index: -1;
+    border-radius: 8px;
 }
 
 
@@ -449,6 +463,7 @@ button {
   background: #ffffff;
   transform: rotate(45deg);
 }
+
 
 
 
