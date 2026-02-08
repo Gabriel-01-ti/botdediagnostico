@@ -378,7 +378,7 @@
   "ferrugem_folha": {
     "nome": "Ferrugem da Folha do Trigo",
     "nome_biologico": "Puccinia triticina",
-    "imagem": "imagens/trigo.ferrugem_folha.jpg",
+    "imagem": "imagens/trigo.ferrugemdafolha.jpg",
     "descricao": "É a ferrugem mais comum do trigo, ocorrendo em diversas regiões produtoras do Brasil. Pode causar perdas de até 50% no rendimento de grãos, dependendo da suscetibilidade da cultivar e das condições ambientais.",
     "condicoes_favoraveis": "Temperaturas amenas, alta umidade, presença de orvalho frequente e cultivares suscetíveis.",
     "sintomas": {
@@ -405,7 +405,7 @@
   "mancha_amarela": {
     "nome": "Mancha Amarela do Trigo",
     "nome_biologico": "Drechslera tritici-repentis",
-    "imagem": "imagens/trigo.mancha_amarela.jpg",
+    "imagem": "imagens/trigo.manchaamarela.jpg",
     "descricao": "Principal mancha foliar do trigo, com aumento de importância em áreas de plantio direto e monocultura. Pode comprometer severamente a área foliar e a produtividade.",
     "condicoes_favoraveis": "Sistema de plantio direto, monocultura de trigo, presença de restos culturais infectados, clima úmido e temperaturas amenas.",
     "sintomas": {
@@ -432,7 +432,7 @@
   "ferrugem_amarela": {
     "nome": "Ferrugem Linear do Trigo",
     "nome_biologico": "Puccinia striiformis",
-    "imagem": "imagens/trigo.ferrugem_amarela.jpg",
+    "imagem": "imagens/trigo.ferrugemamarela.jpg",
     "descricao": "Doença fúngica conhecida como ferrugem amarela do trigo. Tem ocorrência esporádica no Brasil, mas pode causar perdas significativas, variando de 5% a 50% conforme a severidade da infecção.",
     "condicoes_favoraveis": "Clima ameno a frio, alta umidade, presença frequente de orvalho e cultivares suscetíveis.",
     "sintomas": {
@@ -454,7 +454,9 @@
     "manejo_preventivo": "Uso de cultivares resistentes e eliminação de plantas voluntárias de trigo que servem como fonte de inóculo.",
     "controle": "Aplicação de fungicidas específicos e registrados para a cultura, conforme recomendação técnica e monitoramento da lavoura."
   }
+ }
 }
+
 
 
 
