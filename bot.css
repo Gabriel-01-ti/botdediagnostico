@@ -413,17 +413,15 @@ RESPONSIVO
     padding: 12px;
   }
 }
+
 @media (max-width: 600px) {
-  .msg-bot-wrapper {
-    padding-left: 60px; /* espaço para avatar, não mexer */
+  .bot-bubble {
+    width: 100%;           /* ocupa todo o container */
+    max-width: 100%;       /* garante que não fique menor */
   }
 
-  .bot-bubble {
-    width: 450px; /* ocupa todo o espaço restante */
-                
+  .msg-bot-wrapper {
+    padding-left: 70px;    /* mantém avatar fora do azul */
   }
 }
-
-
-
 
