@@ -108,7 +108,8 @@ BOT COM LOGO LATERAL
   color: #0d47a1;             /* texto azul escuro */
   padding: 14px 16px;
   border-radius: 16px;
-  max-width: 95%;
+  max-width: 98%;
+  min-width: 98%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   position: relative;
   border-left: 4px solid #1565c0; /* detalhe lateral */
@@ -412,3 +413,4 @@ RESPONSIVO
     padding: 12px;
   }
 }
+
