@@ -22,7 +22,7 @@ body {
    ========================================= */
 .container {
     max-width: 1000px;
-    width: 100%;
+    width: 110%;
     background: #f9fff9;
     padding: 24px;
     border-radius: 14px;
@@ -381,6 +381,7 @@ button {
   50% { transform: scale(1.05); opacity: 0.7; }
   100% { transform: scale(1); opacity: 1; }
 }
+
 
 
 
