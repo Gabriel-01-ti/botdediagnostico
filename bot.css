@@ -341,9 +341,9 @@ button {
 .rodape {
   background: #0b3d2e;
   color: white;
-  padding: 10px 20px;
+  padding: 6px 10px;
   margin-top: 10px;
-
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -386,6 +386,7 @@ button {
   50% { transform: scale(1.05); opacity: 0.7; }
   100% { transform: scale(1); opacity: 1; }
 }
+
 
 
 
