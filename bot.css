@@ -87,20 +87,19 @@ BOT COM LOGO LATERAL
 ========================================= */
 .msg-bot-wrapper {
   position: relative;
-  padding-left: 70px;
   margin: 4px 0; /* mensagens consecutivas ficam próximas */
 }
 
 .bot-avatar {
+  position: absolute;
+  left: 0;
+  top: 6px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-  position: relative;
-  left: 0;
-  top: 6px;
 }
 
 .bot-bubble {
@@ -108,11 +107,12 @@ BOT COM LOGO LATERAL
   color: #0d47a1;             /* texto azul escuro */
   padding: 14px 16px;
   border-radius: 16px;
-  max-width: 98%;
-  min-width: 98%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  position: relative;
   border-left: 4px solid #1565c0; /* detalhe lateral */
+  position: relative;
+  margin-left: 70px;           /* espaço para o avatar no desktop */
+  max-width: calc(100% - 70px);
+  min-width: auto;
 }
 
 .bot-bubble::before {
@@ -122,7 +122,7 @@ BOT COM LOGO LATERAL
   top: 18px;
   width: 16px;
   height: 16px;
-  background: #e3f2fd; /* mesma cor da bolha */
+  background: #e3f2fd;
   transform: rotate(45deg);
 }
 
@@ -393,16 +393,6 @@ RESPONSIVO
     padding: 16px;
   }
 
-  .msg-bot-wrapper {
-    padding-left: 60px;
-  }
-
-  .bot-avatar {
-    width: 48px;
-    height: 48px;
-    top: 10px;
-  }
-
   .botoes-opcao {
     flex-direction: column;
   }
@@ -412,46 +402,35 @@ RESPONSIVO
     font-size: 16px;
     padding: 12px;
   }
-}
 
-
-/* =========================================
-MENSAGENS DO BOT - CORREÇÃO PARA CELULAR
-========================================= */
-@media (max-width: 600px) {
-  /* Wrapper da mensagem do bot */
+  /* =========================================
+  MENSAGENS DO BOT - CELULAR
+  ========================================== */
   .msg-bot-wrapper {
-    position: relative;   /* importante para avatar absoluto */
-    padding-left: 60px;   /* espaço para o avatar */
+    position: relative;
     width: 100%;
     margin: 4px 0;
+    padding-left: 0;
   }
 
-  /* Avatar do bot */
   .bot-avatar {
-    position: absolute;   /* precisa ser absoluta dentro do wrapper */
-    left: 0;              /* colado na borda do wrapper */
+    position: absolute;
+    left: 0;
     top: 6px;
     width: 48px;
     height: 48px;
   }
 
-  /* Bolha azul do bot */
   .bot-bubble {
-    width: 100%;          /* ocupa todo o espaço do wrapper */
-    max-width: 100%;
-    min-width: auto;
+    margin-left: 56px;               /* espaço para avatar */
+    width: calc(100% - 56px);        /* ocupa resto do container */
+    max-width: calc(100% - 56px);
     padding: 14px 16px;
     box-sizing: border-box;
   }
 
-  /* Rabinho da bolha */
   .bot-bubble::before {
-    left: 48px; /* desloca o "rabinho" para sair do avatar */
+    left: -8px; /* rabinho sai da bolha, não do avatar */
+    top: 18px;
   }
 }
-
-
-
-
-
