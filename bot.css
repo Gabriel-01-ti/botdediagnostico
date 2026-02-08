@@ -419,10 +419,11 @@ RESPONSIVO
   }
 
   .bot-bubble {
-    max-width: 450px; /* ocupa todo o espaço restante */
-    min-width: auto;               /* remove limite mínimo */
+    width: 450px; /* ocupa todo o espaço restante */
+                
   }
 }
+
 
 
 
