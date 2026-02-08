@@ -415,12 +415,12 @@ RESPONSIVO
 }
 @media (max-width: 600px) {
   .msg-bot-wrapper {
-    padding-left: 50px; /* menos espaço, mais largura para a bolha */
+    padding-left: 60px; /* espaço para avatar, não mexer */
   }
 
   .bot-bubble {
-    max-width: calc(100% - 50px); /* ocupa toda a largura disponível */
-    min-width: auto;               /* remove a largura mínima fixa */
+    max-width: calc(100% - 70px); /* ocupa todo o espaço restante */
+    min-width: auto;               /* remove limite mínimo */
   }
 }
 
