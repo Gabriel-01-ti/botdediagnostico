@@ -1,11 +1,11 @@
+/* =========================================
+RESET E CONFIGURAÇÕES GERAIS
+========================================= */
 html, body {
   margin: 0;
   padding: 0;
 }
 
-/* =========================================
-RESET E CONFIGURAÇÕES GERAIS
-========================================= */
 * {
   box-sizing: border-box;
 }
@@ -15,7 +15,6 @@ body {
   background: linear-gradient(135deg, #e0f2f1, #e3f2fd);
   padding: 16px;
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,14 +31,11 @@ CONTAINER PRINCIPAL
   border-radius: 14px;
   border: 2px solid #1b5e20;
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-
   display: flex;
   flex-direction: column;
-
-  min-height: 90vh; /* ocupa a tela mínima */
-  height: auto;     /* 👈 agora pode crescer */
+  min-height: 90vh; /* altura mínima da tela */
+  height: auto;     /* container cresce com o conteúdo */
 }
-
 
 h1 {
   text-align: center;
@@ -53,14 +49,12 @@ h1 {
 #chat {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 20px;
-
-  overflow: visible; /* 👈 tira o scroll interno */
+  overflow: visible; /* chat cresce com o container */
 }
-
 
 /* =========================================
 MENSAGENS
@@ -86,7 +80,7 @@ MENSAGENS
   color: #1b5e20;
   border-radius: 12px 12px 0 12px;
   border-right: 4px solid #2e7d32;
-} 
+}
 
 /* =========================================
 BOT COM LOGO LATERAL
@@ -94,7 +88,7 @@ BOT COM LOGO LATERAL
 .msg-bot-wrapper {
   position: relative;
   padding-left: 70px;
-  margin: 8px 0;
+  margin: 4px 0; /* mensagens consecutivas ficam próximas */
 }
 
 .bot-avatar {
@@ -110,7 +104,7 @@ BOT COM LOGO LATERAL
 }
 
 .bot-bubble {
-  background: #e3f2fd;        /* 🔵 azul claro */
+  background: #e3f2fd;        /* azul claro */
   color: #0d47a1;             /* texto azul escuro */
   padding: 14px 16px;
   border-radius: 16px;
@@ -119,7 +113,6 @@ BOT COM LOGO LATERAL
   position: relative;
   border-left: 4px solid #1565c0; /* detalhe lateral */
 }
-
 
 .bot-bubble::before {
   content: "";
@@ -131,7 +124,6 @@ BOT COM LOGO LATERAL
   background: #e3f2fd; /* mesma cor da bolha */
   transform: rotate(45deg);
 }
-
 
 /* =========================================
 INPUT AREA
@@ -352,7 +344,6 @@ RODAPÉ
 }
 
 /* ================= SPLASH SCREEN ================= */
-
 #splash {
   position: fixed;
   inset: 0;
@@ -392,13 +383,12 @@ RODAPÉ
   100% { opacity: 0.3; }
 }
 
-
 /* =========================================
 RESPONSIVO
 ========================================= */
 @media (max-width: 600px) {
   .container {
-    height: 95vh;
+    min-height: 90vh; /* container cresce com chat no celular */
     padding: 16px;
   }
 
@@ -422,7 +412,3 @@ RESPONSIVO
     padding: 12px;
   }
 }
-
-
-
-
