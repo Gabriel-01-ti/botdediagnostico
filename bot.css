@@ -10,7 +10,7 @@ body {
     background: linear-gradient(135deg, #e0f2f1, #e3f2fd);
     margin: 0;
     padding: 16px;
-    min-height: 100vh;
+    min-height: 90vh;
 
     display: flex;
     flex-direction: column;   /* EMPILHA VERTICAL */
@@ -342,15 +342,17 @@ button {
 .rodape {
   background: #0b3d2e;
   color: white;
-  text-align: center;
-  padding: 30px 15px;
-  margin-top: 40px;
+
+  padding: 12px 10px; /* bem menor */
+  margin-top: 10px;
+  font-size: 13px;
 }
 
 .logo-rodape {
-  width: 120px;
-  margin-bottom: 10px;
+  width: 80px; /* menor */
+  margin-bottom: 4px;
 }
+
 
 /* SPLASH SCREEN */
 #splash {
@@ -377,6 +379,7 @@ button {
   50% { transform: scale(1.05); opacity: 0.7; }
   100% { transform: scale(1); opacity: 1; }
 }
+
 
 
 
