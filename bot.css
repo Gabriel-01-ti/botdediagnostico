@@ -55,30 +55,7 @@ h1 {
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
-}
-
-/* IMAGEM DE FUNDO */
-#chat::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("fundo.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -2;
-}
-
-/* CAMADA CLARA */
-#chat::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.65);
-  z-index: -1;
-  border-radius: 8px;
+  background: #f5f7f6; /* fundo claro suave */
 }
 
 /* =========================================
@@ -395,3 +372,4 @@ RESPONSIVO
     padding: 12px;
   }
 }
+
