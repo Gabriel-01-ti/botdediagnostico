@@ -64,20 +64,20 @@ function addMsg(texto, tipo, rolar = true) {
 
   // 👉 Se for o BOT, adiciona avatar + bolha
   if (tipo === "bot") {
-    div.classList.add("msg-bot-wrapper");
+  div.classList.add("msg-bot-wrapper");
 
-    const avatar = document.createElement("img");
-    avatar.src = "logo.jpg"; // sua logo
-    avatar.className = "bot-avatar";
+  const avatar = document.createElement("img");
+  avatar.src = "logo.jpg";
+  avatar.className = "bot-avatar";
 
-    const bubble = document.createElement("div");
-    bubble.className = "bot-bubble";
-    bubble.innerHTML = texto;
+  const bubble = document.createElement("div");
+  bubble.className = "bot-bubble";
+  bubble.innerHTML = texto;
 
-    div.appendChild(avatar);
-    div.appendChild(bubble);
-
-  } else {
+  div.appendChild(avatar);
+  div.appendChild(bubble);
+}
+ else {
     // usuário continua igual
     div.innerHTML = texto;
   }
@@ -298,6 +298,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 2500);
   });
+
 
 
 
