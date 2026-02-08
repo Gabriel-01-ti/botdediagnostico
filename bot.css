@@ -414,22 +414,27 @@ RESPONSIVO
   }
 }
 
+
 @media (max-width: 600px) {
-  #chat {
-    width: 100%;        /* garante que o chat ocupe todo o container */
-  }
-
+  /* Wrapper da mensagem do bot */
   .msg-bot-wrapper {
-    padding-left: 70px; /* mantém avatar flutuando do lado */
-    width: 100%;        /* wrapper ocupa todo o espaço do chat */
+    padding-left: 50px; /* avatar mais perto da borda externa */
+    width: 100%;        /* wrapper ocupa todo o chat */
   }
 
+  /* Avatar do bot */
+  .bot-avatar {
+    left: 0;            /* colado na borda do wrapper */
+    top: 6px;
+    width: 48px;        /* tamanho menor para celular */
+    height: 48px;
+  }
+
+  /* Bolha azul do bot */
   .bot-bubble {
-    width: 100%;        /* bolha ocupa todo o wrapper */
-    max-width: 100%;
+    width: calc(100% - 50px);  /* ocupa todo o espaço restante */
+    max-width: calc(100% - 50px);
     min-width: auto;
+    padding: 14px 16px;
   }
 }
-
-
-
