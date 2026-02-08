@@ -343,6 +343,48 @@ RODAPÉ
   font-size: 14px;
 }
 
+/* ================= SPLASH SCREEN ================= */
+
+#splash {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #0b3d2e, #145c43);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.logo-splash {
+  width: 180px;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.texto-splash {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  animation: fadeSplash 2s infinite ease-in-out;
+}
+
+@keyframes fadeSplash {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+
 /* =========================================
 RESPONSIVO
 ========================================= */
@@ -372,4 +414,5 @@ RESPONSIVO
     padding: 12px;
   }
 }
+
 
