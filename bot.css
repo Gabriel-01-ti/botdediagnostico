@@ -413,4 +413,15 @@ RESPONSIVO
     padding: 12px;
   }
 }
+@media (max-width: 600px) {
+  .msg-bot-wrapper {
+    padding-left: 50px; /* menos espaço, mais largura para a bolha */
+  }
+
+  .bot-bubble {
+    max-width: calc(100% - 50px); /* ocupa toda a largura disponível */
+    min-width: auto;               /* remove a largura mínima fixa */
+  }
+}
+
 
