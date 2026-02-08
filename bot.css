@@ -86,21 +86,26 @@ MENSAGENS
 /* =========================================
 BOT COM LOGO LATERAL
 ========================================= */
+/* =========================================
+BOT COM AVATAR EM CIMA E BOLHA OCUPANDO TODO O CONTAINER
+========================================= */
 .msg-bot-wrapper {
+  display: flex;
+  flex-direction: column; /* avatar em cima */
+  align-items: flex-start;
   position: relative;
-  margin: 4px 0;
+  margin: 8px 0;
+  width: 100%; /* wrapper ocupa toda largura do container */
 }
 
 .bot-avatar {
-  position: absolute;
-  left: 0;
-  top: 6px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  margin-bottom: 6px; /* espaço entre avatar e bolha */
 }
 
 .bot-bubble {
@@ -110,22 +115,26 @@ BOT COM LOGO LATERAL
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border-left: 4px solid #1565c0;
+  width: 100%;  /* ocupa todo o container */
+  box-sizing: border-box;
   position: relative;
-  margin-left: 70px;           
-  max-width: calc(100% - 70px);
-  min-width: auto;
 }
 
+/* Rabinho apontando pra cima */
 .bot-bubble::before {
   content: "";
   position: absolute;
-  left: -8px;
-  top: 18px;
+  top: -8px; /* rabinho em cima da bolha */
+  left: 20px; /* distância do canto esquerdo */
   width: 16px;
   height: 16px;
   background: #e3f2fd;
   transform: rotate(45deg);
 }
+
+/* =========================================
+RESPONSIVO CELULAR
+========================================= */
 
 /* =========================================
 INPUT AREA
@@ -408,51 +417,20 @@ RODAPÉ
 RESPONSIVO CELULAR
 ========================================= */
 @media (max-width: 600px) {
-
-  .container {
-    min-height: 90vh;
-    padding: 16px;
-  }
-
-  .botoes-opcao {
-    flex-direction: column;
-  }
-
-  .botoes-opcao button {
-    width: 100%;
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  /* Mensagens do bot no celular */
-  .msg-bot-wrapper {
-    position: relative;
-    width: 100%;
-    margin: 4px 0;
-    display: flex;
-    align-items: flex-start;
-    padding-left: 0;
-  }
-
   .bot-avatar {
-    position: absolute;
-    left: -8px;  /* avatar um pouco mais à esquerda */
-    top: 6px;
     width: 48px;
     height: 48px;
+    margin-bottom: 4px;
   }
 
   .bot-bubble {
-    margin-left: 40px;           /* distância do avatar */
-    width: calc(100% - 30px);    /* aumenta bolha 10px para a direita */
-    max-width: calc(100% - 30px);
-    min-width: 0;
-    padding: 14px 16px;
-    box-sizing: border-box;
+    width: 100%; /* ocupa todo o container no celular também */
+    padding: 16px 18px;
   }
 
   .bot-bubble::before {
-    left: -8px;
-    top: 14px;
+    top: -8px;
+    left: 12px; /* rabinho ajustado no celular */
   }
 }
+
