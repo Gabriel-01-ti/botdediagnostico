@@ -338,20 +338,27 @@ button {
     color: #1b5e20;
 }
 
-/* RODAPÉ */
 .rodape {
   background: #0b3d2e;
   color: white;
-
-  padding: 12px 10px; /* bem menor */
+  padding: 10px 20px;
   margin-top: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  flex-wrap: wrap; /* se a tela for muito pequena, quebra bonito */
+  text-align: center;
   font-size: 13px;
 }
 
 .logo-rodape {
-  width: 80px; /* menor */
-  margin-bottom: 4px;
+  width: 45px;
+  margin: 0;
 }
+
 
 
 /* SPLASH SCREEN */
@@ -379,6 +386,7 @@ button {
   50% { transform: scale(1.05); opacity: 0.7; }
   100% { transform: scale(1); opacity: 1; }
 }
+
 
 
 
