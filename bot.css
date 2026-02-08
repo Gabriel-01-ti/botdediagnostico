@@ -388,7 +388,6 @@ RODAPÉ
 
 /* =========================================
 RESPONSIVO CELULAR
-========================================= */
 @media (max-width: 600px) {
   .container {
     min-height: 90vh;
@@ -418,17 +417,18 @@ RESPONSIVO CELULAR
     width: 48px;
     height: 48px;
     position: absolute;
-    left: -5px; /* desloca a logo um pouco mais para a esquerda */
+    left: -12px; /* avatar mais à esquerda */
     top: 6px;
   }
 
   .bot-bubble {
-    margin-left: 40px;            /* diminui espaço entre avatar e bolha */
+    margin-left: 40px;                /* mantém espaço do avatar */
     flex-grow: 1;
-    width: calc(100% - 40px);     /* aumenta área azul */
-    max-width: calc(100% - 40px);
+    width: calc(100% - 30px);         /* aumenta 10px para a direita */
+    max-width: calc(100% - 30px);
     min-width: 0;
     padding: 14px 16px;
+    box-sizing: border-box;
   }
 
   .bot-bubble::before {
@@ -436,4 +436,5 @@ RESPONSIVO CELULAR
     top: 14px;
   }
 }
+
 
