@@ -418,7 +418,7 @@ RESPONSIVO
 @media (max-width: 600px) {
   /* Wrapper da mensagem do bot */
   .msg-bot-wrapper {
-    padding-left: 50px; /* avatar mais perto da borda externa */
+    padding-left: 30px; /* avatar mais perto da borda externa */
     width: 100%;        /* wrapper ocupa todo o chat */
   }
 
@@ -438,3 +438,4 @@ RESPONSIVO
     padding: 14px 16px;
   }
 }
+
