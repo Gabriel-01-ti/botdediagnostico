@@ -333,6 +333,25 @@ PAINEL GUIA
   padding: 20px;
 }
 
+/* ITENS DO GUIA */
+.item-guia {
+  display: block;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: #f1f8e9;
+  border: 1px solid #2e7d32;
+  color: #1b5e20;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.item-guia:hover {
+  background-color: #2e7d32;
+  color: white;
+}
+
 /* =========================================
 RODAPÉ
 ========================================= */
