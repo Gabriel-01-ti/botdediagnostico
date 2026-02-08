@@ -1,3 +1,7 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
 /* =========================================
    RESET E CONFIGURAÇÕES GERAIS
    ========================================= */
@@ -384,6 +388,7 @@ button {
   50% { transform: scale(1.05); opacity: 0.7; }
   100% { transform: scale(1); opacity: 1; }
 }
+
 
 
 
