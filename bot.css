@@ -406,21 +406,34 @@ RESPONSIVO CELULAR
   }
 
   /* MENSAGENS DO BOT NO CELULAR */
+  .msg-bot-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 4px 0;
+    display: flex;
+    align-items: flex-start;
+  }
+
   .bot-avatar {
     width: 48px;
     height: 48px;
+    position: absolute;
+    left: -5px; /* desloca a logo um pouco mais para a esquerda */
+    top: 6px;
   }
 
   .bot-bubble {
-    margin-left: 8px;
+    margin-left: 40px;            /* diminui espaço entre avatar e bolha */
     flex-grow: 1;
-    width: calc(100% - 56px);
-    max-width: calc(100% - 56px);
+    width: calc(100% - 40px);     /* aumenta área azul */
+    max-width: calc(100% - 40px);
     min-width: 0;
+    padding: 14px 16px;
   }
 
   .bot-bubble::before {
-    left: -8px;
+    left: -8px; /* rabinho continua saindo da bolha */
     top: 14px;
   }
 }
+
