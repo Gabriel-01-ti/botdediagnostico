@@ -61,14 +61,34 @@ function normalizar(txt) {
 function addMsg(texto, tipo, rolar = true) {
   const div = document.createElement("div");
   div.className = "msg " + tipo;
-  div.innerHTML = texto;
+
+  // 👉 Se for o BOT, adiciona avatar + bolha
+  if (tipo === "bot") {
+    div.classList.add("msg-bot-wrapper");
+
+    const avatar = document.createElement("img");
+    avatar.src = "logo.jpg"; // sua logo
+    avatar.className = "bot-avatar";
+
+    const bubble = document.createElement("div");
+    bubble.className = "bot-bubble";
+    bubble.innerHTML = texto;
+
+    div.appendChild(avatar);
+    div.appendChild(bubble);
+
+  } else {
+    // usuário continua igual
+    div.innerHTML = texto;
+  }
+
   chatDiv.appendChild(div);
 
-  // Só rola pro final se permitido
   if (rolar) {
     chatDiv.scrollTop = chatDiv.scrollHeight;
   }
 }
+
 
 
 // ================= INÍCIO =================
@@ -278,6 +298,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 2500);
   });
+
 
 
 
