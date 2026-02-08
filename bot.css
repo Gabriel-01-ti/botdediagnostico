@@ -415,8 +415,8 @@ button {
 
 /* 🔵 Logo maior e FLUTUANDO fora */
 .bot-avatar {
-  width: 54px;
-  height: 54px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
@@ -449,6 +449,7 @@ button {
   background: #ffffff;
   transform: rotate(45deg);
 }
+
 
 
 
