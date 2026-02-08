@@ -296,8 +296,9 @@ inputSintomas.addEventListener("keypress", e => {
   window.addEventListener("load", function () {
     setTimeout(function () {
       document.getElementById("splash").style.display = "none";
-    }, 2500);
+    }, 3500);
   });
+
 
 
 
