@@ -98,6 +98,7 @@ BOT COM LOGO LATERAL
   object-fit: cover;
   border: 3px solid white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  position: relative;
   left: 0;
   top: 6px;
 }
@@ -414,29 +415,43 @@ RESPONSIVO
 }
 
 
+/* =========================================
+MENSAGENS DO BOT - CORREÇÃO PARA CELULAR
+========================================= */
 @media (max-width: 600px) {
   /* Wrapper da mensagem do bot */
   .msg-bot-wrapper {
-    padding-left: 30px; /* avatar mais perto da borda externa */
-    width: 100%;        /* wrapper ocupa todo o chat */
+    position: relative;   /* importante para avatar absoluto */
+    padding-left: 60px;   /* espaço para o avatar */
+    width: 100%;
+    margin: 4px 0;
   }
 
-  /* Avatar do bot */ 
+  /* Avatar do bot */
   .bot-avatar {
-    left: 0;            /* colado na borda do wrapper */
+    position: absolute;   /* precisa ser absoluta dentro do wrapper */
+    left: 0;              /* colado na borda do wrapper */
     top: 6px;
-    width: 48px;        /* tamanho menor para celular */
+    width: 48px;
     height: 48px;
   }
 
   /* Bolha azul do bot */
   .bot-bubble {
-    width: calc(100% - 50px);  /* ocupa todo o espaço restante */
-    max-width: calc(100% - 50px);
+    width: 100%;          /* ocupa todo o espaço do wrapper */
+    max-width: 100%;
     min-width: auto;
     padding: 14px 16px;
+    box-sizing: border-box;
+  }
+
+  /* Rabinho da bolha */
+  .bot-bubble::before {
+    left: 48px; /* desloca o "rabinho" para sair do avatar */
   }
 }
+
+
 
 
 
