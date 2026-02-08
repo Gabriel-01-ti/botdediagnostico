@@ -59,13 +59,13 @@ h1 {
 
     /* FUNDO COM IMAGEM */
     background-image: url("fundo.jpg"); /* coloque o caminho certo da imagem */
-    background-size: cover;      /* cobre toda a área */
+    background-size: contain;      /* cobre toda a área */
     background-position: center; /* centraliza */
     background-repeat: no-repeat;
     
     /* opcional: efeito vidro pra melhorar leitura */
     background-color: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(3px);
+   ;
 }
 
 
@@ -449,5 +449,6 @@ button {
   background: #ffffff;
   transform: rotate(45deg);
 }
+
 
 
