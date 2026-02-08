@@ -422,7 +422,7 @@ RESPONSIVO
     width: 100%;        /* wrapper ocupa todo o chat */
   }
 
-  /* Avatar do bot */
+  /* Avatar do bot */ 
   .bot-avatar {
     left: 0;            /* colado na borda do wrapper */
     top: 6px;
@@ -438,4 +438,5 @@ RESPONSIVO
     padding: 14px 16px;
   }
 }
+
 
