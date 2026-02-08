@@ -98,7 +98,6 @@ BOT COM LOGO LATERAL
   object-fit: cover;
   border: 3px solid white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-  position: absolute;
   left: 0;
   top: 6px;
 }
@@ -438,5 +437,6 @@ RESPONSIVO
     padding: 14px 16px;
   }
 }
+
 
 
