@@ -212,6 +212,15 @@ small {
     to { opacity: 1; transform: translateY(0); }
 }
 
+.thanks-msg {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 800; /* Deixa bem em negrito */
+    text-align: center;
+    color: #1a3d1d; /* O verde escuro que combinamos */
+    text-transform: uppercase; /* Opcional: deixa em letras maiúsculas para dar mais ênfase */
+    letter-spacing: 0.5px;
+}
 
 }/* 📱 AJUSTE PARA CELULARES */
 @media (max-width: 600px) {
@@ -293,6 +302,7 @@ small {
     border-left: 5px solid #2196f3;
     font-weight: 500;
 }
+
 
 
 
