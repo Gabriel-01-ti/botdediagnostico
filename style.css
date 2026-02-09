@@ -101,41 +101,44 @@ small {
   color: #444;
   font-size: 14px;
 }
-/* Estilo do Botão Flutuante */
+/* Estilo do Botão "?" Circular */
 #floating-info-btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #28a745; /* Verde Agro */
+    width: 50px;
+    height: 50px;
+    background-color: #28a745;
     color: white;
-    padding: 12px 20px;
-    border-radius: 50px;
+    border-radius: 50%; /* Faz o botão ser um círculo perfeito */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: Arial, sans-serif;
-    transition: transform 0.3s;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 #floating-info-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    background-color: #218838;
 }
 
-/* Estilo do Menu de Informações */
+/* Menu de Informações */
 #info-menu {
     position: fixed;
     bottom: 80px;
     right: 20px;
-    width: 280px;
+    width: 260px;
     background: white;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     z-index: 1001;
+    font-family: sans-serif;
     overflow: hidden;
-    font-family: Arial, sans-serif;
 }
 
 .hidden { display: none; }
@@ -149,20 +152,17 @@ small {
     align-items: center;
 }
 
-.info-header h3 { margin: 0; font-size: 16px; }
-.info-header button { background: none; border: none; color: white; cursor: pointer; }
+.info-header button { background: none; border: none; color: white; cursor: pointer; font-size: 16px; }
 
-.info-body { padding: 15px; font-size: 14px; line-height: 1.5; color: #333; }
+.info-body { padding: 15px; font-size: 14px; line-height: 1.4; color: #333; }
 
 .contact-link {
     display: block;
-    margin-top: 10px;
+    margin-top: 8px;
     color: #007bff;
     text-decoration: none;
-}
-
-.contact-link:hover { text-decoration: underline; }
-/* 📱 AJUSTE PARA CELULARES */
+    font-weight: bold;
+}/* 📱 AJUSTE PARA CELULARES */
 @media (max-width: 600px) {
   body {
     padding: 8px;
@@ -242,5 +242,6 @@ small {
     border-left: 5px solid #2196f3;
     font-weight: 500;
 }
+
 
 
