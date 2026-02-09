@@ -178,7 +178,7 @@ btnEnviar.addEventListener("click", () => {
     return;
   }
   // 🛑 COMANDOS PARA FINALIZAR O DIAGNÓSTICO
-  if (['finalizar', 'encerrar', 'parar', 'sair', 'cancelar'].includes(comando)) {
+  if (['finalizar', 'encerrar', 'parar', 'sair', 'cancelar','obrigado', 'muito obrigado'].includes(comando)) {
     finalizarDiagnostico();
     return;
    }
@@ -298,6 +298,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
