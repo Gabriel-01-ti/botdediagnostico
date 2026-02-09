@@ -410,44 +410,70 @@ RODAPÉ
 /* =========================================
 RESPONSIVO CELULAR
 ========================================= */
+/* =========================================
+RESPONSIVO CELULAR (CORREÇÃO DE LARGURA)
+========================================= */
 @media (max-width: 600px) {
   .container {
-    min-height: 90vh;
-    padding: 16px;
-  }
-
-  .botoes-opcao {
-    flex-direction: column;
-  }
-
-  .botoes-opcao button {
+    padding: 10px; /* Reduz padding para dar mais espaço à bolha */
     width: 100%;
-    font-size: 16px;
-    padding: 12px;
+    max-width: 100vw;
   }
 
-  /* Mensagens do bot no celular */
+  #chat {
+    padding: 5px; /* Menos recuo interno no chat */
+  }
+
+  /* Faz o wrapper e a bolha ignorarem restrições e ocuparem tudo */
   .msg-bot-wrapper {
-    flex-direction: column;
+    width: 100% !important;
+    margin: 15px 0;
     align-items: flex-start;
-    margin: 6px 0;
-    width: 100%;
-  }
-
-  .bot-avatar {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 6px; /* espaço entre avatar e bolha */
   }
 
   .bot-bubble {
-    width: 100%; /* ocupa todo o container */
-    padding: 14px 16px;
-    margin-top: 0;
+    width: 100% !important;
+    max-width: 100% !important; /* Impede que ela fique estreita */
+    padding: 20px 15px;
+    font-size: 15px;
+    border-radius: 12px;
+    display: block; /* Garante que se comporte como bloco */
   }
 
+  /* Ajuste do rabinho para não encostar no avatar */
   .bot-bubble::before {
-    top: -8px;
-    left: 12px; /* rabinho ajustado no celular */
+    top: -9px;
+    left: 22px;
+    width: 18px;
+    height: 18px;
+    transform: rotate(45deg);
+    background: #e3f2fd;
+  }
+
+  /* AJUSTE PARA O CONTEÚDO DAS DOENÇAS NÃO QUEBRAR */
+  .doenca-card, .secao-controle, .secao-sintomas ul, .secao-tecnica ul {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 12px;
+    box-sizing: border-box; /* Garante que o padding não "estoure" a largura */
+  }
+
+  .imagem-doenca {
+    max-width: 100%; /* Imagem se ajusta à largura da bolha */
+    height: auto;
+  }
+
+  /* Botões de sintomas em grid para não sumirem da tela */
+  .sintomas-botoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+
+  .sintomas-botoes button {
+    margin: 0;
+    font-size: 13px;
+    padding: 8px 4px;
   }
 }
