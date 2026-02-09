@@ -196,5 +196,13 @@ function reiniciar() {
 }
 
 
+function toggleInfoMenu() {
+    const menu = document.getElementById('info-menu');
+    if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+    } else {
+        menu.classList.add('hidden');
+    }
+}
 
 
