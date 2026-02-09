@@ -84,15 +84,15 @@ MENSAGENS
 }
 
 /* =========================================
-BOT COM AVATAR EM CIMA E BOLHA OCUPANDO TODO O CONTAINER
+BOT COM AVATAR EM CIMA E BOLHA
 ========================================= */
 .msg-bot-wrapper {
   display: flex;
-  flex-direction: column; /* avatar em cima */
+  flex-direction: column; 
   align-items: flex-start;
   position: relative;
   margin: 8px 0;
-  width: 100%; /* wrapper ocupa toda largura do container */
+  width: 100%; 
 }
 
 .bot-avatar {
@@ -102,7 +102,8 @@ BOT COM AVATAR EM CIMA E BOLHA OCUPANDO TODO O CONTAINER
   object-fit: cover;
   border: 3px solid white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-  margin-bottom: 6px; /* espaço entre avatar e bolha */
+  margin-bottom: 6px; 
+  z-index: 10;
 }
 
 .bot-bubble {
@@ -112,7 +113,7 @@ BOT COM AVATAR EM CIMA E BOLHA OCUPANDO TODO O CONTAINER
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border-left: 4px solid #1565c0;
-  width: 100%;  /* ocupa todo o container */
+  width: 100%;  
   box-sizing: border-box;
   position: relative;
   margin-top: 0;
@@ -122,8 +123,8 @@ BOT COM AVATAR EM CIMA E BOLHA OCUPANDO TODO O CONTAINER
 .bot-bubble::before {
   content: "";
   position: absolute;
-  top: -8px; /* rabinho em cima da bolha */
-  left: 20px; /* distância do canto esquerdo */
+  top: -8px; 
+  left: 20px; 
   width: 16px;
   height: 16px;
   background: #e3f2fd;
@@ -336,7 +337,6 @@ PAINEL GUIA
   padding: 20px;
 }
 
-/* ITENS DO GUIA */
 .item-guia {
   display: block;
   padding: 12px 15px;
@@ -408,92 +408,87 @@ RODAPÉ
 }
 
 /* =========================================
-RESPONSIVO CELULAR
-========================================= */
-/* =========================================
-RESPONSIVO CELULAR (CORREÇÃO DE LARGURA)
+RESPONSIVO CELULAR (REVISADO E COMPLETO)
 ========================================= */
 @media (max-width: 600px) {
   .container {
-    padding: 10px; /* Reduz padding para dar mais espaço à bolha */
+    min-height: 90vh;
+    padding: 12px;
     width: 100%;
-    max-width: 100vw;
   }
 
-  #chat {
-    padding: 5px; /* Menos recuo interno no chat */
+  .botoes-opcao {
+    flex-direction: column;
   }
 
-  /* Faz o wrapper e a bolha ignorarem restrições e ocuparem tudo */
+  .botoes-opcao button {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+  }
 
+  /* Mensagens do bot */
   .msg-bot-wrapper {
-    display: flex;
-    flex-direction: column; /* Força o avatar a ficar em cima */
-    align-items: flex-start;
-    width: 100% !important;
-    margin-top: 25px; /* Espaço extra para o avatar não bater na mensagem de cima */
+    width: calc(100% - 4px) !important;
+    margin: 25px auto 10px auto;
   }
 
   .bot-avatar {
-    width: 60px; /* Aumentei um pouco para destaque */
-    height: 60px;
-    margin-bottom: 15px; /* Espaço crucial para o rabinho respirar embaixo dele */
+    width: 55px;
+    height: 55px;
     margin-left: 10px;
-    border: 3px solid #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    position: relative;
-    z-index: 10; /* Garante que ele fique no topo de tudo */
-    display: block;
+    margin-bottom: 12px; /* Respiro pro rabinho */
   }
 
   .bot-bubble {
     width: 100% !important;
-    position: relative;
-    margin-top: 0 !important; /* Remove qualquer margem que desalinhe o topo */
-    z-index: 5;
+    padding: 20px 15px; /* Bolha mais robusta */
   }
 
-  /* Ajuste preciso do Rabinho */
+  /* Ajuste do rabinho: Sai de cima do avatar e aponta pra ele */
   .bot-bubble::before {
-    content: "";
-    position: absolute;
-    top: -10px;    /* Eleva o triângulo para fora da bolha */
-    left: 28px;    /* Alinha com o centro do avatar (60px / 2 = aprox 30px) */
-    width: 20px;
-    height: 20px;
-    background: #e3f2fd; /* Mesma cor da bolha */
-    transform: rotate(45deg);
-    display: block !important;
-    z-index: 4;    /* Fica abaixo do avatar mas acima da borda da bolha */
+    top: -9px;
+    left: 28px;
+    width: 18px;
+    height: 18px;
   }
-}
 
+  /* CORREÇÃO DAS BORDAS INTERNAS (SINTOMAS) */
+  .secao-sintomas ul, 
+  .secao-tecnica ul {
+    padding: 15px 12px 15px 35px !important; /* Recuo para não comer a borda */
+    margin: 10px 0 !important;
+    box-sizing: border-box;
+    width: 100% !important;
+  }
 
-  /* AJUSTE PARA O CONTEÚDO DAS DOENÇAS NÃO QUEBRAR */
-  .doenca-card, .secao-controle, .secao-sintomas ul, .secao-tecnica ul {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 12px;
-    box-sizing: border-box; /* Garante que o padding não "estoure" a largura */
+  .doenca-card, .secao-controle {
+    width: 100% !important;
+    padding: 12px !important;
+    box-sizing: border-box;
   }
 
   .imagem-doenca {
-    max-width: 100%; /* Imagem se ajusta à largura da bolha */
+    max-width: 100%;
     height: auto;
   }
 
-  /* Botões de sintomas em grid para não sumirem da tela */
   .sintomas-botoes {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px;
+    gap: 8px;
   }
 
   .sintomas-botoes button {
     margin: 0;
     font-size: 13px;
-    padding: 8px 4px;
+    padding: 10px 5px;
   }
-}
+
+  .rodape {
+    font-size: 12px;
+  }
+  }
+  
+
 
