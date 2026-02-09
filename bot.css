@@ -421,6 +421,11 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     width: 100%;
   }
 
+  /* Força o chat a não ter espaços sobrando nas laterais */
+  #chat {
+    padding: 15px 5px !important;
+  }
+
   .botoes-opcao {
     flex-direction: column;
   }
@@ -431,28 +436,31 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     padding: 12px;
   }
 
-  /* Mensagens do bot */
+  /* Mensagens do bot - LARGURA TOTAL */
   .msg-bot-wrapper {
-    width: calc(100% - 4px) !important;
-    margin: 25px auto 10px auto;
+    width: 100% !important;
+    margin: 25px 0 10px 0;
+    align-items: flex-start;
   }
 
   .bot-avatar {
     width: 55px;
     height: 55px;
-    margin-left: 10px;
-    margin-bottom: 12px; /* Respiro pro rabinho */
+    margin-left: 5px; /* Avatar mais para a esquerda */
+    margin-bottom: 12px;
   }
 
   .bot-bubble {
-    width: 100% !important;
-    padding: 20px 15px; /* Bolha mais robusta */
+    width: 100% !important; /* Bolha esticada */
+    max-width: 100% !important;
+    padding: 20px 15px;
+    border-radius: 12px;
   }
 
-  /* Ajuste do rabinho: Sai de cima do avatar e aponta pra ele */
+  /* Ajuste do rabinho para acompanhar o avatar na esquerda */
   .bot-bubble::before {
     top: -9px;
-    left: 28px;
+    left: 22px; /* Ajustado para alinhar com o avatar */
     width: 18px;
     height: 18px;
   }
@@ -460,7 +468,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
   /* CORREÇÃO DAS BORDAS INTERNAS (SINTOMAS) */
   .secao-sintomas ul, 
   .secao-tecnica ul {
-    padding: 15px 12px 15px 35px !important; /* Recuo para não comer a borda */
+    padding: 15px 12px 15px 35px !important;
     margin: 10px 0 !important;
     box-sizing: border-box;
     width: 100% !important;
@@ -492,8 +500,9 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
   .rodape {
     font-size: 12px;
   }
-  }
-  
+}
+
+
 
 
 
