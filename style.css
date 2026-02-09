@@ -101,7 +101,67 @@ small {
   color: #444;
   font-size: 14px;
 }
+/* Estilo do Botão Flutuante */
+#floating-info-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745; /* Verde Agro */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s;
+}
 
+#floating-info-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo do Menu de Informações */
+#info-menu {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 280px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1001;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.hidden { display: none; }
+
+.info-header {
+    background: #218838;
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-header h3 { margin: 0; font-size: 16px; }
+.info-header button { background: none; border: none; color: white; cursor: pointer; }
+
+.info-body { padding: 15px; font-size: 14px; line-height: 1.5; color: #333; }
+
+.contact-link {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact-link:hover { text-decoration: underline; }
 /* 📱 AJUSTE PARA CELULARES */
 @media (max-width: 600px) {
   body {
@@ -182,4 +242,5 @@ small {
     border-left: 5px solid #2196f3;
     font-weight: 500;
 }
+
 
