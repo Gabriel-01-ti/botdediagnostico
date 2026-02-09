@@ -106,45 +106,45 @@ small {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Botão Flutuante Enfeitado */
+/* Botão "?" com Borda Preta e Verde Escuro */
 #floating-info-btn {
     position: fixed;
     bottom: 25px;
     right: 25px;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #28a745, #1e7e34); /* Gradiente Verde */
-    color: white;
+    background-color: #1a3d1d; /* Verde Floresta Escuro */
+    color: #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
     cursor: pointer;
     z-index: 1000;
-    /* Borda e Sombra */
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 15px rgba(40, 167, 69, 0.5), 0 4px 10px rgba(0,0,0,0.3);
+    /* Borda Preta Grossa */
+    border: 3px solid #000000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     transition: all 0.3s ease;
 }
 
 #floating-info-btn:hover {
-    transform: scale(1.1) rotate(10deg);
-    box-shadow: 0 0 25px rgba(40, 167, 69, 0.8);
+    transform: scale(1.1);
+    background-color: #0e2410; /* Tom ainda mais escuro no hover */
 }
 
-/* Menu de Informações Moderno */
+/* Menu com Borda Preta */
 #info-menu {
     position: fixed;
     bottom: 95px;
     right: 25px;
-    width: 300px;
-    background: rgba(255, 255, 255, 0.95); /* Fundo quase opaco */
-    backdrop-filter: blur(10px); /* Efeito de vidro */
-    border-radius: 20px;
-    border: 2px solid #28a745; /* Borda Verde */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 290px;
+    background: #ffffff;
+    border-radius: 15px;
+    /* Borda Preta e Verde Escura */
+    border: 4px solid #000000; 
+    box-shadow: 8px 8px 0px #1a3d1d; /* Sombra sólida estilo "Pop-art" */
     z-index: 1001;
     overflow: hidden;
     animation: slideUp 0.4s ease forwards;
@@ -152,53 +152,61 @@ small {
 
 .hidden { display: none; }
 
-/* Cabeçalho do Menu */
+/* Cabeçalho Verde Escuro */
 .info-header {
-    background: #28a745;
+    background: #1a3d1d;
     color: white;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 3px solid #000000;
 }
 
-.info-header h3 { margin: 0; font-size: 16px; font-weight: 700; }
+/* Borda no Título AgroBot Info */
+.info-header h3 { 
+    margin: 0; 
+    font-size: 14px; 
+    font-weight: 800;
+    padding: 6px 10px;
+    border: 2px solid #000000; /* Borda Preta no Título */
+    background: #ffffff;
+    color: #1a3d1d;
+    text-transform: uppercase;
+}
+
+/* Botão fechar (X) */
 .info-header button { 
-    background: rgba(0,0,0,0.1); 
+    background: #000000; 
     border: none; 
     color: white; 
-    border-radius: 50%; 
+    border-radius: 5px; 
     width: 25px; height: 25px; 
     cursor: pointer;
+    font-weight: bold;
 }
 
-/* Corpo do Texto */
-.info-body { padding: 20px; color: #333; }
-.info-body p { margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
+/* Corpo e Links */
+.info-body { padding: 18px; color: #000000; font-weight: 500; }
 
-/* Links de Contato Enfeitados */
 .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 15px;
+    display: block;
+    margin-top: 10px;
     padding: 10px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    color: #28a745;
+    background: #e9ecef;
+    border: 2px solid #000000; /* Borda preta nos botões de contato */
+    color: #1a3d1d;
     text-decoration: none;
     font-weight: bold;
-    font-size: 14px;
-    border: 1px solid transparent;
-    transition: 0.3s;
+    text-align: center;
+    border-radius: 8px;
 }
 
 .contact-link:hover {
-    background: #e9ecef;
-    border-color: #28a745;
+    background: #1a3d1d;
+    color: white;
 }
 
-/* Animação de entrada */
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -285,6 +293,7 @@ small {
     border-left: 5px solid #2196f3;
     font-weight: 500;
 }
+
 
 
 
