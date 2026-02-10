@@ -254,22 +254,55 @@ CABEÇALHO
   padding-bottom: 15px;
   border-bottom: 1px solid #e0e0e0;
 }
+/* =========================================
+DESCRIÇÃO (AGORA BONITA E MODERNA)
+========================================= */
 .descricao-app {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #1b3d1a;              /* Verde escuro que contrasta com o fundo */
-            /* Centraliza o texto */
-  line-height: 1.6;             /* Espaçamento entre linhas agradável */
+  /* Cores e Fundo */
+  background: #ffffff;
+  color: #374151;
   
-  background: #d5e8d4;          /* Fundo suave parecido com o body */
-  padding: 18px 22px;
-  border-radius: 14px;
+  /* Tipografia */
+  font-size: 1.05rem;
+  line-height: 1.6;
+  text-align: left; /* Alinhamento à esquerda fica mais moderno que centralizado */
+  
+  /* Espaçamento e Bordas */
+  padding: 20px 25px;
+  margin: 10px auto 30px auto;
+  border-radius: 16px;
+  
+  /* Layout e Responsividade */
+  width: 100%;
+  max-width: 850px;
+  box-sizing: border-box;
+  
+  /* O Pulo do Gato: Sombra e Borda Lateral */
+  border: none;
+  border-left: 6px solid #2e7d32; /* Um detalhe elegante na lateral */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  
+  /* Ajuste para não quebrar no celular */
+  word-wrap: break-word;
+  display: block;
+}
 
-  border: 2px solid #c8e6c9;   /* Contorno leve */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra leve */
-  word-wrap: break-word;        /* Quebra linhas longas */
-  max-width:1100px;             /* Limita largura para alinhar bem */
-  margin: 0 auto 10px auto;     /* Centraliza e dá espaço abaixo */
+/* Deixa as palavras-chave em negrito com a cor do tema */
+.descricao-app strong, 
+.descricao-app b {
+  color: #1b5e20;
+  font-weight: 700;
+}
+
+/* Ajuste específico para Celular */
+@media (max-width: 600px) {
+  .descricao-app {
+    font-size: 0.95rem;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left-width: 4px; /* Borda mais fina no mobile */
+    line-height: 1.5;
+  }
 }
 /* =========================================
 IMAGEM DA DOENÇA
@@ -575,6 +608,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
