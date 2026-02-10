@@ -132,6 +132,7 @@ small {
 #floating-info-btn:hover {
     transform: scale(1.1) rotate(10deg);
     background-color: #0e2410; 
+    align-items:center
 }
 
 /* Menu com Borda Preta - AJUSTADO PARA NÃO CORTAR */
@@ -329,6 +330,7 @@ small {
     border-left: 5px solid #2196f3;
     font-weight: 500;
 }
+
 
 
 
