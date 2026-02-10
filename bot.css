@@ -45,6 +45,22 @@ h1 {
   margin: 0 0 20px 0;
 }
 
+.app-title {
+  font-size: 2.7rem;
+  font-weight: 900;
+  color: #2e7d32;
+  letter-spacing: -1px;
+  text-align: center;
+  margin-bottom: 12px;
+
+  text-shadow:
+    0 0 2px #000,
+    1px 1px 0 #000,
+   -1px 1px 0 #000,
+    1px -1px 0 #000,
+   -1px -1px 0 #000;
+}
+
 /* =========================================
 ÁREA DO CHAT
 ========================================= */
@@ -229,13 +245,17 @@ CABEÇALHO
 }
 
 .descricao-app {
-  margin: 0 auto;
-  color: #555;
-  font-size: 15px;
-  line-height: 1.5;
-  max-width: 95%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1b5e20;
+  text-align: center;
+  line-height: 1.6;
+  background: rgba(232, 245, 233, 0.9);
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #a5d6a7;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
-
 /* =========================================
 IMAGEM DA DOENÇA
 ========================================= */
@@ -540,6 +560,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
