@@ -13,25 +13,29 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>Agroinova - diagnóstico por imagem 📷🌱</h1>
+<div class="container">
+    <h1>Agroinova 📷🌱</h1>
 
-
-    <label>Cultura:</label>
+    <label for="cultura">Cultura:</label>
     <select id="cultura">
-      <option value="" disabled selected>Selecione uma cultura</option>
-      <option value="milho">Milho  🌽 </option>
+      <option value="" disabled selected>O que vamos analisar?</option>
+      <option value="milho">Milho 🌽</option>
       <option value="soja">Soja 🫛</option>
       <option value="feijao">Feijão 🫘</option>
     </select>
 
-    <input type="file" id="foto" accept="image/*">
+    <input type="file" id="foto" accept="image/*" hidden>
+    <div class="file-dropzone" onclick="document.getElementById('foto').click()">
+        <span class="icon">📁</span>
+        <p id="file-name">Toque para selecionar a foto da folha</p>
+    </div>
 
-    <button onclick="analisar()">📷 Analisar imagem</button>
-    <button onclick="reiniciar()" class="btn-reiniciar">🔄 Reiniciar</button>
+    <button onclick="analisar()">Analisar planta</button>
+    <button onclick="reiniciar()" class="btn-reiniciar">Reiniciar</button>
 
     <div id="resultado" class="resultado"></div>
-  </div>
+</div>
+
 
 
 <div id="floating-info-btn" onclick="toggleInfoMenu()">?</div>
@@ -62,6 +66,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
