@@ -6,32 +6,27 @@
 /* BODY */
 body {
   font-family: Arial, sans-serif;
-
   /* fundo elegante agro + tecnologia */
-   background-image: url(fundo.jpg);
+  background-image: url(fundo.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
+  background-attachment: fixed;
   margin: 0;
   padding: 16px;
 }
 
-/* CONTAINER */
+/* CONTAINER PRINCIPAL */
 .container {
   max-width: 1100px;
   width: 100%;
-
   /* destaque sem "fundinho feio" */
   background: #f9fff9;
-
   margin: 0 auto;
-  padding: 24px;
+  padding: 18px;
   border-radius: 14px;
-
   /* contorno forte e limpo */
   border: 2px solid #1b5e20;
-
   /* sombra moderna */
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.12),
@@ -45,30 +40,39 @@ h1 {
   font-size: clamp(24px, 4.5vw, 36px);
   color: #1b5e20;
   margin-bottom: 24px;
-
   /* contorno preto fake */
   text-shadow:
     -1px -1px 0 #000,
      1px -1px 0 #000,
     -1px  1px 0 #000,
      1px  1px 0 #000,
-
     /* brilho verde suave */
      0 0 8px rgba(46, 125, 50, 0.6);
 }
 
-/* INPUTS */
+/* INPUTS E CAMPOS DE SELEÇÃO */
 select,
 input,
-button {
+button:not(#floating-info-btn):not(.close-btn) {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
   font-size: 16px;
-  border-radius: 6px;
+  border-radius: 8px; /* Arredondamento levemente maior para modernizar */
 }
 
-/* BOTÃO */
+select, input[type="file"] {
+  border: 2px solid #ccc;
+  background: #fff;
+  transition: border-color 0.3s;
+}
+
+select:focus {
+  border-color: #2e7d32;
+  outline: none;
+}
+
+/* BOTÕES DE AÇÃO */
 button {
   background: #2e7d32;
   color: white;
@@ -83,17 +87,23 @@ button:hover {
   transform: scale(1.01);
 }
 
+.btn-reiniciar {
+  background: #555;
+  margin-top: 10px;
+}
+
+.btn-reiniciar:hover {
+  background: #444;
+}
+
 /* RESULTADO */
 .resultado {
   margin-top: 20px;
-
   /* fundo neutro elegante */
   background: #f4f8f4;
-
   padding: 16px;
   border-radius: 8px;
   line-height: 1.6;
-
   border-left: 5px solid #2e7d32;
 }
 
@@ -104,12 +114,13 @@ small {
   color: #444;
   font-size: 14px;
 }
+
 /* Estilo Global da Letra */
 #info-menu, #floating-info-btn {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Botão "?" com Borda Preta e Verde Escuro */
+/* --- BOTÃO FLUTUANTE "?" (MANTIDO CONFORME ORIGINAL) --- */
 #floating-info-btn {
     position: fixed;
     bottom: 25px;
@@ -146,9 +157,9 @@ small {
 /* --- ESTILO DO MENU (AJUSTADO) --- */
 #info-menu {
     position: fixed;
-    bottom: 80px; /* Desci um pouco (estava 95px) */
+    bottom: 95px; /* Ajustado para não colar no botão */
     right: 25px; 
-    width: 350px; /* Mais largo no computador */
+    width: 380px; /* Mais largo conforme pedido anteriormente */
     max-width: 85vw; /* No celular ele não estoura a tela */
     
     /* LIMITADOR: Impede que o topo do menu saia da tela */
@@ -191,7 +202,7 @@ small {
     text-transform: uppercase;
 }
 
-/* O "X" - AGORA CENTRALIZADO DE VERDADE */
+/* O "X" - CENTRALIZADO DE VERDADE */
 .close-btn { 
     background: #000000 !important; 
     color: #ffffff !important; 
@@ -209,8 +220,8 @@ small {
     
     font-size: 18px; 
     font-weight: bold;
-    line-height: 1; /* Mata qualquer espaço extra */
-    padding: 0; /* Remove paddings que empurram o X */
+    line-height: 1; 
+    padding: 0; 
     cursor: pointer;
     transition: 0.2s;
 }
@@ -229,7 +240,7 @@ small {
     overflow-y: auto; 
 }
 
-/* BARRA DE ROLAGEM BONITINHA */
+/* BARRA DE ROLAGEM */
 .info-body::-webkit-scrollbar { width: 8px; }
 .info-body::-webkit-scrollbar-thumb { background: #1a3d1d; border-radius: 10px; }
 
@@ -282,7 +293,7 @@ small {
 
 .divider { border: 0; border-top: 2px solid #000; margin: 15px 0; }
 
-/* 📱 AJUSTE PARA CELULARES */
+/* 📱 AJUSTE PARA CELULARES (COMPLETO) */
 @media (max-width: 600px) {
   body {
     padding: 8px;
@@ -295,8 +306,15 @@ small {
   button {
     font-size: 15px;
   }
+  
+  #info-menu {
+      width: 90vw;
+      right: 5vw;
+      bottom: 85px;
+  }
 }
 
+/* --- SEÇÕES DE DIAGNÓSTICO E DOENÇAS (MANUTENÇÃO INTEGRAL) --- */
 
 .doenca-card.destaque {
     border-left: 6px solid #2e7d32;
@@ -338,6 +356,7 @@ small {
     border-radius: 8px;
     border: 1px solid #c5e1a5;
     margin-bottom: 15px;
+    list-style-type: disc;
 }
 
 .secao-tecnica ul {
@@ -346,11 +365,13 @@ small {
     border-radius: 8px;
     border: 1px solid #ffe0b2;
     margin-bottom: 15px;
+    list-style-type: disc;
 }
 
 .secao-sintomas p, .secao-tecnica p {
     margin-top: 0;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 /* DESTAQUE DE CONTROLE */
@@ -363,17 +384,4 @@ small {
     font-weight: 500;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* FIM DO CÓDIGO COMPLETO */
