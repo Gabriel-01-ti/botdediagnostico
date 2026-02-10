@@ -93,9 +93,18 @@ function addMsg(texto, tipo, rolar = true) {
 
 // ================= INÍCIO =================
 function iniciarBot() {
-  addMsg("🤖 <b>Olá! Sou o AgroBot.</b><br>Vou te ajudar a diagnosticar doenças na sua lavoura.<br><br>Qual é a cultura? (Ex: Milho, Soja...)", "bot");
-  etapa = 1;
-} 
+  addMsg(
+    `
+    🤖 <b>Olá! Seja bem-vindo ao AgroBot.</b><br><br>
+    Estou aqui para ajudar você a identificar possíveis doenças na sua lavoura de forma rápida e prática 🌱<br><br>
+    Você gostaria de ver a lista de culturas disponíveis para diagnóstico?
+    <br><br>
+    👉 Responda com <b>Sim</b> ou <b>Não</b>.
+    `,
+    "bot"
+  );
+  etapa = -1;
+}
 function finalizarDiagnostico() {
   addMsg(`
     🌿 <b>Diagnóstico finalizado com sucesso!</b><br><br>
@@ -127,7 +136,17 @@ function escolherModo(modo) {
     etapa = 4;
   }
 }
+function mostrarCulturasDisponiveis() {
+  let html = "🌱 <b>Culturas disponíveis:</b><br><br>";
 
+  for (let cultura in baseDados) {
+    html += "• " + cultura.charAt(0).toUpperCase() + cultura.slice(1) + "<br>";
+  }
+
+  html += "<br>👉 Digite o nome da cultura para continuar.";
+
+  addMsg(html, "bot");
+}
 // ================= BOTÕES DE SINTOMAS =================
 function mostrarBotoesSintomas() {
   const dados = baseDados[culturaSelecionada];
@@ -185,7 +204,24 @@ btnEnviar.addEventListener("click", () => {
 
 
   if (etapa === 0) iniciarBot();
-    
+  else if (etapa === -1) {
+  const resposta = normalizar(texto);
+
+  if (["sim", "s", "quero", "claro"].includes(resposta)) {
+    mostrarCulturasDisponiveis();
+    etapa = 1;
+  } 
+  else if (["nao", "não", "n"].includes(resposta)) {
+    addMsg(
+      "Sem problema 😊<br>Digite o nome da cultura (Ex: Milho, Soja, Feijão).",
+      "bot"
+    );
+    etapa = 1;
+  } 
+  else {
+    addMsg("👉 Responda com <b>Sim</b> ou <b>Não</b>.", "bot");
+  }
+  }
 
   else if (etapa === 1) {
     const culturaNorm = normalizar(texto);
@@ -298,6 +334,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
