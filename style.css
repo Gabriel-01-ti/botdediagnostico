@@ -136,30 +136,54 @@ small {
 
 /* Menu com Borda Preta - AJUSTADO PARA NÃO CORTAR */
 /* Menu com Ajuste de Posição e Sem Cortes */
+/* Menu Ajustado para Notebook e Celular (Sem cortes no topo) */
 #info-menu {
     position: fixed;
-    bottom: 95px;
-    right: 35px; /* Aumentei um pouco para ele vir mais para o lado (esquerda) */
-    width: 290px;
-    max-width: 80vw; /* Garante que em celulares pequenos ele não ocupe a tela toda */
+    /* Em vez de só bottom, usamos uma posição que se adapta */
+    bottom: 95px; 
+    right: 20px; /* Ajuste aqui para mover mais para o lado se quiser */
+    width: 300px;
+    max-width: 85vw;
+    
+    /* LIMITADOR DE ALTURA: Isso impede que ele suba além do topo da tela */
+    max-height: calc(100vh - 120px); 
+    
     background: #ffffff;
     border-radius: 15px;
     border: 4px solid #000000; 
     box-shadow: 8px 8px 0px #1a3d1d; 
     z-index: 1001;
     
-    /* Configurações para o conteúdo fluir sem sumir */
+    /* Organização interna */
     display: flex;
     flex-direction: column;
-    height: auto;
-    max-height: 70vh; /* Limita a altura a 70% da tela para não sumir no topo */
-    overflow-y: auto; /* Se o texto for muito grande, ele cria rolagem interna */
-    overflow-x: hidden;
+    overflow: hidden; /* Garante que a barra de rolagem não quebre as bordas arredondadas */
     
     animation: slideUp 0.4s ease forwards;
 }
-.hidden { display: none !important; }
-/* Ajuste no cabeçalho para ele não sumir na rolagem */
+
+/* Deixa o corpo do texto rolável, mas o topo fixo */
+.info-body { 
+    padding: 18px; 
+    color: #000000; 
+    font-weight: 500;
+    line-height: 1.4;
+    overflow-y: auto; /* Se o texto não couber, ele rola aqui dentro */
+}
+
+/* Estilizando a barra de rolagem para ficar bonita e verde */
+.info-body::-webkit-scrollbar {
+    width: 8px;
+}
+.info-body::-webkit-scrollbar-thumb {
+    background: #1a3d1d;
+    border-radius: 10px;
+}
+.info-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Cabeçalho sempre visível no topo do menu */
 .info-header {
     background: #1a3d1d;
     color: white;
@@ -168,9 +192,7 @@ small {
     justify-content: space-between;
     align-items: center;
     border-bottom: 3px solid #000000;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    flex-shrink: 0; /* Impede o cabeçalho de achatar */
 }
 /* Borda no Título AgroBot Info */
 .info-header h3 { 
@@ -345,6 +367,7 @@ small {
     border-left: 5px solid #2196f3;
     font-weight: 500;
 }
+
 
 
 
