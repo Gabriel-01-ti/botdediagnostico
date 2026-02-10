@@ -257,7 +257,7 @@ CABEÇALHO
   font-size: 1.05rem;
   font-weight: 500;
   color: #1b3d1a;              /* Verde escuro que contrasta com o fundo */
-  text-align: center;           /* Centraliza o texto */
+            /* Centraliza o texto */
   line-height: 1.6;             /* Espaçamento entre linhas agradável */
   
   background: #d5e8d4;          /* Fundo suave parecido com o body */
@@ -266,11 +266,9 @@ CABEÇALHO
 
   border: 2px solid #c8e6c9;   /* Contorno leve */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra leve */
-
-  white-space: pre-line;        /* Mantém quebras de linha do texto */
   word-wrap: break-word;        /* Quebra linhas longas */
   max-width: 800px;             /* Limita largura para alinhar bem */
-  margin: 0 auto 20px auto;     /* Centraliza e dá espaço abaixo */
+  margin: 0 auto 10px auto;     /* Centraliza e dá espaço abaixo */
 }
 /* =========================================
 IMAGEM DA DOENÇA
@@ -576,6 +574,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
