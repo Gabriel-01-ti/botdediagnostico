@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta charset="UTF-8">
-    <title>AgroBot Diagnóstico</title>
-    <link rel="stylesheet" href="bot.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="UTF-8">
+  <title>AgroBot Diagnóstico</title>
+  <link rel="stylesheet" href="bot.css">
 </head>
-    <!-- BOTÃO FLUTUANTE GUIA RÁPIDO -->
+
+<body>
+
+<!-- BOTÃO FLUTUANTE GUIA RÁPIDO -->
 <div id="btnGuiaRapido" onclick="abrirGuiaRapido()">!</div>
 
 <!-- PAINEL GUIA RÁPIDO -->
@@ -18,38 +21,58 @@
   </div>
 </div>
 
-<body>
-    <div id="splash">
+<!-- SPLASH -->
+<div id="splash">
   <img src="logo.jpg" alt="Agro Inova" class="logo-splash">
   <p>AgroBot iniciando...</p>
 </div>
 
-
 <div class="container">
-    <div class="header">
-        <div class="app-title">🤖 AgroBot</div>
-        <p class="descricao-app">
-            Olá! Este é o <b>AgroBot</b>, o assistente digital construído para ajudar o agricultor a identificar doenças na lavoura de forma rápida e simples.
-        </p>
+
+  <!-- HEADER APP -->
+  <div class="header">
+    <div class="app-title">🤖 AgroBot</div>
+    <p class="descricao-app">
+  Olá! 👋 <br>
+  Este é o <b>AgroBot</b>, seu assistente digital no campo. <br><br>
+
+  Ele foi desenvolvido para ajudar agricultores a identificar
+  <b>doenças nas lavouras</b> de forma rápida, simples e eficiente,
+  utilizando informações confiáveis e tecnologia acessível.
+    </p>
+  </div>
+
+  <!-- CHAT -->
+  <div id="chat">
+
+    <!-- CABEÇALHO FIXO DO CHAT (NUNCA APAGAR) -->
+    <div class="chat-header">
+      <img src="logo.jpg" alt="AgroBot">
+      <div class="chat-info">
+        <span class="chat-name">AgroBot</span>
+        <span class="chat-status">online</span>
+      </div>
     </div>
 
-    <div id="chat">
-          <div class="chat-header">
-    <img src="logo.jpg" alt="AgroBot">
-    <div class="chat-info">
-      <span class="chat-name">AgroBot</span>
-      <span class="chat-status">online</span>
-    </div>
-    </div>
-    </div>
-    
+    <!-- MENSAGENS (ESSA ÁREA QUE LIMPA) -->
+    <div id="chat-messages"></div>
 
-    <div class="input-area">
-        <input type="text" id="sintomas" disabled placeholder="Carregando base de dados...">
-        <button id="btn-diagnosticar">Enviar</button>
-    </div>
+  </div>
+
+  <!-- INPUT -->
+  <div class="input-area">
+    <input 
+      type="text" 
+      id="sintomas" 
+      disabled 
+      placeholder="Carregando base de dados..."
+    >
+    <button id="btn-diagnosticar">Enviar </button>
+  </div>
+
 </div>
-    <footer class="rodape">
+
+<footer class="rodape">
   <span>Agro Inova © 2026</span>
   <span>Tecnologia em favor do campo 🌱</span>
 </footer>
@@ -57,15 +80,3 @@
 <script src="bot.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
