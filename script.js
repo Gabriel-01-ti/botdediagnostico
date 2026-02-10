@@ -51,6 +51,11 @@ selectCultura.addEventListener("change", (e) => {
     carregarModelo(novaCultura);
 });
 
+document.getElementById('foto').addEventListener('change', function() {
+    const fileName = this.files[0] ? this.files[0].name : "Toque para selecionar a foto da folha";
+    document.getElementById('file-name').innerText = fileName;
+});
+
 
 // Função Analisar (Ajustada)
 async function analisar() {
@@ -204,5 +209,6 @@ function toggleInfoMenu() {
         menu.classList.add('hidden');
     }
 }
+
 
 
