@@ -392,8 +392,8 @@ small {
    CAIXA DE CONTEXTO / PROPÓSITO DO PROJETO
    ======================================== */
 .context-box {
-  margin-top: 24px;
-  padding: 25px;
+  margin-top: 16px;
+  padding: 20px;
   background: #f1f8e9;
   border-radius: 14px;
   font-size: 14px;
@@ -404,7 +404,7 @@ small {
    
 }
 .app-title {
-  font-size: 2.6rem;
+  font-size: 2.9rem;
   font-weight: 800;
   color: #1b5e20;
   letter-spacing: -1px;
@@ -431,5 +431,6 @@ small {
     bottom: 85px;
   }
    }
+
 
 
