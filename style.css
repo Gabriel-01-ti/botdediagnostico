@@ -406,7 +406,7 @@ small {
 .app-title {
   font-size: 2.7rem;
   font-weight: 900; /* mais gordinha */
-  color: #1b5e20;
+  color: #fff;
   letter-spacing: -1px;
 
   /* contorno preto */
@@ -442,6 +442,7 @@ small {
     bottom: 85px;
   }
    }
+
 
 
 
