@@ -118,50 +118,51 @@ BOT COM AVATAR EM CIMA E BOLHA
 ========================================= */
 .msg-bot-wrapper {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: flex-start;
+  margin: 30px 0 10px 0; /* Aumentamos a margem para o avatar não bater na mensagem de cima */
   position: relative;
-  margin: 20px 0 8px 0; /* Aumentei a margem superior para não colar na mensagem anterior */
-  width: 100%; 
+  width: 100%;
 }
 
 .bot-avatar {
-  width: 50px; /* Reduzi levemente para proporcionalidade */
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid white;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  margin-bottom: -10px; /* Puxa a bolha para mais perto do avatar */
-  margin-left: 15px;
-  z-index: 10;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  margin-left: 10px;
+  margin-bottom: -15px; /* Faz o avatar sobrepor levemente a bolha */
+  z-index: 10; /* Garante que ele fique NA FRENTE da bolha */
+  position: relative;
 }
 
 .bot-bubble {
   background: #e3f2fd;
   color: #0d47a1;
-  padding: 20px 16px; /* Ajuste de padding mais equilibrado */
-  border-radius: 18px; /* Bordas mais arredondadas para estilo moderno */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  border-left: 4px solid #1565c0;
-  width: 100%;  
-  box-sizing: border-box;
+  padding: 15px 20px; /* Padding mais equilibrado */
+  border-radius: 18px;
+  border-top-left-radius: 2px; /* Deixa o canto do avatar mais "quadrado" para o rabinho */
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  width: fit-content;
+  max-width: 85%;
   position: relative;
   z-index: 5;
 }
 
-/* Rabinho ajustado (triângulo conectando ao avatar) */
+/* O Rabinho (Triângulo) */
 .bot-bubble::before {
   content: "";
   position: absolute;
-  top: -10px; /* Posiciona exatamente no topo da bolha */
-  left: 30px; /* Alinha com o centro do avatar de 50px + margem */
-  width: 20px;
-  height: 20px;
+  top: -8px; 
+  left: 12px;
+  width: 15px;
+  height: 15px;
   background: #e3f2fd;
   transform: rotate(45deg);
-  border-top-left-radius: 4px; /* Suaviza a pontinha do triângulo */
+  z-index: -1; /* Fica atrás da bolha para não criar linhas duplas */
 }
+
 /* =========================================
 INPUT AREA
 ========================================= */
@@ -608,6 +609,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
