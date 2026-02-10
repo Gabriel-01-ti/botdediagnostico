@@ -2,7 +2,7 @@
 let baseDados = null;
 const inputSintomas = document.getElementById("sintomas");
 const btnEnviar = document.getElementById("btn-diagnosticar");
-const chatDiv = document.getElementById("chat");
+const chatDiv = document.getElementById("chat-mensagens");
 
 let etapa = 0;
 let culturaSelecionada = "";
@@ -334,6 +334,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
