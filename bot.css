@@ -39,11 +39,6 @@ CONTAINER PRINCIPAL
   height: auto;
 }
 
-h1 {
-  text-align: center;
-  color: #1b5e20;
-  margin: 0 0 20px 0;
-}
 
 .app-title {
   font-size: 2.7rem;
@@ -560,6 +555,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
