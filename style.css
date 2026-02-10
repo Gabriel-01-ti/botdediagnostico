@@ -135,30 +135,31 @@ small {
 }
 
 /* Menu com Borda Preta - AJUSTADO PARA NÃO CORTAR */
+/* Menu com Ajuste de Posição e Sem Cortes */
 #info-menu {
     position: fixed;
     bottom: 95px;
-    right: 25px;
+    right: 35px; /* Aumentei um pouco para ele vir mais para o lado (esquerda) */
     width: 290px;
-    max-width: 85vw; /* Segurança para celular */
+    max-width: 80vw; /* Garante que em celulares pequenos ele não ocupe a tela toda */
     background: #ffffff;
     border-radius: 15px;
     border: 4px solid #000000; 
     box-shadow: 8px 8px 0px #1a3d1d; 
     z-index: 1001;
     
-    /* CORREÇÃO PARA O CORTE: */
+    /* Configurações para o conteúdo fluir sem sumir */
     display: flex;
     flex-direction: column;
-    height: auto; 
-    overflow: visible; /* Garante que o conteúdo apareça todo */
+    height: auto;
+    max-height: 70vh; /* Limita a altura a 70% da tela para não sumir no topo */
+    overflow-y: auto; /* Se o texto for muito grande, ele cria rolagem interna */
+    overflow-x: hidden;
     
     animation: slideUp 0.4s ease forwards;
 }
-
 .hidden { display: none !important; }
-
-/* Cabeçalho Verde Escuro */
+/* Ajuste no cabeçalho para ele não sumir na rolagem */
 .info-header {
     background: #1a3d1d;
     color: white;
@@ -167,8 +168,10 @@ small {
     justify-content: space-between;
     align-items: center;
     border-bottom: 3px solid #000000;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
-
 /* Borda no Título AgroBot Info */
 .info-header h3 { 
     margin: 0; 
@@ -342,6 +345,7 @@ small {
     border-left: 5px solid #2196f3;
     font-weight: 500;
 }
+
 
 
 
