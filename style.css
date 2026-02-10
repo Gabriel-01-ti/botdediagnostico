@@ -44,7 +44,7 @@ h1 {
   text-align: center;
   font-size: clamp(24px, 4.5vw, 36px);
   color: #1b5e20;
-  margin-bottom: 28px;
+  margin-bottom: 15px;
 }
 
 /* LABEL */
@@ -404,7 +404,7 @@ small {
    
 }
 .app-title {
-  font-size: 2.9rem;
+  font-size: 2.7rem;
   font-weight: 800;
   color: #1b5e20;
   letter-spacing: -1px;
@@ -431,6 +431,7 @@ small {
     bottom: 85px;
   }
    }
+
 
 
 
