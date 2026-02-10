@@ -20,10 +20,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(fundo.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 /* =========================================
@@ -505,6 +501,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
