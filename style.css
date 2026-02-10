@@ -8,7 +8,7 @@ body {
   font-family: Arial, sans-serif;
 
   /* fundo elegante agro + tecnologia */
-  background: linear-gradient(135deg, #e0f2f1, #e3f2fd);
+  background: URL('fundo.jpg');
 
   margin: 0;
   padding: 16px;
@@ -359,6 +359,7 @@ small {
     border-left: 5px solid #2196f3;
     font-weight: 500;
 }
+
 
 
 
