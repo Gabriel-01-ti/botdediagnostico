@@ -72,7 +72,10 @@ CONTAINER PRINCIPAL
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%; /* Garante que o container ocupa toda a largura */
+  align-items: flex-start; /* Por padrão, tudo na esquerda (mensagens do bot) */
 }
+
 /* =========================================
 MENSAGENS
 ========================================= */
@@ -91,23 +94,26 @@ MENSAGENS
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* BOLHA DO USUÁRIO */
+
 .usuario {
-  align-self: flex-end;          /* 👉 direita */
+  align-self: flex-end;          /* Alinha ao final do container flex */
+  margin-left: auto;             /* Força o empurrão para a direita */
   background: #c8e6c9;
   color: #1b5e20;
 
   padding: 12px 16px;
-  border-radius: 14px 14px 0 14px;
+  border-radius: 14px 14px 0 14px; /* Estilo de "rabinho" na direita */
 
-  display: inline-block;         /* largura se ajusta ao texto */
-  max-width: 65%;                /* cresce só até isso */
-  width: fit-content;            /* 🔥 chave para não ocupar tudo */
+  display: block;                
+  max-width: 75%;                /* Um pouco mais largo para mobile */
+  width: fit-content;            
   
   word-wrap: break-word;
   line-height: 1.5;
   font-size: 15px;
-}/* =========================================
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra leve para destacar do fundo escuro */
+}
+/* =========================================
 BOT COM AVATAR EM CIMA E BOLHA
 ========================================= */
 .msg-bot-wrapper {
@@ -570,6 +576,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
