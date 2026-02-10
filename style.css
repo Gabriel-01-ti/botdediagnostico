@@ -25,8 +25,12 @@ body {
 .container {
   max-width: 1100px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(6px);
+  background: linear-gradient(
+    135deg,
+    rgba(232, 245, 233, 0.92),
+    rgba(255, 255, 255, 0.88)
+  );
+  backdrop-filter: blur(4px);
   margin: 0 auto;
   padding: 28px;
   border-radius: 22px;
@@ -348,6 +352,56 @@ small {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ========================================
+   TEXTO INTRODUTÓRIO ABAIXO DO TÍTULO
+   ======================================== */
+.intro-text {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 28px;
+  color: #444;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   DICA ABAIXO DO UPLOAD
+   ======================================== */
+.hint {
+  color: #2e7d32;
+  font-size: 13px;
+  margin-top: 8px;
+  display: block;
+}
+
+/* ========================================
+   RESULTADO PLACEHOLDER (ANTES DA ANÁLISE)
+   ======================================== */
+.resultado.placeholder {
+  background: transparent;
+  border: 2px dashed #c8e6c9;
+  color: #666;
+  text-align: center;
+  box-shadow: none;
+  font-style: italic;
+}
+
+
+
+/* ========================================
+   CAIXA DE CONTEXTO / PROPÓSITO DO PROJETO
+   ======================================== */
+.context-box {
+  margin-top: 24px;
+  padding: 16px;
+  background: #f1f8e9;
+  border-radius: 14px;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  border-left: 5px solid #2e7d32;
+}
+
 /* RESPONSIVO */
 @media (max-width: 600px) {
   body { padding: 8px; }
@@ -359,3 +413,4 @@ small {
     bottom: 85px;
   }
    }
+
