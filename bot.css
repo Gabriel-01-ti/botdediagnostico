@@ -383,21 +383,44 @@ BOTÃO FLUTUANTE
 ========================================= */
 #btnGuiaRapido {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 45px;
-  height: 45px;
-  background: #2e7d32;
+  bottom: 25px;
+  right: 25px;
+
+  width: 65px;
+  height: 65px;
+
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
   color: white;
+
   font-size: 26px;
   font-weight: bold;
+
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.25),
+    0 0 0 4px rgba(46,125,50,0.2);
+
+  transition: all 0.3s ease;
   z-index: 999;
+}
+
+/* Efeito hover */
+#btnGuiaRapido:hover {
+  transform: scale(1.12) rotate(8deg);
+  box-shadow:
+    0 12px 25px rgba(0,0,0,0.35),
+    0 0 0 6px rgba(46,125,50,0.3);
+}
+
+/* Efeito clique */
+#btnGuiaRapido:active {
+  transform: scale(0.95);
 }
 
 /* =========================================
@@ -439,6 +462,29 @@ PAINEL GUIA
 .item-guia:hover {
   background-color: #2e7d32;
   color: white;
+}
+
+.guia-contato, 
+.guia-aviso {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.guia-contato {
+  background: #e8f5e9;
+  border-left: 4px solid #2e7d32;
+}
+
+.guia-aviso {
+  background: #fff3e0;
+  border-left: 4px solid #ef6c00;
+}
+
+.guia-aviso h3,
+.guia-contato h3 {
+  margin-top: 0;
 }
 
 /* =========================================
@@ -622,6 +668,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
