@@ -114,57 +114,67 @@ MENSAGENS
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra leve para destacar do fundo escuro */
 }
 /* =========================================
-BOT COM AVATAR EM CIMA (FIX DEFINITIVO)
+ESTILO AGROBOT - AVATAR EM CIMA
 ========================================= */
+
 .msg-bot-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 25px 0 10px 0;
-  position: relative;
+  margin: 20px 0; /* Espaço para o avatar respirar */
   width: 100%;
 }
 
 .bot-avatar {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  /* Posicionamento estratégico */
-  margin-left: 20px; 
-  margin-bottom: -12px; /* Faz o avatar "sentar" no rabinho */
-  z-index: 10;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  
+  /* Posicionamento simples */
+  margin-left: 15px;
+  margin-bottom: -5px; /* Quase encosta na bolha */
   position: relative;
+  z-index: 10;
 }
 
 .bot-bubble {
-  background: #e3f2fd;
+  background-color: #e3f2fd;
   color: #0d47a1;
-  padding: 20px; /* Espaço interno para o texto não bater nas bordas */
-  border-radius: 18px;
+  padding: 15px 20px;
+  
+  /* Bordas arredondadas com o biquinho no canto superior esquerdo */
+  border-radius: 0 20px 20px 20px; 
+  
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  border-left: 4px solid #1565c0;
-  width: 100%;  
-  max-width: 95%; /* Evita que cole na direita no celular */
-  box-sizing: border-box;
+  border-left: 5px solid #1565c0;
+  
+  width: fit-content;
+  max-width: 90%;
   position: relative;
   z-index: 5;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
-/* O Rabinho corrigido */
+/* Removemos o rabinho antigo de triângulo que vive quebrando */
 .bot-bubble::before {
+  display: none !important;
+}
+
+/* Se quiser um biquinho mais aparente, usamos este abaixo que é fixo */
+.bot-bubble::after {
   content: "";
   position: absolute;
-  top: -10px;    /* Fixa no topo da bolha */
-  left: 35px;    /* Alinha exatamente com o meio do avatar */
+  top: 0;
+  left: -10px; /* Faz ele sair da borda esquerda */
   width: 20px;
   height: 20px;
-  background: #e3f2fd; /* Mesma cor da bolha */
-  transform: rotate(45deg);
-  z-index: -1;   /* Fica atrás da bolha para esconder a emenda */
+  background-color: #e3f2fd;
+  clip-path: polygon(100% 0, 0 0, 100% 100%); /* Cria um triângulo perfeito no topo */
+  z-index: -1;
 }
-
 
 /* =========================================
 INPUT AREA
@@ -612,6 +622,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
