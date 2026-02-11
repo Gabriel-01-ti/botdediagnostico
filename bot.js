@@ -29,33 +29,34 @@ function abrirGuiaRapido() {
   listaDiv.innerHTML = "";
 
   Object.keys(baseDados).forEach(cultura => {
-
-    const titulo = document.createElement("titulo-doenca");
-    titulo.textContent =
-      "🌱 " + cultura.charAt(0).toUpperCase() + cultura.slice(1);
-
-    titulo.className = "titulo-doenca";
+    // Cria o cabeçalho da cultura (Ex: 🌱 SOJA)
+    const titulo = document.createElement("div"); 
+    titulo.className = "titulo-cultura"; // Classe que vamos estilizar
+    titulo.textContent = "🌱 " + cultura.charAt(0).toUpperCase() + cultura.slice(1);
     listaDiv.appendChild(titulo);
 
     Object.values(baseDados[cultura]).forEach(d => {
-
-      const sintomaPrincipal =
-        d?.sintomas?.praticos?.[0] || "Sintoma não informado";
+      const sintomaPrincipal = d?.sintomas?.praticos?.[0] || "Sintoma não informado";
 
       const item = document.createElement("div");
       item.className = "item-guia";
 
       item.innerHTML = `
         <strong>${d.nome}</strong>
-        <small>👀 ${sintomaPrincipal}</small>
+        <span>👀 ${sintomaPrincipal}</span>
       `;
+      
+      // Opcional: clicar na doença no guia já inicia o diagnóstico
+      item.onclick = () => {
+          toggleGuiaMenu();
+          addMsg(`Analisando ${d.nome}...`, "bot");
+          diagnosticar(cultura, d.nome);
+      };
 
       listaDiv.appendChild(item);
     });
-
   });
 
-  // 👇 AGORA abre o menu novo
   document.getElementById("guia-menu").classList.remove("hidden");
 }
 
@@ -351,6 +352,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
