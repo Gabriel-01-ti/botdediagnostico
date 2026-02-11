@@ -114,57 +114,56 @@ MENSAGENS
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra leve para destacar do fundo escuro */
 }
 /* =========================================
-CORREÇÃO DEFINITIVA: BOT E BOLHA
+BOT COM AVATAR EM CIMA E BOLHA
 ========================================= */
-
-/* 1. O container da mensagem precisa de espaço para o avatar lateral */
 .msg-bot-wrapper {
   display: flex;
-  flex-direction: row;      /* Avatar ao lado da bolha, não em cima */
-  align-items: flex-end;    /* Alinha o avatar com a base da bolha */
-  gap: 8px;                 /* Espaço entre avatar e texto */
-  margin: 15px 0;
-  width: 100%;
-}
-
-/* 2. Avatar pequeno e fixo na lateral */
-.bot-avatar {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;          /* Impede o flex de achatar a imagem */
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  z-index: 10;
-  margin: 0;                /* Reseta margens antigas */
-}
-
-/* 3. A bolha de texto ajustada */
-.bot-bubble {
-  background-color: #e3f2fd;
-  color: #0d47a1;
-  padding: 12px 16px;
-  border-radius: 18px 18px 18px 2px; /* O 'rabinho' é o canto menos arredondado */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  max-width: 80%;
-  width: fit-content;       /* A bolha só cresce conforme o texto */
+  flex-direction: column; 
+  align-items: flex-start;
   position: relative;
-  font-size: 15px;
-  line-height: 1.4;
+  margin: 8px 0;
+  width: 100%; 
 }
 
-/* 4. Remova o ::before antigo (rabinho de triângulo) para não bugar */
+.bot-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  margin-bottom: 26px; 
+  z-index: 10;
+}
+
+.bot-bubble {
+  background: #e3f2fd;
+  color: #0d47a1;
+  padding: 26px 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  border-left: 4px solid #1565c0;
+  width: 100%;  
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 0;
+}
+
+/* Rabinho apontando pra cima */
+
 .bot-bubble::before {
-  display: none; 
+  content: "";
+  position: absolute;
+  top: -8px; 
+  left: 20px; 
+  width: 16px;
+  height: 16px;
+  background: #e3f2fd;
+  transform: rotate(45deg);
 }
 
-/* 5. Ajuste para o texto dentro da bolha não ter margens extras */
-.bot-bubble p {
-  margin: 0 0 10px 0;
-}
-.bot-bubble p:last-child {
-  margin-bottom: 0;
-}
+
 /* =========================================
 INPUT AREA
 ========================================= */
@@ -611,6 +610,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
