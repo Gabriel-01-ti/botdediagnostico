@@ -114,66 +114,65 @@ MENSAGENS
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra leve para destacar do fundo escuro */
 }
 /* =========================================
-ESTILO AGROBOT - AVATAR EM CIMA
+MENSAGEM DO BOT - DESIGN RESPONSIVO
 ========================================= */
 
 .msg-bot-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 20px 0; /* Espaço para o avatar respirar */
+  margin: 20px 0;
   width: 100%;
 }
 
+/* Criamos um container para o avatar e o biquinho ficarem juntos */
+.bot-header-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 15px; /* Alinha o avatar com o início da bolha */
+}
+
 .bot-avatar {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 3px solid #ffffff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  
-  /* Posicionamento simples */
-  margin-left: 15px;
-  margin-bottom: -20px; /* Quase encosta na bolha */
-  position: relative;
   z-index: 10;
+  position: relative;
+}
+
+/* O "Rabinho" agora é um triângulo que nasce do avatar e entra na bolha */
+.bot-tail {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 12px solid #e3f2fd; /* Mesma cor da bolha */
+  margin-top: -8px; /* Faz ele brotar de trás do avatar */
+  margin-left: 14px; /* Centraliza sob o avatar */
+  z-index: 9;
 }
 
 .bot-bubble {
   background-color: #e3f2fd;
   color: #0d47a1;
   padding: 15px 20px;
-  
-  /* Bordas arredondadas com o biquinho no canto superior esquerdo */
-  border-radius: 0 20px 20px 20px; 
-  
+  border-radius: 15px;
+  border-top-left-radius: 0; /* Canto reto para conectar com o rabinho */
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  border-left: 5px solid #1565c0;
-  
+  border-left: 4px solid #1565c0;
   width: fit-content;
-  max-width: 90%;
+  max-width: 85%;
   position: relative;
   z-index: 5;
-  font-size: 15px;
-  line-height: 1.5;
+  margin-top: -2px; /* Encaixe perfeito com o triângulo */
 }
 
-/* Removemos o rabinho antigo de triângulo que vive quebrando */
-.bot-bubble::before {
+/* REMOVA qualquer ::before ou ::after de bot-bubble para não dar conflito */
+.bot-bubble::before, .bot-bubble::after {
   display: none !important;
-}
-
-/* Se quiser um biquinho mais aparente, usamos este abaixo que é fixo */
-.bot-bubble::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -10px; /* Faz ele sair da borda esquerda */
-  width: 20px;
-  height: 20px;
-  background-color: #e3f2fd;
-  clip-path: polygon(100% 0, 0 0, 100% 100%); /* Cria um triângulo perfeito no topo */
-  z-index: -1;
 }
 
 /* =========================================
@@ -622,6 +621,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
