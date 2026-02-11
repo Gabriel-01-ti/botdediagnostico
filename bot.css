@@ -68,7 +68,7 @@ html, body {
   width: 100%;
   background: #f9fff9;
   padding: 25px;
-  border-radius: 18px;
+  border-radius: 40px;
   border: 2px solid var(--verde-escuro);
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   margin-top: 10px;
@@ -298,8 +298,8 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
   left: 25px;
   width: 380px;
   max-width: 90vw;
-  background: white;
-  border-radius: 20px;
+  background:  #f4f7f6;;
+  border-radius: 40px;
   z-index: 10000;
   display: flex;
   flex-direction: column;
@@ -860,6 +860,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
 
