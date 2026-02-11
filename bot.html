@@ -6,10 +6,9 @@
   <title>AgroBot Diagnóstico</title>
   <link rel="stylesheet" href="bot.css">
 </head>
-
 <body>
 
-<div id="floating-guia-btn" onclick="abrirGuiaRapido()">📘</div>
+<div id="floating-guia-btn" onclick="toggleGuiaMenu()">📘</div>
 
 <div id="guia-menu" class="hidden">
     <div class="guia-header">
@@ -17,59 +16,33 @@
         <button class="close-btn" onclick="toggleGuiaMenu()">✕</button>
     </div>
     <div class="guia-body">
-
-    <!-- AQUI O JS VAI INSERIR SÓ CULTURA/DOENÇA/SINTOMAS -->
-    <div id="listaGuiaDoencas"></div>
-
-    <hr class="divider">
-
-    <div class="explanation-box">
-        ⚠️ <strong>Aviso Importante:</strong><br><br>
-        Este conteúdo possui caráter <strong>informativo e educativo</strong>.
-        Não substitui a avaliação de um <strong>engenheiro agrônomo</strong>.
-        Não indicamos <strong>dosagens de defensivos agrícolas</strong>.
-        Para aplicação correta e receituário agronômico,
-        consulte sempre um <strong>profissional habilitado</strong>.
+        <div id="listaGuiaDoencas"></div>
+        <hr class="divider">
+        <div class="explanation-box">
+            ⚠️ <strong>Aviso Importante:</strong><br><br>
+            Este conteúdo possui caráter informativo. Não substitui um agrônomo.
+        </div>
+        <hr class="divider">
+        <p><strong>📞 Fale Conosco:</strong></p>
+        <a href="mailto:siteagroinova@gmail.com" class="contact-link">📧 E-mail</a>
+        <a href="https://wa.me/5555996698757" target="_blank" class="contact-link">💬 WhatsApp</a>
     </div>
+</div>
 
-    <hr class="divider">
-
-    <p><strong>📞 Fale Conosco:</strong></p>
-
-    <a href="mailto:siteagroinova@gmail.com" class="contact-link">
-        📧 Enviar E-mail
-    </a>
-
-    <a href="https://wa.me/5555996698757" target="_blank" class="contact-link">
-        💬 WhatsApp
-    </a>
-
-    <p class="thanks-msg">
-        🙏 Muito obrigado por utilizar o AgroBot!
-    </p>
-
-    </div>
-
-<!-- SPLASH -->
 <div id="splash">
   <img src="logo.jpg" alt="Agro Inova" class="logo-splash">
-  <p>AgroBot iniciando...</p>
+  <p class="texto-splash">AgroBot iniciando...</p>
 </div>
 
 <div class="container">
-
-  <!-- HEADER APP -->
   <div class="header">
     <div class="app-title">🤖📱 AgroBot</div>
     <p class="descricao-app">
-Olá! 👋 Este é o <b>AgroBot</b>, seu <b>assistente digital no campo</b>, desenvolvido para ajudar agricultores a <b>identificar doenças nas lavouras</b> de forma <b>rápida, simples e eficiente</b>, utilizando <b>informações confiáveis</b> e <b>tecnologia acessível</b>.
+      Olá! 👋 Este é o <b>AgroBot</b>, seu assistente digital no campo, desenvolvido para identificar doenças de forma rápida e simples.
     </p>
   </div>
 
-  <!-- CHAT -->
   <div id="chat">
-
-    <!-- CABEÇALHO FIXO DO CHAT (NUNCA APAGAR) -->
     <div class="chat-header">
       <img src="logo.jpg" alt="AgroBot">
       <div class="chat-info">
@@ -77,37 +50,19 @@ Olá! 👋 Este é o <b>AgroBot</b>, seu <b>assistente digital no campo</b>, des
         <span class="chat-status">online</span>
       </div>
     </div>
-
-    <!-- MENSAGENS (ESSA ÁREA QUE LIMPA) -->
     <div id="chat-messages"></div>
-
   </div>
 
-  <!-- INPUT -->
   <div class="input-area">
-    <input 
-      type="text" 
-      id="sintomas" 
-      disabled 
-      placeholder="Carregando base de dados..."
-    >
-    <button id="btn-diagnosticar">Enviar </button>
+    <input type="text" id="sintomas" disabled placeholder="Carregando base de dados...">
+    <button id="btn-diagnosticar">Enviar</button>
   </div>
-
 </div>
 
 <footer class="rodape">
-  <span>Agro Inova © 2026</span>
-  <span>Tecnologia em favor do campo 🌱</span>
+  <span>Agro Inova © 2026 🌱 Tecnologia em favor do campo</span>
 </footer>
 
 <script src="bot.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
