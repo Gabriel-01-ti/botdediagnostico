@@ -134,7 +134,7 @@ ESTILO AGROBOT - AVATAR EM CIMA
   
   /* Posicionamento simples */
   margin-left: 15px;
-  margin-bottom: -5px; /* Quase encosta na bolha */
+  margin-bottom: -20px; /* Quase encosta na bolha */
   position: relative;
   z-index: 10;
 }
@@ -622,6 +622,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
