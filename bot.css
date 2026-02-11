@@ -68,7 +68,7 @@ CONTAINER PRINCIPAL
   border: 1px solid #30363d;
   box-shadow: inset 0 4px 15px rgba(0,0,0,0.4);
 }
-#chat-mensagens {
+#chat-messages {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -668,6 +668,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
