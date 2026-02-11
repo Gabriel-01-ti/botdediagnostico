@@ -114,53 +114,55 @@ MENSAGENS
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra leve para destacar do fundo escuro */
 }
 /* =========================================
-BOT COM AVATAR EM CIMA E BOLHA
+BOT COM AVATAR EM CIMA (FIX DEFINITIVO)
 ========================================= */
 .msg-bot-wrapper {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: flex-start;
+  margin: 25px 0 10px 0;
   position: relative;
-  margin: 8px 0;
-  width: 100%; 
+  width: 100%;
 }
 
 .bot-avatar {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  object-fit: cover;
   border: 3px solid white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-  margin-bottom: 26px; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  /* Posicionamento estratégico */
+  margin-left: 20px; 
+  margin-bottom: -12px; /* Faz o avatar "sentar" no rabinho */
   z-index: 10;
+  position: relative;
 }
 
 .bot-bubble {
   background: #e3f2fd;
   color: #0d47a1;
-  padding: 26px 16px;
-  border-radius: 16px;
+  padding: 20px; /* Espaço interno para o texto não bater nas bordas */
+  border-radius: 18px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-
   border-left: 4px solid #1565c0;
   width: 100%;  
+  max-width: 95%; /* Evita que cole na direita no celular */
   box-sizing: border-box;
   position: relative;
-  margin-top: 0;
+  z-index: 5;
 }
 
-/* Rabinho apontando pra cima */
-
+/* O Rabinho corrigido */
 .bot-bubble::before {
   content: "";
   position: absolute;
-  top: -8px; 
-  left: 20px; 
-  width: 16px;
-  height: 16px;
-  background: #e3f2fd;
+  top: -10px;    /* Fixa no topo da bolha */
+  left: 35px;    /* Alinha exatamente com o meio do avatar */
+  width: 20px;
+  height: 20px;
+  background: #e3f2fd; /* Mesma cor da bolha */
   transform: rotate(45deg);
+  z-index: -1;   /* Fica atrás da bolha para esconder a emenda */
 }
 
 
@@ -610,6 +612,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
