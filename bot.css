@@ -160,14 +160,13 @@ MENSAGEM DO BOT - DESIGN RESPONSIVO
   color: #0d47a1;
   padding: 15px 20px;
   border-radius: 15px;
-  border-top-left-radius: 0; /* Canto reto para conectar com o rabinho */
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border-left: 4px solid #1565c0;
   width: fit-content;
   max-width: 85%;
   position: relative;
   z-index: 5;
-  margin-top: -2px; /* Encaixe perfeito com o triângulo */
+  margin-top: -6px; /* Encaixe perfeito com o triângulo */
 }
 
 /* REMOVA qualquer ::before ou ::after de bot-bubble para não dar conflito */
@@ -621,6 +620,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
