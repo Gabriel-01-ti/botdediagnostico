@@ -424,29 +424,47 @@ BOTÃO FLUTUANTE
 }
 
 /* =========================================
-PAINEL GUIA
+PAINEL GUIA (MODAL CORRIGIDO)
 ========================================= */
 .painel-guia {
-  display: none;
+  display: none; /* O JS mudará para 'flex' ao abrir */
   position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Fundo escuro atrás do painel */
+  z-index: 99999; /* Valor altíssimo para ficar na frente de tudo */
   justify-content: center;
   align-items: center;
-  flex-direction: columm;
+  padding: 20px;
 }
 
 .painel-conteudo {
   background: white;
-  width: 90%;
-  max-width: 500px;
-  max-height: 80vh;
+  width: 100%;
+  max-width: 450px;
+  max-height: 90vh;
   overflow-y: auto;
-  border-radius: 12px;
-  padding: 20px;
-  flex-direction: columm;
+  border-radius: 20px;
+  padding: 25px;
+  position: relative; /* Para o botão fechar 'X' se posicionar */
+  display: flex;
+  flex-direction: column; /* Corrigido de 'columm' */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
+
+/* Botão de fechar (X) dentro do painel */
+.fechar-guia {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+}
+
 
 .item-guia {
   display: block;
@@ -469,20 +487,19 @@ PAINEL GUIA
 .guia-contato, 
 .guia-aviso {
   margin-top: 15px;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 15px;
+  border-radius: 10px;
   font-size: 14px;
-}
-
-.guia-contato {
-  background: #e8f5e9;
-  border-left: 4px solid #2e7d32;
+  width: 100%; /* Garante que não estoure a largura */
+  box-sizing: border-box;
 }
 
 .guia-aviso {
   background: #fff3e0;
-  border-left: 4px solid #ef6c00;
+  border-left: 5px solid #ef6c00;
+  color: #855600;
 }
+
 
 .guia-aviso h3,
 .guia-contato h3 {
@@ -669,8 +686,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
   .rodape {
     font-size: 12px;
   }
-}
-
+  
 
   .painel-conteudo {
     width: 95%;
@@ -684,8 +700,8 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     display: block;
     box-sizing: border-box;
   }
-
 }
+
 
 
 
