@@ -28,30 +28,42 @@ function abrirGuiaRapido() {
   const listaDiv = document.getElementById("listaGuiaDoencas");
   listaDiv.innerHTML = "";
 
-  for (let cultura in baseDados) {
+  Object.keys(baseDados).forEach(cultura => {
+
     const titulo = document.createElement("h3");
-    titulo.textContent = "🌱 " + cultura.charAt(0).toUpperCase() + cultura.slice(1);
-    titulo.style.color = "#2e7d32";
-    titulo.style.marginTop = "15px";
+    titulo.textContent =
+      "🌱 " + cultura.charAt(0).toUpperCase() + cultura.slice(1);
+
+    titulo.className = "titulo-cultura";
     listaDiv.appendChild(titulo);
 
-    for (let id in baseDados[cultura]) {
-      const d = baseDados[cultura][id];
-      const sintomaPrincipal = d.sintomas.praticos[0] || "Sintoma não informado";
+    Object.values(baseDados[cultura]).forEach(d => {
+
+      const sintomaPrincipal =
+        d?.sintomas?.praticos?.[0] || "Sintoma não informado";
 
       const item = document.createElement("div");
       item.className = "item-guia";
-      item.innerHTML = `<strong>${d.nome}</strong><br><small>👀 ${sintomaPrincipal}</small>`;
+
+      item.innerHTML = `
+        <strong>${d.nome}</strong>
+        <small>👀 ${sintomaPrincipal}</small>
+      `;
+
       listaDiv.appendChild(item);
-    }
-  }
+    });
 
-  document.getElementById("painelGuia").style.display = "flex";
+  });
+
+  // 👇 AGORA abre o menu novo
+  document.getElementById("guia-menu").classList.remove("hidden");
 }
 
-function fecharGuiaRapido() {
-  document.getElementById("painelGuia").style.display = "none";
+
+function toggleGuiaMenu() {
+  document.getElementById("guia-menu").classList.toggle("hidden");
 }
+
 
 // ================= FUNÇÕES UTIL =================
 function normalizar(txt) {
@@ -339,6 +351,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
