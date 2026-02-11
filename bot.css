@@ -423,48 +423,54 @@ BOTÃO FLUTUANTE
   transform: scale(0.95);
 }
 
-/* ============================= */
-/* BOTÃO FLUTUANTE GUIA RÁPIDO  */
-/* ============================= */
+/* =========================================
+   BOTÃO FLUTUANTE GUIA
+========================================= */
 
-#btnGuiaRapido {
+#floating-guia-btn {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  left: 20px;
 
   width: 60px;
   height: 60px;
 
-  background: #2e7d32;
-  color: #fff;
-  font-size: 24px;
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  color: #ffffff;
+
+  border: none;
+  border-radius: 50%;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 50%;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-
+  font-size: 26px;
   cursor: pointer;
-  transition: 0.3s ease;
 
-  z-index: 2000;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+  z-index: 9999;
+  transition: all 0.25s ease;
 }
 
-#btnGuiaRapido:hover {
+#floating-guia-btn:hover {
   transform: scale(1.08);
 }
 
+#floating-guia-btn:active {
+  transform: scale(0.95);
+}
 
-/* ============================= */
-/* PAINEL GUIA LATERAL          */
-/* ============================= */
+
+/* =========================================
+   PAINEL GUIA LATERAL (ANIMAÇÃO CORRETA)
+========================================= */
 
 .painel-guia {
   position: fixed;
   top: 0;
-  left: -100%; /* escondido */
+  left: 0;
 
   width: 350px;
   max-width: 90%;
@@ -475,60 +481,87 @@ BOTÃO FLUTUANTE
   box-shadow: 5px 0 25px rgba(0, 0, 0, 0.25);
 
   overflow-y: auto;
-  transition: left 0.35s ease;
 
-  z-index: 1500;
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+
+  z-index: 2000;
 }
 
-/* Quando o JS ativar */
+/* Quando ativo */
 .painel-guia.active,
 .painel-guia.ativo {
-  left: 0;
+  transform: translateX(0);
 }
 
 
-/* ============================= */
-/* CONTEÚDO INTERNO             */
-/* ============================= */
+/* =========================================
+   CONTEÚDO INTERNO DO PAINEL
+========================================= */
 
 .painel-conteudo {
-  padding: 25px 20px 10px 20px;
+  padding: 25px 20px 20px 20px;
   position: relative;
 }
-/* ===============================
-   BOTÃO GUIA DOENÇAS
-   =============================== */
 
-#floating-guia-btn {
-  position: fixed;
-  bottom: 25px;
-  left: 25px;
-  width: 60px;
-  height: 60px;
-  background: #2e7d32;
-  color: #ffffff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
+/* Botão fechar */
+.fechar-guia {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+/* =========================================
+   ESTILO DOS ITENS DO GUIA
+========================================= */
+
+.item-guia {
+  display: block;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: #f1f8e9;
+  border: 1px solid #2e7d32;
+  color: #1b5e20;
   font-weight: bold;
   cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  transition: all 0.25s ease;
+  transition: 0.3s;
 }
 
-#floating-guia-btn:hover {
-  transform: scale(1.1);
+.item-guia:hover {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.titulo-cultura {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #2e7d32;
 }
 
 
-/* ===============================
-   MENU GUIA DOENÇAS
-   =============================== */
+/* =========================================
+   RESPONSIVO MOBILE
+========================================= */
 
-#guia-menu {
+@media (max-width: 600px) {
+
+  #floating-guia-btn {
+    bottom: 15px;
+    left: 15px;
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+
+  .painel-guia {
+    width: 85%;
+  }
+
+}
   position: fixed;
   bottom: 95px;
   left: 25px;
@@ -786,6 +819,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
 
