@@ -1,491 +1,373 @@
 /* =========================================
-RESET E CONFIGURAÇÕES GERAIS
-========================================= */ 
-html, body {
+   1. RESET E VARIÁVEIS
+   ========================================= */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-* {
-  box-sizing: border-box;
+:root {
+  --verde-escuro: #1b5e20;
+  --verde-tema: #2e7d32;
+  --verde-leve: #f1f8e9;
+  --azul-bot: #e3f2fd;
+  --bg-dark: #161b22;
+  --border-dark: #30363d;
 }
 
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #d5e8d4 0%, #e3f2fd 100%);
-  /* Ou uma cor sólida sólida e elegante: */
-  /* background-color: #edf2f7; */
-  padding: 16px;
+html, body {
   min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #d5e8d4 0%, #e3f2fd 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
 }
 
 /* =========================================
-CONTAINER PRINCIPAL
-========================================= */
+   2. SPLASH SCREEN (TOTALMENTE ISOLADO)
+   ========================================= */
+#splash {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #0b3d2e, #145c43);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+
+.logo-splash {
+  width: 180px;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.texto-splash {
+  color: #ffffff;
+  font-size: 20px;
+  animation: fadeSplash 2s infinite;
+}
+
+/* =========================================
+   3. CONTAINER PRINCIPAL E HEADER
+   ========================================= */
 .container {
   max-width: 1000px;
   width: 100%;
   background: #f9fff9;
-  padding: 24px;
-  border-radius: 14px;
-  border: 2px solid #1b5e20;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  display: flex;
-  flex-direction: column;
-  min-height: 90vh;
-  height: auto;
+  padding: 25px;
+  border-radius: 18px;
+  border: 2px solid var(--verde-escuro);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  margin-top: 10px;
+  position: relative;
+  z-index: 10;
 }
-
 
 .app-title {
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   font-weight: 900;
-  color: #2e7d32;
-  letter-spacing: -1px;
+  color: var(--verde-tema);
   text-align: center;
-  margin-bottom: 14px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+}
 
-  text-shadow:
-    1px 1px 0 #1b5e20,
-    2px 2px 0 rgba(0,0,0,0.25);
+.descricao-app {
+  background: #ffffff;
+  color: #374151;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  padding: 20px;
+  border-radius: 16px;
+  border-left: 6px solid var(--verde-tema);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
 }
 
 /* =========================================
-ÁREA DO CHAT
-========================================= */
+   4. CHAT E MENSAGENS (O CORAÇÃO DO APP)
+   ========================================= */
 #chat {
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 15px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  overflow: visible;
-  background-color: #161b22; /* Um azul-escuro quase preto, estilo 'GitHub Dark' */
-  border: 1px solid #30363d;
+  overflow: hidden;
   box-shadow: inset 0 4px 15px rgba(0,0,0,0.4);
 }
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: #0d1117;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.chat-header img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid var(--verde-tema);
+}
+
+.chat-info { display: flex; flex-direction: column; }
+.chat-name { color: #e6edf3; font-weight: 600; }
+.chat-status { color: var(--verde-tema); font-size: 12px; }
+
 #chat-messages {
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100%; /* Garante que o container ocupa toda a largura */
-  align-items: flex-start; /* Por padrão, tudo na esquerda (mensagens do bot) */
+  gap: 15px;
+  min-height: 400px;
 }
 
-/* =========================================
-MENSAGENS
-========================================= */
-.msg {
-  padding: 12px 16px;
-  border-radius: 12px;
-  max-width: 96%;
-  font-size: 15px;
-  line-height: 1.5;
-  word-wrap: break-word;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-
+/* Bolha do Usuário */
 .usuario {
-  align-self: flex-end;          /* Alinha ao final do container flex */
-  margin-left: auto;             /* Força o empurrão para a direita */
+  align-self: flex-end;
   background: #c8e6c9;
   color: #1b5e20;
-
-  padding: 12px 16px;
-  border-radius: 14px 14px 0 14px; /* Estilo de "rabinho" na direita */
-
-  display: block;                
-  max-width: 75%;                /* Um pouco mais largo para mobile */
-  width: fit-content;            
-  
-  word-wrap: break-word;
-  line-height: 1.5;
+  padding: 12px 18px;
+  border-radius: 18px 18px 0 18px;
+  max-width: 75%;
   font-size: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra leve para destacar do fundo escuro */
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
-/* =========================================
-MENSAGEM DO BOT - DESIGN RESPONSIVO
-========================================= */
 
+/* Estrutura da Bolha do Bot com Avatar */
 .msg-bot-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 20px 0;
+  margin: 10px 0;
   width: 100%;
 }
 
-/* Container do avatar + rabinho */
 .bot-header-area {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 👈 agora centraliza corretamente */
-  margin-left: 15px;
-  position: relative;
+  align-items: center;
+  margin-left: 10px;
 }
 
 .bot-avatar {
-  width: 48px;
-  height: 48px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  border: 3px solid #ffffff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  z-index: 10;
-  position: relative;
+  border: 2px solid #fff;
+  z-index: 11;
 }
 
-/* Rabinho maior e centralizado perfeitamente */
 .bot-tail {
-  position: relative;
   width: 0;
   height: 0;
-  border-left: 14px solid transparent;   /* 👈 maior */
-  border-right: 14px solid transparent;  /* 👈 maior */
-  border-bottom: 18px solid #e3f2fd;     /* 👈 mais alto */
-  margin-top: -10px; /* faz nascer atrás do avatar */
-  z-index: 9;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid var(--azul-bot);
+  margin-top: -8px;
+  z-index: 10;
 }
 
 .bot-bubble {
-  background-color: #e3f2fd;
+  background: var(--azul-bot);
   color: #0d47a1;
   padding: 15px 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  border-left: 4px solid #1565c0;
-  width: fit-content;
-  max-width: 85%;
-  position: relative;
-  z-index: 5;
-  margin-top: -8px; /* encaixe melhor com o novo tamanho */
-}
-
-/* Remove conflitos */
-.bot-bubble::before,
-.bot-bubble::after {
-  display: none !important;
+  border-left: 5px solid #1565c0;
+  max-width: 90%;
+  margin-top: -5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* =========================================
-INPUT AREA
-========================================= */
-.input-area {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-}
-
-input[type="text"] {
-  flex: 1;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #bbb;
-  outline: none;
-}
-
-button {
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background: #2e7d32;
-  color: white;
-  font-weight: bold;
-}
-
-/* =========================================
-CARDS DE DOENÇA
-========================================= */
+   5. CARDS DE DOENÇAS (DETALHAMENTO TÉCNICO)
+   ========================================= */
 .doenca-card {
   background: #fff;
-  border-left: 5px solid #ff9800;
-  padding: 15px;
-  margin-top: 10px;
-  border-radius: 4px;
-}
-
-.doenca-card.destaque {
-  border-left: 6px solid #2e7d32;
+  border-radius: 12px;
   padding: 20px;
-  border-radius: 8px;
+  margin-top: 15px;
+  border-left: 6px solid #ff9800;
+  color: #333;
 }
 
-.subtitulo {
-  color: #555;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+.doenca-card.destaque { border-left-color: var(--verde-tema); }
+
+.imagem-doenca {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  margin: 15px 0;
+  border: 3px solid var(--verde-tema);
 }
 
-.info-box, .secao-prevencao {
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.secao-sintomas ul {
-  background: #f1f8e9;
+.secao-sintomas ul, .secao-tecnica ul {
+  background: var(--verde-leve);
   padding: 15px 15px 15px 35px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #c5e1a5;
-}
-
-.secao-tecnica ul {
-  background: #fff3e0;
-  padding: 15px 15px 15px 35px;
-  border-radius: 8px;
-  border: 1px solid #ffe0b2;
+  margin: 10px 0;
 }
 
 .secao-controle {
   background-color: #e3f2fd;
   padding: 15px;
-  border-radius: 8px;
-  margin-top: 20px;
-  border-left: 5px solid #2196f3;
-}
-
-/* =========================================
-CABEÇALHO
-========================================= */
-.header {
-  text-align: center;
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #e0e0e0;
-}
-/* =========================================
-DESCRIÇÃO (AGORA BONITA E MODERNA)
-========================================= */
-.descricao-app {
-  /* Cores e Fundo */
-  background: #ffffff;
-  color: #374151;
-  
-  /* Tipografia */
-  font-size: 1.05rem;
-  line-height: 1.6;
-  text-align: left; /* Alinhamento à esquerda fica mais moderno que centralizado */
-  
-  /* Espaçamento e Bordas */
-  padding: 20px 25px;
-  margin: 10px auto 30px auto;
-  border-radius: 16px;
-  
-  /* Layout e Responsividade */
-  width: 100%;
-  max-width: 850px;
-  box-sizing: border-box;
-  
-  /* O Pulo do Gato: Sombra e Borda Lateral */
-  border: none;
-  border-left: 6px solid #2e7d32; /* Um detalhe elegante na lateral */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  
-  /* Ajuste para não quebrar no celular */
-  word-wrap: break-word;
-  display: block;
-}
-
-/* Deixa as palavras-chave em negrito com a cor do tema */
-.descricao-app strong, 
-.descricao-app b {
-  color: #1b5e20;
-  font-weight: 700;
-}
-
-/* Ajuste específico para Celular */
-@media (max-width: 600px) {
-  .descricao-app {
-    font-size: 0.95rem;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-left-width: 4px; /* Borda mais fina no mobile */
-    line-height: 1.5;
-  }
-}
-/* =========================================
-IMAGEM DA DOENÇA
-========================================= */
-.imagem-doenca {
-  width: 100%;
-  max-width: 320px;
-  display: block;
-  margin: 10px auto 20px;
   border-radius: 10px;
-  border: 2px solid #2e7d32;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  border-left: 5px solid #2196f3;
+  margin-top: 15px;
 }
 
 /* =========================================
-BOTÕES DE SINTOMAS
-========================================= */
-.sintomas-botoes {
-  margin-top: 10px;
-}
-
-.sintomas-botoes button {
-  margin: 5px;
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: 1px solid #2e7d32;
-  background: #f1f8e9;
-  color: #1b5e20;
-}
-
-.sintomas-botoes button.ativo {
-  background: #2e7d32;
-  color: white;
-}
-
-/* =========================================
-BOTÕES DE MODO
-========================================= */
-.botoes-opcao {
+   6. INPUT E BOTÕES DE AÇÃO
+   ========================================= */
+.input-area {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 12px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
 }
 
-.botoes-opcao button {
+input[type="text"] {
   flex: 1;
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #2e7d32;
-  background: #ffffff;
-  color: #2e7d32;
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+}
+
+input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
+
+button#btn-diagnosticar {
+  background: var(--verde-tema);
+  color: white;
+  border: none;
+  padding: 0 25px;
+  border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.botoes-opcao button:hover {
-  background: #2e7d32;
-  color: white;
-}
+button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scale(1.02); }
 
 /* =========================================
-BOTÃO FLUTUANTE
-========================================= */
-#btnGuiaRapido {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-
-  width: 65px;
-  height: 65px;
-
-  background: linear-gradient(135deg, #2e7d32, #1b5e20);
-  color: white;
-
-  font-size: 26px;
-  font-weight: bold;
-
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 8px 20px rgba(0,0,0,0.25),
-    0 0 0 4px rgba(46,125,50,0.2);
-
-  transition: all 0.3s ease;
-  z-index: 999;
-}
-
-/* Efeito hover */
-#btnGuiaRapido:hover {
-  transform: scale(1.12) rotate(8deg);
-  box-shadow:
-    0 12px 25px rgba(0,0,0,0.35),
-    0 0 0 6px rgba(46,125,50,0.3);
-}
-
-/* Efeito clique */
-#btnGuiaRapido:active {
-  transform: scale(0.95);
-}
-
-/* =========================================
-   BOTÃO FLUTUANTE GUIA
-========================================= */
-
+   7. GUIA LATERAL E BOTÃO FLUTUANTE
+   ========================================= */
 #floating-guia-btn {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-
-  width: 60px;
-  height: 60px;
-
-  background: linear-gradient(135deg, #2e7d32, #1b5e20);
-  color: #ffffff;
-
-  border: none;
+  bottom: 25px;
+  left: 25px;
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, var(--verde-tema), var(--verde-escuro));
+  color: white;
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  font-size: 26px;
+  font-size: 28px;
   cursor: pointer;
-
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-
   z-index: 9999;
-  transition: all 0.25s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: 0.3s;
 }
 
-#floating-guia-btn:hover {
-  transform: scale(1.08);
+#guia-menu {
+  position: fixed;
+  bottom: 100px;
+  left: 25px;
+  width: 380px;
+  max-width: 90vw;
+  background: white;
+  border-radius: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+  overflow: hidden;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#floating-guia-btn:active {
-  transform: scale(0.95);
+#guia-menu.hidden { 
+  display: none !important;
+  transform: translateY(20px);
+  opacity: 0;
 }
 
+.guia-header {
+  background: var(--verde-tema);
+  color: white;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.guia-body {
+  padding: 20px;
+  max-height: 65vh;
+  overflow-y: auto;
+}
+
+.contact-link {
+  display: block;
+  padding: 12px;
+  background: var(--verde-leve);
+  color: var(--verde-escuro);
+  text-decoration: none;
+  border-radius: 10px;
+  text-align: center;
+  margin: 8px 0;
+  font-weight: bold;
+  border: 1px solid var(--verde-tema);
+}
 
 /* =========================================
-   PAINEL GUIA LATERAL (ANIMAÇÃO CORRETA)
-========================================= */
+   8. RESPONSIVIDADE E AJUSTES FINAIS
+   ========================================= */
+@media (max-width: 600px) {
+  .container { padding: 15px; border-radius: 0; border: none; }
+  .app-title { font-size: 2rem; }
+  
+  .sintomas-botoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
 
-.painel-guia {
-  position: fixed;
-  top: 0;
-  left: 0;
+  .bot-bubble { max-width: 100%; }
+  #guia-menu { left: 5vw; width: 90vw; bottom: 90px; }
+}
 
-  width: 350px;
-  max-width: 90%;
-  height: 100vh;
+.rodape {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
 
-  background: #ffffff;
-
-  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.25);
-
-  overflow-y: auto;
-
-  transform: translateX(-100%);
-  transition: transform 0.35s ease;
-
-  z-index: 2000;
+.hidden { display: none !important; }
+-index: 2000;
 }
 
 /* Quando ativo */
@@ -819,14 +701,5 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
-
-
-
-
-
-
-
-
-
 
 
