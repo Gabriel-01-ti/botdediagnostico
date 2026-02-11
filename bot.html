@@ -9,39 +9,46 @@
 
 <body>
 
-<!-- BOTÃO FLUTUANTE GUIA RÁPIDO -->
-<div id="btnGuiaRapido" onclick="abrirGuiaRapido()">📕</div>
+<div id="floating-guia-btn" onclick="toggleGuiaMenu()">📘</div>
 
-<!-- PAINEL GUIA RÁPIDO -->
-<div id="painelGuia" class="painel-guia">
-  <div class="painel-conteudo">
-    <span class="fechar-guia" onclick="fecharGuiaRapido()">✖</span>
-    <h2>🌿 Guia Rápido de Doenças</h2>
+<div id="guia-menu" class="hidden">
+    <div class="guia-header">
+        <div class="guia-title">Guia de Doenças</div>
+        <button class="close-btn" onclick="toggleGuiaMenu()">✕</button>
+    </div>
+    <div class="guia-body">
+
+    <!-- AQUI O JS VAI INSERIR SÓ CULTURA/DOENÇA/SINTOMAS -->
     <div id="listaGuiaDoencas"></div>
-  </div>
-  <hr style="margin:20px 0;">
 
-<div class="guia-contato">
-  <h3>📞 Contato</h3>
-  <p><b>Email:</b> contato@agroinova.com.br</p>
-  <p><b>WhatsApp:</b> (XX) XXXXX-XXXX</p>
-</div>
+    <hr class="divider">
 
-<div class="guia-aviso">
-  <h3>⚠️ Aviso Importante</h3>
-  <p>
-    Este guia possui caráter <b>informativo e educativo</b>.
-  </p>
-  <p>
-    Não recomendamos <b>dosagens específicas de defensivos agrícolas</b>,
-    pois não somos engenheiros agrônomos.
-  </p>
-  <p>
-    Para definição de produtos e receituário agronômico,
-    consulte sempre um <b>profissional habilitado</b>.
-  </p>
-</div>
-</div>
+    <div class="explanation-box">
+        ⚠️ <strong>Aviso Importante:</strong><br><br>
+        Este conteúdo possui caráter <strong>informativo e educativo</strong>.
+        Não substitui a avaliação de um <strong>engenheiro agrônomo</strong>.
+        Não indicamos <strong>dosagens de defensivos agrícolas</strong>.
+        Para aplicação correta e receituário agronômico,
+        consulte sempre um <strong>profissional habilitado</strong>.
+    </div>
+
+    <hr class="divider">
+
+    <p><strong>📞 Fale Conosco:</strong></p>
+
+    <a href="mailto:siteagroinova@gmail.com" class="contact-link">
+        📧 Enviar E-mail
+    </a>
+
+    <a href="https://wa.me/5555996698757" target="_blank" class="contact-link">
+        💬 WhatsApp
+    </a>
+
+    <p class="thanks-msg">
+        🙏 Muito obrigado por utilizar o AgroBot!
+    </p>
+
+    </div>
 
 <!-- SPLASH -->
 <div id="splash">
@@ -97,6 +104,7 @@ Olá! 👋 Este é o <b>AgroBot</b>, seu <b>assistente digital no campo</b>, des
 <script src="bot.js"></script>
 </body>
 </html>
+
 
 
 
