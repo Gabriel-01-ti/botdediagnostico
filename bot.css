@@ -670,39 +670,20 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
 }
 
 
+  .painel-conteudo {
+    width: 95%;
+    max-width: 95%;
+    padding: 15px;
+  }
 
+  .guia-contato,
+  .guia-aviso {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
