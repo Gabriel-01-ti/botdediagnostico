@@ -444,6 +444,7 @@ PAINEL GUIA
   overflow-y: auto;
   border-radius: 12px;
   padding: 20px;
+  flex-direction: columm
 }
 
 .item-guia {
@@ -684,6 +685,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
   }
 
 }
+
 
 
 
