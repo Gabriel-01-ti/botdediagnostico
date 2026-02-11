@@ -30,11 +30,11 @@ function abrirGuiaRapido() {
 
   Object.keys(baseDados).forEach(cultura => {
 
-    const titulo = document.createElement("h3");
+    const titulo = document.createElement("titulo-doenca");
     titulo.textContent =
       "🌱 " + cultura.charAt(0).toUpperCase() + cultura.slice(1);
 
-    titulo.className = "titulo-cultura";
+    titulo.className = "titulo-doenca";
     listaDiv.appendChild(titulo);
 
     Object.values(baseDados[cultura]).forEach(d => {
@@ -351,6 +351,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
