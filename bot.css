@@ -341,6 +341,66 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
   font-weight: bold;
   border: 1px solid var(--verde-tema);
 }
+/* =========================================
+   ESTILO DOS ITENS DINÂMICOS DO GUIA
+   ========================================= */
+.titulo-cultura {
+  background: var(--verde-escuro);
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 6px;
+  margin: 15px 0 10px 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.item-guia {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid var(--verde-tema);
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.item-guia:hover {
+  background: var(--verde-leve);
+  transform: translateX(5px);
+}
+
+.item-guia strong {
+  display: block;
+  color: var(--verde-escuro);
+  font-size: 1rem;
+}
+
+.item-guia span {
+  font-size: 0.85rem;
+  color: #666;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Divisor e Caixa de Aviso no Guia */
+.divider {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+.explanation-box {
+  background: #fff3e0;
+  border: 1px solid #ffe0b2;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #e65100;
+  line-height: 1.4;
+}
+
 
 /* =========================================
    8. RESPONSIVIDADE E AJUSTES FINAIS
@@ -701,5 +761,6 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
