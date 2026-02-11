@@ -29,10 +29,13 @@ function abrirGuiaRapido() {
   listaDiv.innerHTML = "";
 
   Object.keys(baseDados).forEach(cultura => {
-    // Cria o cabeçalho da cultura (Ex: 🌱 SOJA)
+    // Título da Cultura (🌱 TRIGO, etc) - Agora com a classe correta para aparecer
     const titulo = document.createElement("div"); 
-    titulo.className = "titulo-cultura"; // Classe que vamos estilizar
-    titulo.textContent = "🌱 " + cultura.charAt(0).toUpperCase() + cultura.slice(1);
+    titulo.className = "titulo-cultura-guia"; 
+    
+    const nomeFormatado = cultura.charAt(0).toUpperCase() + cultura.slice(1);
+    titulo.innerHTML = `<span>🌱</span> ${nomeFormatado}`;
+    
     listaDiv.appendChild(titulo);
 
     Object.values(baseDados[cultura]).forEach(d => {
@@ -40,18 +43,15 @@ function abrirGuiaRapido() {
 
       const item = document.createElement("div");
       item.className = "item-guia";
+      // Removemos o cursor de ponteiro para indicar que não é clicável
+      item.style.cursor = "default"; 
 
       item.innerHTML = `
         <strong>${d.nome}</strong>
         <span>👀 ${sintomaPrincipal}</span>
       `;
       
-      // Opcional: clicar na doença no guia já inicia o diagnóstico
-      item.onclick = () => {
-          toggleGuiaMenu();
-          addMsg(`Analisando ${d.nome}...`, "bot");
-          diagnosticar(cultura, d.nome);
-      };
+      // REMOVIDO: item.onclick (Agora não faz nada ao clicar)
 
       listaDiv.appendChild(item);
     });
@@ -352,6 +352,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
