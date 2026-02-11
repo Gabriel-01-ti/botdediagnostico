@@ -60,25 +60,32 @@ function normalizar(txt) {
 
 function addMsg(texto, tipo, rolar = true) {
   const div = document.createElement("div");
-  div.className = "msg " + tipo;
+  // Se for bot, a classe principal é o wrapper, não a 'msg' genérica
+  div.className = tipo === "bot" ? "msg-bot-wrapper" : "msg " + tipo;
 
-  // 👉 Se for o BOT, adiciona avatar + bolha
   if (tipo === "bot") {
-  div.classList.add("msg-bot-wrapper");
+    // 1. Área do topo (Avatar + Rabinho)
+    const headerArea = document.createElement("div");
+    headerArea.className = "bot-header-area";
 
-  const avatar = document.createElement("img");
-  avatar.src = "logo.jpg";
-  avatar.className = "bot-avatar";
+    const avatar = document.createElement("img");
+    avatar.src = "logo.jpg";
+    avatar.className = "bot-avatar";
 
-  const bubble = document.createElement("div");
-  bubble.className = "bot-bubble";
-  bubble.innerHTML = texto;
+    const tail = document.createElement("div");
+    tail.className = "bot-tail"; // Este é o segredo do rabinho fixo
 
-  div.appendChild(avatar);
-  div.appendChild(bubble);
-}
- else {
-    // usuário continua igual
+    headerArea.appendChild(avatar);
+    headerArea.appendChild(tail);
+
+    // 2. Bolha de texto
+    const bubble = document.createElement("div");
+    bubble.className = "bot-bubble";
+    bubble.innerHTML = texto;
+
+    div.appendChild(headerArea);
+    div.appendChild(bubble);
+  } else {
     div.innerHTML = texto;
   }
 
@@ -88,8 +95,6 @@ function addMsg(texto, tipo, rolar = true) {
     chatDiv.scrollTop = chatDiv.scrollHeight;
   }
 }
-
-
 
 // ================= INÍCIO =================
 function iniciarBot() {
@@ -334,6 +339,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
