@@ -340,17 +340,42 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
     border-radius: 10px;
 }
 
+.guia-footer-links {
+    margin-top: 15px;
+    padding-bottom: 20px; /* Garante espaço no final do scroll */
+}
+
+.guia-footer-links p {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 .contact-link {
-  display: block;
-  padding: 12px;
-  background: var(--verde-leve);
-  color: var(--verde-escuro);
-  text-decoration: none;
-  border-radius: 10px;
-  text-align: center;
-  margin: 8px 0;
-  font-weight: bold;
-  border: 1px solid var(--verde-tema);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    background: #f1f8e9;
+    color: #2e7d32;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    border: 1px solid #2e7d32;
+    transition: 0.3s;
+}
+
+.contact-link.whatsapp {
+    background: #e8f5e9;
+    border-color: #4caf50;
+    color: #2e7d32;
+}
+
+.contact-link:hover {
+    background: #2e7d32;
+    color: #ffffff;
 }
 /* =========================================
    ESTILO DOS ITENS DINÂMICOS DO GUIA
@@ -785,6 +810,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
 
