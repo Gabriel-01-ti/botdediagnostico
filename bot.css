@@ -125,12 +125,13 @@ MENSAGEM DO BOT - DESIGN RESPONSIVO
   width: 100%;
 }
 
-/* Criamos um container para o avatar e o biquinho ficarem juntos */
+/* Container do avatar + rabinho */
 .bot-header-area {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: 15px; /* Alinha o avatar com o início da bolha */
+  align-items: center; /* 👈 agora centraliza corretamente */
+  margin-left: 15px;
+  position: relative;
 }
 
 .bot-avatar {
@@ -143,15 +144,15 @@ MENSAGEM DO BOT - DESIGN RESPONSIVO
   position: relative;
 }
 
-/* O "Rabinho" agora é um triângulo que nasce do avatar e entra na bolha */
+/* Rabinho maior e centralizado perfeitamente */
 .bot-tail {
+  position: relative;
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 12px solid #e3f2fd; /* Mesma cor da bolha */
-  margin-top: -8px; /* Faz ele brotar de trás do avatar */
-  margin-left: 14px; /* Centraliza sob o avatar */
+  border-left: 14px solid transparent;   /* 👈 maior */
+  border-right: 14px solid transparent;  /* 👈 maior */
+  border-bottom: 18px solid #e3f2fd;     /* 👈 mais alto */
+  margin-top: -10px; /* faz nascer atrás do avatar */
   z-index: 9;
 }
 
@@ -166,11 +167,12 @@ MENSAGEM DO BOT - DESIGN RESPONSIVO
   max-width: 85%;
   position: relative;
   z-index: 5;
-  margin-top: -6px; /* Encaixe perfeito com o triângulo */
+  margin-top: -8px; /* encaixe melhor com o novo tamanho */
 }
 
-/* REMOVA qualquer ::before ou ::after de bot-bubble para não dar conflito */
-.bot-bubble::before, .bot-bubble::after {
+/* Remove conflitos */
+.bot-bubble::before,
+.bot-bubble::after {
   display: none !important;
 }
 
@@ -620,6 +622,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
