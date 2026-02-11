@@ -126,8 +126,8 @@ ESTILO AGROBOT - AVATAR EM CIMA
 }
 
 .bot-avatar {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 3px solid #ffffff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -622,6 +622,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     font-size: 12px;
   }
 }
+
 
 
 
