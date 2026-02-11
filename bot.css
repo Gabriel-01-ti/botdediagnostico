@@ -423,46 +423,142 @@ BOTÃO FLUTUANTE
   transform: scale(0.95);
 }
 
-/* =========================================
-PAINEL GUIA (MODAL CORRIGIDO)
-========================================= */
+/* ============================= */
+/* BOTÃO FLUTUANTE GUIA RÁPIDO  */
+/* ============================= */
+
+#btnGuiaRapido {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  width: 60px;
+  height: 60px;
+
+  background: #2e7d32;
+  color: #fff;
+  font-size: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  z-index: 2000;
+}
+
+#btnGuiaRapido:hover {
+  transform: scale(1.08);
+}
+
+
+/* ============================= */
+/* PAINEL GUIA LATERAL          */
+/* ============================= */
+
 .painel-guia {
-  display: none; /* O JS mudará para 'flex' ao abrir */
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85); /* Fundo escuro atrás do painel */
-  z-index: 99999; /* Valor altíssimo para ficar na frente de tudo */
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  left: -100%; /* escondido */
+
+  width: 350px;
+  max-width: 90%;
+  height: 100vh;
+
+  background: #ffffff;
+
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.25);
+
+  overflow-y: auto;
+  transition: left 0.35s ease;
+
+  z-index: 1500;
 }
+
+/* Quando o JS ativar */
+.painel-guia.active,
+.painel-guia.ativo {
+  left: 0;
+}
+
+
+/* ============================= */
+/* CONTEÚDO INTERNO             */
+/* ============================= */
 
 .painel-conteudo {
-  background: white;
-  width: 100%;
-  max-width: 450px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 20px;
-  padding: 25px;
-  position: relative; /* Para o botão fechar 'X' se posicionar */
-  display: flex;
-  flex-direction: column; /* Corrigido de 'columm' */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  padding: 25px 20px 10px 20px;
+  position: relative;
 }
 
-/* Botão de fechar (X) dentro do painel */
+
+/* ============================= */
+/* BOTÃO FECHAR                 */
+/* ============================= */
+
 .fechar-guia {
   position: absolute;
   top: 15px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
+  right: 18px;
+
+  font-size: 20px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+
+/* ============================= */
+/* BLOCO CONTATO                */
+/* ============================= */
+
+.guia-contato {
+  padding: 20px;
+  margin: 15px;
+
+  background: #e8f5e9;
+  border-radius: 15px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+
+/* ============================= */
+/* BLOCO AVISO IMPORTANTE       */
+/* ============================= */
+
+.guia-aviso {
+  padding: 20px;
+  margin: 15px 15px 30px 15px;
+
+  background: #fff8e1;
+  border-left: 6px solid #ff9800;
+  border-radius: 15px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+
+/* ============================= */
+/* RESPONSIVO                   */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  .painel-guia {
+    width: 85%;
+  }
+
+  #btnGuiaRapido {
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+
 }
 
 
@@ -484,21 +580,6 @@ PAINEL GUIA (MODAL CORRIGIDO)
   color: white;
 }
 
-.guia-contato, 
-.guia-aviso {
-  margin-top: 15px;
-  padding: 15px;
-  border-radius: 10px;
-  font-size: 14px;
-  width: 100%; /* Garante que não estoure a largura */
-  box-sizing: border-box;
-}
-
-.guia-aviso {
-  background: #fff3e0;
-  border-left: 5px solid #ef6c00;
-  color: #855600;
-}
 
 
 .guia-aviso h3,
@@ -701,6 +782,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
 
