@@ -345,10 +345,10 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
 }
 
 #guia-menu {
-  position: flex;
-  bottom: 100px;
-  left: 25px;
-  width: 380px;
+  position: fixed;
+  bottom: 150px;
+  left: 50px;
+  width: 580px;
   max-width: 90vw;
   background:  #f4f7f6;;
   border-radius: 40px;
@@ -912,6 +912,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
 
