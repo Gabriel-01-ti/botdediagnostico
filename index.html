@@ -1,131 +1,118 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgroInova 🌱</title>
+<title>AgroInova</title>
 
 <style>
 
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
 body{
-  font-family:"Poppins",sans-serif;
-  height:100vh;
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(135deg,#0f3d1f,#1b5e20);
   display:flex;
   justify-content:center;
   align-items:center;
-  background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
-             url('fundo.jpg') center/cover no-repeat;
+  height:100vh;
 }
 
 /* CONTAINER */
-.main{
-  width:95%;
-  max-width:1100px;
-  display:flex;
-  border-radius:25px;
-  overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,0.6);
+.container{
+  background:#e8f5e9;
+  width:90%;
+  max-width:400px;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.4);
+  border:3px solid #1b5e20;
 }
 
-/* LADO ESQUERDO */
-.left{
-  flex:1;
-  padding:50px;
-  background:linear-gradient(135deg,#1b5e20,#2e7d32);
-  color:white;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.left h1{
-  font-size:2.8rem;
+/* TITULOS */
+h1{
+  text-align:center;
+  color:#1b5e20;
   margin-bottom:20px;
-  text-shadow:2px 2px 10px rgba(0,0,0,0.5);
+  text-shadow:2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.left p{
-  line-height:1.6;
+h2{
+  text-align:center;
+  color:#1b5e20;
   margin-bottom:15px;
 }
 
-/* LADO DIREITO */
-.right{
-  flex:1;
-  background:rgba(255,255,255,0.97);
-  padding:40px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+/* LINHA DIVISORIA */
+.divider{
+  height:2px;
+  background:#000;
+  margin:15px 0 25px 0;
 }
 
-.card{
-  width:100%;
-  max-width:350px;
-}
-
-.card h2{
-  text-align:center;
-  margin-bottom:20px;
-  color:#1b5e20;
-  text-shadow:1px 1px 6px rgba(0,0,0,0.2);
-}
-
-/* INPUT */
+/* INPUTS */
 input{
   width:100%;
   padding:12px;
   margin-bottom:15px;
-  border-radius:12px;
-  border:2px solid #2e7d32;
-  font-size:1rem;
-  transition:0.3s;
+  border-radius:10px;
+  border:2px solid #1b5e20;
+  outline:none;
+  font-size:0.95rem;
 }
 
-input:focus{
-  border-color:#1b5e20;
-  box-shadow:0 0 10px rgba(46,125,50,0.4);
-  outline:none;
+/* SENHA */
+.password-box{
+  position:relative;
+}
+
+.eye{
+  position:absolute;
+  right:15px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  font-size:1.1rem;
 }
 
 /* BOTÕES */
 button{
   width:100%;
-  padding:14px;
-  background:linear-gradient(135deg,#2e7d32,#1b5e20);
-  border:3px solid #145a18;
+  padding:12px;
+  border-radius:12px;
+  border:2px solid #0d3b17;
+  background:linear-gradient(180deg,#2e7d32,#1b5e20);
   color:white;
   font-weight:bold;
-  border-radius:15px;
+  font-size:1rem;
   cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
   transition:0.3s;
-  box-shadow:0 6px 20px rgba(0,0,0,0.4);
-  text-shadow:1px 1px 3px rgba(0,0,0,0.5);
-  letter-spacing:1px;
 }
 
 button:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 25px rgba(0,0,0,0.6);
+  transform:scale(1.03);
 }
 
-/* LINK TOGGLE */
+/* TOGGLE */
 .toggle{
   text-align:center;
   margin-top:15px;
   cursor:pointer;
-  color:#2e7d32;
   font-weight:bold;
+  color:#1b5e20;
 }
 
-.toggle:hover{
+/* ESQUECI SENHA */
+.forgot{
+  text-align:right;
+  font-size:0.85rem;
+  cursor:pointer;
+  font-weight:bold;
+  margin-bottom:15px;
+  color:#1b5e20;
+}
+
+.forgot:hover{
   text-decoration:underline;
 }
 
@@ -136,178 +123,125 @@ button:hover{
 }
 
 .dashboard h2{
-  font-size:1.8rem;
-  color:#1b5e20;
-  margin-bottom:20px;
-  text-shadow:1px 1px 6px rgba(0,0,0,0.3);
+  text-shadow:2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.dashboard a{
-  display:block;
-  margin-top:15px;
-  text-decoration:none;
-  background:linear-gradient(135deg,#2e7d32,#1b5e20);
-  color:white;
-  padding:12px;
-  border-radius:15px;
-  border:3px solid #145a18;
-  font-weight:bold;
-  transition:0.3s;
-  text-shadow:1px 1px 3px rgba(0,0,0,0.4);
-  box-shadow:0 6px 20px rgba(0,0,0,0.4);
-}
-
-.dashboard a:hover{
-  transform:translateY(-4px);
-}
-
-/* BOTÃO FLUTUANTE */
+/* BOTÃO SECRETO */
 .floating-secret{
   position:fixed;
-  bottom:30px;
-  right:30px;
-  width:65px;
-  height:65px;
-  background:linear-gradient(135deg,#2e7d32,#1b5e20);
-  border-radius:50%;
-  border:3px solid #145a18;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  cursor:pointer;
+  bottom:20px;
+  right:20px;
+  background:#1b5e20;
   color:white;
-  box-shadow:0 8px 25px rgba(0,0,0,0.5);
-  transition:0.3s;
-  text-shadow:1px 1px 4px rgba(0,0,0,0.5);
-}
-
-.floating-secret:hover{
-  transform:scale(1.1) rotate(5deg);
+  padding:15px;
+  border-radius:50%;
+  font-size:1.5rem;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.4);
 }
 
 /* MODAL */
-.secret-modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.75);
+.secret{
   display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
   justify-content:center;
   align-items:center;
 }
 
 .secret-content{
-  background:white;
-  padding:35px;
-  border-radius:20px;
-  max-width:500px;
+  background:#e8f5e9;
+  padding:30px;
   width:90%;
+  max-width:400px;
+  border-radius:20px;
+  border:3px solid #1b5e20;
   text-align:left;
-  box-shadow:0 15px 40px rgba(0,0,0,0.6);
-  animation:slideUp 0.4s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
 .secret-content h3{
+  text-align:left;
   color:#1b5e20;
-  margin-bottom:15px;
-  text-shadow: black 2px;
-
-}
-
-.secret-content p{
-  margin-bottom:10px;
-  line-height:1.5;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .close-secret{
   margin-top:20px;
-  padding:10px 20px;
-  background:linear-gradient(135deg,#2e7d32,#1b5e20);
-  color:white;
-  border:3px solid #145a18;
-  border-radius:12px;
-  cursor:pointer;
-  font-weight:bold;
-  box-shadow:0 6px 20px rgba(0,0,0,0.4);
-  text-shadow:1px 1px 3px rgba(0,0,0,0.4);
-  transition:0.3s;
-}
-
-.close-secret:hover{
-  transform:scale(1.05);
-}
-
-/* ANIMAÇÃO */
-@keyframes slideUp{
-  from{transform:translateY(30px);opacity:0;}
-  to{transform:translateY(0);opacity:1;}
-}
-
-@media(max-width:900px){
-  .main{flex-direction:column;}
 }
 
 </style>
 </head>
+
 <body>
 
-<div class="main">
+<div class="container" id="authContainer">
 
-  <div class="left">
-    <h1>🌱 AgroInova 🤖</h1>
-    <p>
-      Conectando o campo à tecnologia.
-      Plataforma inteligente para diagnóstico de doenças agrícolas por imagem ou sintomas.
-    </p>
-    <p>
-      Projeto desenvolvido por alunos do Curso Técnico Integrado em Informática e Agropecuária.
-    </p>
-  </div>
+<h1>🌱 AgroInova</h1>
 
-  <div class="right">
-    <div class="card">
+<h2 id="formTitle">Login</h2>
 
-      <div id="auth">
-        <h2 id="formTitle">Login</h2>
-        <input type="email" id="email" placeholder="Digite seu email">
-        <input type="password" id="password" placeholder="Digite sua senha">
-        <button onclick="auth()">Entrar</button>
-        <div class="toggle" onclick="toggleForm()">
-          Não tem conta? Cadastre-se
-        </div>
-      </div>
+<div class="divider"></div>
 
-      <div class="dashboard" id="dashboard">
-        <h2>🌱 Bem-vindo AgroInova</h2>
-        <a href="sobre.html">📷 Diagnóstico por Imagem</a>
-        <a href="bot.html">💬 Diagnóstico por Sintomas</a>
-        <a href="#" onclick="logout()">Sair</a>
-      </div>
+<input type="email" id="email" placeholder="Digite seu email">
 
-    </div>
-  </div>
+<div class="password-box">
+  <input type="password" id="password" placeholder="Digite sua senha">
+  <span class="eye" onclick="togglePassword()">👁</span>
+</div>
+
+<input type="password" id="confirmPassword" placeholder="Confirme sua senha" style="display:none;">
+
+<div class="forgot" onclick="forgotPassword()">Esqueceu a senha?</div>
+
+<button onclick="auth()">Entrar</button>
+
+<div class="toggle" onclick="toggleForm()">Não tem conta? Cadastre-se</div>
 
 </div>
 
-<!-- BOTÃO FLUTUANTE -->
+<!-- DASHBOARD -->
+<div class="container dashboard" id="dashboard">
+
+<h2>Bem-vindo ao AgroInova 🌾</h2>
+
+<p>Você está logado com sucesso!</p>
+
+<button onclick="logout()">Sair</button>
+
+</div>
+
+<!-- BOTÃO SOBRE -->
 <div class="floating-secret" onclick="openSecret()">👥</div>
 
 <!-- MODAL -->
-<div class="secret-modal" id="secretModal">
-  <div class="secret-content">
-    <h3>🌱 Sobre o Projeto</h3>
-    <p><strong>AgroInova</strong> nasceu como uma ideia pensada para ajudar os agricultores a diagnosticar as doenças de suas lavouras de forma mais rápida, prática e acessível.</p>
-    <p>Nosso objetivo é integrar tecnologia e agropecuária, facilitando a identificação de pragas e doenças através de imagem ou descrição de sintomas.</p>
-    <p><strong>Desenvolvido por:</strong></p>
-    <p>
-      👨‍💻 Cauãn Kaminski<br>
-      👨‍💻 Bernardo Baldin<br>
-      👨‍💻 Gabriel Klemm<br>
-      👨‍💻 Bernardo Lorenzatto
-    </p>
-    <p>1º Ano – Técnico em Informática & Agropecuária</p>
-    <button class="close-secret" onclick="closeSecret()">Fechar</button>
-  </div>
+<div class="secret" id="secret">
+<div class="secret-content">
+
+<h3>🌱 Sobre o Projeto</h3>
+
+<p><strong>AgroInova</strong> nasceu como uma ideia pensada para ajudar os agricultores a diagnosticar as doenças de suas lavouras de forma mais rápida, prática e acessível.</p>
+
+<p>Nosso objetivo é integrar tecnologia e agropecuária, facilitando a identificação de pragas e doenças através de imagem ou descrição de sintomas.</p>
+
+<p><strong>Desenvolvido por:</strong></p>
+
+<p>
+👨‍💻 Cauãn Kaminski<br>
+👨‍💻 Bernardo Baldin<br>
+👨‍💻 Gabriel Klemm<br>
+👨‍💻 Bernardo Lorenzatto
+</p>
+
+<p>1º Ano – Técnico em Informática & Agropecuária</p>
+
+<button class="close-secret" onclick="closeSecret()">Fechar</button>
+
+</div>
 </div>
 
 <script>
@@ -316,15 +250,21 @@ let isLogin = true;
 
 function toggleForm(){
   isLogin = !isLogin;
+
   document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
   document.querySelector("button").innerText = isLogin ? "Entrar" : "Cadastrar";
   document.querySelector(".toggle").innerText =
     isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login";
+
+  document.getElementById("confirmPassword").style.display =
+    isLogin ? "none" : "block";
 }
 
 function auth(){
+
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
 
   if(!email || !password){
     alert("Preencha todos os campos!");
@@ -332,42 +272,70 @@ function auth(){
   }
 
   if(isLogin){
+
     const user = JSON.parse(localStorage.getItem(email));
+
     if(user && user.password === password){
-      showDashboard();
+      document.getElementById("authContainer").style.display="none";
+      document.getElementById("dashboard").style.display="block";
     } else {
       alert("Email ou senha incorretos!");
     }
+
   } else {
+
+    if(password !== confirmPassword){
+      alert("As senhas não coincidem!");
+      return;
+    }
+
     if(localStorage.getItem(email)){
       alert("Email já cadastrado!");
       return;
     }
+
     localStorage.setItem(email, JSON.stringify({password}));
     alert("Cadastro realizado com sucesso!");
     toggleForm();
   }
 }
 
-function showDashboard(){
-  document.getElementById("auth").style.display="none";
-  document.getElementById("dashboard").style.display="block";
+function logout(){
+  document.getElementById("dashboard").style.display="none";
+  document.getElementById("authContainer").style.display="block";
 }
 
-function logout(){
-  location.reload();
+function togglePassword(){
+  const input = document.getElementById("password");
+  input.type = input.type === "password" ? "text" : "password";
+}
+
+function forgotPassword(){
+  const email = document.getElementById("email").value;
+
+  if(!email){
+    alert("Digite seu email para recuperar a senha.");
+    return;
+  }
+
+  const user = JSON.parse(localStorage.getItem(email));
+
+  if(user){
+    alert("Sua senha é: " + user.password);
+  } else {
+    alert("Email não encontrado!");
+  }
 }
 
 function openSecret(){
-  document.getElementById("secretModal").style.display="flex";
+  document.getElementById("secret").style.display="flex";
 }
 
 function closeSecret(){
-  document.getElementById("secretModal").style.display="none";
+  document.getElementById("secret").style.display="none";
 }
 
 </script>
 
 </body>
 </html>
-
