@@ -139,6 +139,23 @@ function finalizarDiagnostico() {
   }, 5500);
 }
 
+function salvarDiagnostico(texto) {
+  // Pega o usuário logado
+  const user = localStorage.getItem("loggedUser");
+  if (!user) return; // Não faz nada se não tiver login
+
+  // Pega histórico atual ou cria vazio
+  let historico = JSON.parse(localStorage.getItem(user + "_diagnosticos")) || [];
+
+  // Adiciona novo diagnóstico com data/hora
+  historico.push({
+    resultado: texto,
+    data: new Date().toLocaleString()
+  });
+
+  // Salva de volta no localStorage
+  localStorage.setItem(user + "_diagnosticos", JSON.stringify(historico));
+}
 
 // ================= ESCOLHER MODO =================
 function escolherModo(modo) {
@@ -340,6 +357,11 @@ function diagnosticar(cultura, textoUsuario) {
     etapa = 1;
   }, 2500);
 }
+// Depois de identificar a doença
+const resultado = `Cultura: ${cultura}, Doença: ${classe}, Confiança: ${(prob*100).toFixed(1)}%`;
+
+// Chama a função para salvar
+salvarDiagnostico(resultado);
 
 // ENTER ENVIA
 inputSintomas.addEventListener("keypress", e => {
@@ -352,6 +374,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
