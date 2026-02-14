@@ -33,7 +33,7 @@ h1{
   text-align:center;
   color:#1b5e20;
   margin-bottom:20px;
-  text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow:2px 2px 4px rgba(0,0,0,0.4);
 }
 
 h2{
@@ -42,7 +42,6 @@ h2{
   margin-bottom:15px;
 }
 
-/* LINHA DIVISORIA */
 .divider{
   height:2px;
   background:#000;
@@ -60,7 +59,6 @@ input{
   font-size:0.95rem;
 }
 
-/* SENHA */
 .password-box{
   position:relative;
 }
@@ -71,7 +69,6 @@ input{
   top:50%;
   transform:translateY(-50%);
   cursor:pointer;
-  font-size:1.1rem;
 }
 
 /* BOTÕES */
@@ -93,7 +90,6 @@ button:hover{
   transform:scale(1.03);
 }
 
-/* TOGGLE */
 .toggle{
   text-align:center;
   margin-top:15px;
@@ -102,7 +98,6 @@ button:hover{
   color:#1b5e20;
 }
 
-/* ESQUECI SENHA */
 .forgot{
   text-align:right;
   font-size:0.85rem;
@@ -123,21 +118,30 @@ button:hover{
 }
 
 .dashboard h2{
-  text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow:2px 2px 4px rgba(0,0,0,0.4);
 }
 
-/* BOTÃO SECRETO */
+/* BOTÃO FLUTUANTE */
 .floating-secret{
   position:fixed;
   bottom:20px;
   right:20px;
+  width:60px;
+  height:60px;
   background:#1b5e20;
   color:white;
-  padding:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   border-radius:50%;
-  font-size:1.5rem;
+  font-size:1.6rem;
   cursor:pointer;
-  box-shadow:0 5px 15px rgba(0,0,0,0.4);
+  box-shadow:0 6px 20px rgba(0,0,0,0.5);
+  transition:0.3s;
+}
+
+.floating-secret:hover{
+  transform:scale(1.1);
 }
 
 /* MODAL */
@@ -165,13 +169,8 @@ button:hover{
 }
 
 .secret-content h3{
-  text-align:left;
   color:#1b5e20;
   text-shadow:2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.close-secret{
-  margin-top:20px;
 }
 
 </style>
@@ -182,9 +181,7 @@ button:hover{
 <div class="container" id="authContainer">
 
 <h1>🌱 AgroInova</h1>
-
 <h2 id="formTitle">Login</h2>
-
 <div class="divider"></div>
 
 <input type="email" id="email" placeholder="Digite seu email">
@@ -198,17 +195,17 @@ button:hover{
 
 <div class="forgot" onclick="forgotPassword()">Esqueceu a senha?</div>
 
-<button onclick="auth()">Entrar</button>
+<button onclick="auth()" id="mainButton">Entrar</button>
 
-<div class="toggle" onclick="toggleForm()">Não tem conta? Cadastre-se</div>
+<div class="toggle" onclick="toggleForm()" id="toggleText">
+Não tem conta? Cadastre-se
+</div>
 
 </div>
 
-<!-- DASHBOARD -->
 <div class="container dashboard" id="dashboard">
 
 <h2>Bem-vindo ao AgroInova 🌾</h2>
-
 <p>Você está logado com sucesso!</p>
 
 <button onclick="logout()">Sair</button>
@@ -220,28 +217,26 @@ button:hover{
 
 <!-- MODAL -->
 <div class="secret" id="secret">
-<div class="secret-content">
+  <div class="secret-content">
 
-<h3>🌱 Sobre o Projeto</h3>
+    <h3>🌱 Sobre o Projeto</h3>
 
-<p><strong>AgroInova</strong> nasceu como uma ideia pensada para ajudar os agricultores a diagnosticar as doenças de suas lavouras de forma mais rápida, prática e acessível.</p>
+    <p><strong>AgroInova</strong> nasceu como uma ideia pensada para ajudar os agricultores a diagnosticar doenças de forma rápida e acessível.</p>
 
-<p>Nosso objetivo é integrar tecnologia e agropecuária, facilitando a identificação de pragas e doenças através de imagem ou descrição de sintomas.</p>
+    <p>Nosso objetivo é integrar tecnologia e agropecuária.</p>
 
-<p><strong>Desenvolvido por:</strong></p>
+    <p><strong>Desenvolvido por:</strong></p>
 
-<p>
-👨‍💻 Cauãn Kaminski<br>
-👨‍💻 Bernardo Baldin<br>
-👨‍💻 Gabriel Klemm<br>
-👨‍💻 Bernardo Lorenzatto
-</p>
+    <p>
+    👨‍💻 Cauãn Kaminski<br>
+    👨‍💻 Bernardo Baldin<br>
+    👨‍💻 Gabriel Klemm<br>
+    👨‍💻 Bernardo Lorenzatto
+    </p>
 
-<p>1º Ano – Técnico em Informática & Agropecuária</p>
+    <button onclick="closeSecret()">Fechar</button>
 
-<button class="close-secret" onclick="closeSecret()">Fechar</button>
-
-</div>
+  </div>
 </div>
 
 <script>
@@ -251,17 +246,21 @@ let isLogin = true;
 function toggleForm(){
   isLogin = !isLogin;
 
-  document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
-  document.querySelector("button").innerText = isLogin ? "Entrar" : "Cadastrar";
-  document.querySelector(".toggle").innerText =
-    isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login";
+  document.getElementById("formTitle").innerText =
+    isLogin ? "Login" : "Cadastro";
+
+  document.getElementById("mainButton").innerText =
+    isLogin ? "Entrar" : "Cadastrar";
+
+  document.getElementById("toggleText").innerText =
+    isLogin ? "Não tem conta? Cadastre-se"
+            : "Já tem conta? Faça login";
 
   document.getElementById("confirmPassword").style.display =
     isLogin ? "none" : "block";
 }
 
 function auth(){
-
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirmPassword").value;
@@ -314,7 +313,7 @@ function forgotPassword(){
   const email = document.getElementById("email").value;
 
   if(!email){
-    alert("Digite seu email para recuperar a senha.");
+    alert("Digite seu email.");
     return;
   }
 
