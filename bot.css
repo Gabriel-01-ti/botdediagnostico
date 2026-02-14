@@ -348,11 +348,11 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
   position: fixed;
   bottom: 95px;
   left: 25px;
-  width: 380px;
+  width: 480px;
   max-width: 90vw;
   max-height: 70vh; /* Limita a altura total */
   background: #ffffff;
-  border-radius: 40px; /* O arredondado que você quer */
+  border-radius: 15px; /* O arredondado que você quer */
   z-index: 10000;
   display: flex;
   flex-direction: column;
@@ -915,6 +915,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
 
