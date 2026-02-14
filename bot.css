@@ -271,12 +271,31 @@ button#btn-diagnosticar {
 button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scale(1.02);
                               }
 
-/* Botão de sintoma selecionado */
-.sintomas-botoes button.ativo {
-  background-color: var(--verde-tema); /* verde do tema */
-  color: white;
+/* =========================================
+   BOTÕES DE SINTOMAS (SELEÇÃO VERDE)
+   ========================================= */
+.sintomas-botoes button {
+  background-color: var(--verde-leve); /* cor padrão */
+  color: var(--verde-escuro);
   border: 1px solid var(--verde-escuro);
-  transform: scale(1.05); /* efeito leve de destaque */
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sintomas-botoes button:hover {
+  background-color: var(--verde-tema);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.sintomas-botoes button.ativo {
+  background-color: var(--verde-tema); /* verde selecionado */
+  color: white;
+  border-color: var(--verde-escuro);
+  transform: scale(1.05);
 }
 /* =========================================
    7. GUIA LATERAL E BOTÃO FLUTUANTE
@@ -868,6 +887,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
 
