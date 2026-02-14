@@ -1,153 +1,227 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta name="google-site-verification" content="-2xsMwQkY93C4kgW1fRAF0xyCxTqE0__nhGQHI2nDtk" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgroInova, conectando o campo à tecnologia 📱🤝🏾🌱</title>
-  <meta name="description" content="Saiba mais sobre o projeto Diagnóstico Agrícola.">
-  <style>
-   /* RESET */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroInova 🌱</title>
+
+<style>
+
+/* RESET */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* BODY */
 body {
-  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e3f2fd, #c8e6c9);
-  color: #333;
-  min-height: 100vh;
-
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background-image: url(fundo.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+              url('fundo.jpg') center/cover no-repeat;
 }
 
-/* CONTAINER */
-.container {
+/* CONTAINER PRINCIPAL */
+.main {
   width: 95%;
-  max-width: 900px;
-  padding: 28px;
-  margin: 20px;
+  max-width: 1100px;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
 
-  background: rgba(245, 255, 245, 0.95);
-  border-radius: 16px;
-  border: 4px solid #1b5e20;
-
-  box-shadow:
-    0 8px 24px rgba(0,0,0,0.25),
-    inset 0 0 10px rgba(46,125,50,0.15);
-
+/* LADO ESQUERDO */
+.left {
+  flex: 1;
+  padding: 40px;
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: white;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-/* TÍTULO */
-h1 {
+.left h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.left p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* LADO DIREITO */
+.right {
+  flex: 1;
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 350px;
+}
+
+.card h2 {
   text-align: center;
-  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  margin-bottom: 20px;
   color: #1b5e20;
-  margin-bottom: 28px;
-
-  text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000,
-     0 0 8px rgba(46,125,50,0.6);
 }
 
-/* PARÁGRAFOS */
-p {
-  margin-bottom: 16px;
-  line-height: 1.7;
-  text-align: justify;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
-/* BOTÃO / LINK */
-a {
-  align-self: center;
-  margin-top: 30px;
+button {
+  width: 100%;
+  padding: 12px;
+  background: #2e7d32;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
+button:hover {
+  background: #1b5e20;
+}
+
+.toggle {
+  text-align: center;
+  margin-top: 15px;
+  cursor: pointer;
+  color: #2e7d32;
+  font-size: 0.9rem;
+}
+
+.dashboard {
+  display: none;
+  text-align: center;
+}
+
+.dashboard a {
+  display: block;
+  margin-top: 15px;
   text-decoration: none;
   background: #2e7d32;
-  color: #fff;
-  font-weight: bold;
-
-  padding: 12px 22px;
-  border-radius: 10px;
-
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.2s, background 0.3s;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
 }
 
-a:hover {
-  background: #1b5e20;
-  transform: scale(1.03);
-}
-
-/* FOOTER */
-footer {
-  margin-top: 40px;
-  padding: 12px 16px;
-  text-align: center;
-
-  background: #1b5e20;
-  color: #e8f5e9;
-
-  border-radius: 10px;
-  font-size: clamp(0.8rem, 2vw, 1rem);
-
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-}
-
-/* RESPONSIVO */
-@media (max-width: 600px) {
-  .container {
-    padding: 20px;
-  }
-
-  a {
-    padding: 10px 18px;
+@media (max-width: 900px) {
+  .main {
+    flex-direction: column;
   }
 }
 
-  </style>
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>🌱🤖  Bem- vindo ao AgroInova 🤖🌱</h1>
 
+<div class="main">
+
+  <!-- LADO ESQUERDO -->
+  <div class="left">
+    <h1>🌱 AgroInova 🤖</h1>
     <p>
-  Este site, que materializa a orientação da integração profissional entre os campos da informática e agropecuária, foi criado para facilitar o agricultor a identificar pragas ou doenças em suas lavouras e fornecer medidas de manejo inicial adequadas de forma rápida e simples.  
-  
+      Conectando o campo à tecnologia.
+      Plataforma inteligente para diagnóstico de doenças agrícolas por imagem ou sintomas.
     </p>
     <p>
-      Produzido pelos alunos (Cauãn Kaminski, Felipe Pavan, Gabriel Klemm, Bernardo Lorenzatto) 
-      do 1° Ano do Curso Técnico Integrado ao Ensino Médio, cursos Técnico em Informática 
-      e Técnico em Agropecuária.
+      Projeto desenvolvido por alunos do Curso Técnico Integrado
+      em Informática e Agropecuária.
     </p>
-    <a href="sobre.html">📷 Clique aqui para realizar diagnóstico por imagem</a>
-    <a href="bot.html">💬 Clique aqui para realizar diagnostico por sintoma</a>
-
-
-    <footer>
-      Os dados foram coletados de fontes confiáveis e adaptados para uso prático no campo.
-    </footer>
   </div>
+
+  <!-- LADO DIREITO -->
+  <div class="right">
+    <div class="card">
+
+      <div id="auth">
+        <h2 id="formTitle">Login</h2>
+        <input type="email" id="email" placeholder="Digite seu email">
+        <input type="password" id="password" placeholder="Digite sua senha">
+        <button onclick="auth()">Entrar</button>
+        <div class="toggle" onclick="toggleForm()">
+          Não tem conta? Cadastre-se
+        </div>
+      </div>
+
+      <div class="dashboard" id="dashboard">
+        <h2>Bem-vindo 🌱</h2>
+        <a href="sobre.html">📷 Diagnóstico por Imagem</a>
+        <a href="bot.html">💬 Diagnóstico por Sintomas</a>
+        <a href="#" onclick="logout()">Sair</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+let isLogin = true;
+
+function toggleForm() {
+  isLogin = !isLogin;
+  document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
+  document.querySelector("button").innerText = isLogin ? "Entrar" : "Cadastrar";
+  document.querySelector(".toggle").innerText =
+    isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login";
+}
+
+function auth() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  if (isLogin) {
+    const user = JSON.parse(localStorage.getItem(email));
+
+    if (user && user.password === password) {
+      showDashboard();
+    } else {
+      alert("Email ou senha incorretos!");
+    }
+  } else {
+    localStorage.setItem(email, JSON.stringify({ password }));
+    alert("Cadastro realizado com sucesso!");
+    toggleForm();
+  }
+}
+
+function showDashboard() {
+  document.getElementById("auth").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
+}
+
+function logout() {
+  location.reload();
+}
+
+</script>
+
 </body>
-
-</html>                                 
-
+</html>
