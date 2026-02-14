@@ -346,17 +346,18 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
 
 #guia-menu {
   position: fixed;
-  bottom: 150px;
-  left: 50px;
-  width: 580px;
+  bottom: 95px;
+  left: 25px;
+  width: 380px;
   max-width: 90vw;
-  background:  #f4f7f6;;
-  border-radius: 40px;
+  max-height: 70vh; /* Limita a altura total */
+  background: #ffffff;
+  border-radius: 40px; /* O arredondado que você quer */
   z-index: 10000;
   display: flex;
   flex-direction: column;
   box-shadow: 0 15px 50px rgba(0,0,0,0.3);
-  overflow: auto-y;
+  overflow: hidden; /* ESSENCIAL: corta o que sair do arredondado */
   transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -410,12 +411,14 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
 
 
 .guia-body {
-    padding: 18px;
-    overflow-y: auto;
-    max-height: 65vh; /* Evita que o guia saia da tela */
-    scrollbar-width: thin;
-    scrollbar-color: #2e7d32 #f0f0f0;
+  padding: 20px;
+  overflow-y: auto; /* O scroll fica só aqui dentro */
+  flex: 1;          /* Faz o corpo ocupar o espaço restante */
+  background: #ffffff; /* Garante que o fundo seja branco */
+  scrollbar-width: thin;
+  scrollbar-color: var(--verde-tema) #f0f0f0;
 }
+
 
 /* Personalização da barra de rolagem para navegadores Chrome/Edge */
 .guia-body::-webkit-scrollbar {
@@ -912,6 +915,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
 
