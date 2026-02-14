@@ -218,38 +218,114 @@ hr{
 }
 
 /* ================= MODAL ================= */
-.secret-modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.75);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
+/* ================= MODAL ESTILIZADO ================= */
+.secret-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
 }
 
-.secret-content{
-  background:white;
-  padding:35px;
-  border-radius:20px;
-  max-width:500px;
-  width:90%;
-  text-align:left;
+.secret-content {
+  background: #f0f7f0;
+  border-radius: 30px;
+  max-width: 550px;
+  width: 90%;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.2);
+  animation: modalEntrada 0.4s ease-out;
 }
 
-.secret-content h3{
-  color:#1b5e20;
-  margin-bottom:15px;
+@keyframes modalEntrada {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
-.secret-content p{
-  margin-bottom:10px;
-  line-height:1.6;
+/* Faixa verde no topo (estilo imagem IA) */
+.modal-header {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  padding: 40px 20px;
+  color: white;
+  position: relative;
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
 }
 
-.close-secret{
-  margin-top:20px;
+.modal-header .icon-top {
+  font-size: 50px;
+  background: white;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
+
+.secret-content h3 {
+  font-size: 2rem;
+  margin-top: 10px;
+}
+
+.modal-body {
+  padding: 30px;
+  color: #333;
+}
+
+.modal-body p {
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  color: #444;
+}
+
+/* Grade de Desenvolvedores */
+.dev-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.dev-card {
+  background: white;
+  padding: 12px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #c8e6c9;
+  transition: 0.3s;
+}
+
+.dev-card:hover {
+  transform: translateY(-3px);
+  border-color: #2e7d32;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.dev-card span {
+  font-weight: 600;
+  color: #1b5e20;
+  font-size: 0.9rem;
+}
+
+.close-secret {
+  margin-top: 25px;
+  background: #1b5e20;
+  border: none;
+  width: auto;
+  padding: 12px 40px;
+}
+
 
 /* ================= RESPONSIVO ================= */
 @media(max-width:900px){
@@ -331,24 +407,40 @@ Não tem conta? Cadastre-se
 <div class="floating-secret" onclick="openSecret()">ℹ️</div>
 
 <div class="secret-modal" id="secretModal">
-<div class="secret-content">
-<h3>🌱 Sobre o Projeto</h3>
+  <div class="secret-content">
+    
+    <div class="modal-header">
+      <div class="icon-top">🚜</div>
+      <h3>Sobre o Projeto</h3>
+    </div>
 
-<p><strong>AgroInova</strong> nasceu para ajudar agricultores a diagnosticar doenças nas lavouras de forma rápida e acessível.</p>
+    <div class="modal-body">
+      <p>
+        O <strong>AgroInova</strong> nasceu para conectar o conhecimento do campo com a inteligência artificial, 
+        facilitando a vida do produtor rural no diagnóstico de doenças.
+      </p>
 
-<p>Integramos tecnologia e agropecuária para facilitar a identificação de pragas e doenças por imagem ou sintomas.</p>
+      <h4 style="color:#1b5e20; margin-bottom:10px;">🚀 Time de Desenvolvimento</h4>
+      
+      <div class="dev-grid">
+        <div class="dev-card">
+          <span>👨‍💻 Cauãn Kaminski</span>
+        </div>
+        <div class="dev-card">
+          <span>👨‍💻 Gabriel Klemm</span>
+        </div>
+        <div class="dev-card">
+          <span>👨‍💻 Bernardo Baldin</span>
+        </div>
+        <div class="dev-card">
+          <span>👨‍💻 Bernardo Lorenzatto</span>
+        </div>
+      </div>
 
-<p><strong>Desenvolvido por:</strong></p>
+      <button class="close-secret" onclick="closeSecret()">Fechar Painel</button>
+    </div>
 
-<p>
-👨‍💻 Cauãn Kaminski<br>
-👨‍💻 Bernardo Baldin<br>
-👨‍💻 Gabriel Klemm<br>
-👨‍💻 Bernardo Lorenzatto
-</p>
-
-<button class="close-secret" onclick="closeSecret()">Fechar</button>
-</div>
+  </div>
 </div>
 
 <script>
@@ -471,6 +563,7 @@ function closeSecret(){
 
 </body>
 </html>
+
 
 
 
