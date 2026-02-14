@@ -351,17 +351,16 @@ function diagnosticar(cultura, textoUsuario) {
     `;
     addMsg(htmlCompleto, "bot", false);
   }
+      const resultado = `Cultura: ${cultura}, Doença: ${d.nome}, Pontos: ${d.pontos}`;
+    salvarDiagnostico(resultado);
+}
 
   setTimeout(() => {
     addMsg("🏁 Análise feita. Digite outra cultura para novo diagnóstico ou 'encerrar' para finalizar.", "bot", false);
     etapa = 1;
   }, 2500);
 }
-// Depois de identificar a doença
-const resultado = `Cultura: ${cultura}, Doença: ${classe}, Confiança: ${(prob*100).toFixed(1)}%`;
 
-// Chama a função para salvar
-salvarDiagnostico(resultado);
 
 // ENTER ENVIA
 inputSintomas.addEventListener("keypress", e => {
@@ -374,6 +373,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
