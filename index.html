@@ -14,15 +14,13 @@
   box-sizing: border-box;
 }
 
-/* BODY */
 body {
   font-family: "Poppins", sans-serif;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
               url('fundo.jpg') center/cover no-repeat;
 }
 
@@ -31,17 +29,15 @@ body {
   width: 95%;
   max-width: 1100px;
   display: flex;
-  border-radius: 25px;
+  border-radius: 20px;
   overflow: hidden;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  animation: fadeIn 0.8s ease;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
 }
 
 /* LADO ESQUERDO */
 .left {
   flex: 1;
-  padding: 50px;
+  padding: 40px;
   background: linear-gradient(135deg, #1b5e20, #2e7d32);
   color: white;
   display: flex;
@@ -50,22 +46,20 @@ body {
 }
 
 .left h1 {
-  font-size: 2.7rem;
+  font-size: 2.5rem;
   margin-bottom: 20px;
-  text-shadow: 0 0 15px rgba(0,0,0,0.6);
 }
 
 .left p {
-  line-height: 1.7;
+  line-height: 1.6;
   margin-bottom: 20px;
-  opacity: 0.95;
 }
 
 /* LADO DIREITO */
 .right {
   flex: 1;
   background: rgba(255,255,255,0.95);
-  padding: 50px;
+  padding: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,50 +72,62 @@ body {
 
 .card h2 {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   color: #1b5e20;
 }
 
+/* INPUT */
 input {
   width: 100%;
-  padding: 13px;
+  padding: 12px;
   margin-bottom: 15px;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #2e7d32;
   font-size: 1rem;
+  outline: none;
   transition: 0.3s;
 }
 
 input:focus {
-  border: 1px solid #2e7d32;
-  outline: none;
-  box-shadow: 0 0 8px rgba(46,125,50,0.5);
+  border-color: #1b5e20;
+  box-shadow: 0 0 10px rgba(46,125,50,0.3);
 }
 
+/* BOTÕES PRINCIPAIS */
 button {
   width: 100%;
-  padding: 13px;
+  padding: 14px;
   background: linear-gradient(135deg, #2e7d32, #1b5e20);
-  border: none;
+  border: 2px solid #145a18;
   color: white;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
 button:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
 }
 
+/* LINK CADASTRO */
 .toggle {
   text-align: center;
   margin-top: 15px;
   cursor: pointer;
   color: #2e7d32;
   font-size: 0.9rem;
+  font-weight: bold;
 }
 
+.toggle:hover {
+  text-decoration: underline;
+}
+
+/* DASHBOARD */
 .dashboard {
   display: none;
   text-align: center;
@@ -131,81 +137,63 @@ button:hover {
   display: block;
   margin-top: 15px;
   text-decoration: none;
-  background: #2e7d32;
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
   color: white;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid #145a18;
   transition: 0.3s;
+  font-weight: bold;
 }
 
 .dashboard a:hover {
-  background: #1b5e20;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 /* BOTÃO FLUTUANTE */
-.floating-secret {
+.float-btn {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
   color: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.4rem;
+  padding: 15px 20px;
+  border-radius: 50px;
+  border: 2px solid #145a18;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  font-weight: bold;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   transition: 0.3s;
-  z-index: 999;
 }
 
-.floating-secret:hover {
+.float-btn:hover {
   transform: scale(1.1);
 }
 
 /* MODAL */
-.secret-modal {
+.modal {
+  display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(6px);
-  display: none;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
 }
 
-.secret-content {
+.modal-content {
   background: white;
-  padding: 40px;
+  padding: 30px;
   border-radius: 20px;
-  max-width: 450px;
-  width: 90%;
+  max-width: 500px;
   text-align: center;
-  animation: fadeIn 0.4s ease;
 }
 
-.secret-content h3 {
-  color: #1b5e20;
-  margin-bottom: 20px;
-}
-
-.close-secret {
+.close {
   margin-top: 20px;
-  padding: 10px 20px;
-  border: none;
-  background: #2e7d32;
-  color: white;
-  border-radius: 8px;
   cursor: pointer;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  color: #2e7d32;
+  font-weight: bold;
 }
 
 @media (max-width: 900px) {
@@ -223,10 +211,12 @@ button:hover {
   <div class="left">
     <h1>🌱 AgroInova 🤖</h1>
     <p>
-      Conectando o campo à tecnologia. Plataforma inteligente para diagnóstico agrícola por imagem ou sintomas.
+      Conectando o campo à tecnologia.
+      Plataforma inteligente para diagnóstico de doenças agrícolas.
     </p>
     <p>
-      Tecnologia + Agropecuária integradas para facilitar a vida no campo.
+      Projeto desenvolvido por alunos do Curso Técnico Integrado
+      em Informática e Agropecuária.
     </p>
   </div>
 
@@ -256,42 +246,26 @@ button:hover {
 </div>
 
 <!-- BOTÃO FLUTUANTE -->
-<div class="floating-secret" onclick="openSecret()">👥</div>
+<div class="float-btn" onclick="openModal()">
+  👨‍🌾 Sobre Nós
+</div>
 
 <!-- MODAL -->
-<div class="secret-content">
-  <h3>🌱 Sobre o Projeto</h3>
-
-  <p><strong>AgroInova</strong> nasceu como uma ideia pensada para ajudar os agricultores a diagnosticar as doenças de suas lavouras de forma mais rápida, prática e acessível.</p>
-
-  <p>
-    Nosso objetivo é integrar tecnologia e agropecuária, facilitando a identificação de pragas e doenças através de imagem ou descrição de sintomas.
-  </p>
-
-  <p><strong>Desenvolvido por:</strong></p>
-  <p>
-    👨‍💻 Cauãn Kaminski<br>
-    👨‍💻 Bernardo Baldin<br>
-    👨‍💻 Gabriel Klemm<br>
-    👨‍💻 Bernardo Lorenzatto
-  </p>
-
-  <p>1º Ano – Técnico em Informática & Agropecuária</p>
-
-  <button class="close-secret" onclick="closeSecret()">Fechar</button>
-</div>
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2>🌱 Sobre o Projeto</h2>
+    <p>
+      O AgroInova foi uma ideia pensada para ajudar os agricultores
+      a diagnosticar as doenças de suas lavouras de forma mais rápida,
+      prática e acessível, utilizando tecnologia e inteligência digital.
+    </p>
+    <div class="close" onclick="closeModal()">Fechar</div>
+  </div>
 </div>
 
 <script>
 
 let isLogin = true;
-
-window.onload = function() {
-  const logged = localStorage.getItem("loggedUser");
-  if (logged) {
-    showDashboard();
-  }
-}
 
 function toggleForm() {
   isLogin = !isLogin;
@@ -312,13 +286,17 @@ function auth() {
 
   if (isLogin) {
     const user = JSON.parse(localStorage.getItem(email));
+
     if (user && user.password === password) {
-      localStorage.setItem("loggedUser", email);
       showDashboard();
     } else {
       alert("Email ou senha incorretos!");
     }
   } else {
+    if(localStorage.getItem(email)){
+      alert("Email já cadastrado!");
+      return;
+    }
     localStorage.setItem(email, JSON.stringify({ password }));
     alert("Cadastro realizado com sucesso!");
     toggleForm();
@@ -331,16 +309,15 @@ function showDashboard() {
 }
 
 function logout() {
-  localStorage.removeItem("loggedUser");
   location.reload();
 }
 
-function openSecret(){
-  document.getElementById("secretModal").style.display = "flex";
+function openModal() {
+  document.getElementById("modal").style.display = "flex";
 }
 
-function closeSecret(){
-  document.getElementById("secretModal").style.display = "none";
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
 }
 
 </script>
