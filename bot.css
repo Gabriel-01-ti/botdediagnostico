@@ -270,10 +270,18 @@ button#btn-diagnosticar {
 
 button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scale(1.02);
                               }
-
 /* =========================================
    BOTÕES DE SINTOMAS (SELEÇÃO VERDE)
-   ========================================= */
+========================================= */
+
+/* Container dos botões: organiza o layout e espaçamento */
+.sintomas-botoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* responsivo automático */
+  gap: 12px 15px; /* espaçamento vertical e horizontal */
+}
+
+/* Botões individuais */
 .sintomas-botoes button {
   background-color: var(--verde-leve); /* cor padrão */
   color: var(--verde-escuro);
@@ -283,19 +291,36 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: center;
+  white-space: normal; /* evita que o texto quebre mal */
 }
 
+/* Hover - efeito visual ao passar o mouse */
 .sintomas-botoes button:hover {
   background-color: var(--verde-tema);
   color: #fff;
   transform: scale(1.05);
 }
 
+/* Botão ativo (selecionado) */
 .sintomas-botoes button.ativo {
-  background-color: var(--verde-tema); /* verde selecionado */
+  background-color: var(--verde-tema);
   color: white;
   border-color: var(--verde-escuro);
   transform: scale(1.05);
+}
+
+/* =================== RESPONSIVO CELULAR =================== */
+@media (max-width: 600px) {
+  .sintomas-botoes {
+    grid-template-columns: 1fr 1fr; /* duas colunas no celular */
+    gap: 10px;                       /* espaçamento menor mas confortável */
+  }
+
+  .sintomas-botoes button {
+    font-size: 13px;
+    padding: 10px 6px;               /* ajuste do toque no celular */
+  }
 }
 /* =========================================
    7. GUIA LATERAL E BOTÃO FLUTUANTE
@@ -320,7 +345,7 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
 }
 
 #guia-menu {
-  position: fixed;
+  position: flex;
   bottom: 100px;
   left: 25px;
   width: 380px;
@@ -887,6 +912,7 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
 
