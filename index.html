@@ -371,41 +371,48 @@ function togglePassword(id){
 }
 
 function auth(){
-  const email = email.value.trim();
-  const password = document.getElementById("password").value.trim();
-  const confirm = document.getElementById("confirmPassword").value.trim();
 
-  if(!email || !password){
+  const emailInput = document.getElementById("email").value.trim();
+  const passwordInput = document.getElementById("password").value.trim();
+  const confirmInput = document.getElementById("confirmPassword").value.trim();
+
+  if(!emailInput || !passwordInput){
     alert("Preencha todos os campos!");
     return;
   }
 
   if(isLogin){
-    const user = JSON.parse(localStorage.getItem(email));
-    if(user && user.password === password){
-      localStorage.setItem("loggedUser", email);
+
+    const user = JSON.parse(localStorage.getItem(emailInput));
+
+    if(user && user.password === passwordInput){
+      localStorage.setItem("loggedUser", emailInput);
       showDashboard();
     } else {
       alert("Email ou senha incorretos!");
     }
+
   } else {
-    if(password !== confirm){
+
+    if(passwordInput !== confirmInput){
       alert("As senhas não coincidem!");
       return;
     }
-    if(localStorage.getItem(email)){
+
+    if(localStorage.getItem(emailInput)){
       alert("Email já cadastrado!");
       return;
     }
-    localStorage.setItem(email, JSON.stringify({password}));
-    alert("Cadastro realizado!");
+
+    localStorage.setItem(emailInput, JSON.stringify({password: passwordInput}));
+    alert("Cadastro realizado com sucesso!");
     toggleForm();
   }
-}
+
 
 function showDashboard(){
-  auth.style.display="none";
-  dashboard.style.display="block";
+  document.getElementById("auth").style.display="none";
+  document.getElementById("dashboard").style.display="block";
 }
 
 function logout(){
@@ -445,3 +452,4 @@ function closeSecret(){
 
 </body>
 </html>
+
