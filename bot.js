@@ -359,6 +359,7 @@ function diagnosticar(cultura, textoUsuario) {
     addMsg("🏁 Análise feita. Digite outra cultura para novo diagnóstico ou 'encerrar' para finalizar.", "bot", false);
     etapa = 1;
   }, 2500);
+ }
 }
 
 
@@ -373,6 +374,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
