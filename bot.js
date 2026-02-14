@@ -350,16 +350,17 @@ function diagnosticar(cultura, textoUsuario) {
       </div>
     `;
     addMsg(htmlCompleto, "bot", false);
-  }
-      const resultado = `Cultura: ${cultura}, Doença: ${d.nome}, Pontos: ${d.pontos}`;
-    salvarDiagnostico(resultado);
-}
 
-  setTimeout(() => {
-    addMsg("🏁 Análise feita. Digite outra cultura para novo diagnóstico ou 'encerrar' para finalizar.", "bot", false);
-    etapa = 1;
-  }, 2500);
- }
+    // SALVA diagnósticos aqui, dentro do escopo
+    const resultado = `Cultura: ${cultura}, Doença: ${d.nome}, Pontos: ${d.pontos}`;
+    salvarDiagnostico(resultado);
+
+    // SETTIMEOUT também dentro
+    setTimeout(() => {
+      addMsg("🏁 Análise feita. Digite outra cultura para novo diagnóstico ou 'encerrar' para finalizar.", "bot", false);
+      etapa = 1;
+    }, 2500);
+  }
 }
 
 
@@ -374,6 +375,7 @@ inputSintomas.addEventListener("keypress", e => {
       document.getElementById("splash").style.display = "none";
     }, 3500);
   });
+
 
 
 
