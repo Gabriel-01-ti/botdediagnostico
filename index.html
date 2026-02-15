@@ -237,10 +237,9 @@ hr{
   max-width: 550px;
   width: 90%;
   
-  /* ESTAS LINHAS SÃO A SOLUÇÃO: */
-  max-height: 85vh;    /* Limita a altura do modal a 85% da tela */
-  overflow-y: auto;    /* Cria rolagem interna se o texto for grande */
-  display: flex;       /* Ajuda a manter a estrutura */
+  max-height: 85vh;    
+  overflow-y: auto;    
+  display: flex;       
   flex-direction: column;
   
   position: relative;
@@ -310,6 +309,7 @@ hr{
   gap: 10px;
   border: 1px solid #c8e6c9;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .dev-card:hover {
@@ -331,7 +331,6 @@ hr{
   width: auto;
   padding: 12px 40px;
 }
-
 
 /* ================= RESPONSIVO ================= */
 @media(max-width:900px){
@@ -393,6 +392,11 @@ Projeto desenvolvido por alunos do Curso Técnico Integrado em Informática e Ag
 <div class="toggle" onclick="toggleForm()" id="toggleText">
 Não tem conta? Cadastre-se
 </div>
+
+<div style="text-align:center; margin-top:10px;">
+  <span style="cursor:pointer; color:#1b5e20;" onclick="recuperarSenha()">Esqueci minha senha</span>
+</div>
+
 </div>
 
 <div class="dashboard" id="dashboard">
@@ -402,7 +406,7 @@ Não tem conta? Cadastre-se
   <a href="bot.html">🤖 Falar com o Bot</a>
   <a href="#" onclick="verDiagnosticos()">📊 Meus Diagnósticos</a>
   <a href="#" onclick="logout()">🚪 Sair</a>
-  <a href="#" onclick="apagarConta()">❌ Apagar Conta</a> <!-- botão novo -->
+  <a href="#" onclick="apagarConta()">❌ Apagar Conta</a>
 </div>
 
 </div>
@@ -421,7 +425,6 @@ Não tem conta? Cadastre-se
     </div>
 
     <div class="modal-body">
-      <p>
       <p>
   O <strong>AgroInova</strong> nasceu para unir o conhecimento do campo à tecnologia, oferecendo soluções inteligentes para produtores rurais que desejam monitorar e cuidar melhor de suas lavouras. 
   Nosso objetivo é tornar o diagnóstico de doenças mais rápido, preciso e acessível, permitindo que o produtor tome decisões informadas de maneira prática.
@@ -444,18 +447,18 @@ Não tem conta? Cadastre-se
       <h4 style="color:#1b5e20; margin-bottom:15px;">🚀 Time de Desenvolvimento</h4>
       
       <div class="dev-grid">
-        <div class="dev-card">
+        <a href="https://www.instagram.com/cauan.kaminski/" target="_blank" class="dev-card">
           <span>👨‍💻 Cauãn Kaminski</span>
-        </div>
-        <div class="dev-card">
+        </a>
+        <a href="https://www.instagram.com/gabriel.klemm/" target="_blank" class="dev-card">
           <span>👨‍💻 Gabriel Klemm</span>
-        </div>
-        <div class="dev-card">
+        </a>
+        <a href="https://www.instagram.com/bernardo.baldin/" target="_blank" class="dev-card">
           <span>👨‍💻 Bernardo Baldin</span>
-        </div>
-        <div class="dev-card">
+        </a>
+        <a href="https://www.instagram.com/bernardo.lorenzatto/" target="_blank" class="dev-card">
           <span>👨‍💻 Bernardo Lorenzatto</span>
-        </div>
+        </a>
       </div>
 
       <button class="close-secret" onclick="closeSecret()">Fechar Painel</button>
@@ -563,41 +566,61 @@ function closeSecret(){
   document.getElementById("secretModal").style.display="none";
 }
 
-  function apagarConta() {
-    const user = localStorage.getItem("loggedUser");
-    if (!user) {
-        alert("Nenhum usuário logado!");
-        return;
-    }
-
-    const confirmar = confirm("Tem certeza que deseja apagar sua conta? Todos os diagnósticos serão perdidos!");
-    if (!confirmar) return;
-
-    localStorage.removeItem(user); // remove email/senha
-    localStorage.removeItem(user + "_diagnosticos"); // remove histórico
-    localStorage.removeItem("loggedUser"); // logout
-    alert("Conta apagada com sucesso!");
-    location.reload(); // volta para tela de login
+function apagarConta() {
+  const user = localStorage.getItem("loggedUser");
+  if (!user) {
+      alert("Nenhum usuário logado!");
+      return;
   }
+
+  const confirmar = confirm("Tem certeza que deseja apagar sua conta? Todos os diagnósticos serão perdidos!");
+  if (!confirmar) return;
+
+  localStorage.removeItem(user); 
+  localStorage.removeItem(user + "_diagnosticos"); 
+  localStorage.removeItem("loggedUser"); 
+  alert("Conta apagada com sucesso!");
+  location.reload(); 
+}
+
+// ================= RECUPERAÇÃO DE SENHA =================
+function recuperarSenha() {
+  const emailInput = document.getElementById("email").value.trim();
+  if (!emailInput) {
+    alert("Digite seu email para recuperar a senha!");
+    return;
+  }
+
+  const user = JSON.parse(localStorage.getItem(emailInput));
+  if (!user) {
+    alert("Email não cadastrado!");
+    return;
+  }
+
+  const codigo = Math.floor(100000 + Math.random() * 900000);
+  localStorage.setItem(emailInput + "_recoveryCode", codigo);
+
+  alert("Seu código de recuperação é: " + codigo + "\nUse este código para redefinir sua senha.");
+
+  let codigoInput = prompt("Digite o código enviado por email:");
+  if (codigoInput != codigo) {
+    alert("Código incorreto!");
+    return;
+  }
+
+  let novaSenha = prompt("Digite a nova senha:");
+  
+    if (!novaSenha) {
+    alert("Senha inválida!");
+    return;
+  }
+
+  user.password = novaSenha;
+  localStorage.setItem(emailInput, JSON.stringify(user));
+  alert("Senha redefinida com sucesso!");
+}
 
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
