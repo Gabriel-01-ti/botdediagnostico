@@ -350,7 +350,7 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
   width: 52px;
   height: 52px;
 
-  border-radius: 0 14px 14px 0;
+  border-radius: 50%;
 
   background: linear-gradient(180deg, #2e7d32, #1b5e20);
   box-shadow: 6px 0 18px rgba(0,0,0,0.25);
@@ -849,7 +849,7 @@ HEADER ESTILO WHATSAPP (DENTRO DO CHAT)
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 30px;
   text-decoration: none;
   box-shadow: 0 8px 20px rgba(0,0,0,0.35);
   z-index: 9999;
@@ -959,5 +959,6 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
 
