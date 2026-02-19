@@ -378,24 +378,90 @@ inputSintomas.addEventListener("keypress", e => {
 
 
 
+const btnGuia = document.getElementById("floating-guia-btn");
+
+let arrastando = false;
+let offsetX = 0;
+let offsetY = 0;
+let moveu = false;
+
+// recuperar posição salva
+const pos = JSON.parse(localStorage.getItem("posGuiaBtn"));
+if (pos) {
+  btnGuia.style.left = pos.x + "px";
+  btnGuia.style.top  = pos.y + "px";
+  btnGuia.style.right = "auto";
+  btnGuia.style.bottom = "auto";
+}
+
+// --------- MOUSE ----------
+btnGuia.addEventListener("mousedown", e => {
+  arrastando = true;
+  moveu = false;
+  offsetX = e.clientX - btnGuia.offsetLeft;
+  offsetY = e.clientY - btnGuia.offsetTop;
+});
+
+document.addEventListener("mousemove", e => {
+  if (!arrastando) return;
+
+  moveu = true;
+
+  btnGuia.style.left = (e.clientX - offsetX) + "px";
+  btnGuia.style.top  = (e.clientY - offsetY) + "px";
+  btnGuia.style.right = "auto";
+  btnGuia.style.bottom = "auto";
+});
+
+document.addEventListener("mouseup", () => {
+  if (!arrastando) return;
+  arrastando = false;
+
+  // salva posição
+  localStorage.setItem("posGuiaBtn", JSON.stringify({
+    x: btnGuia.offsetLeft,
+    y: btnGuia.offsetTop
+  }));
+});
 
 
+// --------- TOUCH (CELULAR) ----------
+btnGuia.addEventListener("touchstart", e => {
+  const t = e.touches[0];
+  arrastando = true;
+  moveu = false;
+  offsetX = t.clientX - btnGuia.offsetLeft;
+  offsetY = t.clientY - btnGuia.offsetTop;
+});
+
+document.addEventListener("touchmove", e => {
+  if (!arrastando) return;
+  const t = e.touches[0];
+
+  moveu = true;
+
+  btnGuia.style.left = (t.clientX - offsetX) + "px";
+  btnGuia.style.top  = (t.clientY - offsetY) + "px";
+  btnGuia.style.right = "auto";
+  btnGuia.style.bottom = "auto";
+});
+
+document.addEventListener("touchend", () => {
+  if (!arrastando) return;
+  arrastando = false;
+
+  localStorage.setItem("posGuiaBtn", JSON.stringify({
+    x: btnGuia.offsetLeft,
+    y: btnGuia.offsetTop
+  }));
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 👉 evita abrir o guia quando arrastar
+btnGuia.addEventListener("click", e => {
+  if (moveu) {
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    moveu = false;
+  }
+});
