@@ -348,7 +348,7 @@ button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scal
   transform: translateY(-50%);
   
   width: 52px;
-  height: 120px;
+  height: 52px;
 
   border-radius: 0 14px 14px 0;
 
@@ -959,4 +959,5 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
+
 
