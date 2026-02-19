@@ -837,6 +837,24 @@ HEADER ESTILO WHATSAPP (DENTRO DO CHAT)
   color: #2e7d32;
 }
 
+.btn-voltar-app {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--verde-tema), var(--verde-escuro));
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  z-index: 9999;
+}
+
 /* =========================================
 RESPONSIVO CELULAR (REVISADO E COMPLETO)
 ========================================= */
@@ -941,20 +959,4 @@ RESPONSIVO CELULAR (REVISADO E COMPLETO)
     box-sizing: border-box;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
