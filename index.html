@@ -467,90 +467,6 @@ Não tem conta? Cadastre-se
   </div>
 </div>
 
-<script>
-
-let isLogin = true;
-
-function toggleForm(){
-  isLogin = !isLogin;
-  formTitle.innerText = isLogin ? "Login" : "Cadastro";
-  mainBtn.innerText = isLogin ? "Entrar" : "Cadastrar";
-  confirmPassword.style.display = isLogin ? "none" : "block";
-  confirmEye.style.display = isLogin ? "none" : "block";
-  toggleText.innerText = isLogin ?
-  "Não tem conta? Cadastre-se" :
-  "Já tem conta? Faça login";
-}
-
-function togglePassword(id){
-  const input = document.getElementById(id);
-  input.type = input.type === "password" ? "text" : "password";
-}
-
-function auth(){
-
-  const emailInput = document.getElementById("email").value.trim();
-  const passwordInput = document.getElementById("password").value.trim();
-  const confirmInput = document.getElementById("confirmPassword").value.trim();
-
-  if(!emailInput || !passwordInput){
-    alert("Preencha todos os campos!");
-    return;
-  }
-
-  if(isLogin){
-
-    const user = JSON.parse(localStorage.getItem(emailInput));
-
-    if(user && user.password === passwordInput){
-      localStorage.setItem("loggedUser", emailInput);
-      showDashboard();
-    } else {
-      alert("Email ou senha incorretos!");
-    }
-
-  } else {
-
-    if(passwordInput !== confirmInput){
-      alert("As senhas não coincidem!");
-      return;
-    }
-
-    if(localStorage.getItem(emailInput)){
-      alert("Email já cadastrado!");
-      return;
-    }
-
-    localStorage.setItem(emailInput, JSON.stringify({password: passwordInput}));
-    alert("Cadastro realizado com sucesso!");
-    toggleForm();
-  }
-}
-
-
-function showDashboard(){
-  document.getElementById("auth").style.display="none";
-  document.getElementById("dashboard").style.display="block";
-}
-
-function logout(){
-  localStorage.removeItem("loggedUser");
-  location.reload();
-}
-
-window.onload = function(){
-  if(localStorage.getItem("loggedUser")){
-    showDashboard();
-  }
-};
-
-function verDiagnosticos(){
-  const user = localStorage.getItem("loggedUser");
-  let historico = JSON.parse(localStorage.getItem(user+"_diagnosticos")) || [];
-  if(historico.length===0){
-    alert("Nenhum diagnóstico salvo.");
-    return;
-  }
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
@@ -710,6 +626,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
