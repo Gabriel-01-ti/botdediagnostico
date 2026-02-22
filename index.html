@@ -484,8 +484,7 @@ import {
   deleteUser,
   onAuthStateChanged,
   GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
+  signInWithPopup,
   setPersistence,
   browserLocalPersistence
 } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
@@ -586,22 +585,25 @@ window.auth = async function(){
 /* ================= LOGIN GOOGLE COM REDIRECT ================= */
 
 window.loginGoogle = async function(){
-  const provider = new GoogleAuthProvider();
-  await signInWithRedirect(auth, provider);
-}
 
+  const provider = new GoogleAuthProvider();
+
+  try{
+
+    const result = await signInWithPopup(auth, provider);
+
+    console.log("Google OK:", result.user.email);
+
+    showDashboard();
+
+  }catch(err){
+    alert("Erro Google: " + err.message);
+  }
+
+}
 /* 🔥 CAPTURA RETORNO DO REDIRECT */
 
-onAuthStateChanged(auth, async (user) => {
-
-  // 👇 sempre tenta capturar retorno do redirect primeiro
-  const result = await getRedirectResult(auth).catch(()=>null);
-
-  if(result?.user){
-    console.log("Redirect OK:", result.user.email);
-    showDashboard();
-    return;
-  }
+onAuthStateChanged(auth, (user) => {
 
   if(user){
     console.log("Sessão ativa:", user.email);
@@ -692,6 +694,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
