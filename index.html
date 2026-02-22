@@ -592,15 +592,16 @@ window.loginGoogle = async function(){
 
 /* 🔥 CAPTURA RETORNO DO REDIRECT */
 // Substitua o bloco do getRedirectResult por este:
-getRedirectResult(auth)
-  .then((result) => {
-    if (result && result.user) {
-      console.log("Usuário logado via Google:", result.user);
+(async () => {
 
-      // 🔥 FORÇA APARECER O DASHBOARD
-      showDashboard();
-    }
-  })
+  const result = await getRedirectResult(auth);
+
+  if(result?.user){
+    console.log("Google retornou usuário:", result.user.email);
+    showDashboard();
+  }
+
+})();
 /* ================= DASHBOARD ================= */
 
 function showDashboard(){
@@ -689,6 +690,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
