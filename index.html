@@ -472,6 +472,7 @@ Não tem conta? Cadastre-se
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+
 import { 
   getAuth,
   createUserWithEmailAndPassword,
@@ -490,11 +491,12 @@ import {
 import { 
   getFirestore,
   collection,
-  addDoc,
   getDocs,
   query,
   where
 } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+/* ================= FIREBASE CONFIG ================= */
 
 const firebaseConfig = {
   apiKey: "AIzaSyBbvAOfk3EXyQivxcc4ylHrtuWkKyXkuDw",
@@ -507,16 +509,18 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+getAnalytics(app);
+
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// 🔥 GARANTE QUE A SESSÃO FIQUE SALVA
+/* 🔥 GARANTE SESSÃO LOCAL */
 await setPersistence(auth, browserLocalPersistence);
 
 let isLogin = true;
 
 /* ================= BOTÃO FLUTUANTE ================= */
+
 window.openSecret = function(){
   document.getElementById("secretModal").style.display = "flex";
 }
@@ -526,6 +530,7 @@ window.closeSecret = function(){
 }
 
 /* ================= FORM ================= */
+
 window.toggleForm = function(){
   isLogin = !isLogin;
   formTitle.innerText = isLogin ? "Login" : "Cadastro";
@@ -533,8 +538,8 @@ window.toggleForm = function(){
   confirmPassword.style.display = isLogin ? "none" : "block";
   confirmEye.style.display = isLogin ? "none" : "block";
   toggleText.innerText = isLogin ?
-  "Não tem conta? Cadastre-se" :
-  "Já tem conta? Faça login";
+    "Não tem conta? Cadastre-se" :
+    "Já tem conta? Faça login";
 }
 
 window.togglePassword = function(id){
@@ -543,6 +548,7 @@ window.togglePassword = function(id){
 }
 
 /* ================= LOGIN EMAIL ================= */
+
 window.auth = async function(){
 
   const email = document.getElementById("email").value.trim();
@@ -560,10 +566,12 @@ window.auth = async function(){
       await signInWithEmailAndPassword(auth, email, password);
       alert("Login realizado com sucesso!");
     } else {
+
       if(password !== confirm){
         alert("As senhas não coincidem!");
         return;
       }
+
       await createUserWithEmailAndPassword(auth, email, password);
       alert("Conta criada com sucesso!");
     }
@@ -573,40 +581,43 @@ window.auth = async function(){
   }
 }
 
-/* ================= LOGIN GOOGLE ================= */
+/* ================= LOGIN GOOGLE COM REDIRECT ================= */
+
 window.loginGoogle = async function(){
   const provider = new GoogleAuthProvider();
+  await signInWithRedirect(auth, provider);
+}
 
-  try {
-    const result = await signInWithPopup(auth, provider);
-
-    if(result.user){
-      // força atualização da sessão
-      await auth.currentUser.reload();
+/* 🔥 CAPTURA RETORNO DO REDIRECT */
+getRedirectResult(auth)
+  .then((result) => {
+    if(result?.user){
       showDashboard();
     }
-
-  } catch(error){
+  })
+  .catch((error) => {
     alert("Erro Google: " + error.message);
-  }
-}
+  });
+
 /* ================= DASHBOARD ================= */
+
 function showDashboard(){
-  document.getElementById("auth").style.display="none";
-  document.getElementById("dashboard").style.display="block";
+  document.getElementById("auth").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
 }
 
-/* 🔥 CONTROLE DE SESSÃO */
+/* 🔥 CONTROLE AUTOMÁTICO DE SESSÃO */
 onAuthStateChanged(auth, (user) => {
   if(user){
     showDashboard();
   } else {
-    document.getElementById("auth").style.display="block";
-    document.getElementById("dashboard").style.display="none";
+    document.getElementById("auth").style.display = "block";
+    document.getElementById("dashboard").style.display = "none";
   }
 });
-  
+
 /* ================= OUTROS ================= */
+
 window.logout = async function(){
   await signOut(auth);
   location.reload();
@@ -614,6 +625,7 @@ window.logout = async function(){
 
 window.apagarConta = async function(){
   const user = auth.currentUser;
+
   if(!user){
     alert("Nenhum usuário logado!");
     return;
@@ -628,7 +640,9 @@ window.apagarConta = async function(){
 }
 
 window.recuperarSenha = async function(){
+
   const email = document.getElementById("email").value.trim();
+
   if(!email){
     alert("Digite seu email!");
     return;
@@ -645,6 +659,7 @@ window.recuperarSenha = async function(){
 window.verDiagnosticos = async function(){
 
   const user = auth.currentUser;
+
   if(!user){
     alert("Faça login primeiro!");
     return;
@@ -670,6 +685,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
