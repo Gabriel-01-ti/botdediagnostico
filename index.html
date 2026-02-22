@@ -809,7 +809,7 @@ window.recuperarSenha = async function(){
 
   try {
     await sendPasswordResetEmail(auth, email);
-    alert("Email de recuperação enviado!");
+    alert("📩 Enviamos um e-mail de verificação para você. Se não encontrar na caixa de entrada, confira a pasta Spam ou Promoções. Alguns provedores podem direcionar automaticamente para essas pastas.");
   } catch(error){
     alert("Erro: " + error.message);
   }
@@ -844,6 +844,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
