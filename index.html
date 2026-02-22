@@ -589,15 +589,23 @@ window.loginGoogle = async function(){
 }
 
 /* 🔥 CAPTURA RETORNO DO REDIRECT */
+// Substitua o bloco do getRedirectResult por este:
 getRedirectResult(auth)
   .then((result) => {
-    if(result?.user){
-      showDashboard();
+    if (result && result.user) {
+      console.log("Usuário logado via Google:", result.user);
+      // O onAuthStateChanged cuidará de mostrar a dashboard automaticamente
     }
   })
   .catch((error) => {
-    alert("Erro Google: " + error.message);
+    console.error("Erro no redirecionamento:", error);
+    if (error.code === 'auth/operation-not-allowed') {
+      alert("Erro: O provedor Google não está ativado no Firebase Console.");
+    } else {
+      alert("Erro Google: " + error.message);
+    }
   });
+
 
 /* ================= DASHBOARD ================= */
 
@@ -685,6 +693,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
