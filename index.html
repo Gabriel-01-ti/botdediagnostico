@@ -576,18 +576,20 @@ window.auth = async function(){
 /* ================= LOGIN GOOGLE ================= */
 window.loginGoogle = async function(){
   const provider = new GoogleAuthProvider();
-  await signInWithRedirect(auth, provider);
-}
 
-/* 🔥 TRATA O REDIRECT PRIMEIRO */
-getRedirectResult(auth).then((result) => {
-  if(result?.user){
-    showDashboard();
+  try {
+    const result = await signInWithPopup(auth, provider);
+
+    if(result.user){
+      // força atualização da sessão
+      await auth.currentUser.reload();
+      showDashboard();
+    }
+
+  } catch(error){
+    alert("Erro Google: " + error.message);
   }
-}).catch((error) => {
-  console.log(error);
-});
-
+}
 /* ================= DASHBOARD ================= */
 function showDashboard(){
   document.getElementById("auth").style.display="none";
@@ -603,7 +605,7 @@ onAuthStateChanged(auth, (user) => {
     document.getElementById("dashboard").style.display="none";
   }
 });
-
+  
 /* ================= OUTROS ================= */
 window.logout = async function(){
   await signOut(auth);
@@ -668,6 +670,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
