@@ -592,16 +592,28 @@ window.loginGoogle = async function(){
 
 /* 🔥 CAPTURA RETORNO DO REDIRECT */
 
-;(async () => {
+onAuthStateChanged(auth, async (user) => {
 
-  const result = await getRedirectResult(auth);
+  // 👇 sempre tenta capturar retorno do redirect primeiro
+  const result = await getRedirectResult(auth).catch(()=>null);
 
   if(result?.user){
-    console.log("Google retornou usuário:", result.user.email);
+    console.log("Redirect OK:", result.user.email);
     showDashboard();
+    return;
   }
 
-})();
+  if(user){
+    console.log("Sessão ativa:", user.email);
+    showDashboard();
+  } 
+  else {
+    console.log("Sem sessão");
+    document.getElementById("auth").style.display = "block";
+    document.getElementById("dashboard").style.display = "none";
+  }
+
+});
 /* ================= DASHBOARD ================= */
 
 function showDashboard(){
@@ -609,17 +621,7 @@ function showDashboard(){
   document.getElementById("dashboard").style.display = "block";
 }
 
-/* 🔥 CONTROLE AUTOMÁTICO DE SESSÃO */
-onAuthStateChanged(auth, (user) => {
-  if(user){
-    console.log("Sessão ativa:", user.email);
-    showDashboard();
-  } else {
-    console.log("Sem sessão");
-    document.getElementById("auth").style.display = "block";
-    document.getElementById("dashboard").style.display = "none";
-  }
-});
+
 
 /* ================= OUTROS ================= */
 
@@ -690,6 +692,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
