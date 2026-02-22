@@ -596,19 +596,11 @@ getRedirectResult(auth)
   .then((result) => {
     if (result && result.user) {
       console.log("Usuário logado via Google:", result.user);
-      // O onAuthStateChanged cuidará de mostrar a dashboard automaticamente
+
+      // 🔥 FORÇA APARECER O DASHBOARD
+      showDashboard();
     }
   })
-  .catch((error) => {
-    console.error("Erro no redirecionamento:", error);
-    if (error.code === 'auth/operation-not-allowed') {
-      alert("Erro: O provedor Google não está ativado no Firebase Console.");
-    } else {
-      alert("Erro Google: " + error.message);
-    }
-  });
-
-
 /* ================= DASHBOARD ================= */
 
 function showDashboard(){
@@ -619,8 +611,10 @@ function showDashboard(){
 /* 🔥 CONTROLE AUTOMÁTICO DE SESSÃO */
 onAuthStateChanged(auth, (user) => {
   if(user){
+    console.log("Sessão ativa:", user.email);
     showDashboard();
   } else {
+    console.log("Sem sessão");
     document.getElementById("auth").style.display = "block";
     document.getElementById("dashboard").style.display = "none";
   }
@@ -695,6 +689,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
