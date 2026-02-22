@@ -370,14 +370,16 @@ Projeto desenvolvido por alunos do Curso Técnico Integrado em Informática e Ag
 
 <div id="auth">
 <h2 id="formTitle">Login</h2>
+  
+  <button onclick="loginGoogle()" 
+        style="margin-top:10px; background:white; color:#1b5e20; border:2px solid #1b5e20;">
+  🌐 Entrar com Google
+</button>
 
 <div class="input-group">
 <input type="email" id="email" placeholder="Digite seu email">
 </div>
-<button onclick="loginGoogle()" 
-        style="margin-top:10px; background:white; color:#1b5e20; border:2px solid #1b5e20;">
-  🔵 Entrar com Google
-</button>
+
 <div class="input-group">
 <input type="password" id="password" placeholder="Digite sua senha">
 <span class="eye" onclick="togglePassword('password')">👁</span>
@@ -693,6 +695,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
