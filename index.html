@@ -469,7 +469,6 @@ Não tem conta? Cadastre-se
 
   </div>
 </div>
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
@@ -483,10 +482,12 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithRedirect,
-  getRedirectResult
+  getRedirectResult,
+  setPersistence,
+  browserLocalPersistence
 } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-  
-  import { 
+
+import { 
   getFirestore,
   collection,
   addDoc,
@@ -510,8 +511,21 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// 🔥 GARANTE QUE A SESSÃO FIQUE SALVA
+await setPersistence(auth, browserLocalPersistence);
+
 let isLogin = true;
 
+/* ================= BOTÃO FLUTUANTE ================= */
+window.openSecret = function(){
+  document.getElementById("secretModal").style.display = "flex";
+}
+
+window.closeSecret = function(){
+  document.getElementById("secretModal").style.display = "none";
+}
+
+/* ================= FORM ================= */
 window.toggleForm = function(){
   isLogin = !isLogin;
   formTitle.innerText = isLogin ? "Login" : "Cadastro";
@@ -528,6 +542,7 @@ window.togglePassword = function(id){
   input.type = input.type === "password" ? "text" : "password";
 }
 
+/* ================= LOGIN EMAIL ================= */
 window.auth = async function(){
 
   const email = document.getElementById("email").value.trim();
@@ -557,40 +572,39 @@ window.auth = async function(){
     alert("Erro: " + error.message);
   }
 }
-  window.loginGoogle = async function(){
 
+/* ================= LOGIN GOOGLE ================= */
+window.loginGoogle = async function(){
   const provider = new GoogleAuthProvider();
+  await signInWithRedirect(auth, provider);
+}
 
-  try{
-    await signInWithRedirect(auth, provider);
-  } catch(error){
-    alert("Erro: " + error.message);
+/* 🔥 TRATA O REDIRECT PRIMEIRO */
+getRedirectResult(auth).then((result) => {
+  if(result?.user){
+    showDashboard();
   }
+}).catch((error) => {
+  console.log(error);
+});
 
-  }
-
+/* ================= DASHBOARD ================= */
 function showDashboard(){
   document.getElementById("auth").style.display="none";
   document.getElementById("dashboard").style.display="block";
 }
 
+/* 🔥 CONTROLE DE SESSÃO */
 onAuthStateChanged(auth, (user) => {
   if(user){
     showDashboard();
+  } else {
+    document.getElementById("auth").style.display="block";
+    document.getElementById("dashboard").style.display="none";
   }
 });
-  getRedirectResult(auth)
-  .then((result) => {
-    if(result){
-      alert("Login com Google realizado com sucesso!");
-    }
-  })
-  .catch((error) => {
-    if(error){
-      alert("Erro: " + error.message);
-    }
-  });
 
+/* ================= OUTROS ================= */
 window.logout = async function(){
   await signOut(auth);
   location.reload();
@@ -654,6 +668,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
