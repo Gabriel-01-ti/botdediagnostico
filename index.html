@@ -551,79 +551,166 @@ function verDiagnosticos(){
     alert("Nenhum diagnóstico salvo.");
     return;
   }
-  let texto="Seus Diagnósticos:\n\n";
-  historico.forEach((item,i)=>{
-    texto+=(i+1)+") "+item.resultado+" - "+item.data+"\n";
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+import { 
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  deleteUser,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+import { 
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  where
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "sitebot-2c952.firebaseapp.com",
+  projectId: "sitebot-2c952",
+  storageBucket: "sitebot-2c952.firebasestorage.app",
+  messagingSenderId: "410409250226",
+  appId: "1:410409250226:web:6a89bc59b81011317348ab",
+  measurementId: "G-RRR7DPL1CM"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let isLogin = true;
+
+window.toggleForm = function(){
+  isLogin = !isLogin;
+  formTitle.innerText = isLogin ? "Login" : "Cadastro";
+  mainBtn.innerText = isLogin ? "Entrar" : "Cadastrar";
+  confirmPassword.style.display = isLogin ? "none" : "block";
+  confirmEye.style.display = isLogin ? "none" : "block";
+  toggleText.innerText = isLogin ?
+  "Não tem conta? Cadastre-se" :
+  "Já tem conta? Faça login";
+}
+
+window.togglePassword = function(id){
+  const input = document.getElementById(id);
+  input.type = input.type === "password" ? "text" : "password";
+}
+
+window.auth = async function(){
+
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const confirm = document.getElementById("confirmPassword").value.trim();
+
+  if(!email || !password){
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  try {
+
+    if(isLogin){
+      await signInWithEmailAndPassword(auth, email, password);
+      alert("Login realizado com sucesso!");
+    } else {
+      if(password !== confirm){
+        alert("As senhas não coincidem!");
+        return;
+      }
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert("Conta criada com sucesso!");
+    }
+
+  } catch(error){
+    alert("Erro: " + error.message);
+  }
+}
+
+function showDashboard(){
+  document.getElementById("auth").style.display="none";
+  document.getElementById("dashboard").style.display="block";
+}
+
+onAuthStateChanged(auth, (user) => {
+  if(user){
+    showDashboard();
+  }
+});
+
+window.logout = async function(){
+  await signOut(auth);
+  location.reload();
+}
+
+window.apagarConta = async function(){
+  const user = auth.currentUser;
+  if(!user){
+    alert("Nenhum usuário logado!");
+    return;
+  }
+
+  const confirmar = confirm("Tem certeza que deseja apagar sua conta?");
+  if(!confirmar) return;
+
+  await deleteUser(user);
+  alert("Conta apagada!");
+  location.reload();
+}
+
+window.recuperarSenha = async function(){
+  const email = document.getElementById("email").value.trim();
+  if(!email){
+    alert("Digite seu email!");
+    return;
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, email);
+    alert("Email de recuperação enviado!");
+  } catch(error){
+    alert("Erro: " + error.message);
+  }
+}
+
+window.verDiagnosticos = async function(){
+
+  const user = auth.currentUser;
+  if(!user){
+    alert("Faça login primeiro!");
+    return;
+  }
+
+  const q = query(collection(db, "diagnosticos"), where("uid", "==", user.uid));
+  const snapshot = await getDocs(q);
+
+  if(snapshot.empty){
+    alert("Nenhum diagnóstico encontrado.");
+    return;
+  }
+
+  let texto = "Seus Diagnósticos:\n\n";
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    texto += data.resultado + " - " + data.data + "\n";
   });
+
   alert(texto);
 }
-
-function openSecret(){
-  document.getElementById("secretModal").style.display="flex";
-}
-
-function closeSecret(){
-  document.getElementById("secretModal").style.display="none";
-}
-
-function apagarConta() {
-  const user = localStorage.getItem("loggedUser");
-  if (!user) {
-      alert("Nenhum usuário logado!");
-      return;
-  }
-
-  const confirmar = confirm("Tem certeza que deseja apagar sua conta? Todos os diagnósticos serão perdidos!");
-  if (!confirmar) return;
-
-  localStorage.removeItem(user); 
-  localStorage.removeItem(user + "_diagnosticos"); 
-  localStorage.removeItem("loggedUser"); 
-  alert("Conta apagada com sucesso!");
-  location.reload(); 
-}
-
-// ================= RECUPERAÇÃO DE SENHA =================
-function recuperarSenha() {
-  const emailInput = document.getElementById("email").value.trim();
-  if (!emailInput) {
-    alert("Digite seu email para recuperar a senha!");
-    return;
-  }
-
-  const user = JSON.parse(localStorage.getItem(emailInput));
-  if (!user) {
-    alert("Email não cadastrado!");
-    return;
-  }
-
-  const codigo = Math.floor(100000 + Math.random() * 900000);
-  localStorage.setItem(emailInput + "_recoveryCode", codigo);
-
-  alert("Seu código de recuperação é: " + codigo + "\nUse este código para redefinir sua senha.");
-
-  let codigoInput = prompt("Digite o código enviado por email:");
-  if (codigoInput != codigo) {
-    alert("Código incorreto!");
-    return;
-  }
-
-  let novaSenha = prompt("Digite a nova senha:");
-  
-    if (!novaSenha) {
-    alert("Senha inválida!");
-    return;
-  }
-
-  user.password = novaSenha;
-  localStorage.setItem(emailInput, JSON.stringify(user));
-  alert("Senha redefinida com sucesso!");
-}
-
 </script>
-
 </body>
 </html>
+
 
 
 
