@@ -374,7 +374,10 @@ Projeto desenvolvido por alunos do Curso Técnico Integrado em Informática e Ag
 <div class="input-group">
 <input type="email" id="email" placeholder="Digite seu email">
 </div>
-
+<button onclick="loginGoogle()" 
+        style="margin-top:10px; background:white; color:#1b5e20; border:2px solid #1b5e20;">
+  🔵 Entrar com Google
+</button>
 <div class="input-group">
 <input type="password" id="password" placeholder="Digite sua senha">
 <span class="eye" onclick="togglePassword('password')">👁</span>
@@ -477,10 +480,12 @@ import {
   sendPasswordResetEmail,
   signOut,
   deleteUser,
-  onAuthStateChanged
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup
 } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-
-import { 
+  
+  import { 
   getFirestore,
   collection,
   addDoc,
@@ -551,6 +556,18 @@ window.auth = async function(){
     alert("Erro: " + error.message);
   }
 }
+  window.loginGoogle = async function(){
+
+  const provider = new GoogleAuthProvider();
+
+  try{
+    await signInWithPopup(auth, provider);
+    alert("Login com Google realizado com sucesso!");
+  } catch(error){
+    alert("Erro: " + error.message);
+  }
+
+  }
 
 function showDashboard(){
   document.getElementById("auth").style.display="none";
@@ -626,6 +643,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
