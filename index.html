@@ -579,6 +579,17 @@ onAuthStateChanged(auth, (user) => {
     showDashboard();
   }
 });
+  getRedirectResult(auth)
+  .then((result) => {
+    if(result){
+      alert("Login com Google realizado com sucesso!");
+    }
+  })
+  .catch((error) => {
+    if(error){
+      alert("Erro: " + error.message);
+    }
+  });
 
 window.logout = async function(){
   await signOut(auth);
@@ -643,6 +654,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
