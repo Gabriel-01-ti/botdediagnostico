@@ -482,7 +482,8 @@ import {
   deleteUser,
   onAuthStateChanged,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithRedirect,
+  getRedirectResult
 } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
   
   import { 
@@ -561,8 +562,7 @@ window.auth = async function(){
   const provider = new GoogleAuthProvider();
 
   try{
-    await signInWithPopup(auth, provider);
-    alert("Login com Google realizado com sucesso!");
+    await signInWithRedirect(auth, provider);
   } catch(error){
     alert("Erro: " + error.message);
   }
@@ -643,6 +643,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
