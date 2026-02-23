@@ -1,83 +1,137 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgroInova 🌱</title>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AgroInova 🌱</title><style>
+  
 
-<style>
-
+  
 /* ================= RESET ================= */
+  
 *{
-  margin:0;
+  margin:0;  
   padding:0;
   box-sizing:border-box;
 }
-
+  
 body{
   font-family:"Poppins",sans-serif;
-  min-height:100vh;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
+  min-height:98vh;
+  padding: 20px 0;
+  display: flex;
   justify-content:center;
   align-items:center;
-  background:
-    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-    url('fundo.jpg') center/cover no-repeat;
+  background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+  url('fundo.jpg') center/cover no-repeat;
+  
 }
+  
 
+  
 /* ================= CONTAINER ================= */
+  
 .main{
   width:95%;
-  border-radius:25px;
+  max-width:1100px; 
+  display:flex;
+  border-radius:25px;  
   box-shadow:0 20px 50px rgba(0,0,0,0.6);
-  overflow:hidden;
-  background:linear-gradient(135deg,#f1f8f4,#e8f5e9);
+  overflow: hidden;
+  
+}
+  
+/* ================= LADO ESQUERDO ================= */
+  
+.left{ 
+  flex:1;
+  padding:50px;
+  background:linear-gradient(135deg,#1b5e20,#2e7d32);
+  color:white; 
+  display:flex;  
+  flex-direction:column; 
+  justify-content:center;  
+  position:relative;  
+}
+  
+
+  
+/* Divisor inclinado */
+  
+.left::after{  
+  content:"";  
+  position:absolute;
+  top:0;
+  right:-40px;  
+  width:80px;  
+  height:100%;  
+  background:#1b5e20;
+  transform:skewX(-15deg);
+  
+}
+  
+.left h1{ 
+  font-size:2.6rem;  
+  margin-bottom:20px; 
+  font-weight:900;
+  letter-spacing:1px;  
+  white-space:nowrap;
+  text-shadow:3px 3px 0 #0d3b12, 6px 6px 15px rgba(0,0,0,0.6);
+}
+  
+
+  
+.left p{
+  line-height:1.7;
+  margin-bottom:18px;
 }
 
-
+  
 /* ================= LADO DIREITO ================= */
+  
 .right{
-  width:100%;
-  padding:40px 30px;
+  flex:1; 
+  background:linear-gradient(135deg,#f1f8f4,#e8f5e9);  
+  padding:40px;  
   display:flex;
   justify-content:center;
-  align-items:center;
+  align-items:center; 
 }
-
-.card{
-  width:100%;
-  max-width:380px;
+  
+.card{  
+  width:100%;  
+  max-width:380px;  
 }
-
+  
 .card h2{
   text-align:center;
   margin-bottom:20px;
   color:#1b5e20;
   text-shadow:2px 2px 8px rgba(0,0,0,0.3);
-}
+  }
+  
 
+  
 /* ================= INPUT ================= */
+  
 .input-group{
-  position:relative;
-  margin-bottom:15px;
+   position:relative;
+   margin-bottom:15px;
+  
 }
 
+  
 input{
   width:100%;
   padding:12px;
-  border-radius:12px;
-  border:2px solid #2e7d32;
+  border-radius:12px;  
+  border:2px solid #2e7d32;  
   font-size:1rem;
 }
+  
 
-input:focus{
-  border-color:#1b5e20;
-  box-shadow:0 0 10px rgba(46,125,50,0.4);
-  outline:none;
+  
+input:focus{  
+  border-color:#1b5e20;  
+  box-shadow:0 0 10px rgba(46,125,50,0.4); 
+  outline:none;  
 }
-
+   
 .eye{
   position:absolute;
   right:15px;
@@ -85,8 +139,10 @@ input:focus{
   cursor:pointer;
 }
 
+  
 /* ================= BOTÕES ================= */
-button{
+  
+button{ 
   width:100%;
   padding:14px;
   background:linear-gradient(135deg,#2e7d32,#1b5e20);
@@ -98,18 +154,20 @@ button{
   transition:0.3s;
   box-shadow:0 6px 20px rgba(0,0,0,0.4);
 }
-
+  
+  
 button:hover{
   transform:translateY(-4px);
   box-shadow:0 12px 25px rgba(0,0,0,0.6);
 }
-
+   
 hr{
   margin-top:20px;
   border:0;
-  border-top:1px solid #ccc;
+  border-top:1px solid #ccc; 
 }
-
+  
+  
 .toggle{
   text-align:center;
   margin-top:15px;
@@ -117,23 +175,25 @@ hr{
   color:#2e7d32;
   font-weight:bold;
 }
-
+  
+  
 .toggle:hover{
   text-decoration:underline;
 }
-
+  
+  
 /* ================= DASHBOARD ================= */
 .dashboard{
   display:none;
   text-align:center;
 }
-
+  
 .dashboard h2{
   font-size:1.8rem;
   color:#1b5e20;
   margin-bottom:20px;
 }
-
+  
 .dashboard a{
   display:block;
   margin-top:15px;
@@ -146,397 +206,1156 @@ hr{
   font-weight:bold;
   transition:0.3s;
   box-shadow:0 6px 20px rgba(0,0,0,0.4);
+  
 }
-
+  
 .dashboard a:hover{
   transform:translateY(-4px);
 }
+  
   /* ================= BOTÃO GOOGLE PROFISSIONAL ================= */
+  
 
+  
 .google-btn {
+  
   margin-top: 15px;
+  
   width: 100%;
+  
   padding: 12px;
+  
   background: #ffffff;
+  
   border: 1px solid #dadce0;
+  
   border-radius: 12px;
+  
   display: flex;
+  
   align-items: center;
+  
   justify-content: center;
+  
   gap: 12px;
+  
   cursor: pointer;
+  
   font-size: 15px;
+  
   font-weight: 500;
+  
   color: #3c4043;
+  
   transition: 0.3s;
+  
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  
 }
+  
 
+  
 .google-btn:hover {
+  
   background: #f7f8f8;
+  
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  
   transform: translateY(-2px);
+  
 }
+  
 
+  
 .google-icon {
+  
   width: 22px;
+  
   height: 22px;
+  
   display: flex;
+  
   align-items: center;
+  
   justify-content: center;
+  
 }
+  
 
+  
 .google-icon svg {
+  
   width: 20px;
+  
   height: 20px;
+  
 }
+  
 /* ================= LOGIN MODERNO ================= */
+  
 
+  
 .auth-box {
+  
   text-align: center;
+  
 }
+  
 
+  
 .auth-box h2 {
+  
   font-size: 1.8rem;
+  
   color: #1b5e20;
+  
   margin-bottom: 5px;
+  
 }
+  
 
+  
 .subtitle {
+  
   font-size: 0.9rem;
+  
   color: #666;
+  
   margin-bottom: 25px;
+  
 }
+  
 
+  
 /* Divisor */
+  
 .divider {
+  
   margin: 20px 0;
+  
   display: flex;
+  
   align-items: center;
+  
   text-align: center;
+  
 }
+  
 
+  
 .divider::before,
+  
 .divider::after {
+  
   content: "";
+  
   flex: 1;
+  
   border-bottom: 1px solid #ddd;
+  
 }
+  
 
+  
 .divider span {
+  
   padding: 0 10px;
+  
   font-size: 0.8rem;
+  
   color: #777;
+  
 }
+  
 
+  
 /* Inputs modernos */
+  
 .input-group.modern input {
+  
   width: 100%;
+  
   padding: 14px;
+  
   border-radius: 14px;
+  
   border: 1px solid #c8e6c9;
+  
   background: #f9fdf9;
+  
   font-size: 0.95rem;
+  
   transition: 0.3s;
+  
 }
+  
 
+  
 .input-group.modern input:focus {
+  
   border-color: #2e7d32;
+  
   background: #ffffff;
+  
   box-shadow: 0 0 0 3px rgba(46,125,50,0.15);
+  
 }
+  
 
+  
 /* Botão principal premium */
+  
 .primary-btn {
+  
   margin-top: 15px;
+  
   background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  
   border: none;
+  
   border-radius: 14px;
+  
   padding: 14px;
+  
   font-size: 1rem;
+  
   font-weight: 600;
+  
   letter-spacing: 0.5px;
+  
 }
+  
 
+  
 .primary-btn:hover {
+  
   transform: translateY(-2px);
+  
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  
 }
+  
 
+  
 /* Links */
+  
 .auth-links {
+  
   margin-top: 20px;
+  
   font-size: 0.85rem;
+  
   display: flex;
+  
   flex-direction: column;
+  
   gap: 8px;
+  
 }
+  
 
+  
 .auth-links span {
+  
   cursor: pointer;
+  
   color: #2e7d32;
+  
 }
+  
 
+  
 .auth-links span:hover {
+  
   text-decoration: underline;
+  
 }
+  
 
+  
 .forgot {
+  
   color: #555 !important;
+  
                              }
   
+  
+  
 /* ================= BOTÃO FLUTUANTE ================= */
+  
 .floating-secret{
+  
   position:fixed;
+  
   bottom:30px;
+  
   right:20px;
+  
   width:65px;
+  
   height:65px;
+  
   background:linear-gradient(135deg,#f2f5f7,#f7f5f2);
+  
   border-radius:50%;
+  
   border:3px solid #145a18;
+  
   display:flex;
+  
   align-items:center;
+  
   justify-content:center;
+  
   font-size:28px;
+  
   cursor:pointer;
+  
   color:white;
+  
   box-shadow:0 8px 25px rgba(0,0,0,0.5);
+  
   transition:0.3s;
+  
   z-index:1000;
+  
 }
+  
 
+  
 .floating-secret:hover{
+  
   transform:scale(1.1) rotate(5deg);
+  
 }
+  
 
+  
 /* ================= MODAL ================= */
+  
 /* ================= MODAL ESTILIZADO ================= */
+  
 .secret-modal {
+  
   position: fixed;
+  
   inset: 0;
+  
   background: rgba(0, 0, 0, 0.8);
+  
   display: none;
+  
   justify-content: center;
+  
   align-items: center;
+  
   z-index: 2000;
+  
   backdrop-filter: blur(5px);
+  
 
+  
 }
+  
+  
   
 .secret-content {
+  
   background: white;
+  
   border-radius: 25px;
+  
   max-width: 550px;
+  
   width: 90%;
   
+  
+  
   max-height: 85vh;    
+  
   overflow-y: auto;    
+  
   display: flex;       
+  
   flex-direction: column;
   
+  
+  
   position: relative;
+  
   box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  
 }
+  
 
+  
 
+  
 @keyframes modalEntrada {
+  
   from { transform: scale(0.8); opacity: 0; }
+  
   to { transform: scale(1); opacity: 1; }
+  
 }
+  
 
+  
 /* Faixa verde no topo (estilo imagem IA) */
+  
 .modal-header {
+  
   background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  
   padding: 40px 20px;
+  
   color: white;
+  
   position: relative;
+  
   border-bottom-left-radius: 50% 20%;
+  
   border-bottom-right-radius: 50% 20%;
+  
 }
+  
 
+  
 .modal-header .icon-top {
+  
   font-size: 50px;
+  
   background: white;
+  
   width: 80px;
+  
   height: 80px;
+  
   display: flex;
+  
   align-items: center;
+  
   justify-content: center;
+  
   border-radius: 50%;
+  
   margin: 0 auto 15px;
+  
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  
 }
+  
 
+  
 .secret-content h3 {
+  
   font-size: 2rem;
+  
   margin-top: 10px;
+  
 }
+  
 
+  
 .modal-body {
+  
   padding: 30px;
+  
   color: #333;
+  
 }
+  
 
+  
 .modal-body p {
+  
   margin-bottom: 20px;
+  
   font-size: 1.05rem;
+  
   color: #444;
+  
   text-align:left;
+  
 }
+  
 
+  
 /* Grade de Desenvolvedores */
+  
 .dev-grid {
+  
   display: grid;
+  
   grid-template-columns: 1fr 1fr;
+  
   gap: 15px;
+  
   margin-top: 20px;
+  
 }
+  
 
+  
 .dev-card {
+  
   background: white;
+  
   padding: 12px;
+  
   border-radius: 15px;
+  
   display: flex;
+  
   align-items: center;
+  
   gap: 10px;
+  
   border: 1px solid #c8e6c9;
+  
   transition: 0.3s;
+  
   text-decoration: none;
+  
 }
+  
 
+  
 .dev-card:hover {
+  
   transform: translateY(-3px);
+  
   border-color: #2e7d32;
+  
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  
 }
+  
 
+  
 .dev-card span {
+  
   font-weight: 600;
+  
   color: #1b5e20;
+  
   font-size: 0.9rem;
+  
 }
+  
 
+  
 .close-secret {
+  
   margin-top: 25px;
+  
   background: #1b5e20;
+  
   border: none;
+  
   width: auto;
+  
   padding: 12px 40px;
+  
 }
-  .hero{
-  text-align:center;
-  margin-bottom:30px;
-  color:white;
-}
+  
 
-.hero-logo{
-  width:120px;
-  height:120px;
-  margin:0 auto 20px;
-  background:white;
-  border-radius:22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 15px 35px rgba(0,0,0,0.6);
-  padding:15px;
-}
-
-.hero-logo img{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
-}
-
-.hero h1{
-  font-size:2.2rem;
-  font-weight:800;
-  letter-spacing:1px;
-  text-shadow:2px 2px 10px rgba(0,0,0,0.6);
-}
-
-.hero p{
-  font-size:0.95rem;
-  opacity:0.9;
-}
-
-@media(max-width:600px){
-
-  .hero-logo{
-    width:90px;
-    height:90px;
-    border-radius:18px;
+  
+/* ================= RESPONSIVO ================= */
+@media (max-width: 992px) {
+  .main {
+    flex-direction: column;
+    height: auto;
+    margin: 20px 0;
   }
 
-  .hero h1{
-    font-size:1.7rem;
+  .left {
+    padding: 40px 30px;
+    text-align: center;
+    align-items: center;
   }
 
-  .main{
-    width:100%;
+  .left::after {
+    display: none; /* Remove o divisor torto no mobile */
   }
 
-  .dev-grid{
-    grid-template-columns:1fr;
+  .left h1 {
+    font-size: 2.2rem;
+    white-space: normal;
   }
 
+  .right {
+    padding: 40px 20px;
+  }
 }
 
+/* Celulares Pequenos */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
 
+  .left h1 {
+    font-size: 1.8rem;
+  }
+
+  .left p {
+    font-size: 0.95rem;
+  }
+
+  .card h2 {
+    font-size: 1.5rem;
+  }
+
+  .dev-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-secret {
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 15px;
+  }
+}
+  
+
+  
 </style>
 </head>
+  <body>
+    
+    <div class="main">
+      <div class="left">
+        <h1>🌱 AgroInova 🤖</h1>
+        <p>Conectando o campo à tecnologia. Plataforma inteligente para diagnóstico de doenças agrícolas por imagem ou sintomas.
+        </p>
+        <p>Projeto desenvolvido por alunos do Curso Técnico Integrado em Informática e Agropecuária.
 
-<body>
+</p>
+      </div>
+      <div class="right">
+        <div class="card">
+          <div id="auth" class="auth-box"> 
+            <h2 id="formTitle">Bem-vindo 👋</h2>
+            <p class="subtitle">Acesse sua conta para continuar</p>  
+            <!-- GOOGLE --> 
+            <button class="google-btn" onclick="loginGoogle()">
+            <div class="google-icon">
 
-<div class="main">
-<div class="hero">
-  <div class="hero-logo">
-    <img src="logo.jpg" alt="Logo AgroInova">
-  </div>
-  <h1>AgroInova</h1>
-  <p>Conectando o campo à tecnologia</p>
+  <!-- mesmo SVG que você já usa -->
+
+  <svg viewBox="0 0 48 48">
+
+    <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.69 2.64 30.21 0 24 0 14.64 0 6.54 5.38 2.56 13.22l7.98 6.2C12.36 13.64 17.74 9.5 24 9.5z"/>
+
+    <path fill="#34A853" d="M46.09 24.5c0-1.57-.14-3.07-.41-4.5H24v9h12.5c-.54 2.9-2.17 5.36-4.63 7.02l7.2 5.6C43.99 37.03 46.09 31.29 46.09 24.5z"/>
+
+    <path fill="#FBBC05" d="M10.54 28.42a14.5 14.5 0 0 1 0-8.84l-7.98-6.2A23.98 23.98 0 0 0 0 24c0 3.88.93 7.55 2.56 10.62l7.98-6.2z"/>
+
+    <path fill="#EA4335" d="M24 48c6.21 0 11.41-2.05 15.21-5.58l-7.2-5.6c-2 1.34-4.57 2.13-8.01 2.13-6.26 0-11.64-4.14-13.46-9.92l-7.98 6.2C6.54 42.62 14.64 48 24 48z"/>
+
+  </svg>
+
 </div>
+
+<span>Continuar com Google</span>
+
+  </button>  <div class="divider"><span>ou</span>
+
+  </div>  <!-- EMAIL -->  <div class="input-group modern"><input type="email" id="email" placeholder="Email">
+
+  </div>  <div class="input-group modern"><input type="password" id="password" placeholder="Senha">
+
+<span class="eye" onclick="togglePassword('password')">👁</span>
+
+  </div>  <div class="input-group modern"><input type="password" id="confirmPassword" placeholder="Confirme sua senha" style="display:none;">
+
+<span class="eye" id="confirmEye" onclick="togglePassword('confirmPassword')" style="display:none;">👁</span>
+
+  </div>  <button onclick="auth()" id="mainBtn" class="primary-btn">Entrar
+
+  </button>  <div class="auth-links"><span onclick="toggleForm()" id="toggleText">
+
+  Não tem conta? <strong>Cadastre-se</strong>
+
+</span>
+
+
+
+<span onclick="recuperarSenha()" class="forgot">
+
+  Esqueci minha senha
+
+</span>
+
+  </div></div><div class="dashboard" id="dashboard">  <h2>🌱 Bem-vindo ao AgroInova</h2><a href="sobre.html">📷 Diagnóstico por Imagem</a>
+
+<a href="bot.html">💬 Diagnóstico por Sintoma</a>
+
+<a href="https://wa.me/5555996698757" target="_blank">📱 Fale conosco no WhatsApp</a>
+
+<a href="#" onclick="logout()">🚪 Sair</a>
+
+<a href="#" onclick="apagarConta()">❌ Apagar Conta</a>
+
+</div></div></div></div><!-- BOTÃO FLUTUANTE --><div class="floating-secret" onclick="openSecret()">ℹ️</div><div class="secret-modal" id="secretModal">  <div class="secret-content"><div class="modal-header">
+
+  <div class="icon-top">🚜</div>
+
+  <h3>Sobre o Projeto</h3>
+
+</div>
+
+
+
+<div class="modal-body">
+
+  <p>
+
+O <strong>AgroInova</strong> nasceu para unir o conhecimento do campo à tecnologia, oferecendo soluções inteligentes para produtores rurais que desejam monitorar e cuidar melhor de suas lavouras.
+
+Nosso objetivo é tornar o diagnóstico de doenças mais rápido, preciso e acessível, permitindo que o produtor tome decisões informadas de maneira prática.
+
+</p><p>Desenvolvido por alunos do 2º ano do curso técnico em Informática e Agropecuária, o <strong>AgroInova</strong> combina inovação e aprendizado aplicado.
+
+O projeto começou no ano passado e, ao longo do tempo, foi aprimorado para oferecer uma experiência ainda mais intuitiva e eficiente.
+
+</p><p>Com uma interface simples e ferramentas inteligentes, o <strong>AgroInova</strong> ajuda você a identificar sinais de problemas nas plantas e entender melhor a saúde da sua lavoura.
+
+Queremos que a tecnologia trabalhe a seu favor, tornando o cuidado com suas culturas mais fácil e confiável.
+
+</p><p><strong>Lembre-se:</strong> o AgroInova é uma ferramenta de apoio e não substitui a avaliação de um técnico especializado. Para análises detalhadas e confirmações, sempre consulte um profissional.
+
+</p><p><strong>Explore, aprenda e cuide da sua lavoura com o AgroInova!</strong>
+
+</p><h4 style="color:#1b5e20; margin-bottom:15px;">🚀 Time de Desenvolvimento</h4>
+
   
-<div class="right">
-<div class="card">
 
-<div id="auth" class="auth-box">
+  <div class="dev-grid">
 
-  <h2 id="formTitle">Bem-vindo 👋</h2>
-  <p class="subtitle">Acesse sua conta para continuar</p>
+    <a href="https://www.instagram.com/cauan.ak/" target="_blank" class="dev-card">
 
-  <!-- GOOGLE -->
-  <button class="google-btn" onclick="loginGoogle()">
-    <div class="google-icon">
-      <!-- mesmo SVG que você já usa -->
-      <svg viewBox="0 0 48 48">
-        <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.69 2.64 30.21 0 24 0 14.64 0 6.54 5.38 2.56 13.22l7.98 6.2C12.36 13.64 17.74 9.5 24 9.5z"/>
-        <path fill="#34A853" d="M46.09 24.5c0-1.57-.14-3.07-.41-4.5H24v9h12.5c-.54 2.9-2.17 5.36-4.63 7.02l7.2 5.6C43.99 37.03 46.09 31.29 46.09 24.5z"/>
-        <path fill="#FBBC05" d="M10.54 28.42a14.5 14.5 0 0 1 0-8.84l-7.98-6.2A23.98 23.98 0 0 0 0 24c0 3.88.93 7.55 2.56 10.62l7.98-6.2z"/>
-        <path fill="#EA4335" d="M24 48c6.21 0 11.41-2.05 15.21-5.58l-7.2-5.6c-2 1.34-4.57 2.13-8.01 2.13-6.26 0-11.64-4.14-13.46-9.92l-7.98 6.2C6.54 42.62 14.64 48 24 48z"/>
-      </svg>
-    </div>
-    <span>Continuar com Google</span>
-  </button>
+      <span>👨‍💻 Cauãn Kaminski</span>
 
-  <div class="divider">
-    <span>ou</span>
+    </a>
+
+    <a href="https://www.instagram.com/gabrieel.k01/" target="_blank" class="dev-card">
+
+      <span>👨‍💻 Gabriel Klemm</span>
+
+    </a>
+
+    <a href="https://www.instagram.com/bernardobaldin/" target="_blank" class="dev-card">
+
+      <span>👨‍💻 Bernardo Baldin</span>
+
+    </a>
+
+    <a href="https://www.instagram.com/ber.lorenzatto/" target="_blank" class="dev-card">
+
+      <span>👨‍💻 Bernardo Lorenzatto</span>
+
+    </a>
+
   </div>
 
-  <!-- EMAIL -->
-  <div class="input-group modern">
-    <input type="email" id="email" placeholder="Email">
-  </div>
 
-  <div class="input-group modern">
-    <input type="password" id="password" placeholder="Senha">
-    <span class="eye" onclick="togglePassword('password')">👁</span>
-  </div>
 
-  <div class="input-group modern">
-    <input type="password" id="confirmPassword" placeholder="Confirme sua senha" style="display:none;">
-    <span class="eye" id="confirmEye" onclick="togglePassword('confirmPassword')" style="display:none;">👁</span>
+  <button class="close-secret" onclick="closeSecret()">Fechar Painel</button>
+
+</div>
+
+  </div></div><script type="module">
+  
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+  
+
+  
+import { 
+  
+  getAuth,
+  
+  createUserWithEmailAndPassword,
+  
+  signInWithEmailAndPassword,
+  
+  sendPasswordResetEmail,
+  
+  signOut,
+  
+  deleteUser,
+  
+  onAuthStateChanged,
+  
+  GoogleAuthProvider,
+  
+  signInWithPopup,
+  
+  setPersistence,
+  
+  browserLocalPersistence
+  
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+  
+
+  
+import { 
+  
+  getFirestore,
+  
+  collection,
+  
+  getDocs,
+  
+  query,
+  
+  where
+  
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+  
+
+  
+/* ================= FIREBASE CONFIG ================= */
+  
+
+  
+const firebaseConfig = {
+  
+  apiKey: "AIzaSyBbvAOfk3EXyQivxcc4ylHrtuWkKyXkuDw",
+  
+  authDomain: "sitebot-2c952.firebaseapp.com",
+  
+  projectId: "sitebot-2c952",
+  
+  storageBucket: "sitebot-2c952.firebasestorage.app",
+  
+  messagingSenderId: "410409250226",
+  
+  appId: "1:410409250226:web:6a89bc59b81011317348ab",
+  
+  measurementId: "G-RRR7DPL1CM"
+  
+};
+  
+
+  
+const app = initializeApp(firebaseConfig);
+  
+getAnalytics(app);
+  
+
+  
+const auth = getAuth(app);
+  
+const db = getFirestore(app);
+  
+
+  
+/* 🔥 GARANTE SESSÃO LOCAL */
+  
+await setPersistence(auth, browserLocalPersistence);
+  
+
+  
+let isLogin = true;
+  
+
+  
+/* ================= BOTÃO FLUTUANTE ================= */
+  
+
+  
+window.openSecret = function(){
+  
+  document.getElementById("secretModal").style.display = "flex";
+  
+}
+  
+
+  
+window.closeSecret = function(){
+  
+  document.getElementById("secretModal").style.display = "none";
+  
+}
+  
+
+  
+/* ================= FORM ================= */
+  
+
+  
+window.toggleForm = function(){
+  
+  isLogin = !isLogin;
+  
+  formTitle.innerText = isLogin ? "Login" : "Cadastro";
+  
+  mainBtn.innerText = isLogin ? "Entrar" : "Cadastrar";
+  
+  confirmPassword.style.display = isLogin ? "none" : "block";
+  
+  confirmEye.style.display = isLogin ? "none" : "block";
+  
+  toggleText.innerText = isLogin ?
+  
+    "Não tem conta? Cadastre-se" :
+  
+    "Já tem conta? Faça login";
+  
+}
+  
+
+  
+window.togglePassword = function(id){
+  
+  const input = document.getElementById(id);
+  
+  input.type = input.type === "password" ? "text" : "password";
+  
+}
+  
+
+  
+/* ================= LOGIN EMAIL ================= */
+  
+
+  
+window.auth = async function(){
+  
+
+  
+  const email = document.getElementById("email").value.trim();
+  
+  const password = document.getElementById("password").value.trim();
+  
+  const confirm = document.getElementById("confirmPassword").value.trim();
+  
+
+  
+  if(!email || !password){
+  
+    alert("Preencha todos os campos!");
+  
+    return;
+  
+  }
+  
+
+  
+  try {
+  
+
+  
+    if(isLogin){
+  
+      await signInWithEmailAndPassword(auth, email, password);
+  
+      alert("Login realizado com sucesso!");
+  
+    } else {
+  
+
+  
+      if(password !== confirm){
+  
+        alert("As senhas não coincidem!");
+  
+        return;
+  
+      }
+  
+
+  
+      await createUserWithEmailAndPassword(auth, email, password);
+  
+      alert("Conta criada com sucesso!");
+  
+    }
+  
+
+  
+  } catch(error){
+  
+    alert("Erro: " + error.message);
+  
+  }
+  
+}
+  
+
+  
+/* ================= LOGIN GOOGLE COM REDIRECT ================= */
+  
+
+  
+window.loginGoogle = async function(){
+  
+
+  
+  const provider = new GoogleAuthProvider();
+  
+
+  
+  try{
+  
+
+  
+    const result = await signInWithPopup(auth, provider);
+  
+
+  
+    console.log("Google OK:", result.user.email);
+  
+
+  
+    showDashboard();
+  
+
+  
+  }catch(err){
+  
+    alert("Erro Google: " + err.message);
+  
+  }
+  
+
+  
+}
+  
+/* 🔥 CAPTURA RETORNO DO REDIRECT */
+  
+
+  
+onAuthStateChanged(auth, (user) => {
+  
+
+  
+  if(user){
+  
+    console.log("Sessão ativa:", user.email);
+  
+    showDashboard();
+  
+  } 
+  
+  else {
+  
+    console.log("Sem sessão");
+  
+    document.getElementById("auth").style.display = "block";
+  
+    document.getElementById("dashboard").style.display = "none";
+  
+  }
+  
+
+  
+});
+  
+/* ================= DASHBOARD ================= */
+  
+
+  
+function showDashboard(){
+  
+  document.getElementById("auth").style.display = "none";
+  
+  document.getElementById("dashboard").style.display = "block";
+  
+}
+  
+
+  
+
+  
+
+  
+/* ================= OUTROS ================= */
+  
+
+  
+window.logout = async function(){
+  
+  await signOut(auth);
+  
+  location.reload();
+  
+}
+  
+
+  
+window.apagarConta = async function(){
+  
+  const user = auth.currentUser;
+  
+
+  
+  if(!user){
+  
+    alert("Nenhum usuário logado!");
+  
+    return;
+  
+  }
+  
+
+  
+  const confirmar = confirm("Tem certeza que deseja apagar sua conta?");
+  
+  if(!confirmar) return;
+  
+
+  
+  await deleteUser(user);
+  
+  alert("Conta apagada!");
+  
+  location.reload();
+  
+}
+  
+
+  
+window.recuperarSenha = async function(){
+  
+
+  
+  const email = document.getElementById("email").value.trim();
+  
+
+  
+  if(!email){
+  
+    alert("Digite seu email!");
+  
+    return;
+  
+  }
+  
+
+  
+  try {
+  
+    await sendPasswordResetEmail(auth, email);
+  
+    alert("📩 Enviamos um e-mail de verificação para você. Se não encontrar na caixa de entrada, confira a pasta Spam ou Promoções. Alguns provedores podem direcionar automaticamente para essas pastas.");
+  
+  } catch(error){
+  
+    alert("Erro: " + error.message);
+  
+  }
+  
+}
+  
+
+  
+="confirmEye" onclick="togglePassword('confirmPassword')" style="display:none;">👁</span>
   </div>
 
   <button onclick="auth()" id="mainBtn" class="primary-btn">
@@ -844,6 +1663,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
