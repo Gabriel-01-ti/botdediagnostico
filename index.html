@@ -30,7 +30,6 @@ body{
 /* ================= CONTAINER ================= */
 .main{
   width:95%;
-  max-width:480px;
   border-radius:25px;
   box-shadow:0 20px 50px rgba(0,0,0,0.6);
   overflow:hidden;
@@ -425,19 +424,65 @@ hr{
   width: auto;
   padding: 12px 40px;
 }
+  .hero{
+  text-align:center;
+  margin-bottom:30px;
+  color:white;
+}
 
-/* ================= RESPONSIVO ================= */
-@media(max-width:900px){
+.hero-logo{
+  width:120px;
+  height:120px;
+  margin:0 auto 20px;
+  background:white;
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 15px 35px rgba(0,0,0,0.6);
+  padding:15px;
+}
+
+.hero-logo img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+
+.hero h1{
+  font-size:2.2rem;
+  font-weight:800;
+  letter-spacing:1px;
+  text-shadow:2px 2px 10px rgba(0,0,0,0.6);
+}
+
+.hero p{
+  font-size:0.95rem;
+  opacity:0.9;
+}
+
+@media(max-width:600px){
+
+  .hero-logo{
+    width:90px;
+    height:90px;
+    border-radius:18px;
+  }
+
+  .hero h1{
+    font-size:1.7rem;
+  }
+
   .main{
-    flex-direction:column;
+    width:100%;
   }
+
+  .dev-grid{
+    grid-template-columns:1fr;
+  }
+
 }
 
-@media(max-width:500px){
-  .left h1{
-    font-size:1.9rem;
-  }
-}
 
 </style>
 </head>
@@ -799,6 +844,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
