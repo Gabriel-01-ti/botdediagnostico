@@ -16,71 +16,32 @@
 
 body{
   font-family:"Poppins",sans-serif;
-  min-height:98vh;
-  padding: 20px 0;
-  display: flex;
+  min-height:100vh;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   background:
-    linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
     url('fundo.jpg') center/cover no-repeat;
 }
 
 /* ================= CONTAINER ================= */
 .main{
   width:95%;
-  max-width:1100px;
-  display:flex;
+  max-width:480px;
   border-radius:25px;
   box-shadow:0 20px 50px rgba(0,0,0,0.6);
-  overflow: hidden;
+  overflow:hidden;
+  background:linear-gradient(135deg,#f1f8f4,#e8f5e9);
 }
 
-/* ================= LADO ESQUERDO ================= */
-.left{
-  flex:1;
-  padding:50px;
-  background:linear-gradient(135deg,#1b5e20,#2e7d32);
-  color:white;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  position:relative;
-}
-
-/* Divisor inclinado */
-.left::after{
-  content:"";
-  position:absolute;
-  top:0;
-  right:-40px;
-  width:80px;
-  height:100%;
-  background:#1b5e20;
-  transform:skewX(-15deg);
-}
-
-.left h1{
-  font-size:2.6rem;
-  margin-bottom:20px;
-  font-weight:900;
-  letter-spacing:1px;
-  white-space:nowrap;
-  text-shadow:
-    3px 3px 0 #0d3b12,
-    6px 6px 15px rgba(0,0,0,0.6);
-}
-
-.left p{
-  line-height:1.7;
-  margin-bottom:18px;
-}
 
 /* ================= LADO DIREITO ================= */
 .right{
-  flex:1;
-  background:linear-gradient(135deg,#f1f8f4,#e8f5e9);
-  padding:40px;
+  width:100%;
+  padding:40px 30px;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -838,6 +799,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
