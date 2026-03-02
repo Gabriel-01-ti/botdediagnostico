@@ -824,6 +824,27 @@ hr{
     padding: 40px 20px;
   }
 }
+  /* ================= FOOTER FORA DO CONTAINER ================= */
+
+.outside-footer{
+  position:fixed;
+  bottom:15px;
+  left:0;
+  width:100%;
+  text-align:center;
+  font-size:0.85rem;
+  color:#ffffffcc;
+  letter-spacing:0.5px;
+}
+
+.outside-footer p{
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(8px);
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.15);
+}
 
 /* Celulares Pequenos */
 @media (max-width: 480px) {
@@ -1004,6 +1025,9 @@ Queremos que a tecnologia trabalhe a seu favor, tornando o cuidado com suas cult
 </div>
 
   </div></div>
+    <footer class="outside-footer">
+  <p>© 2026 🌱 AgroInova • Projeto Técnico em Informática e Agropecuária</p>
+    </footer>
 
 
 <script type="module">
@@ -1229,6 +1253,7 @@ window.verDiagnosticos = async function(){
 </script>
 </body>
 </html>
+
 
 
 
