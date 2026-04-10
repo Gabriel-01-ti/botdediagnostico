@@ -61,7 +61,7 @@
 
         /* SEÇÃO DE TEXTO (GLASSMORPHISM) */
         .content-wrap {
-            padding: 60px 8%;
+            padding:20px 8% 60px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -136,6 +136,8 @@
             .glass-panel { padding: 25px; border-radius: 20px; border-left-width: 4px; }
             .content-wrap { padding: 30px 5%; }
             .section-title { font-size: 2rem; }
+            div[style*="padding: 60px"] {
+            padding: 40px 5% 10px 5% !important;}
         }
     </style>
 </head>
@@ -148,7 +150,14 @@
             <span>Voltar</span>
         </a>
     </header>
-
+    <div style="text-align: center; padding: 60px 5% 20px 5%;">
+    <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 4px; font-weight: 800; margin-bottom: 10px;">
+        Conheça nossa história
+    </h2>
+    <h1 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem); color: white; font-weight: 800; letter-spacing: -2px;">
+        Sobre o AgroInova
+    </h1>
+</div>
     <div class="content-wrap">
         <section class="glass-panel">
             <h1>Inovação que brota da terra.</h1>
