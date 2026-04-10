@@ -7,9 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1b5e20;
+            --primary: #0f3d13;
             --accent: #81c784;
             --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -19,10 +20,12 @@
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('fundo.jpg') center/cover no-repeat fixed;
             color: white;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* HEADER E BOTÃO VOLTAR */
         header {
-            padding: 20px 8%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -31,136 +34,176 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.5rem; color: white; text-decoration: none; }
         
-        .nav-back { color: var(--accent); text-decoration: none; font-weight: 600; }
-
-        /* SEÇÃO DE TEXTO EXPLICATIVO */
-        .content-section {
-            padding: 80px 10% 40px;
-            max-width: 1000px;
+        .btn-voltar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
         }
 
-        h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3.5rem; margin-bottom: 30px; line-height: 1.1; }
-        
-        .intro-text { font-size: 1.2rem; color: var(--accent); margin-bottom: 40px; font-weight: 500; }
-
-        .main-text { font-size: 1.1rem; opacity: 0.9; text-align: justify; margin-bottom: 30px; }
-
-        /* TECNOLOGIAS */
-        .tech-box {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--accent);
-            padding: 30px;
-            margin: 50px 0;
-            backdrop-filter: blur(10px);
+        .btn-voltar:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateX(-5px);
         }
 
-        .tech-box h3 { margin-bottom: 15px; font-family: 'Plus Jakarta Sans', sans-serif; }
+        /* SEÇÃO DE TEXTO (GLASSMORPHISM) */
+        .content-wrap {
+            padding: 60px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-        /* EQUIPE (OS 4) */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 0 30px 30px 0;
+            border-left: 6px solid var(--accent);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-right: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; line-height: 1.1; }
+        .intro-text { font-size: 1.2rem; color: var(--accent); margin-bottom: 30px; font-weight: 600; }
+        .main-text { font-size: 1.05rem; opacity: 0.9; text-align: justify; }
+
+        /* TECNOLOGIAS INTERNAS */
+        .tech-box-inner {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .tech-box-inner h3 { margin-bottom: 15px; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--accent); }
+        .tech-box-inner ul { list-style: none; }
+        .tech-box-inner li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .tech-box-inner li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+
+        /* NOSSA EQUIPE */
+        .section-title {
+            text-align: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            margin: 80px 0 40px;
+            color: white;
+        }
+
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            padding: 40px 10% 100px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 100px;
         }
 
         .member-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             padding: 30px;
             border-radius: 20px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: 0.3s;
-        }
-
-        .member-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.15); border-color: var(--accent); }
-
-        .member-card img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 15px; border: 2px solid var(--accent); }
-
-        .member-card h4 { font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 5px; }
-
-        .instagram-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--accent);
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            font-weight: 600;
+            color: inherit;
         }
 
+        .member-card:hover { 
+            transform: translateY(-10px); 
+            background: rgba(255, 255, 255, 0.1); 
+            border-color: var(--accent); 
+        }
+
+        .member-card img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px; border: 3px solid var(--accent); object-fit: cover; }
+        .instagram-link { display: block; color: var(--accent); font-weight: 700; margin-top: 10px; font-size: 0.9rem; }
+
+        /* RESPONSIVIDADE */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .content-section { padding: 40px 5%; }
+            header { padding: 15px 5%; }
+            .glass-panel { padding: 25px; border-radius: 20px; border-left-width: 4px; }
+            .content-wrap { padding: 30px 5%; }
+            .section-title { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-    <a href="index.html" class="logo">🌱 AgroInova</a>
-    <a href="index.html" class="btn-voltar">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <a href="index.html" class="logo">🌱 AgroInova</a>
+        <a href="index.html" class="btn-voltar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Voltar</span>
+        </a>
+    </header>
 
-    </a>
-</header>
-    <section class="tech-box">
-        <h1>Inovação que brota da terra.</h1>
-        <p class="intro-text">Unindo inteligência artificial e paixão pelo agronegócio para transformar a gestão do campo.</p>
+    <div class="content-wrap">
+        <section class="glass-panel">
+            <h1>Inovação que brota da terra.</h1>
+            <p class="intro-text">Unindo inteligência artificial e paixão pelo agronegócio.</p>
+            
+            <div class="main-text">
+                <p>O AgroInova nasceu da necessidade de aproximar a alta tecnologia do dia a dia do produtor rural. Entendemos que o campo não pode parar e que cada segundo conta na identificação de uma praga ou deficiência nutricional.</p>
+                <br>
+                <p>Acreditamos na sustentabilidade e na eficiência. Nosso compromisso é com o futuro da agricultura digital, tornando-a acessível, intuitiva e, acima de tudo, útil para quem alimenta o mundo.</p>
+            </div>
+
+            <div class="tech-box-inner">
+                <h3>🛠️ Tecnologia de Ponta</h3>
+                <ul>
+                    <li><strong>Firebase:</strong> Segurança e banco de dados em tempo real.</li>
+                    <li><strong>HTML5 & CSS3:</strong> Design moderno com Glassmorphism.</li>
+                    <li><strong>JavaScript (ES6+):</strong> Lógica dinâmica e integração com IA.</li>
+                    <li><strong>Google Fonts:</strong> Tipografia Premium para leitura clara.</li>
+                </ul>
+            </div>
+        </section>
+
+        <h2 class="section-title">Nossa Equipe</h2>
         
-        <div class="main-text">
-            <p>O AgroInova nasceu da necessidade de aproximar a alta tecnologia do dia a dia do produtor rural. Entendemos que o campo não pode parar e que cada segundo conta na identificação de uma praga ou deficiência nutricional. Nossa plataforma utiliza algoritmos avançados de visão computacional para analisar sintomas em folhas e solos, entregando um diagnóstico preciso em tempo real.</p>
-            <br>
-            <p>Acreditamos na sustentabilidade e na eficiência. Ao identificar exatamente o que aflige uma plantação, o produtor pode agir de forma localizada, economizando recursos e protegendo o meio ambiente. Nosso compromisso é com o futuro da agricultura digital, tornando-a acessível, intuitiva e, acima de tudo, útil.</p>
+        <div class="team-grid">
+            <a href="https://instagram.com/gabrieel_k01" target="_blank" class="member-card">
+                <img src="foto1.jpg" alt="Gabriel" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
+                <h4>Gabriel K.</h4>
+                <p style="opacity: 0.7; font-size: 0.85rem;">Desenvolvedor Lead</p>
+                <span class="instagram-link">📸 @gabrieel_k01</span>
+            </a>
+
+            <a href="#" target="_blank" class="member-card">
+                <img src="foto2.jpg" alt="Integrante 2" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
+                <h4>Nome do Integrante</h4>
+                <p style="opacity: 0.7; font-size: 0.85rem;">UI/UX Designer</p>
+                <span class="instagram-link">📸 @usuario_2</span>
+            </a>
+
+            <a href="#" target="_blank" class="member-card">
+                <img src="foto3.jpg" alt="Integrante 3" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
+                <h4>Nome do Integrante</h4>
+                <p style="opacity: 0.7; font-size: 0.85rem;">IA Specialist</p>
+                <span class="instagram-link">📸 @usuario_3</span>
+            </a>
+
+            <a href="#" target="_blank" class="member-card">
+                <img src="foto4.jpg" alt="Integrante 4" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
+                <h4>Nome do Integrante</h4>
+                <p style="opacity: 0.7; font-size: 0.85rem;">Agro Researcher</p>
+                <span class="instagram-link">📸 @usuario_4</span>
+            </a>
         </div>
+    </div>
 
-        <div class="tech-box">
-            <h3>🛠️ O que usamos para construir?</h3>
-            <p>Este projeto foi desenvolvido utilizando as tecnologias mais modernas do mercado:</p>
-            <ul style="margin-left: 20px; margin-top: 10px; font-size: 0.95rem;">
-                <li><strong>Firebase:</strong> Para autenticação segura e banco de dados em tempo real.</li>
-                <li><strong>HTML5 & CSS3:</strong> Com conceitos de Glassmorphism e Design Responsivo.</li>
-                <li><strong>JavaScript (ES6+):</strong> Para toda a lógica dinâmica e integração com IA.</li>
-                <li><strong>Google Fonts:</strong> Plus Jakarta Sans e Inter para uma leitura premium.</li>
-            </ul>
-        </div>
-
-         </section>
-    <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2rem; margin-top: 60px;">Nossa Equipe</h2>
-    <div class="team-grid">
-    <a href="https://instagram.com/gabrieel_k01" target="_blank" class="member-card" style="text-decoration: none; color: inherit;">
-        <img src="foto1.jpg" alt="Foto Membro 1" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
-        <h4>Nome do Integrante 1</h4>
-        <p style="font-size: 0.8rem; opacity: 0.7;">Desenvolvedor</p>
-        <span class="instagram-link">📸 @gabrieel_k01</span>
-    </a>
-
-    <a href="https://instagram.com/USUARIO_2" target="_blank" class="member-card" style="text-decoration: none; color: inherit;">
-        <img src="foto2.jpg" alt="Foto Membro 2" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
-        <h4>Nome do Integrante 2</h4>
-        <p style="font-size: 0.8rem; opacity: 0.7;">Cargo/Função</p>
-        <span class="instagram-link">📸 @USUARIO_2</span>
-    </a>
-
-    <a href="https://instagram.com/USUARIO_3" target="_blank" class="member-card" style="text-decoration: none; color: inherit;">
-        <img src="foto3.jpg" alt="Foto Membro 3" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
-        <h4>Nome do Integrante 3</h4>
-        <p style="font-size: 0.8rem; opacity: 0.7;">Cargo/Função</p>
-        <span class="instagram-link">📸 @USUARIO_3</span>
-    </a>
-
-    <a href="https://instagram.com/USUARIO_4" target="_blank" class="member-card" style="text-decoration: none; color: inherit;">
-        <img src="foto4.jpg" alt="Foto Membro 4" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
-        <h4>Nome do Integrante 4</h4>
-        <p style="font-size: 0.8rem; opacity: 0.7;">Cargo/Função</p>
-        <span class="instagram-link">📸 @USUARIO_4</span>
-    </a>
-</div>
     <footer style="padding: 40px; text-align: center; font-size: 0.8rem; opacity: 0.5; border-top: 1px solid rgba(255,255,255,0.1);">
         © 2026 AgroInova - Tecnologia Integrada ao Campo
     </footer>
