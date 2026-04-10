@@ -26,7 +26,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(15, 61, 19, 0.85);
+            background: rgba(15, 61, 19, 0.9);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
@@ -56,14 +56,14 @@
         .btn-nav-login {
             background: #ffffff;
             color: #1b5e20 !important;
-            padding: 8px 20px;
+            padding: 8px 24px;
             border-radius: 50px;
             font-weight: 700 !important;
-            opacity: 1 !important;
+            cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* ================= MAIN (ESTILO GITHUB SPLIT) ================= */
+        /* ================= MAIN LAYOUT ================= */
         .hero-section {
             flex: 1;
             display: flex;
@@ -85,17 +85,6 @@
             position: relative;
         }
 
-        /* Efeito de Brilho Original */
-        .main::before {
-            pointer-events: none;
-            content: "";
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle at center, rgba(46, 125, 50, 0.15), transparent 70%);
-            animation: glowMove 8s linear infinite;
-        }
-        @keyframes glowMove { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
         .left {
             flex: 1.2;
             padding: 60px;
@@ -113,8 +102,22 @@
             background: #1b5e20; transform: skewX(-15deg);
         }
 
-        .left h1 { font-size: 2.8rem; margin-bottom: 20px; font-weight: 900; text-shadow: 3px 3px 0 #0d3b12; }
-        .left p { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; margin-bottom: 20px; }
+        .left h1 { font-size: 2.8rem; margin-bottom: 20px; font-weight: 900; text-shadow: 3px 3px 0 #0d3b12; line-height: 1.1;}
+        .left p { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; margin-bottom: 30px; }
+
+        .btn-cta {
+            padding: 15px 35px;
+            background: white;
+            color: #1b5e20;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            align-self: flex-start;
+        }
+        .btn-cta:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
 
         .right {
             flex: 1;
@@ -124,15 +127,25 @@
             justify-content: center;
             align-items: center;
             z-index: 2;
+            min-height: 500px;
         }
 
-        .card { width: 100%; max-width: 360px; }
+        .card { width: 100%; max-width: 360px; color: #333; }
 
-        /* ================= INPUTS E BOTÕES REESTILIZADOS ================= */
-        .auth-box h2 { color: #1b5e20; margin-bottom: 8px; text-align: center; }
-        .subtitle { text-align: center; font-size: 0.9rem; color: #666; margin-bottom: 25px; }
+        /* ================= VISTAS (VIEWS) ================= */
+        .view-step { animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .input-group.modern { margin-bottom: 15px; position: relative; }
+        .welcome-view { text-align: center; }
+        .welcome-view .icon { font-size: 4rem; margin-bottom: 20px; display: block; }
+        .welcome-view h2 { color: #1b5e20; margin-bottom: 10px; }
+
+        /* ================= FORM STYLES ================= */
+        .divider { margin: 20px 0; display: flex; align-items: center; text-align: center; font-size: 0.8rem; color: #999; }
+        .divider::before, .divider::after { content: ""; flex: 1; border-bottom: 1px solid #ddd; }
+        .divider span { padding: 0 10px; }
+
+        .input-group.modern { margin-bottom: 15px; }
         .input-group.modern input {
             width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #ddd;
             background: white; font-size: 0.95rem; outline: none; transition: 0.3s;
@@ -143,73 +156,43 @@
             width: 100%; padding: 14px; background: #1b5e20; color: white; border: none;
             border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: 0.3s;
         }
-        .primary-btn:hover { background: #2e7d32; transform: translateY(-2px); }
 
         .google-btn {
-            width: 100%; padding: 12px; background: white; border: 1px solid #ddd;
+            width: 100%; padding: 12px; background: white; border: 1px solid #dadce0;
             border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            gap: 10px; cursor: pointer; font-weight: 500; margin-bottom: 20px; transition: 0.3s;
+            gap: 12px; cursor: pointer; font-weight: 500; font-family: 'Roboto', sans-serif;
+            color: #3c4043; transition: 0.3s;
         }
-        .google-btn:hover { background: #f1f1f1; }
+        .google-btn img { width: 20px; height: 20px; }
+        .google-btn:hover { background: #f8f9fa; border-color: #d2e3fc; }
 
-        /* ================= DASHBOARD COM GRID DE SERVIÇOS ================= */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
+        /* ================= DASHBOARD GRID ================= */
+        .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
         .service-card {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: white;
-            border-radius: 15px;
-            text-decoration: none;
-            color: #1b5e20;
-            border: 1px solid #eee;
-            transition: 0.3s;
+            display: flex; align-items: center; gap: 15px; padding: 15px;
+            background: white; border-radius: 15px; text-decoration: none;
+            color: #1b5e20; border: 1px solid #eee; transition: 0.3s;
         }
-
-        .service-card:hover {
-            transform: translateX(5px);
-            border-color: #2e7d32;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
+        .service-card:hover { transform: translateX(5px); border-color: #2e7d32; }
         .service-card .icon { font-size: 1.5rem; background: #f0f7f1; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
-        .service-card div strong { display: block; font-size: 0.9rem; }
-        .service-card div p { font-size: 0.75rem; color: #777; }
 
-        .btn-logout { 
-            margin-top: 20px; width: 100%; padding: 10px; 
-            background: none; border: 1px solid #ddd; color: #888; 
-            border-radius: 10px; cursor: pointer; font-size: 0.8rem;
-        }
+        .btn-logout { margin-top: 20px; width: 100%; padding: 10px; background: none; border: 1px solid #ddd; color: #888; border-radius: 10px; cursor: pointer; }
 
-        .outside-footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.6); font-size: 0.8rem; }
-
-        /* Responsividade */
         @media (max-width: 992px) {
             .main { flex-direction: column; }
             .left::after { display: none; }
-            header { padding: 15px 20px; }
-            nav ul { display: none; } /* Esconde menu no mobile para simplificar */
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="logo.jpg" class="logo">🌱 AgroInova</a>
+        <a href="#" class="logo">🌱 AgroInova</a>
         <nav>
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="#" onclick="openSecret()">Sobre</a></li>
-                <li><a href="https://wa.me/5555996698757" target="_blank">Contato</a></li>
-                <li><a href="#" class="btn-nav-login" onclick="document.getElementById('email').focus()">Entrar</a></li>
+                <li><a href="#" class="btn-nav-login" id="navLoginBtn" onclick="showAuth()">Entrar</a></li>
             </ul>
         </nav>
     </header>
@@ -219,23 +202,28 @@
             <div class="left">
                 <h1>Sua lavoura na era digital.</h1>
                 <p>O AgroInova utiliza inteligência artificial para transformar fotos e sintomas em diagnósticos precisos para o seu plantio.</p>
-                <div style="display: flex; gap: 15px;">
-                    <button onclick="openSecret()" style="background: rgba(255,255,255,0.2); border: 1px solid white; color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer;">Saiba Mais</button>
-                </div>
+                <button class="btn-cta" id="ctaBtn" onclick="showAuth()">Saiba Mais</button>
             </div>
 
             <div class="right">
                 <div class="card">
-                    <article id="auth" class="auth-box">
-                        <h2 id="formTitle">Bem-vindo 👋</h2>
-                        <p class="subtitle">Identifique-se para acessar o painel</p>
+                    
+                    <article id="welcomeView" class="view-step welcome-view">
+                        <span class="icon">🚜</span>
+                        <h2>Bem-vindo ao Futuro</h2>
+                        <p style="color: #666;">Acesse nossa plataforma para monitorar sua produção com inteligência.</p>
+                    </article>
+
+                    <article id="auth" class="view-step auth-box" style="display:none;">
+                        <h2 id="formTitle">Identifique-se 👋</h2>
+                        <p class="subtitle" style="margin-bottom: 20px;">Acesse sua conta para continuar</p>
 
                         <button class="google-btn" onclick="loginGoogle()">
-                            <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google">
-                            Entrar com Google
+                            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                            <span>Continuar com Google</span>
                         </button>
 
-                        <div class="divider"><span>ou use seu e-mail</span></div>
+                        <div class="divider"><span>ou e-mail</span></div>
 
                         <div class="input-group modern"><input type="email" id="email" placeholder="E-mail"></div>
                         <div class="input-group modern"><input type="password" id="password" placeholder="Senha"></div>
@@ -243,14 +231,14 @@
                             <input type="password" id="confirmPassword" placeholder="Confirme a Senha">
                         </div>
 
-                        <button onclick="auth()" id="mainBtn" class="primary-btn">Entrar na Plataforma</button>
+                        <button onclick="auth()" id="mainBtn" class="primary-btn">Entrar</button>
 
                         <div class="auth-links" style="text-align: center; margin-top: 15px; font-size: 0.85rem;">
-                            <span onclick="toggleForm()" id="toggleText" style="color: #1b5e20; cursor: pointer; font-weight: 600;">Novo por aqui? Criar conta</span>
+                            <span onclick="toggleForm()" id="toggleText" style="color: #1b5e20; cursor: pointer; font-weight: 600;">Não tem conta? Cadastre-se</span>
                         </div>
                     </article>
 
-                    <article class="dashboard" id="dashboard" style="display:none;">
+                    <article class="view-step dashboard" id="dashboard" style="display:none;">
                         <h2>Painel do Produtor 🌱</h2>
                         <p class="subtitle">Selecione uma ferramenta abaixo</p>
 
@@ -259,37 +247,26 @@
                                 <span class="icon">📷</span>
                                 <div><strong>Diagnóstico por Imagem</strong><p>IA analisa fotos da folha</p></div>
                             </a>
-                            
                             <a href="bot.html" class="service-card">
                                 <span class="icon">💬</span>
                                 <div><strong>Falar com Assistente</strong><p>Chat especializado em agro</p></div>
                             </a>
-
                             <a href="#" onclick="verDiagnosticos()" class="service-card">
                                 <span class="icon">📜</span>
                                 <div><strong>Histórico</strong><p>Suas análises salvas</p></div>
                             </a>
-
-                            <a href="https://wa.me/5555996698757" target="_blank" class="service-card">
-                                <span class="icon">📱</span>
-                                <div><strong>Suporte WhatsApp</strong><p>Fale com um técnico</p></div>
-                            </a>
                         </div>
-
                         <button class="btn-logout" onclick="logout()">Sair da conta</button>
                     </article>
+
                 </div>
             </div>
         </section>
     </main>
 
-    <div class="secret-modal" id="secretModal" style="display:none;">
-        </div>
-
     <footer class="outside-footer">
         <p>© 2026 🌱 AgroInova • Tecnologia Integrada ao Campo</p>
     </footer>
-
     
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
@@ -351,7 +328,12 @@ window.closeSecret = function(){
 }
 
 /* ================= FORM ================= */
-
+// Função para esconder a tela de boas-vindas e mostrar o formulário de login
+window.showAuth = function() {
+    document.getElementById('welcomeView').style.display = 'none';
+    document.getElementById('auth').style.display = 'block';
+    document.getElementById('dashboard').style.display = 'none';
+};
 window.toggleForm = function(){
   isLogin = !isLogin;
   formTitle.innerText = isLogin ? "Login" : "Cadastro";
@@ -424,17 +406,26 @@ window.loginGoogle = async function(){
 /* 🔥 CAPTURA RETORNO DO REDIRECT */
 
 onAuthStateChanged(auth, (user) => {
+    const welcomeView = document.getElementById("welcomeView");
+    const authView = document.getElementById("auth");
+    const dashboardView = document.getElementById("dashboard");
+    const navLoginBtn = document.getElementById("navLoginBtn");
 
-  if(user){
-    console.log("Sessão ativa:", user.email);
-    showDashboard();
-  } 
-  else {
-    console.log("Sem sessão");
-    document.getElementById("auth").style.display = "block";
-    document.getElementById("dashboard").style.display = "none";
-  }
-
+    if (user) {
+        // USUÁRIO LOGADO: Mostra apenas o Dashboard (Histórico, etc)
+        console.log("Sessão ativa:", user.email);
+        welcomeView.style.display = "none";
+        authView.style.display = "none";
+        dashboardView.style.display = "block";
+        if(navLoginBtn) navLoginBtn.style.display = "none"; // Esconde botão entrar do topo
+    } else {
+        // USUÁRIO DESLOGADO: Volta para a tela de título (Sem o login aberto)
+        console.log("Sem sessão");
+        welcomeView.style.display = "block";
+        authView.style.display = "none";
+        dashboardView.style.display = "none";
+        if(navLoginBtn) navLoginBtn.style.display = "block"; // Mostra botão entrar do topo
+    }
 });
 /* ================= DASHBOARD ================= */
 
