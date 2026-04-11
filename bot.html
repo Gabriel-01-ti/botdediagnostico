@@ -7,75 +7,70 @@
   <link rel="stylesheet" href="bot.css">
 </head>
 <body>
-  
-<a href="index.html" class="btn-voltar-app">↩</a>
-
-<div id="floating-guia-btn" onclick="abrirGuiaRapido()">📖</div>
-
-<div id="guia-menu" class="hidden">
-
-    <div class="guia-header">
-        <div class="guia-title">Guia de informações ℹ️</div>
-        <button class="close-btn" onclick="toggleGuiaMenu()">✕</button>
+    <div id="splash" aria-hidden="true">
+        <img src="logo.jpg" alt="Agro Inova" class="logo-splash">
+        <p class="texto-splash">AgroBot iniciando...</p>
     </div>
-    <div class="guia-body">
-        <div id="listaGuiaDoencas"></div>
 
-        <hr class="divider">
+    <nav class="controles-flutuantes">
+        <a href="index.html" class="btn-circular btn-voltar" title="Voltar para a Página Inicial">↩</a>
         
-        <div class="explanation-box">
-            ⚠️ <strong>Aviso Importante e Responsabilidade Técnica:</strong><br><br>
+        <button id="floating-guia-btn" class="btn-circular" onclick="toggleGuiaMenu()" aria-label="Abrir Guia de Informações">📖</button>
+    </nav>
+
+    <aside id="guia-menu" class="hidden">
+        <header class="guia-header">
+            <h2 class="guia-title">Guia de informações ℹ️</h2>
+            <button class="close-btn" onclick="toggleGuiaMenu()">✕</button>
+        </header>
+        <div class="guia-body">
+            <div id="listaGuiaDoencas"></div>
+            <hr class="divider">
+            <article class="explanation-box">
+                <p> ⚠️ <strong>Aviso Importante e Responsabilidade Técnica:</strong><br><br>
             Este assistente digital tem caráter estritamente educativo e informativo. Devido às legislações vigentes e à complexidade do manejo agrícola, <b>não fornecemos dosagens de defensivos, prescrições de agrotóxicos ou recomendações de produtos químicos específicos.</b><br><br>
             O uso incorreto de substâncias pode causar danos irreversíveis à lavoura, ao meio ambiente e à saúde humana. Para obter um receituário agronômico e orientações sobre dosagem, você deve obrigatoriamente consultar um Engenheiro Agrônomo habilitado.
+        </p>
+            </article>
+            <hr class="divider">
+            <footer class="guia-footer-links">
+                <p><strong>📞 Fale Conosco:</strong></p>
+                <a href="mailto:siteagroinova@gmail.com" class="contact-link">📧 E-mail</a>
+                <a href="https://wa.me/5555996698757" target="_blank" class="contact-link whatsapp">💬 WhatsApp</a>
+            </footer>
         </div>
-        
-        <hr class="divider">
-        
-        <div class="guia-footer-links">
-            <p><strong>📞 Fale Conosco:</strong></p>
-            <a href="mailto:siteagroinova@gmail.com" class="contact-link">📧 Enviar E-mail</a>
-            <a href="https://wa.me/5555996698757" target="_blank" class="contact-link whatsapp">💬 Chamada via WhatsApp</a>
-        </div>
-    </div>
-</div>
+    </aside>
 
+    <main class="container">
+        <header class="app-info">
+            <h1 class="app-title">🤖📱 AgroBot</h1>
+            <p class="descricao-app">
+                Olá! 👋 Este é o <strong>AgroBot</strong>, seu assistente digital para identificar doenças de forma rápida.
+            </p>
+        </header>
 
+        <section id="chat" aria-live="polite">
+            <header class="chat-header">
+                <img src="logo.jpg" alt="Avatar AgroBot">
+                <div class="chat-info">
+                    <span class="chat-name">AgroBot</span>
+                    <span class="chat-status">online</span>
+                </div>
+            </header>
+            <div id="chat-messages"></div>
+        </section>
 
-<div id="splash">
-  <img src="logo.jpg" alt="Agro Inova" class="logo-splash">
-  <p class="texto-splash">AgroBot iniciando...</p>
-</div>
+        <section class="input-area">
+            <input type="text" id="sintomas" disabled placeholder="Carregando base de dados...">
+            <button id="btn-diagnosticar">Enviar</button>
+        </section>
+    </main>
 
-<div class="container">
-  <div class="header">
-    <div class="app-title">🤖📱 AgroBot</div>
-    <p class="descricao-app">
-      Olá! 👋 Este é o <b>AgroBot</b>, seu assistente digital no campo, desenvolvido para identificar doenças de forma rápida e simples.
-    </p>
-  </div>
+    <footer class="rodape">
+        <small>Agro Inova © 2026 🌱 Tecnologia em favor do campo</small>
+    </footer>
 
-  <div id="chat">
-    <div class="chat-header">
-      <img src="logo.jpg" alt="AgroBot">
-      <div class="chat-info">
-        <span class="chat-name">AgroBot</span>
-        <span class="chat-status">online</span>
-      </div>
-    </div>
-    <div id="chat-messages"></div>
-  </div>
-
-  <div class="input-area">
-    <input type="text" id="sintomas" disabled placeholder="Carregando base de dados...">
-    <button id="btn-diagnosticar">Enviar</button>
-  </div>
-</div>
-
-<footer class="rodape">
-  <span>Agro Inova © 2026 🌱 Tecnologia em favor do campo</span>
-</footer>
-
-<script src="bot.js"></script>
+    <script src="bot.js"></script>
 </body>
 </html>
 
