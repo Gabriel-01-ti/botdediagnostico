@@ -167,10 +167,11 @@ body {
 .msg-bot-wrapper {
     align-self: flex-start;
     display: flex;
-    align-items: flex-end; /* Alinha o avatar com o final da bolha */
-    gap: 12px;
-    max-width: 85%;
-    margin-bottom: 10px;
+    align-items: flex-end;
+    gap: 15px;
+    width: 100%; /* Permite que o wrapper use a largura total do chat */
+    max-width: 95%; /* Evita que cole na borda direita, mas dá bastante espaço */
+    margin-bottom: 25px;
 }
 
 .bot-avatar {
@@ -186,13 +187,23 @@ body {
 .bot-bubble {
     background: var(--azul-bot);
     color: #0d47a1;
-    padding: 15px 20px;
-    border-radius: 18px 18px 18px 0; /* Ponta da bolha no canto inferior esquerdo */
-    border-left: 5px solid #1565c0;
+    padding: 25px; /* Aumentado de 15px para 25px para dar respiro */
+    border-radius: 20px 20px 20px 0;
+    border-left: 6px solid #1565c0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    width: 100%; /* Ocupa todo o espaço do wrapper */
+    line-height: 1.6; /* Aumenta o espaço entre linhas de texto */
     font-size: 1rem;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    position: relative;
-    width:100%;
+}
+
+/* Ajuste específico para as listas dentro da bolha */
+.bot-bubble ul {
+    margin: 10px 0;
+    padding-left: 25px; /* Evita que os tópicos fiquem grudados na esquerda */
+}
+
+.bot-bubble li {
+    margin-bottom: 8px; /* Espaço entre um sintoma e outro */
 }
 
 /* ================= CAMPO DE ENTRADA ================= */
@@ -400,11 +411,14 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
     /* ================= AJUSTE RESPONSIVO DO CHAT (MOBILE) ================= */
 
     /* Faz o container do bot empilhar verticalmente */
-    .msg-bot-wrapper {
-        flex-direction: column;
-        align-items: flex-start; /* Alinha avatar e texto à esquerda */
-        gap: 5px; /* Espaço pequeno entre avatar e balão */
-        max-width: 95%; /* Ganha mais espaço horizontal */
+   .msg-bot-wrapper {
+        max-width: 100%; /* No celular, usa a largura toda */
+        gap: 8px;
+    }
+    
+    .bot-bubble {
+        padding: 15px; /* No celular o respiro é menor para não perder tela */
+        font-size: 0.95rem;
     }
 
     /* Ajusta o avatar para ficar acima da mensagem */
@@ -414,14 +428,7 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
         margin-left: 5px; /* Pequeno recuo para alinhar visualmente */
     }
 
-    /* Ajusta a bolha para ocupar a largura disponível e corrige a pontinha */
-    .bot-bubble {
-        width: 100%; 
-        border-radius: 0 18px 18px 18px; /* Muda a ponta para o topo esquerdo */
-        padding: 12px 15px;
-        font-size: 0.95rem;
-        line-height: 1.4;
-    }
+   
 
     /* Opcional: Ajusta a mensagem do usuário para ganhar espaço também */
     .usuario {
