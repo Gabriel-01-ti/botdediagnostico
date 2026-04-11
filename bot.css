@@ -333,15 +333,43 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
     border-radius: 4px;
 }
 
-.aviso-agronomo {
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 1px dashed #ccc;
-    font-size: 0.8rem;
-    color: #d32f2f;
-    text-align: center;
-    font-weight: bold;
+
+/* Estilo específico para o aviso de responsabilidade */
+.aviso-responsabilidade {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff5f5;
+    border: 2px solid #feb2b2;
+    border-radius: 10px;
+    color: #c53030;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    text-align: justify;
 }
+
+.aviso-responsabilidade b {
+    color: #9b2c2c;
+    text-transform: uppercase;
+}
+
+/* Garante que imagens fiquem dentro do limite e centralizadas */
+.imagem-doenca-agro {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 300px;
+}
+
+/* Grid de sintomas responsivo */
+.duas-colunas {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+
 
 /* Ajustes para Telas Pequenas (Mobile) */
 
@@ -414,4 +442,7 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
     #guia-menu { bottom: 70px; left: 5%; width: 90%; max-height: 80vh; }
     .guia-header { padding: 10px 15px; }
     .guia-body { padding: 15px; }
+     .duas-colunas {
+        flex-direction: column;
+    }
 }
