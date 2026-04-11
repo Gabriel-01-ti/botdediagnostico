@@ -70,21 +70,55 @@ body {
 
 /* ================= CONTAINER PRINCIPAL (ESTILO GLASS) ================= */
 .container {
-    width: 100%;
-    max-width: 800px;
+    width: 95%; /* Ocupa quase toda a largura em telas médias */
+    max-width: 1100px; /* Aumentado de 800px para 1100px para notebooks */
     background: var(--glass-white);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-radius: 28px;
-    padding: 25px;
-    margin: 80px 0 20px; /* Mais espaço no topo para o botão voltar */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    padding: 35px; /* Aumentado o respiro interno */
+    margin: 90px auto 30px auto; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     position: relative;
     z-index: 10;
+    border: 1px solid rgba(255,255,255,0.4);
 }
 
-.app-title { text-align: center; color: var(--verde-tema); margin-bottom: 10px; font-weight: 800; }
-.descricao-app { text-align: center; color: #333; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5; }
+/* Ajuste do Título e Descrição para acompanhar o tamanho */
+.app-title { 
+    font-size: 3rem; /* Título maior */
+    text-align: center; 
+    color: var(--verde-tema); 
+    margin-bottom: 15px; 
+    font-weight: 900; 
+}
 
+.descricao-app { 
+    max-width: 800px; /* Mantém o texto centralizado e legível */
+    margin: 0 auto 25px auto;
+    text-align: center; 
+    color: #333; 
+    font-size: 1.1rem; /* Fonte levemente maior */
+    line-height: 1.6; 
+}
+
+/* ================= RODAPÉ (MAIOR E MAIS VISÍVEL) ================= */
+.rodape { 
+    margin-top: auto; /* Empurra para o fim se sobrar espaço */
+    padding: 30px 20px; 
+    text-align: center; 
+    color: rgba(255,255,255,0.9); /* Branco mais sólido */
+    font-size: 1.1rem; /* Fonte aumentada de 14px para aprox 17px */
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Fundo sutil para destacar o texto do papel de parede */
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.rodape span {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
 /* ================= ÁREA DO CHAT (WHATSAPP STYLE DARK) ================= */
 #chat {
     background: #161b22;
@@ -116,33 +150,46 @@ body {
     gap: 15px;
 }
 
-/* Bolhas de Chat */
 .usuario {
     align-self: flex-end;
-    background: #c8e6c9; /* Verde claro */
+    background: #c8e6c9;
     color: #1b5e20;
-    padding: 10px 15px;
-    border-radius: 15px 15px 0 15px;
-    max-width: 85%;
-    font-size: 0.95rem;
+    padding: 12px 18px;
+    border-radius: 18px 18px 0 18px;
+    max-width: 80%;
+    font-size: 1rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* Bolha do Bot - Estrutura de Linha */
 .msg-bot-wrapper {
     align-self: flex-start;
-    max-width: 90%;
     display: flex;
-    flex-direction: column;
+    align-items: flex-end; /* Alinha o avatar com o final da bolha */
+    gap: 12px;
+    max-width: 85%;
+    margin-bottom: 10px;
+}
+
+.bot-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--verde-tema);
+    background: white;
+    flex-shrink: 0; /* Impede o avatar de amassar em telas pequenas */
+    object-fit: cover;
 }
 
 .bot-bubble {
-    background: var(--azul-bot); /* Azul claro */
+    background: var(--azul-bot);
     color: #0d47a1;
-    padding: 15px;
-    border-radius: 0 15px 15px 15px;
-    border-left: 4px solid #1565c0;
-    font-size: 0.95rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px 20px;
+    border-radius: 18px 18px 18px 0; /* Ponta da bolha no canto inferior esquerdo */
+    border-left: 5px solid #1565c0;
+    font-size: 1rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 /* ================= CAMPO DE ENTRADA ================= */
@@ -240,11 +287,30 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
     .btn-voltar { top: 10px; left: 10px; font-size: 28px; }
     #floating-guia-btn { bottom: 10px; right: 10px; }
 
-    .container { margin-top: 70px; border-radius: 15px; padding: 15px; width: 98%; }
-    .app-title { font-size: 1.6rem; }
+    .container {
+        width: 95%;
+        padding: 20px;
+        margin-top: 80px;
+    }
+    .app-title { font-size: 2.2rem; }
+    .rodape { font-size: 0.9rem; padding: 20px; }
     
     #chat-messages { padding: 10px; min-height: 300px; }
-    .msg-bot-wrapper, .usuario { max-width: 95%; }
+    .msg-bot-wrapper {
+        max-width: 100%;
+        gap: 8px;
+    }
+
+    .bot-avatar {
+        width: 38px;
+        height: 38px;
+    }
+
+    .bot-bubble {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+}
     
     .input-area { gap: 5px; padding: 8px; }
     input[type="text"] { padding: 10px; font-size: 0.9rem; }
