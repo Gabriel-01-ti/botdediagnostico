@@ -193,10 +193,67 @@
 
         .btn-logout { margin-top: 20px; width: 100%; padding: 10px; background: none; border: 1px solid #ddd; color: #888; border-radius: 10px; cursor: pointer; }
 
-        @media (max-width: 992px) {
-            .main { flex-direction: column; }
-            .left::after { display: none; }
-        }
+       /* ================= RESPONSIVIDADE (MOBILE) ================= */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 100px 10px 40px; /* Reduz espaçamento externo */
+    }
+
+    .main {
+        flex-direction: column; /* Empilha o conteúdo */
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .left {
+        padding: 40px 25px; /* Reduz o padding que estava "espremendo" o texto */
+        text-align: center;
+        align-items: center;
+    }
+
+    .left::after {
+        display: none; /* Remove o corte diagonal no mobile */
+    }
+
+    .left h1 {
+        font-size: 1.8rem; /* Diminui a fonte do título */
+    }
+
+    .left p {
+        font-size: 1rem;
+    }
+
+    .btn-cta {
+        align-self: center; /* Centraliza o botão */
+        width: 100%; /* Botão largo para facilitar o toque */
+    }
+
+    .right {
+        padding: 30px 20px;
+        min-height: auto; /* Deixa o container crescer conforme o conteúdo */
+    }
+
+    .card {
+        max-width: 100%; /* Usa toda a largura disponível */
+    }
+
+    /* Ajuste do Menu para não sumir ou quebrar */
+    header {
+        padding: 10px 4%;
+    }
+    
+    .logo span {
+        font-size: 1.2rem;
+    }
+    
+    nav ul {
+        gap: 15px;
+    }
+
+    nav a:not(.btn-nav-login) {
+        display: none; /* Esconde links simples para focar no login em telas muito pequenas */
+    }
+}
     </style>
 </head>
 <body>
@@ -210,8 +267,8 @@
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="sobreprojeto.html" onclick="openSecret()">Sobre</a></li>
-                <li><a href="#" onclick="openContact()">Contato</a></li> <li><a href="#" class="btn-nav-login" id="navLoginBtn" onclick="showAuth()">Entrar</a></li>
-               </ul>
+                <li><a href="#" onclick="openContact()">Contato</a></li> 
+            </ul>
         </nav>
     </header>
 
