@@ -323,59 +323,71 @@ function diagnosticar(cultura, textoUsuario) {
   resultados.sort((a, b) => b.pontos - a.pontos);
 
   if (resultados.length === 0) {
-    addMsg("❌ Não identifiquei a doença. Tente detalhar melhor os sintomas.", "bot");
+    addMsg("❌ Não identifiquei a doença. Tente detalhar melhor os sintomas ou use o guia rápido.", "bot");
   } else {
     const d = resultados[0];
 
-    // Montagem do HTML com estrutura aprimorada
     const htmlCompleto = `
-      <div class="doenca-card destaque">
-        <div class="card-header">
+      <div class="doenca-card">
+        <div class="card-header-agro">
+          <span class="badge-cultura">${cultura.toUpperCase()}</span>
           <h3>🦠 ${d.nome}</h3>
-          <p class="subtitulo"><i>${d.nome_biologico}</i></p>
+          <small>${d.nome_biologico}</small>
         </div>
 
-        ${d.imagem ? `
-          <div class="container-imagem-doenca">
-            <img src="${d.imagem}" alt="${d.nome}" class="imagem-doenca">
-          </div>` : ""
-        }
+        ${d.imagem ? `<img src="${d.imagem}" class="imagem-doenca-agro">` : ""}
 
-        <div class="card-body">
-          <p class="descricao-texto"><b>📝 Descrição:</b><br>${d.descricao}</p>
+        <div class="card-content-agro">
+          <section class="info-item">
+            <strong><i class="icon">📝</i> Descrição:</strong>
+            <p>${d.descricao}</p>
+          </section>
 
-          <div class="info-box-alerta">
-            <p><b>🌡️ Condições Favoráveis:</b><br>${d.condicoes_favoraveis}</p>
-          </div>
+          <section class="info-item box-alerta">
+            <strong><i class="icon">🌡️</i> Condições Favoráveis:</strong>
+            <p>${d.condicoes_favoraveis}</p>
+          </section>
 
-          <div class="grid-sintomas">
-            <div class="col-sintomas">
-              <p><b>👀 No Campo:</b></p>
-              <ul>${d.sintomas.praticos.slice(0, 3).map(s => `<li>${s}</li>`).join("")}</ul>
+          <div class="duas-colunas">
+            <div class="col">
+              <strong><i class="icon">👀</i> Sintomas Práticos:</strong>
+              <ul>${d.sintomas.praticos.map(s => `<li>${s}</li>`).join("")}</ul>
+            </div>
+            <div class="col">
+              <strong><i class="icon">🔬</i> Sintomas Técnicos:</strong>
+              <ul>${d.sintomas.tecnicos.map(s => `<li>${s}</li>`).join("")}</ul>
             </div>
           </div>
 
-          <div class="secao-acoes">
-            <p><strong>🛡️ Manejo e Controle:</strong></p>
-            <p class="texto-controle">${d.controle}</p>
-          </div>
+          <section class="info-item">
+            <strong><i class="icon">⚠️</i> Danos:</strong>
+            <p>${d.danos}</p>
+          </section>
+
+          <section class="info-item box-manejo">
+            <strong><i class="icon">🛡️</i> Manejo Preventivo:</strong>
+            <p>${d.manejo_preventivo}</p>
+          </section>
+
+          <section class="info-item box-controle">
+            <strong><i class="icon">💊</i> Controle Recomendado:</strong>
+            <p>${d.controle}</p>
+          </section>
           
-          <div class="aviso-agronomo">
-            ⚠️ Consulte um engenheiro agrônomo para prescrição técnica.
+          <div class="aviso-responsabilidade">
+            <p>🚨 <b>AVISO IMPORTANTE:</b> Este diagnóstico é baseado em inteligência artificial e processamento de dados, portanto <b>não é 100% confiável</b>. Para uma análise precisa e aplicação de defensivos, é indispensável a presença e o laudo de um <b>Engenheiro Agrônomo</b>.</p>
           </div>
         </div>
       </div>
     `;
 
     addMsg(htmlCompleto, "bot", false);
-
-    const resultadoSave = `Cultura: ${cultura}, Doença: ${d.nome}, Pontos: ${d.pontos}`;
-    salvarDiagnostico(resultadoSave);
+    salvarDiagnostico(`Cultura: ${cultura}, Doença: ${d.nome}`);
 
     setTimeout(() => {
-      addMsg("🏁 Análise concluída. Digite o nome de outra cultura ou <b>'encerrar'</b> para sair.", "bot", false);
+      addMsg("🏁 Diagnóstico finalizado. Deseja analisar outra cultura ou encerrar?", "bot", false);
       etapa = 1;
-    }, 3500);
+    }, 4000);
   }
 }
 
