@@ -330,8 +330,7 @@ function diagnosticar(cultura, textoUsuario) {
     const htmlCompleto = `
       <div class="doenca-card">
         <div class="card-header-agro">
-          <span class="badge-cultura">${cultura.toUpperCase()}</span>
-          <h3>🦠 ${d.nome}</h3>
+          <h2>🦠 ${d.nome}</h3>
           <small>${d.nome_biologico}</small>
         </div>
 
