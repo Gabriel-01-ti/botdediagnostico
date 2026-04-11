@@ -200,13 +200,25 @@ function mostrarBotoesSintomas() {
   addMsg(html, "bot");
 }
 
+// ================= BOTÕES DE SINTOMAS AJUSTADOS =================
 function toggleSintoma(btn, sintoma) {
-  btn.classList.toggle("ativo");
-  if (sintomasSelecionados.includes(sintoma)) {
-    sintomasSelecionados = sintomasSelecionados.filter(s => s !== sintoma);
-  } else {
-    sintomasSelecionados.push(sintoma);
-  }
+    // Adiciona ou remove a classe 'ativo' (que deve estar configurada no CSS como verde)
+    btn.classList.toggle("ativo");
+    
+    // Se quiser garantir que fique verde forte como solicitado:
+    if (btn.classList.contains("ativo")) {
+        btn.style.backgroundColor = "#2e7d32";
+        btn.style.color = "white";
+    } else {
+        btn.style.backgroundColor = ""; // Volta ao padrão do CSS
+        btn.style.color = "";
+    }
+
+    if (sintomasSelecionados.includes(sintoma)) {
+        sintomasSelecionados = sintomasSelecionados.filter(s => s !== sintoma);
+    } else {
+        sintomasSelecionados.push(sintoma);
+    }
 }
 
 function finalizarSelecao() {
@@ -311,55 +323,59 @@ function diagnosticar(cultura, textoUsuario) {
   resultados.sort((a, b) => b.pontos - a.pontos);
 
   if (resultados.length === 0) {
-    addMsg("❌ Não identifiquei a doença. Tente detalhar mais.", "bot");
+    addMsg("❌ Não identifiquei a doença. Tente detalhar melhor os sintomas.", "bot");
   } else {
     const d = resultados[0];
 
+    // Montagem do HTML com estrutura aprimorada
     const htmlCompleto = `
       <div class="doenca-card destaque">
-        <h3>🦠 ${d.nome}</h3>
-        <p class="subtitulo"><i>Nome Biológico: ${d.nome_biologico}</i></p>
-
-        ${d.imagem ? `<img src="${d.imagem}" alt="Imagem da ${d.nome}" class="imagem-doenca">` : ""}
-
-        <p><b>📝 Descrição:</b><br>${d.descricao}</p>
-
-        <div class="info-box">
-           <p><b>🌡️ Condições Favoráveis:</b><br>${d.condicoes_favoraveis}</p>
+        <div class="card-header">
+          <h3>🦠 ${d.nome}</h3>
+          <p class="subtitulo"><i>${d.nome_biologico}</i></p>
         </div>
 
-        <div class="secao-sintomas">
-            <p><b>👀 Sintomas Práticos (Campo):</b></p>
-            <ul>${d.sintomas.praticos.map(s => `<li>${s}</li>`).join("")}</ul>
-        </div>
+        ${d.imagem ? `
+          <div class="container-imagem-doenca">
+            <img src="${d.imagem}" alt="${d.nome}" class="imagem-doenca">
+          </div>` : ""
+        }
 
-        <div class="secao-tecnica">
-            <p><b>🔬 Sintomas Técnicos:</b></p>
-            <ul>${d.sintomas.tecnicos.map(s => `<li>${s}</li>`).join("")}</ul>
-        </div>
+        <div class="card-body">
+          <p class="descricao-texto"><b>📝 Descrição:</b><br>${d.descricao}</p>
 
-        <p><b>⚠️ Danos:</b><br>${d.danos}</p>
+          <div class="info-box-alerta">
+            <p><b>🌡️ Condições Favoráveis:</b><br>${d.condicoes_favoraveis}</p>
+          </div>
 
-        <div class="secao-prevencao">
-           <p><b>🛡️ Manejo Preventivo:</b><br>${d.manejo_preventivo}</p>
-        </div>
-        
-        <div class="secao-controle">
-            <p><b>💊 Controle Recomendado:</b><br>${d.controle}</p>
+          <div class="grid-sintomas">
+            <div class="col-sintomas">
+              <p><b>👀 No Campo:</b></p>
+              <ul>${d.sintomas.praticos.slice(0, 3).map(s => `<li>${s}</li>`).join("")}</ul>
+            </div>
+          </div>
+
+          <div class="secao-acoes">
+            <p><strong>🛡️ Manejo e Controle:</strong></p>
+            <p class="texto-controle">${d.controle}</p>
+          </div>
+          
+          <div class="aviso-agronomo">
+            ⚠️ Consulte um engenheiro agrônomo para prescrição técnica.
+          </div>
         </div>
       </div>
     `;
+
     addMsg(htmlCompleto, "bot", false);
 
-    // SALVA diagnósticos aqui, dentro do escopo
-    const resultado = `Cultura: ${cultura}, Doença: ${d.nome}, Pontos: ${d.pontos}`;
-    salvarDiagnostico(resultado);
+    const resultadoSave = `Cultura: ${cultura}, Doença: ${d.nome}, Pontos: ${d.pontos}`;
+    salvarDiagnostico(resultadoSave);
 
-    // SETTIMEOUT também dentro
     setTimeout(() => {
-      addMsg("🏁 Análise feita. Digite outra cultura para novo diagnóstico ou 'encerrar' para finalizar.", "bot", false);
+      addMsg("🏁 Análise concluída. Digite o nome de outra cultura ou <b>'encerrar'</b> para sair.", "bot", false);
       etapa = 1;
-    }, 2500);
+    }, 3500);
   }
 }
 
