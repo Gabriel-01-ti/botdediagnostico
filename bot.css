@@ -1,978 +1,256 @@
-/* =========================================
-   1. RESET E VARIÁVEIS
-   ========================================= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* ================= RESET E VARIÁVEIS ================= */
 :root {
-  --verde-escuro: #1b5e20;
-  --verde-tema: #2e7d32;
-  --verde-leve: #f1f8e9;
-  --azul-bot: #e3f2fd;
-  --bg-dark: #161b22;
-  --border-dark: #30363d;
+    --verde-escuro: #1b5e20;
+    --verde-tema: #2e7d32;
+    --azul-bot: #e3f2fd;
+    --bg-dark: #0d1117;
+    --glass-white: rgba(255, 255, 255, 0.85);
+    --white: #ffffff;
 }
 
-html, body {
-  min-height: 100vh;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  background:
-    radial-gradient(circle at 20% 20%, rgba(46,125,50,0.25), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(21,101,192,0.25), transparent 40%),
-    linear-gradient(135deg, #d5e8d4 0%, #e3f2fd 100%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
+/* ================= FUNDO (IGUAL À PÁGINA INICIAL) ================= */
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    /* Imagem de fundo com overlay escuro fixo */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('fundo.jpg') center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
 }
 
-
-/* =========================================
-   2. SPLASH SCREEN (TOTALMENTE ISOLADO)
-   ========================================= */
-#splash {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(135deg, #0b3d2e, #145c43);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 999999;
+/* ================= BOTÕES FLUTUANTES (CIRCULARES E UNIFICADOS) ================= */
+.controles-flutuantes {
+    position: fixed;
+    inset: 0; /* Ocupa a tela toda mas é invisível, serve apenas de container */
+    pointer-events: none; /* Garante que cliques passem através do container */
+    z-index: 1000;
 }
 
-.logo-splash {
-  width: 180px;
-  margin-bottom: 20px;
-  animation: pulse 2s infinite ease-in-out;
+.btn-circular {
+    position: absolute;
+    pointer-events: auto; /* Reativa cliques para os botões */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #000;
+    background: linear-gradient(180deg, #2e7d32, #1b5e20);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    text-decoration: none; /* Para o link voltar */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
+.btn-circular:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
-.texto-splash {
-  color: #ffffff;
-  font-size: 20px;
-  animation: fadeSplash 2s infinite;
+/* Posicionamento Específico */
+.btn-voltar {
+    top: 20px;
+    left: 20px;
+    font-size: 32px; /* Ajuste leve para o ícone ↩ */
 }
 
-/* =========================================
-   3. CONTAINER PRINCIPAL E HEADER
-   ========================================= */
+#floating-guia-btn {
+    bottom: 20px;
+    right: 20px;
+    border: 3px solid #000; /* Garante que o botão HTML tenha a borda */
+}
+
+/* ================= CONTAINER PRINCIPAL (ESTILO GLASS) ================= */
 .container {
-  max-width: 1000px;
-  width: 100%;
-  padding: 28px;
-  border-radius: 28px;
-
-  /* GLASS EFFECT */
-  background: rgba(255,255,255,0.65);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(255,255,255,0.5);
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.15),
-    inset 0 1px 0 rgba(255,255,255,0.6);
-
-  margin-top: 20px;
-  position: relative;
-  z-index: 10;
+    width: 100%;
+    max-width: 800px;
+    background: var(--glass-white);
+    backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 25px;
+    margin: 80px 0 20px; /* Mais espaço no topo para o botão voltar */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
 }
 
+.app-title { text-align: center; color: var(--verde-tema); margin-bottom: 10px; font-weight: 800; }
+.descricao-app { text-align: center; color: #333; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5; }
 
-.app-title {
-  font-size: 2.8rem;
-  font-weight: 900;
-  color: var(--verde-tema);
-  text-align: center;
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
-}
-
-.descricao-app {
-  background: #ffffff;
-  color: #374151;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  padding: 20px;
-  border-radius: 16px;
-  border-left: 6px solid var(--verde-tema);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  margin-bottom: 25px;
-}
-
-/* =========================================
-   4. CHAT E MENSAGENS (O CORAÇÃO DO APP)
-   ========================================= */
+/* ================= ÁREA DO CHAT (WHATSAPP STYLE DARK) ================= */
 #chat {
-  background-color: var(--bg-dark);
-  border: 1px solid var(--border-dark);
-  border-radius: 15px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: inset 0 4px 15px rgba(0,0,0,0.4);
+    background: #161b22;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #30363d;
 }
 
 .chat-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px;
-  background: #0d1117;
-  border-bottom: 1px solid var(--border-dark);
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 15px; background: #0d1117;
+    border-bottom: 1px solid #30363d;
 }
 
-.chat-header img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: 2px solid var(--verde-tema);
-}
-
-.chat-info { display: flex; flex-direction: column; }
-.chat-name { color: #e6edf3; font-weight: 600; }
+.chat-header img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--verde-tema); }
+.chat-name { color: #e6edf3; font-weight: 600; font-size: 15px; }
 .chat-status { color: var(--verde-tema); font-size: 12px; }
 
 #chat-messages {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  min-height: 400px;
+    padding: 15px;
+    min-height: 400px;
+    max-height: 60vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* Bolha do Usuário */
+/* Bolhas de Chat */
 .usuario {
-  align-self: flex-end;
-  background: #c8e6c9;
-  color: #1b5e20;
-  padding: 12px 18px;
-  border-radius: 18px 18px 0 18px;
-  max-width: 75%;
-  font-size: 15px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    align-self: flex-end;
+    background: #c8e6c9; /* Verde claro */
+    color: #1b5e20;
+    padding: 10px 15px;
+    border-radius: 15px 15px 0 15px;
+    max-width: 85%;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Estrutura da Bolha do Bot com Avatar */
 .msg-bot-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 10px 0;
-  width: 100%;
-}
-
-.bot-header-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 10px;
-}
-
-.bot-avatar {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  z-index: 11;
-}
-
-.bot-tail {
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 15px solid var(--azul-bot);
-  margin-top: -8px;
-  z-index: 10;
+    align-self: flex-start;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
 }
 
 .bot-bubble {
-  background: var(--azul-bot);
-  color: #0d47a1;
-  padding: 15px 20px;
-  border-radius: 15px;
-  border-left: 5px solid #1565c0;
-  max-width: 90%;
-  margin-top: -5px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: var(--azul-bot); /* Azul claro */
+    color: #0d47a1;
+    padding: 15px;
+    border-radius: 0 15px 15px 15px;
+    border-left: 4px solid #1565c0;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* =========================================
-   5. CARDS DE DOENÇAS (DETALHAMENTO TÉCNICO)
-   ========================================= */
-.doenca-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 15px;
-  border-left: 6px solid #ff9800;
-  color: #333;
-}
-
-.doenca-card.destaque { border-left-color: var(--verde-tema); }
-
-.imagem-doenca {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 12px;
-  margin: 15px 0;
-  border: 3px solid var(--verde-tema);
-}
-
-.secao-sintomas ul, .secao-tecnica ul {
-  background: var(--verde-leve);
-  padding: 15px 15px 15px 35px;
-  border-radius: 10px;
-  border: 1px solid #c5e1a5;
-  margin: 10px 0;
-}
-
-.secao-controle {
-  background-color: #e3f2fd;
-  padding: 15px;
-  border-radius: 10px;
-  border-left: 5px solid #2196f3;
-  margin-top: 15px;
-}
-
-/* =========================================
-   6. INPUT E BOTÕES DE AÇÃO
-   ========================================= */
+/* ================= CAMPO DE ENTRADA ================= */
 .input-area {
-  display: flex;
-  gap: 12px;
-  background: #fff;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    display: flex; gap: 10px; background: var(--white);
+    padding: 10px; border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 input[type="text"] {
-  flex: 1;
-  padding: 14px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  outline: none;
+    flex: 1; padding: 12px; border: 1px solid #ddd;
+    border-radius: 10px; outline: none; font-size: 1rem;
 }
 
 input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
 
-button#btn-diagnosticar {
-  background: var(--verde-tema);
-  color: white;
-  border: none;
-  padding: 0 25px;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+#btn-diagnosticar {
+    background: var(--verde-tema); color: var(--white);
+    border: none; padding: 0 20px; border-radius: 10px;
+    font-weight: bold; cursor: pointer; transition: 0.2s;
 }
 
-button#btn-diagnosticar:hover { background: var(--verde-escuro); transform: scale(1.02);
-                              }
-/* =========================================
-   BOTÕES DE SINTOMAS (SELEÇÃO VERDE)
-========================================= */
+#btn-diagnosticar:hover { background: var(--verde-escuro); }
 
-/* Container dos botões: organiza o layout e espaçamento */
-.sintomas-botoes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* responsivo automático */
-  gap: 12px 15px; /* espaçamento vertical e horizontal */
-}
-
-/* Botões individuais */
-.sintomas-botoes button {
-  background-color: var(--verde-leve); /* cor padrão */
-  color: var(--verde-escuro);
-  border: 1px solid var(--verde-escuro);
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: center;
-  white-space: normal; /* evita que o texto quebre mal */
-}
-
-/* Hover - efeito visual ao passar o mouse */
-.sintomas-botoes button:hover {
-  background-color: var(--verde-tema);
-  color: #fff;
-  transform: scale(1.05);
-}
-
-/* Botão ativo (selecionado) */
-.sintomas-botoes button.ativo {
-  background-color: var(--verde-tema);
-  color: white;
-  border-color: var(--verde-escuro);
-  transform: scale(1.05);
-}
-
-/* =================== RESPONSIVO CELULAR =================== */
-@media (max-width: 600px) {
-  .sintomas-botoes {
-    grid-template-columns: 1fr 1fr; /* duas colunas no celular */
-    gap: 10px;                       /* espaçamento menor mas confortável */
-  }
-
-  .sintomas-botoes button {
-    font-size: 13px;
-    padding: 10px 6px;               /* ajuste do toque no celular */
-  }
-}
-/* =========================================
-   7. GUIA LATERAL E BOTÃO FLUTUANTE
-   ========================================= */
-#floating-guia-btn {
-  position: fixed;
-
-  top: 80%;        /* altura inicial */
-  left: 20px;      /* distância da lateral */
-
-  width: 60px;
-  height: 60px;
-
-  border-radius: 50%;
-  border: 3px solid #000;
-
-  background: linear-gradient(180deg, #2e7d32, #1b5e20);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 28px;
-  cursor: grab;
-  z-index: 9999;
-
-  transform: translateY(-50%); /* centraliza vertical inicialmente */
-}
-   
-#floating-guia-btn:hover {
-  width: 60px;
-}
-
+/* ================= GUIA (MENU LATERAL) ================= */
 #guia-menu {
-  position: fixed;
-  bottom: 95px;
-  left: 25px;
-  width: 480px;
-  max-width: 90vw;
-  max-height: 70vh; /* Limita a altura total */
-  background: #ffffff;
-  border-radius: 15px; /* O arredondado que você quer */
-  z-index: 10000;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
-  overflow: hidden; /* ESSENCIAL: corta o que sair do arredondado */
-  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: fixed; inset: auto auto 90px 20px;
+    width: 380px; max-width: 90vw;
+    background: var(--white); border-radius: 18px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+    z-index: 2000; display: flex; flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-#guia-menu.hidden { 
-  display: none !important;
-  transform: translateY(20px);
-  opacity: 0;
-}
-
+.hidden { display: none !important; opacity: 0; transform: translateY(20px); }
 
 .guia-header {
-  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
-  color: white;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 3px solid #ffd700; /* Linha dourada de detalhe */
+    background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+    color: var(--white); padding: 15px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid #ffd700;
 }
 
-.guia-title {
-  font-size: 16px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-shadow: 
-    -1px -1px 0 #000,  
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
-}
+.guia-title { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
 
 .close-btn {
-  background: rgba(255,255,255,0.2);
-  border: none;
-  color: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+    background: rgba(255,255,255,0.2); border: none; color: var(--white);
+    width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-weight: bold;
 }
 
-.close-btn:hover {
-  background: #ff5252;
-}
+.guia-body { padding: 20px; overflow-y: auto; max-height: 70vh; flex: 1; }
 
-
-.guia-body {
-  padding: 20px;
-  overflow-y: auto; /* O scroll fica só aqui dentro */
-  flex: 1;          /* Faz o corpo ocupar o espaço restante */
-  background: #ffffff; /* Garante que o fundo seja branco */
-  scrollbar-width: thin;
-  scrollbar-color: var(--verde-tema) #f0f0f0;
-}
-
-
-/* Personalização da barra de rolagem para navegadores Chrome/Edge */
-.guia-body::-webkit-scrollbar {
-    width: 6px;
-}
-.guia-body::-webkit-scrollbar-thumb {
-    background-color: #2e7d32;
-    border-radius: 10px;
-}
-
-.guia-footer-links {
-    margin-top: 15px;
-    padding-bottom: 20px; /* Garante espaço no final do scroll */
-}
-
-.guia-footer-links p {
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
+/* Links de Contato no Guia */
+.guia-footer-links { margin-top: 15px; }
 .contact-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px;
-    background: #f1f8e9;
-    color: #2e7d32;
-    text-decoration: none;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    font-weight: bold;
-    border: 1px solid #2e7d32;
-    transition: 0.3s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px; margin: 8px 0; border-radius: 10px; text-decoration: none;
+    font-weight: bold; border: 1px solid var(--verde-tema); color: var(--verde-tema);
+    background: #f1f8e9; transition: 0.2s;
 }
 
-.contact-link.whatsapp {
-    background: #e8f5e9;
-    border-color: #4caf50;
-    color: #2e7d32;
-}
+.contact-link.whatsapp { background: #e8f5e9; border-color: #4caf50; }
+.contact-link:hover { background: var(--verde-tema); color: var(--white); }
 
-.contact-link:hover {
-    background: #2e7d32;
-    color: #ffffff;
-}
-/* =========================================
-   ESTILO DOS ITENS DINÂMICOS DO GUIA
-   ========================================= */
-
-/* Container onde o JS injeta os dados */
-#listaGuiaDoencas {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-bottom: 20px;
-}
-
-/* Título da Cultura (Ex: 🌱 SOJA) */
-.titulo-cultura-guia {
-  /* Cor de fundo escura para dar contraste com os cards brancos */
-  background: #0b3d2e; 
-  /* Cor da letra branca com contorno (stroke) */
-  color: #ffffff;
-  text-shadow: 
-    -1px -1px 0 #000,  
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000; /* Cria o contorno preto em volta da letra */
-  
-  padding: 14px 18px;
-  margin: 25px 0 12px 0;
-  border-radius: 12px;
-  font-weight: 900;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border-bottom: 4px solid #ffd700; /* Detalhe dourado no fundo do título */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.titulo-cultura-guia span {
-  font-size: 1.5rem;
-  filter: drop-shadow(1px 1px 2px #000);
-}
-
-/* Card de Doença no Guia Rápido */
+/* Elementos Dinâmicos do Guia (injetados pelo JS) */
 .item-guia {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-left: 5px solid #1b5e20;
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+    background: #f9f9f9; border: 1px solid #eee; border-left: 4px solid var(--verde-escuro);
+    padding: 10px 15px; margin-bottom: 8px; border-radius: 8px; cursor: pointer; transition: 0.2s;
 }
+.item-guia:hover { background: #f1f8e9; transform: translateX(3px); }
+.item-guia strong { color: var(--verde-escuro); display: block; }
+.item-guia span { color: #666; font-size: 0.85rem; }
 
-.item-guia:hover {
-  background: #f1f8e9;
-  transform: translateX(5px);
-  border-color: #2e7d32;
-}
+/* Divisor e Aviso */
+.divider { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
+.explanation-box { background: #fff3e0; border: 1px solid #ffe0b2; padding: 12px; border-radius: 8px; font-size: 0.85rem; color: #e65100; line-height: 1.4; }
 
-.item-guia strong {
-  display: block;
-  color: #1b5e20;
-  font-size: 1rem;
-  margin-bottom: 4px;
-}
+/* ================= RODAPÉ E SPLASH ================= */
+.rodape { margin: 20px 0; text-align: center; color: rgba(255,255,255,0.7); font-size: 14px; width: 100%; }
 
-.item-guia span {
-  display: block;
-  color: #666;
-  font-size: 0.85rem;
-  line-height: 1.3;
-}
-
-/* Divisor e Caixa de Aviso no Guia */
-.divider {
-  border: 0;
-  border-top: 1px solid #eee;
-  margin: 20px 0;
-}
-
-.explanation-box {
-  background: #fff3e0;
-  border: 1px solid #ffe0b2;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  color: #e65100;
-  line-height: 1.4;
-}
-
-
-/* =========================================
-   8. RESPONSIVIDADE E AJUSTES FINAIS
-   ========================================= */
-@media (max-width: 600px) {
-  .container { padding: 15px; border-radius: 0; border: none; }
-  .app-title { font-size: 2rem; }
-  
-  .sintomas-botoes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .bot-bubble { max-width: 100%; }
-  #guia-menu { left: 5vw; width: 90vw; bottom: 90px; }
-}
-
-.rodape {
-  margin: 30px 0;
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-}
-
-.hidden { display: none !important; }
--index: 2000;
-}
-
-/* Quando ativo */
-.painel-guia.active,
-.painel-guia.ativo {
-  transform: translateX(0);
-}
-
-
-/* =========================================
-   CONTEÚDO INTERNO DO PAINEL
-========================================= */
-
-.painel-conteudo {
-  padding: 25px 20px 20px 20px;
-  position: relative;
-}
-
-/* Botão fechar */
-.fechar-guia {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-
-/* =========================================
-   ESTILO DOS ITENS DO GUIA
-========================================= */
-
-.item-guia {
-  display: block;
-  padding: 12px 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  background-color: #f1f8e9;
-  border: 1px solid #2e7d32;
-  color: #1b5e20;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.item-guia:hover {
-  background-color: #2e7d32;
-  color: white;
-}
-
-.titulo-cultura {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  color: #2e7d32;
-}
-
-
-/* =========================================
-   RESPONSIVO MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-  #floating-guia-btn {
-    bottom: 15px;
-    left: 15px;
-    width: 55px;
-    height: 55px;
-    font-size: 22px;
-  }
-
-  .painel-guia {
-    width: 85%;
-  }
-
-}
-  position: fixed;
-  bottom: 95px;
-  left: 25px;
-  width: 380px;
-  max-width: 90vw;
-  max-height: calc(100vh - 150px);
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-  z-index: 1001;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  animation: slideUp 0.3s ease-out forwards;
-}
-
-.guia-header {
-  background: #2e7d32;
-  color: white;
-  padding: 14px 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.guia-title {
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.guia-body {
-  padding: 18px;
-  color: #000000;
-  font-weight: 500;
-  line-height: 1.6;
-  overflow-y: auto;
-}
-
-/* Mantém hidden funcionando */
-.hidden {
-  display: none !important;
-}
-
-.item-guia {
-  display: block;
-  padding: 12px 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  background-color: #f1f8e9;
-  border: 1px solid #2e7d32;
-  color: #1b5e20;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.item-guia:hover {
-  background-color: #2e7d32;
-  color: white;
-}
-
-/* =========================================
-RODAPÉ
-========================================= */
-.rodape {
-  width: 100%;
-  max-width: 1000px;
-  margin: 15px auto 0 auto;
-  padding: 10px;
-  text-align: center;
-  font-size: 14px;
-}
-
-/* ================= SPLASH SCREEN ================= */
 #splash {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(135deg, #0b3d2e, #145c43);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
+    position: fixed; inset: 0; background: linear-gradient(135deg, #0b3d2e, #145c43);
+    display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999;
 }
+.logo-splash { width: 150px; margin-bottom: 20px; animation: pulse 2s infinite ease-in-out; }
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } }
+.texto-splash { color: var(--white); font-size: 18px; letter-spacing: 1px; }
 
-.logo-splash {
-  width: 180px;
-  margin-bottom: 20px;
-  animation: pulse 2s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.texto-splash {
-  color: #ffffff;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  animation: fadeSplash 2s infinite ease-in-out;
-}
-
-@keyframes fadeSplash {
-  0% { opacity: 0.3; }
-  50% { opacity: 1; }
-  100% { opacity: 0.3; }
-}
-
-/* =========================================
-HEADER ESTILO WHATSAPP (DENTRO DO CHAT)
-========================================= */
-.chat-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  background: #0d1117; /* um pouco diferente do chat pra destacar */
-  border-bottom: 1px solid #30363d;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-
-.chat-header img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #2e7d32;
-}
-
-.chat-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.chat-name {
-  color: #e6edf3;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.chat-status {
-  font-size: 12px;
-  color: #2e7d32;
-}
-
-.btn-voltar-app {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-
-  width: 55px;
-  height: 35px;
-
-  background: linear-gradient(135deg, var(--verde-tema), var(--verde-escuro));
-  color: white;
-
-  border-radius: 15px;
-  border: 3px solid #000;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 40px;
-  line-height: 1;        /* 🔥 REMOVE ESPAÇO FANTASMA */
-  padding: 0;            /* 🔥 GARANTE CENTRALIZAÇÃO */
-  text-decoration: none;
-
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-
-  z-index: 9999;
-}
-/* =========================================
-RESPONSIVO CELULAR (REVISADO E COMPLETO)
-========================================= */
+/* ================= RESPONSIVIDADE (MOBILE AJUSTADO) ================= */
 @media (max-width: 600px) {
-  .container {
-    min-height: 90vh;
-    padding: 12px;
-    width: 100%;
-  }
+    body { padding: 5px; }
+    
+    .btn-circular { width: 50px; height: 50px; font-size: 24px; }
+    .btn-voltar { top: 10px; left: 10px; font-size: 28px; }
+    #floating-guia-btn { bottom: 10px; right: 10px; }
 
-  /* Força o chat a não ter espaços sobrando nas laterais */
-  #chat {
-    padding: 15px 5px !important;
-  }
+    .container { margin-top: 70px; border-radius: 15px; padding: 15px; width: 98%; }
+    .app-title { font-size: 1.6rem; }
+    
+    #chat-messages { padding: 10px; min-height: 300px; }
+    .msg-bot-wrapper, .usuario { max-width: 95%; }
+    
+    .input-area { gap: 5px; padding: 8px; }
+    input[type="text"] { padding: 10px; font-size: 0.9rem; }
+    #btn-diagnosticar { padding: 0 15px; font-size: 0.9rem; }
 
-  .botoes-opcao {
-    flex-direction: column;
-  }
-
-  .botoes-opcao button {
-    width: 100%;
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  /* Mensagens do bot - LARGURA TOTAL */
-  .msg-bot-wrapper {
-    width: 100% !important;
-    margin: 25px 0 10px 0;
-    align-items: flex-start;
-  }
-
-  .bot-avatar {
-    width: 55px;
-    height: 55px;
-    margin-left: 5px; /* Avatar mais para a esquerda */
-    margin-bottom: 12px;
-  }
-
-  .bot-bubble {
-    width: 100% !important; /* Bolha esticada */
-    max-width: 100% !important;
-    padding: 20px 15px;
-    border-radius: 12px;
-  }
-
-  /* Ajuste do rabinho para acompanhar o avatar na esquerda */
-  .bot-bubble::before {
-    top: -9px;
-    left: 22px; /* Ajustado para alinhar com o avatar */
-    width: 18px;
-    height: 18px;
-  }
-
-  /* CORREÇÃO DAS BORDAS INTERNAS (SINTOMAS) */
-  .secao-sintomas ul, 
-  .secao-tecnica ul {
-    padding: 15px 12px 15px 35px !important;
-    margin: 10px 0 !important;
-    box-sizing: border-box;
-    width: 100% !important;
-  }
-
-  .doenca-card, .secao-controle {
-    width: 100% !important;
-    padding: 12px !important;
-    box-sizing: border-box;
-  }
-
-  .imagem-doenca {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .sintomas-botoes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-
-  .sintomas-botoes button {
-    margin: 0;
-    font-size: 13px;
-    padding: 10px 5px;
-  }
-
-  .rodape {
-    font-size: 12px;
-  }
-  
-
-  .painel-conteudo {
-    width: 95%;
-    max-width: 95%;
-    padding: 15px;
-  }
-
-  .guia-contato,
-  .guia-aviso {
-    width: 100%;
-    display: block;
-    box-sizing: border-box;
-  }
+    #guia-menu { bottom: 70px; left: 5%; width: 90%; max-height: 80vh; }
+    .guia-header { padding: 10px 15px; }
+    .guia-body { padding: 15px; }
 }
-
-
-
-
-
-
-
