@@ -278,6 +278,72 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
 .logo-splash { width: 150px; margin-bottom: 20px; animation: pulse 2s infinite ease-in-out; }
 @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } }
 .texto-splash { color: var(--white); font-size: 18px; letter-spacing: 1px; }
+/* Container do Card */
+.doenca-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    color: #333;
+    margin: 5px 0;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background: #f8fcf9;
+    padding: 15px;
+    border-bottom: 2px solid #2e7d32;
+}
+
+.card-header h3 {
+    margin: 0;
+    color: #1b5e20;
+    font-size: 1.4rem;
+}
+
+/* Responsividade da Imagem */
+.container-imagem-doenca {
+    width: 100%;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-doenca {
+    width: 100%;       /* Ocupa toda a largura do card */
+    max-width: 100%;   /* Impede de transbordar */
+    height: auto;      /* Mantém a proporção da foto */
+    display: block;
+    object-fit: cover; /* Ajusta a foto sem esticar */
+}
+
+/* Corpo do Card */
+.card-body {
+    padding: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.info-box-alerta {
+    background: #fff3e0;
+    border-left: 4px solid #ff9800;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.aviso-agronomo {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #ccc;
+    font-size: 0.8rem;
+    color: #d32f2f;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Ajustes para Telas Pequenas (Mobile) */
 
 /* ================= RESPONSIVIDADE (MOBILE AJUSTADO) ================= */
 @media (max-width: 600px) {
@@ -327,8 +393,20 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
         max-width: 90%;
         padding: 10px 15px;
     }
-}
+
+       .card-header h3 {
+        font-size: 1.1rem;
+    }
     
+    .card-body {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .imagem-doenca {
+        max-height: 200px; /* Limita altura em celulares para não ocupar a tela toda */
+    }
+
     .input-area { gap: 5px; padding: 8px; }
     input[type="text"] { padding: 10px; font-size: 0.9rem; }
     #btn-diagnosticar { padding: 0 15px; font-size: 0.9rem; }
