@@ -69,15 +69,11 @@ function toggleGuiaMenu() {
 // ================= FUNÇÕES UTIL =================
 function normalizar(txt) {
   return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-
-function addMsg(texto, tipo, rolar = true) {
+}function addMsg(texto, tipo, rolar = true) {
   const div = document.createElement("div");
-  // Se for bot, a classe principal é o wrapper, não a 'msg' genérica
   div.className = tipo === "bot" ? "msg-bot-wrapper" : "msg " + tipo;
 
   if (tipo === "bot") {
-    // 1. Área do topo (Avatar + Rabinho)
     const headerArea = document.createElement("div");
     headerArea.className = "bot-header-area";
 
@@ -86,12 +82,11 @@ function addMsg(texto, tipo, rolar = true) {
     avatar.className = "bot-avatar";
 
     const tail = document.createElement("div");
-    tail.className = "bot-tail"; // Este é o segredo do rabinho fixo
+    tail.className = "bot-tail";
 
     headerArea.appendChild(avatar);
     headerArea.appendChild(tail);
 
-    // 2. Bolha de texto
     const bubble = document.createElement("div");
     bubble.className = "bot-bubble";
     bubble.innerHTML = texto;
@@ -99,16 +94,21 @@ function addMsg(texto, tipo, rolar = true) {
     div.appendChild(headerArea);
     div.appendChild(bubble);
   } else {
+    // Para mensagens do usuário (bolha verde)
+    div.classList.add("usuario"); 
     div.innerHTML = texto;
   }
 
   chatDiv.appendChild(div);
 
+  // Rola a página inteira de forma suave para o final do novo conteúdo
   if (rolar) {
-    chatDiv.scrollTop = chatDiv.scrollHeight;
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    });
   }
 }
-
 // ================= INÍCIO =================
 function iniciarBot() {
   addMsg(
