@@ -172,8 +172,8 @@ body {
 }
 
 .bot-avatar {
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     border: 2px solid var(--verde-tema);
     background: white;
