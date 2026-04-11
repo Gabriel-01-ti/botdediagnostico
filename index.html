@@ -180,6 +180,27 @@
         }
         .google-btn img { width: 20px; height: 20px; }
         .google-btn:hover { background: #f8f9fa; border-color: #d2e3fc; }
+        /* ================= FOOTER AJUSTADO ================= */
+.outside-footer {
+    width: 100%;
+    padding: 25px 20px;
+    text-align: center;
+    background: rgba(15, 61, 19, 0.95); /* Fundo escuro para contraste */
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: auto; /* Empurra o footer para o fim da página */
+    z-index: 10;
+}
+
+.outside-footer p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+
+
 
         /* ================= DASHBOARD GRID ================= */
         .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
@@ -252,6 +273,13 @@
 
     nav a:not(.btn-nav-login) {
         display: none; /* Esconde links simples para focar no login em telas muito pequenas */
+    }
+    .outside-footer {
+        padding: 20px 15px;
+    }
+    .outside-footer p {
+        font-size: 0.75rem;
+        line-height: 1.4;
     }
 }
     </style>
