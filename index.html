@@ -210,8 +210,8 @@
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="sobreprojeto.html" onclick="openSecret()">Sobre</a></li>
-                <li><a href="#" class="btn-nav-login" id="navLoginBtn" onclick="showAuth()">Entrar</a></li>
-            </ul>
+                <li><a href="#" onclick="openContact()">Contato</a></li> <li><a href="#" class="btn-nav-login" id="navLoginBtn" onclick="showAuth()">Entrar</a></li>
+               </ul>
         </nav>
     </header>
 
@@ -220,7 +220,7 @@
             <div class="left">
                 <h1>Sua lavoura na era digital.</h1>
                 <p>O AgroInova utiliza inteligência artificial para transformar fotos e sintomas em diagnósticos precisos para o seu plantio.</p>
-                <button class="btn-cta" id="ctaBtn" onclick="showAuth()">Saiba Mais</button>
+                <button class="btn-cta" id="ctaBtn" onclick="showAuth()">Entre para saber mais</button>
             </div>
 
             <div class="right">
@@ -297,6 +297,24 @@
                 </div>
             </div>
         </section>
+        <div id="contactModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(5px);">
+    <div style="background:white; width:100%; max-width:400px; padding:30px; border-radius:20px; position:relative; text-align:center; animation: fadeIn 0.3s ease;">
+        <span onclick="closeContact()" style="position:absolute; top:15px; right:20px; font-size:1.5rem; cursor:pointer; color:#888;">&times;</span>
+        
+        <h2 style="color:#1b5e20; margin-bottom:10px;">Fale Conosco 🌱</h2>
+        <p style="color:#666; margin-bottom:25px;">Escolha como deseja ser atendido:</p>
+
+        <a href="https://wa.me/5511999999999" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#25D366; color:white; text-decoration:none; padding:15px; border-radius:12px; font-weight:600; margin-bottom:15px; transition:0.3s;">
+            <span>WhatsApp</span>
+        </a>
+
+        <a href="mailto:contato@agroinova.com" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#1b5e20; color:white; text-decoration:none; padding:15px; border-radius:12px; font-weight:600; transition:0.3s;">
+            <span>Enviar E-mail</span>
+        </a>
+        
+        <p style="margin-top:20px; font-size:0.8rem; color:#999;">Atendimento de Seg. a Sex. das 08h às 18h</p>
+    </div>
+</div>
     </main>
 
     <footer class="outside-footer">
@@ -472,6 +490,23 @@ function showDashboard(){
 
 
 /* ================= OUTROS ================= */
+
+    // Funções para o Modal de Contato
+window.openContact = function() {
+    document.getElementById("contactModal").style.display = "flex";
+}
+
+window.closeContact = function() {
+    document.getElementById("contactModal").style.display = "none";
+}
+
+// Fecha o modal se o usuário clicar fora da caixa branca
+window.onclick = function(event) {
+    const modal = document.getElementById("contactModal");
+    if (event.target == modal) {
+        closeContact();
+    }
+}
 
 window.logout = async function(){
   await signOut(auth);
