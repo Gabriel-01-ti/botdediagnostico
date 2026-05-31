@@ -330,8 +330,8 @@ function diagnosticar(cultura, textoUsuario) {
     const htmlCompleto = `
       <div class="doenca-card">
         <div class="card-header-agro">
-          <h2>🦠 ${d.nome}</h3>
-          <small>${d.nome_biologico}</small>
+          <h2>🦠 ${d.nome}</h2>
+          <small><i>${d.nome_biologico}</i></small>
         </div>
 
         ${d.imagem ? `<img src="${d.imagem}" class="imagem-doenca-agro">` : ""}
