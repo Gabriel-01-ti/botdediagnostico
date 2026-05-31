@@ -213,9 +213,47 @@
         .service-card .icon { font-size: 1.5rem; background: #f0f7f1; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
 
         .btn-logout { margin-top: 20px; width: 100%; padding: 10px; background: none; border: 1px solid #ddd; color: #888; border-radius: 10px; cursor: pointer; }
+        .perfil-topo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(255,255,255,.12);
+    padding:8px 15px;
+    border-radius:50px;
+    backdrop-filter:blur(10px);
+}
 
+.perfil-topo img{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #81c784;
+}
+
+.perfil-topo span{
+    color:white;
+    font-size:.9rem;
+    font-weight:600;
+}
        /* ================= RESPONSIVIDADE (MOBILE) ================= */
 @media (max-width: 768px) {
+    
+
+    .perfil-topo span{
+        display:none;
+    }
+
+    .perfil-topo{
+        padding:4px;
+        background:none;
+    }
+
+    .perfil-topo img{
+        width:40px;
+        height:40px;
+    }
+
     .hero-section {
         padding: 100px 10px 40px; /* Reduz espaçamento externo */
     }
@@ -289,13 +327,20 @@
     <img src="logo.jpg" alt="Logo AgroInova" style="width: 40px; height: auto;">
     <span>AgroInova</span>
 </a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="sobreprojeto.html" onclick="openSecret()">Sobre</a></li>
-                <li><a href="#" onclick="openContact()">Contato</a></li> 
-            </ul>
-        </nav>
+       <nav>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobreprojeto.html">Sobre</a></li>
+        <li><a href="#" onclick="openContact()">Contato</a></li>
+
+        <li id="userProfile" style="display:none;">
+            <div class="perfil-topo">
+                <img id="userPhoto" src="logo.jpg">
+                <span id="userName">Usuário</span>
+            </div>
+        </li>
+    </ul>
+</nav>
     </header>
 
     <main class="hero-section">
@@ -542,6 +587,28 @@ window.loginGoogle = async function(){
 /* 🔥 CAPTURA RETORNO DO REDIRECT */
 
 onAuthStateChanged(auth, (user) => {
+    
+const perfil = document.getElementById("userProfile");
+const foto = document.getElementById("userPhoto");
+const nome = document.getElementById("userName");
+
+if(user){
+
+    perfil.style.display = "block";
+
+    nome.innerText =
+        user.displayName ||
+        user.email.split("@")[0];
+
+    if(user.photoURL){
+        foto.src = user.photoURL;
+    }
+
+}else{
+
+    perfil.style.display = "none";
+
+}
     const welcomeView = document.getElementById("welcomeView");
     const authView = document.getElementById("auth");
     const dashboardView = document.getElementById("dashboard");
