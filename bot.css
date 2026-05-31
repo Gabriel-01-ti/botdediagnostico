@@ -294,81 +294,117 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
 @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } }
 .texto-splash { color: var(--white); font-size: 18px; letter-spacing: 1px; }
 /* Container do Card */
-.doenca-card {
-    background: #ffffff;
-    border-radius: 15px;
-    overflow: hidden;
-    color: #333;
-    margin: 5px 0;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* ================= CARD DE DIAGNÓSTICO ================= */
+
+.doenca-card{
+    background:#f8f8f8;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid #d8d8d8;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    margin:10px 0;
 }
 
-.card-header {
-    background: #f8fcf9;
-    padding: 15px;
-    border-bottom: 2px solid #2e7d32;
+/* CABEÇALHO */
+.card-header-agro{
+    background:#ececec;
+    padding:18px 25px;
 }
 
-.card-header h3 {
-    margin: 0;
-    color: #1b5e20;
-    font-size: 1.4rem;
+.card-header-agro h2{
+    margin:0;
+    font-size:2rem;
+    font-weight:700;
+    color:#333;
 }
 
-/* Responsividade da Imagem */
-.container-imagem-doenca {
-    width: 100%;
-    background: #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.card-header-agro small{
+    display:block;
+    margin-top:8px;
+    font-size:1rem;
+    color:#555;
+    font-style:italic;
 }
 
-.imagem-doenca {
-    width: 100%;       /* Ocupa toda a largura do card */
-    max-width: 100%;   /* Impede de transbordar */
-    height: auto;      /* Mantém a proporção da foto */
-    display: block;
-    object-fit: cover; /* Ajusta a foto sem esticar */
+/* IMAGEM */
+.imagem-doenca-agro{
+    width:100%;
+    display:block;
+    max-height:450px;
+    object-fit:cover;
 }
 
-/* Corpo do Card */
-.card-body {
-    padding: 15px;
-    font-size: 0.95rem;
-    line-height: 1.5;
+/* CONTEÚDO */
+.card-content-agro{
+    padding:0;
 }
 
-.info-box-alerta {
-    background: #fff3e0;
-    border-left: 4px solid #ff9800;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 4px;
+/* SEÇÕES */
+.info-item{
+    padding:20px 25px;
+    border-top:1px solid #ddd;
+    margin:0 !important;
+}
+
+.info-item strong{
+    display:block;
+    margin-bottom:10px;
+    font-size:1.3rem;
+    color:#333;
+}
+
+.info-item p{
+    margin:0;
+    color:#444;
+    line-height:1.8;
+    font-size:1rem;
+}
+
+/* DUAS COLUNAS */
+.duas-colunas{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    padding:25px;
+    border-top:1px solid #ddd;
+}
+
+.col strong{
+    display:block;
+    margin-bottom:15px;
+    font-size:1.3rem;
+}
+
+.col ul{
+    margin:0;
+    padding-left:25px;
+}
+
+.col li{
+    margin-bottom:10px;
+    line-height:1.8;
+    color:#444;
+}
+
+/* AVISO */
+.aviso-responsabilidade{
+    margin:25px;
+    padding:20px;
+    border-radius:18px;
+    background:#fff3f3;
+    border:3px solid #f5b0b0;
+}
+
+.aviso-responsabilidade p{
+    margin:0;
+    color:#b73333;
+    font-size:1rem;
+    line-height:1.8;
+    text-align:justify;
 }
 
 
-/* Estilo específico para o aviso de responsabilidade */
-.aviso-responsabilidade {
-    margin-top: 20px;
-    margin-left:10px;
-    margin-rigth:10px;
-    padding: 15px;
-    background-color: #fff5f5;
-    border: 2px solid #feb2b2;
-    border-radius: 10px;
-    color: #c53030;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    text-align: justify;
-}
-
-.aviso-responsabilidade b {
-    color: #9b2c2c;
-    text-transform: uppercase;
-}
-
+  
 /* Garante que imagens fiquem dentro do limite e centralizadas */
 .imagem-doenca-agro {
     width: 100%;
@@ -465,5 +501,35 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
     .guia-body { padding: 15px; }
      .duas-colunas {
         flex-direction: column;
+    }
+  .card-header-agro h2{
+        font-size:1.5rem;
+    }
+
+    .duas-colunas{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .info-item{
+        padding:15px;
+    }
+
+    .info-item strong,
+    .col strong{
+        font-size:1.1rem;
+    }
+
+    .col li,
+    .info-item p{
+        font-size:.95rem;
+    }
+
+    .imagem-doenca-agro{
+        max-height:250px;
+    }
+
+    .aviso-responsabilidade{
+        margin:15px;
     }
 }
