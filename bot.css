@@ -188,7 +188,7 @@ body {
     background: var(--azul-bot);
     color: #0d47a1;
     /* Aumenta o respiro interno significativamente */
-    padding: 30px; 
+    padding: 10px; 
     border-radius: 20px 20px 20px 0;
     border-left: 6px solid #1565c0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
@@ -472,7 +472,7 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
 .bot-bubble{
     width: 100%;
     max-width: 100%;
-    border-radius: 0, 18px, 18px, 18px;
+    border-radius: 18px, 18px, 18px, 0px;
 }
 
    
