@@ -436,6 +436,7 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
 
 /* ================= RESPONSIVIDADE (MOBILE AJUSTADO) ================= */
 @media (max-width: 600px) {
+    
     body { padding: 5px; }
     
     .btn-circular { width: 50px; height: 50px; font-size: 24px; }
@@ -454,22 +455,25 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
     /* ================= AJUSTE RESPONSIVO DO CHAT (MOBILE) ================= */
 
     /* Faz o container do bot empilhar verticalmente */
-   .msg-bot-wrapper {
-        max-width: 100%; /* No celular, usa a largura toda */
-        gap: 8px;
-    }
-    
-    .bot-bubble {
-        padding: 15px; /* No celular o respiro é menor para não perder tela */
-        font-size: 0.95rem;
-    }
+  .msg-bot-wrapper{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+}
 
-    /* Ajusta o avatar para ficar acima da mensagem */
-    .bot-avatar {
-        width: 40px; /* Tamanho ligeiramente menor para mobile */
-        height: 40px;
-        margin-left: 5px; /* Pequeno recuo para alinhar visualmente */
-    }
+.bot-avatar{
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+}
+
+.bot-bubble{
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0, 18px, 18px, 18px;
+}
 
    
 
