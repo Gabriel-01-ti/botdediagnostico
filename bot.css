@@ -302,7 +302,8 @@ input[type="text"]:disabled { background: #f5f5f5; cursor: not-allowed; }
     overflow:hidden;
     border:1px solid #d8d8d8;
     box-shadow:0 10px 25px rgba(0,0,0,.15);
-    margin:10px 0;
+    padding:10px;
+    
 }
 
 /* CABEÇALHO */
