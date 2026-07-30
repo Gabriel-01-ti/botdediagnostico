@@ -67,7 +67,70 @@ body {
     right: 20px;
     border: 3px solid #000; /* Garante que o botão HTML tenha a borda */
 }
+/* ================= CONTAINER DOS BOTÕES DE SINTOMAS ================= */
+.sintomas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    width: 100%;
+}
 
+.sintomas-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espaçamento entre os botões de sintoma */
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+/* Estilo individual de cada sintoma (Chip/Tag) */
+.btn-sintoma {
+    background-color: #ffffff;
+    color: #2e7d32;
+    border: 2px solid #2e7d32;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-sintoma:hover {
+    background-color: #e8f5e9;
+    transform: translateY(-2px);
+}
+
+/* Quando selecionado pelo clique */
+.btn-sintoma.ativo {
+    background-color: #2e7d32 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+}
+
+/* Botão principal de Ação (🔍 Diagnosticar) */
+.btn-diagnosticar-acao {
+    width: 100%;
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+    margin-top: 5px;
+}
+
+.btn-diagnosticar-acao:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
 /* ================= CONTAINER PRINCIPAL (ESTILO GLASS) ================= */
 .container {
  width: 95%;
