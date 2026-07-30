@@ -60,7 +60,7 @@ function abrirGuiaRapido() {
 
   document.getElementById("guia-menu").classList.remove("hidden");
 }
-import { salvarDiagnosticoFirestore } from "./firebase-db.js";
+import { salvarDiagnosticoFirestore } from "./firebase.db.js";
       
 
 function toggleGuiaMenu() {
