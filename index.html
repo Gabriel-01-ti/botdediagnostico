@@ -403,75 +403,93 @@
 
 /* ================= AJUSTES EXCLUSIVOS PARA CELULARES (ATÉ 480PX) ================= */
 
+/* ================= AJUSTES EXCLUSIVOS PARA CELULARES (ATÉ 480PX) ================= */
+
 @media (max-width: 480px) {
-    /* 1. HEADER EM LINHA LADO A LADO */
+    /* ----- HEADER EM 2 LINHAS ----- */
     header {
-        flex-direction: row !important; /* Força ficar na mesma linha */
-        justify-content: space-between;
+        flex-direction: column !important; /* Empilha: Logo em cima, Menu embaixo */
         align-items: center;
-        padding: 10px 12px;
-        gap: 8px;
+        justify-content: center;
+        padding: 12px 10px 8px !important; /* Reduzido o padding inferior */
+        gap: 8px !important;
     }
 
-    /* 2. LOGO E AGROINOVA MAIORES */
+    /* 1. LOGO E NOME MAIORES (LINHA DE CIMA) */
     .logo {
-        font-size: 1.45rem; /* Nome da marca ampliado */
+        font-size: 1.55rem !important; /* AgroInova bem destacado */
+        font-weight: 800;
         gap: 8px;
-        white-space: nowrap; /* Impede quebrar o texto */
     }
 
     .logo img {
-        width: 34px;
-        height: 34px;
+        width: 38px !important; /* Ícone da logo maior */
+        height: 38px !important;
     }
 
-    /* 3. NAVEGAÇÃO NA MESMA LINHA E COMPACTA */
+    /* 2. NAVEGAÇÃO EM LINHA ÚNICA (LINHA DE BAIXO) */
     nav {
-        width: auto; /* Não ocupa 100% da tela para não empurrar a logo */
+        width: 100%;
     }
 
     nav ul {
-        flex-wrap: nowrap; /* Mantém os itens do menu sem quebrar de linha */
-        gap: 4px;
+        display: flex !important;
+        flex-direction: row !important; /* Garante Início, Sobre, etc na mesma linha */
+        flex-wrap: nowrap !important;   /* Impede que os botões quebrem para a linha de baixo */
+        justify-content: center;
+        align-items: center;
+        gap: 3px !important;
+        width: 100%;
+        overflow-x: auto; /* Se o celular for muito estreito, permite deslizar sem quebrar */
+        padding-bottom: 2px;
     }
 
     nav a {
-        font-size: 0.72rem;
-        padding: 5px 8px;
+        font-size: 0.72rem !important;
+        padding: 5px 7px !important;
         border-radius: 12px;
+        white-space: nowrap; /* Não deixa o texto dos botões quebrar */
     }
 
     .btn-nav-login {
         padding: 5px 10px !important;
         font-size: 0.75rem !important;
+        white-space: nowrap;
     }
 
-    /* 4. REDUÇÃO DO ESPAÇO ENTRE HEADER E TELA INICIAL / PAINEL DO PRODUTOR */
+    .perfil-topo {
+        padding: 3px 6px;
+        max-width: 100px;
+    }
+
+    /* ----- DIMINUIÇÃO DO ESPAÇO ENTRE HEADER E TELA INICIAL / PAINEL ----- */
     .hero-container {
-        padding: 8px 12px 0px !important; /* Espaçamento interno topo bem reduzido */
-        margin-top: 0px !important;       /* Cola o container no header */
-        margin-bottom: 0px;
-        gap: 8px;
+        padding: 4px 12px 0px !important; /* Zera folgas no topo do container */
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        gap: 6px;
     }
 
     .content-area {
         margin-top: 0px !important;
     }
 
-    .card-inline {
-        margin-top: 5px !important; /* Reduz espaço acima do Painel do Produtor / Formulário */
-        padding: 16px 12px;
-    }
-
+    /* Título H1 maior e bem visível */
     .content-area h1 {
-        font-size: 1.4rem;
+        font-size: 1.45rem !important;
         line-height: 1.2;
         margin-bottom: 8px;
     }
 
     .content-area p {
         font-size: 0.85rem;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
+    }
+
+    /* Aproximação do Painel do Produtor / Formulário de login */
+    .card-inline {
+        margin-top: 4px !important;
+        padding: 14px 12px;
     }
 
     .btn-main {
@@ -480,14 +498,13 @@
     }
 
     .agro-svg {
-        width: 85px;
+        width: 80px;
     }
 
     .clouds-bg {
         height: 25px;
     }
 }
-        
     </style>
 </head>
 <body>
