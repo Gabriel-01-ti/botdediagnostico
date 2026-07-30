@@ -122,6 +122,11 @@ if (prob < 0.80) {
     // Pega o valor atual do select para buscar no JSON
     const culturaAtual = selectCultura.value.toLowerCase().trim();
     mostrarResultado(culturaAtual, classe, prob);
+    await salvarDiagnosticoFirestore({
+  cultura: cultura,
+  doenca: d.nome,
+  confianca: null
+});
   };
 }
 
