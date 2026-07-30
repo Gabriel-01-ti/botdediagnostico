@@ -9,6 +9,7 @@ let culturaSelecionada = "";
 let modoDiagnostico = "";
 let sintomasSelecionados = [];
 
+
 // ================= CARREGAR BASE =================
 fetch("base.json")
   .then(res => res.json())
@@ -379,12 +380,7 @@ function diagnosticar(cultura, textoUsuario) {
         </div>
       </div>
     `;
-    await salvarDiagnosticoFirestore({
-  cultura: cultura,
-  doenca: d.nome,
-  confianca: null
-});
-
+  
     addMsg(htmlCompleto, "bot", false);
     salvarDiagnostico(`Cultura: ${cultura}, Doença: ${d.nome}`);
 
@@ -393,6 +389,11 @@ function diagnosticar(cultura, textoUsuario) {
       etapa = 1;
     }, 4000);
   }
+  await salvarDiagnosticoFirestore({
+  cultura: cultura,
+  doenca: d.nome,
+  confianca: null
+});
 }
 
 
