@@ -1,88 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta charset="UTF-8">
-  <title>AgroBot Diagnóstico</title>
-  <link rel="stylesheet" href="bot.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AgroBot | Diagnóstico Agrícola Inteligente</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="bot.css">
 </head>
 <body>
+
     <div id="splash" aria-hidden="true">
-        <img src="logo.jpg" alt="Agro Inova" class="logo-splash">
-        <p class="texto-splash">AgroBot iniciando...</p>
+        <div class="splash-content">
+            <img src="logo.jpg" alt="Logo Agro Inova" class="logo-splash">
+            <div class="spinner"></div>
+            <p class="texto-splash">Iniciando AgroBot...</p>
+        </div>
     </div>
 
-    <nav class="controles-flutuantes">
-        <a href="index.html" class="btn-circular btn-voltar" title="Voltar para a Página Inicial">↩</a>
-        
-        <button id="floating-guia-btn" class="btn-circular" onclick="toggleGuiaMenu()" aria-label="Abrir Guia de Informações">📖</button>
+    <nav class="controles-flutuantes" aria-label="Controles de Navegação">
+        <a href="index.html" class="btn-circular btn-voltar" title="Voltar para a Página Inicial" aria-label="Voltar">
+            <span>↩</span>
+        </a>
+        <button id="floating-guia-btn" class="btn-circular" onclick="toggleGuiaMenu()" aria-label="Abrir Guia de Informações" title="Guia de Informações">
+            <span>📖</span>
+        </button>
     </nav>
 
-    <aside id="guia-menu" class="hidden">
+    <aside id="guia-menu" class="hidden" aria-label="Guia de Informações da Lavoura">
         <header class="guia-header">
-            <h2 class="guia-title">Guia de informações ℹ️</h2>
-            <button class="close-btn" onclick="toggleGuiaMenu()">✕</button>
+            <div class="guia-header-title">
+                <span class="guia-icon">ℹ️</span>
+                <h2 class="guia-title">Guia de Informações</h2>
+            </div>
+            <button class="close-btn" onclick="toggleGuiaMenu()" aria-label="Fechar Guia">&times;</button>
         </header>
+
         <div class="guia-body">
             <div id="listaGuiaDoencas"></div>
+
             <hr class="divider">
+
             <article class="explanation-box">
-                <p> ⚠️ <strong>Aviso Importante e Responsabilidade Técnica:</strong><br><br>
-            Este assistente digital tem caráter estritamente educativo e informativo. Devido às legislações vigentes e à complexidade do manejo agrícola, <b>não fornecemos dosagens de defensivos, prescrições de agrotóxicos ou recomendações de produtos químicos específicos.</b><br><br>
-            O uso incorreto de substâncias pode causar danos irreversíveis à lavoura, ao meio ambiente e à saúde humana. Para obter um receituário agronômico e orientações sobre dosagem, você deve obrigatoriamente consultar um Engenheiro Agrônomo habilitado.
-        </p>
+                <div class="alert-head">
+                    <span class="alert-icon">⚠️</span>
+                    <strong>Aviso de Responsabilidade Técnica</strong>
+                </div>
+                <p>
+                    Este assistente digital possui caráter <strong>estritamente educativo e informativo</strong>. Devido às legislações vigentes e à complexidade do manejo agronômico, <b>não fornecemos dosagens, prescrições de agrotóxicos ou recomendações químicas específicas.</b>
+                </p>
+                <p>
+                    O uso inadequado de defensivos pode causar danos irreversíveis à lavoura, ao meio ambiente e à saúde humana. Consulte obrigatoriamente um <strong>Engenheiro Agrônomo habilitado</strong> para emissão de receituário.
+                </p>
             </article>
+
             <hr class="divider">
+
             <footer class="guia-footer-links">
-                <p><strong>📞 Fale Conosco:</strong></p>
-                <a href="mailto:siteagroinova@gmail.com" class="contact-link">📧 E-mail</a>
-                <a href="https://wa.me/5555996698757" target="_blank" class="contact-link whatsapp">💬 WhatsApp</a>
+                <p class="footer-title"><strong>📞 Suporte e Contato:</strong></p>
+                <a href="mailto:siteagroinova@gmail.com" class="contact-link mail">
+                    <span class="link-icon">📧</span>
+                    <span>Enviar E-mail</span>
+                </a>
+                <a href="https://wa.me/5555996698757" target="_blank" rel="noopener" class="contact-link whatsapp">
+                    <span class="link-icon">💬</span>
+                    <span>Atendimento WhatsApp</span>
+                </a>
             </footer>
         </div>
     </aside>
 
     <main class="container">
+        
         <header class="app-info">
-            <h1 class="app-title">🤖📱 AgroBot</h1>
+            <h1 class="app-title">🌱 AgroBot</h1>
             <p class="descricao-app">
-                Olá! 👋 Este é o <strong>AgroBot</strong>, seu assistente digital para identificar doenças de forma rápida.
+                Seu assistente digital para identificação rápida e prevenção de doenças no campo.
             </p>
         </header>
 
         <section id="chat" aria-live="polite">
             <header class="chat-header">
-                <img src="logo.jpg" alt="Avatar AgroBot">
+                <div class="avatar-wrapper">
+                    <img src="logo.jpg" alt="Avatar do AgroBot" class="chat-avatar">
+                    <span class="status-dot"></span>
+                </div>
                 <div class="chat-info">
-                    <span class="chat-name">AgroBot</span>
-                    <span class="chat-status">online</span>
+                    <span class="chat-name">AgroBot IA</span>
+                    <span class="chat-status">Online e pronto para ajudar</span>
                 </div>
             </header>
-            <div id="chat-messages"></div>
+
+            <div id="chat-messages">
+                </div>
         </section>
 
         <section class="input-area">
-            <input type="text" id="sintomas" disabled placeholder="Carregando base de dados...">
-            <button id="btn-diagnosticar">Enviar</button>
+            <input type="text" id="sintomas" disabled placeholder="Carregando dados da lavoura..." aria-label="Digite ou selecione os sintomas">
+            <button id="btn-diagnosticar" aria-label="Enviar Mensagem">
+                <span>Enviar</span>
+                <svg class="send-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+                </svg>
+            </button>
         </section>
+
     </main>
 
     <footer class="rodape">
         <small>Agro Inova © 2026 🌱 Tecnologia em favor do campo</small>
     </footer>
 
-    <script src="bot.js"> </script>
+    <script src="bot.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
