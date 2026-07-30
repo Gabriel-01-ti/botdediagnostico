@@ -401,87 +401,90 @@
     }
 }
 
-
-/* ================= AJUSTES EXCLUSIVOS PARA CELULARES MUITO PEQUENOS (ATÉ 480PX) ================= */
+/* ================= AJUSTES EXCLUSIVOS PARA CELULARES (ATÉ 480PX) ================= */
 
 @media (max-width: 480px) {
-    /* 1. HEADER AMPLIADO */
+    /* 1. HEADER EM LINHA LADO A LADO */
     header {
-        padding: 16px 14px 12px; /* Mais espaço interno no cabeçalho */
-        gap: 10px;
-    }
-
-    /* 2. LOGO AUMENTADA */
-    .logo {
-        font-size: 1.45rem; /* Nome da marca maior */
+        flex-direction: row !important; /* Força ficar na mesma linha */
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 12px;
         gap: 8px;
     }
 
-    .logo img {
-        width: 36px;  /* Imagem da logo maior */
-        height: 36px;
+    /* 2. LOGO E AGROINOVA MAIORES */
+    .logo {
+        font-size: 1.45rem; /* Nome da marca ampliado */
+        gap: 8px;
+        white-space: nowrap; /* Impede quebrar o texto */
     }
 
-    /* 3. MENU / BOTOES LIGEIRAMENTE MAIORES */
+    .logo img {
+        width: 34px;
+        height: 34px;
+    }
+
+    /* 3. NAVEGAÇÃO NA MESMA LINHA E COMPACTA */
+    nav {
+        width: auto; /* Não ocupa 100% da tela para não empurrar a logo */
+    }
+
     nav ul {
-        gap: 5px;
+        flex-wrap: nowrap; /* Mantém os itens do menu sem quebrar de linha */
+        gap: 4px;
     }
 
     nav a {
-        font-size: 0.78rem;
-        padding: 6px 10px;
-        border-radius: 14px;
+        font-size: 0.72rem;
+        padding: 5px 8px;
+        border-radius: 12px;
     }
 
     .btn-nav-login {
-        padding: 6px 14px !important;
-        font-size: 0.8rem !important;
+        padding: 5px 10px !important;
+        font-size: 0.75rem !important;
     }
 
-    .perfil-topo {
-        padding: 4px 8px;
-        max-width: 120px;
-    }
-
-    .perfil-topo img {
-        width: 22px;
-        height: 22px;
-    }
-
-    .perfil-topo span {
-        font-size: 0.72rem;
-    }
-
-    /* 4. TÍTULO E CONTEÚDO AUMENTADOS */
+    /* 4. REDUÇÃO DO ESPAÇO ENTRE HEADER E TELA INICIAL / PAINEL DO PRODUTOR */
     .hero-container {
-        padding: 15px 14px 0px; /* Distância confortável do header */
-        margin-top: 0;
-        margin-bottom: 0;
-        gap: 12px;
+        padding: 8px 12px 0px !important; /* Espaçamento interno topo bem reduzido */
+        margin-top: 0px !important;       /* Cola o container no header */
+        margin-bottom: 0px;
+        gap: 8px;
+    }
+
+    .content-area {
+        margin-top: 0px !important;
+    }
+
+    .card-inline {
+        margin-top: 5px !important; /* Reduz espaço acima do Painel do Produtor / Formulário */
+        padding: 16px 12px;
     }
 
     .content-area h1 {
-        font-size: 1.55rem; /* Título bem visível e impactante */
-        line-height: 1.25;
-        margin-bottom: 10px;
+        font-size: 1.4rem;
+        line-height: 1.2;
+        margin-bottom: 8px;
     }
 
     .content-area p {
-        font-size: 0.88rem; /* Texto descritivo um pouco maior */
-        margin-bottom: 18px;
+        font-size: 0.85rem;
+        margin-bottom: 14px;
     }
 
     .btn-main {
-        padding: 12px 22px;
-        font-size: 0.92rem;
+        padding: 10px 20px;
+        font-size: 0.88rem;
     }
 
     .agro-svg {
-        width: 95px; /* Tamanho proporcional para não quebrar a tela */
+        width: 85px;
     }
 
     .clouds-bg {
-        height: 30px;
+        height: 25px;
     }
 }
         
