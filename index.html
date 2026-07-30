@@ -267,133 +267,207 @@
             .agro-svg { width: 210px; }
         }
 
-        /* Celulares e Tablets em Pé */
-        @media (max-width: 768px) {
-            body {
-                /* Gradiente Otimizado para telas altas/móveis */
-                background: linear-gradient(180deg, #2e7d32 0%, #1b5e20 45%, #0a290d 100%);
-            }
+       /* ================= AJUSTES RESPONSIVOS EXCLUSIVOS PARA CELULAR ================= */
 
-            header {
-                padding: 15px 5%;
-                flex-direction: column;
-                gap: 15px;
-            }
+@media (max-width: 768px) {
+    /* ----- HEADER NO CELULAR ----- */
+    header {
+        padding: 14px 16px 10px;
+        flex-direction: column;
+        gap: 12px;
+        background: rgba(10, 41, 13, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
 
-            .logo {
-                font-size: 1.5rem; /* Garantido maior que o nome do perfil */
-            }
+    /* Logo maior e mais bonito */
+    .logo {
+        font-size: 1.4rem;
+        font-weight: 800;
+        gap: 8px;
+        letter-spacing: -0.3px;
+    }
 
-            .logo img {
-                width: 36px;
-                height: 36px;
-            }
+    .logo img {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
 
-            nav ul {
-                gap: 12px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+    /* ----- NAVEGAÇÃO (NAV) ----- */
+    nav {
+        width: 100%;
+    }
 
-            nav a {
-                font-size: 0.85rem;
-            }
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+    }
 
-            /* Perfil do Usuário Menor e Proporcional no Mobile */
-            .perfil-topo {
-                padding: 4px 10px;
-            }
-            .perfil-topo span {
-                font-size: 0.75rem;
-                max-width: 90px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }
-            .perfil-topo img {
-                width: 22px;
-                height: 22px;
-            }
+    /* Links transformados em botões touch amigáveis */
+    nav a {
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: inline-block;
+    }
 
-            .btn-nav-login {
-                padding: 6px 16px;
-                font-size: 0.82rem !important;
-            }
+    nav a:active {
+        background: rgba(255, 255, 255, 0.25);
+    }
 
-            .hero-container {
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                padding: 15px 5% 80px;
-                gap: 25px;
-            }
+    /* Botão de Entrar */
+    .btn-nav-login {
+        padding: 6px 16px !important;
+        font-size: 0.8rem !important;
+        background: #ffffff !important;
+        color: #1b5e20 !important;
+    }
 
-            .content-area {
-                max-width: 100%;
-            }
+    /* User Tag (Perfil Logado) */
+    .perfil-topo {
+        padding: 4px 10px;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        max-width: 130px;
+    }
 
-            .hero-container.dashboard-active .content-area {
-                max-width: 100%;
-            }
+    .perfil-topo img {
+        width: 22px;
+        height: 22px;
+    }
 
-            .content-area h1 {
-                font-size: 1.8rem;
-                line-height: 1.2;
-                margin-bottom: 12px;
-            }
+    .perfil-topo span {
+        font-size: 0.75rem;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-            .content-area p {
-                font-size: 0.92rem;
-                margin-bottom: 24px;
-            }
+    /* ----- CORPO / HERO E NUVEM ----- */
+    .hero-container {
+        padding: 10px 16px 0px;
+        margin-bottom: 0px;
+        gap: 10px;
+    }
 
-            .btn-main {
-                width: 100%;
-                max-width: 280px;
-                padding: 14px 20px;
-                font-size: 0.95rem;
-            }
+    .content-area h1 {
+        font-size: 1.55rem;
+        line-height: 1.2;
+        margin-bottom: 8px;
+    }
 
-            .illustration-area {
-                width: 100%;
-                margin-right: 0;
-                margin-top: 10px;
-            }
+    .content-area p {
+        font-size: 0.88rem;
+        line-height: 1.4;
+        margin-bottom: 16px;
+    }
 
-            .agro-svg {
-                width: 170px;
-            }
+    .btn-main {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
 
-            .card-inline {
-                padding: 22px 16px;
-                text-align: left;
-            }
+    .illustration-area {
+        margin-top: 5px;
+    }
 
-            .clouds-bg {
-                height: 60px;
-            }
-        }
+    .agro-svg {
+        width: 110px;
+    }
 
-        /* Celulares Menores */
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.35rem;
-            }
+    .card-inline {
+        padding: 16px 12px;
+        border-radius: 16px;
+    }
 
-            .logo img {
-                width: 32px;
-                height: 32px;
-            }
+    /* Nuvem puxada pra cima no final da tela */
+    .clouds-bg {
+        height: 45px;
+        margin-top: auto;
+    }
+}
 
-            nav ul {
-                gap: 8px;
-            }
+        /* ================= AJUSTES EXCLUSIVOS PARA CELULARES MUITO PEQUENOS (ATÉ 480PX) ================= */
 
-            nav a {
-                font-size: 0.78rem;
-            }
-        }
+@media (max-width: 480px) {
+    /* Header ainda mais compacto e funcional */
+    header {
+        padding: 10px 10px 8px;
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+        gap: 6px;
+    }
+
+    .logo img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Menu em formato de pílulas compactas */
+    nav ul {
+        gap: 4px;
+    }
+
+    nav a {
+        font-size: 0.72rem;
+        padding: 5px 9px;
+        border-radius: 14px;
+    }
+
+    .btn-nav-login {
+        padding: 5px 12px !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* Tag do Usuário ajustada para não estourar a tela */
+    .perfil-topo {
+        padding: 3px 8px;
+        max-width: 110px;
+    }
+
+    .perfil-topo img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .perfil-topo span {
+        font-size: 0.7rem;
+    }
+
+    /* Conteúdo Principal */
+    .content-area h1 {
+        font-size: 1.35rem;
+    }
+
+    .content-area p {
+        font-size: 0.82rem;
+    }
+
+    .agro-svg {
+        width: 95px;
+    }
+
+    .clouds-bg {
+        height: 35px;
+    }
+}
     </style>
 </head>
 <body>
