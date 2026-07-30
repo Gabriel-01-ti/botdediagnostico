@@ -578,28 +578,30 @@ nav a:hover, nav a.active {
 <body>
 
     <header>
-        <a href="index.html" class="logo">
+    <a href="index.html" class="logo">
+        <div class="logo-icon">
             <img src="logo.jpg" alt="Logo AgroInova">
-            <span>AgroInova</span>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="sobreprojeto.html">Sobre</a></li>
-                <li><a href="#" onclick="verDiagnosticos()">Histórico</a></li>
-                <li><a href="#" onclick="openContact()">Contato</a></li>
-                
-                <li id="userProfile" style="display:none;">
-                    <div class="perfil-topo" onclick="openProfileModal()">
-                        <img id="userPhoto" src="logo.jpg" alt="Foto Perfil">
-                        <span id="userName">Usuário</span>
-                    </div>
-                </li>
-                <li><a href="#" id="navLoginBtn" onclick="showAuth()" class="btn-nav-login">Entrar</a></li>
-            </ul>
-        </nav>
-    </header>
-
+        </div>
+        <span>Agro<strong>Inova</strong></span>
+    </a>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Início</a></li>
+            <li><a href="sobreprojeto.html">Sobre</a></li>
+            <li><a href="#" onclick="verDiagnosticos()">Histórico</a></li>
+            <li><a href="#" onclick="openContact()">Contato</a></li>
+            
+            <li id="userProfile" style="display:none;">
+                <div class="perfil-topo" onclick="openProfileModal()">
+                    <img id="userPhoto" src="logo.jpg" alt="Foto Perfil">
+                    <span id="userName">Usuário</span>
+                </div>
+            </li>
+            <li><a href="#" id="navLoginBtn" onclick="showAuth()" class="btn-nav-login">Entrar</a></li>
+        </ul>
+    </nav>
+</header>
     <main class="hero-container" id="mainHeroContainer">
         <div class="content-area">
             
