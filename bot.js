@@ -60,8 +60,6 @@ function abrirGuiaRapido() {
 
   document.getElementById("guia-menu").classList.remove("hidden");
 }
-import { salvarDiagnosticoFirestore } from "./firebase.db.js";
-      
 
 function toggleGuiaMenu() {
   document.getElementById("guia-menu").classList.toggle("hidden");
@@ -390,11 +388,7 @@ function diagnosticar(cultura, textoUsuario) {
       etapa = 1;
     }, 4000);
   }
-  await salvarDiagnosticoFirestore({
-  cultura: cultura,
-  doenca: d.nome,
-  confianca: null
-});
+  
 }
 
 
