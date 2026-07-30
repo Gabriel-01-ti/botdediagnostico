@@ -166,14 +166,25 @@ function mostrarCulturasDisponiveis() {
 function mostrarBotoesSintomas() {
    const dados = baseDados[culturaSelecionada];
    let sintomasSet = new Set();
+   
    Object.values(dados).forEach(d => {
-      d.sintomas.praticos.forEach(s => sintomasSet.add(s));
+      if (d.sintomas && d.sintomas.praticos) {
+         d.sintomas.praticos.forEach(s => sintomasSet.add(s));
+      }
    });
-   let html = `<div class="sintomas-botoes">`;
+
+   // Estrutura organizada com divs separadas
+   let html = `<div class="sintomas-container">`;
+   html += `<div class="sintomas-botoes">`;
+   
    sintomasSet.forEach(s => {
-      html += `<button onclick="toggleSintoma(this,'${s}')">${s}</button>`;
+      html += `<button class="btn-sintoma" onclick="toggleSintoma(this, '${s.replace(/'/g, "\\'")}')">${s}</button>`;
    });
-   html += `<br><br><button onclick="finalizarSelecao()">🔍 Diagnosticar</button></div>`;
+   
+   html += `</div>`; // fecha .sintomas-botoes
+   html += `<button class="btn-diagnosticar-acao" onclick="finalizarSelecao()">🔍 Diagnosticar</button>`;
+   html += `</div>`; // fecha .sintomas-container
+
    addMsg(html, "bot");
 }
 // ================= BOTÕES DE SINTOMAS AJUSTADOS =================
