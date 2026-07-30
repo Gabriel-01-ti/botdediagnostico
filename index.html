@@ -406,9 +406,9 @@
 @media (max-width: 480px) {
     /* ----- 1. AJUSTE DE TELA CHEIA E ALINHAMENTO ----- */
     body {
-        justify-content: space-between; /* Distribui header, conteúdo e nuvem perfeitamente */
+        justify-content: space-between;
         min-height: 100vh;
-        min-height: 100dvh; /* Garante ajuste perfeito no Chrome/Safari mobile */
+        min-height: 100dvh;
     }
 
     /* ----- 2. HEADER ELEGANTE ----- */
@@ -416,24 +416,23 @@
         flex-direction: column !important;
         align-items: center;
         justify-content: center;
-        padding: 14px 12px 10px !important;
-        gap: 10px !important;
+        padding: 16px 12px 10px !important;
+        gap: 12px !important;
         background: rgba(10, 41, 13, 0.5) !important;
         backdrop-filter: blur(10px);
-        height:200px;
     }
 
-    /* LOGO E TÍTULO DA MARCA */
+    /* LOGO E TÍTULO DA MARCA (AUMENTADOS) */
     .logo {
-        font-size: 1.6rem !important;
+        font-size: 1.95rem !important; /* Marca bem maior e imponente */
         font-weight: 800;
         letter-spacing: -0.5px;
         gap: 10px;
     }
 
     .logo img {
-        width: 36px !important;
-        height: 36px !important;
+        width: 46px !important; /* Ícone da logo maior */
+        height: 46px !important;
         border-radius: 10px;
     }
 
@@ -451,11 +450,12 @@
     nav a {
         font-size: 0.75rem !important;
         padding: 6px 10px !important;
-        border-radius: 20px;
+        border-radius: 10px;
         background: rgba(255, 255, 255, 0.08);
         border: 1px solid rgba(255, 255, 255, 0.12);
         white-space: nowrap;
         font-weight: 500;
+        margin top:15px;
     }
 
     .btn-nav-login {
@@ -466,80 +466,83 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
-    /* ----- 3. CONTEÚDO PRINCIPAL (HERO) ----- */
+    /* ----- 3. CONTEÚDO PRINCIPAL (TEXTO EM PARÁGRAFO) ----- */
     .hero-container {
         flex-direction: column !important;
-        padding: 15px 20px 0px !important;
+        padding: 15px 22px 0px !important;
         margin: 0 auto !important;
         justify-content: center;
         align-items: center;
-        gap: 12px !important;
-        flex: 1; /* Ocupa o centro da tela de forma fluida */
+        gap: 16px !important;
+        flex: 1;
         width: 100%;
     }
 
     .content-area {
         max-width: 100%;
-        text-align: center;
+        text-align: left !important; /* ALINHAMENTO À ESQUERDA COMO PARÁGRAFO */
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start !important; /* Alinha o botão à esquerda com o texto */
     }
 
-    /* TÍTULO PRINCIPAL (FONTE REFINADA) */
+    /* TÍTULO PRINCIPAL (AUMENTADO E ALINHADO À ESQUERDA) */
     .content-area h1 {
-        font-size: 1.45rem !important;
+        font-size: 1.7rem !important; /* Título maior */
         font-weight: 800;
-        line-height: 1.25;
+        line-height: 1.2;
         letter-spacing: -0.3px;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        text-align: left !important;
     }
 
     /* TEXTO DESCRITIVO */
     .content-area p {
-        font-size: 0.88rem !important;
-        line-height: 1.45;
+        font-size: 0.92rem !important;
+        line-height: 1.5;
         opacity: 0.9;
-        margin-bottom: 18px;
-        max-width: 310px;
+        margin-bottom: 20px;
+        max-width: 100%;
+        text-align: left !important;
     }
 
-    /* BOTÃO PRINCIPAL "COMEÇAR AGORA" */
+    /* BOTÃO PRINCIPAL */
     .btn-main {
-        padding: 13px 32px !important;
-        font-size: 0.92rem !important;
+        padding: 14px 34px !important;
+        font-size: 0.95rem !important;
         font-weight: 700;
         border-radius: 30px;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        align-self: flex-start; /* Mantém o botão alinhado com o texto */
     }
 
     /* ----- 4. PLANTA (SVG) COLADA NA NUVEM ----- */
     .illustration-area {
         margin-top: 10px !important;
-        margin-bottom: -6px !important; /* Puxa a planta pra pousar exatamente na nuvem */
+        margin-bottom: -6px !important;
         padding-bottom: 0 !important;
         display: flex;
         justify-content: center;
         align-items: flex-end;
+        width: 100%;
     }
 
     .agro-svg {
-        width: 85px !important; /* Tamanho proporcional */
+        width: 85px !important;
         height: auto;
         filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
     }
 
     /* ----- 5. NUVEM BRANCA (RODAPÉ) ----- */
     .clouds-bg {
-        height: 60px !important; /* Aumentado para a nuvem aparecer bem na base */
+        height: 60px !important;
         width: 100%;
         margin-top: 0 !important;
         position: relative;
         z-index: 1;
     }
 
-    /* AJUSTE CASO ESTEJA NO PAINEL/CADASTRO */
     .card-inline {
         margin-top: 5px !important;
         padding: 18px 14px;
