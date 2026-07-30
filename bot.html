@@ -70,7 +70,10 @@
         <small>Agro Inova © 2026 🌱 Tecnologia em favor do campo</small>
     </footer>
 
-    <script src="bot.js"></script>
+    <script type="module" src="bot.js">
+      import { salvarDiagnosticoFirestore } from "./firebase-db.js";
+      
+    </script>
 </body>
 </html>
 
