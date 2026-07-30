@@ -401,88 +401,87 @@
     }
 }
 
+
 /* ================= AJUSTES EXCLUSIVOS PARA CELULARES MUITO PEQUENOS (ATÉ 480PX) ================= */
 
 @media (max-width: 480px) {
-    /* 1. Removido padding inferior desnecessário do Header */
+    /* 1. HEADER AMPLIADO */
     header {
-        padding: 8px 10px 4px;
-        gap: 6px;
+        padding: 16px 14px 12px; /* Mais espaço interno no cabeçalho */
+        gap: 10px;
     }
 
+    /* 2. LOGO AUMENTADA */
     .logo {
-        font-size: 1.15rem;
-        gap: 6px;
-    }
-
-    .logo img {
-        width: 28px;
-        height: 28px;
-    }
-
-    /* 2. Menu compacto em linha única/pílulas */
-    nav ul {
-        gap: 3px;
-    }
-
-    nav a {
-        font-size: 0.7rem;
-        padding: 4px 8px;
-        border-radius: 12px;
-    }
-
-    .btn-nav-login {
-        padding: 4px 10px !important;
-        font-size: 0.72rem !important;
-    }
-
-    .perfil-topo {
-        padding: 2px 6px;
-        max-width: 100px;
-    }
-
-    .perfil-topo img {
-        width: 18px;
-        height: 18px;
-    }
-
-    .perfil-topo span {
-        font-size: 0.68rem;
-    }
-
-    /* 3. AQUI ESTÁ O SEGREDO: Colamos a .hero-container no header sem folgas */
-    .hero-container {
-        padding: 5px 12px 0px; /* Zera espaços superiores extras */
-        margin-top: 0px;
-        margin-bottom: 0px;
+        font-size: 1.45rem; /* Nome da marca maior */
         gap: 8px;
     }
 
-    .content-area {
-        margin-top: 5px; /* Controla a aproximação exata */
+    .logo img {
+        width: 36px;  /* Imagem da logo maior */
+        height: 36px;
+    }
+
+    /* 3. MENU / BOTOES LIGEIRAMENTE MAIORES */
+    nav ul {
+        gap: 5px;
+    }
+
+    nav a {
+        font-size: 0.78rem;
+        padding: 6px 10px;
+        border-radius: 14px;
+    }
+
+    .btn-nav-login {
+        padding: 6px 14px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .perfil-topo {
+        padding: 4px 8px;
+        max-width: 120px;
+    }
+
+    .perfil-topo img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .perfil-topo span {
+        font-size: 0.72rem;
+    }
+
+    /* 4. TÍTULO E CONTEÚDO AUMENTADOS */
+    .hero-container {
+        padding: 15px 14px 0px; /* Distância confortável do header */
+        margin-top: 0;
+        margin-bottom: 0;
+        gap: 12px;
     }
 
     .content-area h1 {
-        font-size: 1.25rem;
-        margin-bottom: 6px;
+        font-size: 1.55rem; /* Título bem visível e impactante */
+        line-height: 1.25;
+        margin-bottom: 10px;
     }
 
     .content-area p {
-        font-size: 0.8rem;
-        margin-bottom: 12px;
+        font-size: 0.88rem; /* Texto descritivo um pouco maior */
+        margin-bottom: 18px;
     }
 
     .btn-main {
-        padding: 10px 16px;
-        font-size: 0.85rem;
+        padding: 12px 22px;
+        font-size: 0.92rem;
     }
 
     .agro-svg {
-        width: 80px; /* Reduzido para caber melhor na tela sem empurrar o layout */
+        width: 95px; /* Tamanho proporcional para não quebrar a tela */
     }
 
     .clouds-bg {
-        height: 25px;
+        height: 30px;
     }
 }
         
