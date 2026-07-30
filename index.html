@@ -1,896 +1,873 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-    <title>AgroInova 🌱 | Tecnologia no Campo</title>
-    <style>
-        /* ================= RESET E CORES ================= */
-        :root {
-            --green-dark: #0f3d13;
-            --green-mid: #1b5e20;
-            --green-light: #2e7d32;
-            --accent-green: #81c784;
-            --white: #ffffff;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>AgroInova 🌱 | Tecnologia no Campo</title>
+    <style>
+        /* ================= RESET E CORES ================= */
+        :root {
+            --green-dark: #0f3d13;
+            --green-mid: #1b5e20;
+            --green-light: #2e7d32;
+            --accent-green: #81c784;
+            --white: #ffffff;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            /* Gradiente ajustado para visualização suave no Desktop e Mobile */
-            background: radial-gradient(circle at 50% 30%, #2e7d32 0%, #1b5e20 50%, #0a290d 100%);
-            color: var(--white);
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            position: relative;
-        }
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            /* Gradiente ajustado para visualização suave no Desktop e Mobile */
+            background: radial-gradient(circle at 50% 30%, #2e7d32 0%, #1b5e20 50%, #0a290d 100%);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-        h1, h2, .logo {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+        h1, h2, .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
 
-        /* ================= HEADER ================= */
-        header {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto 0 auto;
-    padding: 12px 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    
-    /* Efeito Glassmorphism (Vidro Fosco) */
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 60px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
+        /* ================= HEADER ================= */
+        header {
+            width: 100%;
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
 
-/* LOGO */
-.logo {
-    font-size: 1.35rem;
-    font-weight: 400;
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    letter-spacing: -0.5px;
-}
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-.logo-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px;
-    box-shadow: 0 0 10px rgba(129, 199, 132, 0.4);
-}
-
-.logo img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.logo strong {
+        .logo img {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .logo strong {
     color: var(--accent-green);
     font-weight: 800;
 }
 
-/* NAVEGAÇÃO */
-nav ul {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    list-style: none;
-}
+        nav ul { display: flex; align-items: center; gap: 24px; list-style: none; }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            opacity: 0.85;
+        }
+        nav a:hover { opacity: 1; color: var(--accent-green); }
 
-nav a {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    padding: 8px 16px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-}
+        .btn-nav-login {
+            background: #ffffff;
+            color: #1b5e20 !important;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+        .btn-nav-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: #f0f7f1;
+        }
 
-nav a:hover, nav a.active {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.15);
-}
+        /* PERFIL NA TOPBAR */
+        .perfil-topo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .perfil-topo:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        .perfil-topo img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .perfil-topo span {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
 
-/* BOTÃO ENTRAR */
-.btn-nav-login {
-    background: #ffffff !important;
-    color: #0f3d13 !important;
-    padding: 9px 24px !important;
-    border-radius: 30px !important;
-    font-weight: 700 !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    margin-left: 8px;
-}
+        /* ================= HERO SECTION ================= */
+        .hero-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 80px;
+            width: 100%;
+        }
 
-.btn-nav-login:hover {
-    background: #e8f5e9 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
+        /* Expansão e centralização quando o Dashboard/Painel está ativo */
+        .hero-container.dashboard-active {
+            justify-content: center;
+        }
 
-/* PERFIL LOGADO NO TOPO */
-.perfil-topo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 4px 14px 4px 6px;
-    border-radius: 30px;
-    cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: 0.3s ease;
-}
+        .content-area {
+            max-width: 520px;
+            width: 100%;
+            z-index: 5;
+            transition: all 0.3s ease;
+        }
 
-.perfil-topo:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
+        .hero-container.dashboard-active .content-area {
+            max-width: 680px; /* Expandido para dar espaço ao painel */
+            margin: 0 auto;
+        }
 
-.perfil-topo img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+        .content-area h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
 
-.perfil-topo span {
-    font-size: 0.85rem;
-    font-weight: 600;
-}
+        .content-area p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
 
-        /* ================= HERO SECTION ================= */
-        .hero-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 8%;
-            position: relative;
-            z-index: 2;
-            margin-bottom: 80px;
-            width: 100%;
-        }
+        .btn-main {
+            padding: 16px 40px;
+            background: white;
+            color: #1b5e20;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+        .btn-main:hover {
+            transform: scale(1.05);
+            background: #f0f7f1;
+        }
 
-        /* Expansão e centralização quando o Dashboard/Painel está ativo */
-        .hero-container.dashboard-active {
-            justify-content: center;
-        }
+        /* Ilustração Agro */
+        .illustration-area {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 4%;
+        }
 
-        .content-area {
-            max-width: 520px;
-            width: 100%;
-            z-index: 5;
-            transition: all 0.3s ease;
-        }
+        .agro-svg {
+            width: 260px;
+            height: auto;
+            position: relative;
+            z-index: 3;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+        }
 
-        .hero-container.dashboard-active .content-area {
-            max-width: 680px; /* Expandido para dar espaço ao painel */
-            margin: 0 auto;
-        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
 
-        .content-area h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-        }
+        /* Nuvens Decorativas */
+        .clouds-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,256C960,245,1056,203,1152,186.7C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") bottom/cover no-repeat;
+            z-index: 1;
+        }
 
-        .content-area p {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            opacity: 0.9;
-            margin-bottom: 32px;
-        }
+        /* ================= FORMULÁRIOS E PAINEL ================= */
+        .card-inline {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 15px;
+            width: 100%;
+        }
 
-        .btn-main {
-            padding: 16px 40px;
-            background: white;
-            color: #1b5e20;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-        }
-        .btn-main:hover {
-            transform: scale(1.05);
-            background: #f0f7f1;
-        }
+        .input-group.modern { margin-bottom: 15px; }
+        .input-group.modern input {
+            width: 100%; padding: 12px 16px; border-radius: 25px; border: none;
+            background: rgba(255, 255, 255, 0.95); font-size: 0.9rem; outline: none; color: #333;
+        }
 
-        /* Ilustração Agro */
-        .illustration-area {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 4%;
-        }
+        .primary-btn {
+            width: 100%; padding: 12px; background: #2e7d32; color: white; border: none;
+            border-radius: 25px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
+        .primary-btn:hover { background: #1b5e20; }
 
-        .agro-svg {
-            width: 260px;
-            height: auto;
-            position: relative;
-            z-index: 3;
-            animation: float 4s ease-in-out infinite;
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
-        }
+        .google-btn {
+            width: 100%; padding: 10px; background: white; border: none;
+            border-radius: 25px; display: flex; align-items: center; justify-content: center;
+            gap: 10px; cursor: pointer; font-weight: 500; color: #333; margin-bottom: 15px;
+        }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
+        .divider { margin: 15px 0; text-align: center; font-size: 0.8rem; opacity: 0.7; }
 
-        /* Nuvens Decorativas */
-        .clouds-bg {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,256C960,245,1056,203,1152,186.7C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") bottom/cover no-repeat;
-            z-index: 1;
-        }
+        .dashboard-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 15px; 
+            margin-top: 20px; 
+        }
+        
+        .service-card {
+            display: flex; align-items: center; gap: 14px; padding: 16px;
+            background: rgba(255, 255, 255, 0.15); border-radius: 14px; text-decoration: none;
+            color: white; border: 1px solid rgba(255, 255, 255, 0.15); transition: 0.3s;
+        }
+        .service-card:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-3px); }
 
-        /* ================= FORMULÁRIOS E PAINEL ================= */
-        .card-inline {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(15px);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            margin-top: 15px;
-            width: 100%;
-        }
+        .btn-logout { margin-top: 20px; width: 100%; padding: 10px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.4); color: white; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+        .btn-logout:hover { background: rgba(255, 0, 0, 0.2); border-color: rgba(255, 100, 100, 0.6); }
 
-        .input-group.modern { margin-bottom: 15px; }
-        .input-group.modern input {
-            width: 100%; padding: 12px 16px; border-radius: 25px; border: none;
-            background: rgba(255, 255, 255, 0.95); font-size: 0.9rem; outline: none; color: #333;
-        }
+        /* ================= MEDIA QUERIES (RESPONSIVIDADE AJUSTADA) ================= */
 
-        .primary-btn {
-            width: 100%; padding: 12px; background: #2e7d32; color: white; border: none;
-            border-radius: 25px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: 0.3s;
-        }
-        .primary-btn:hover { background: #1b5e20; }
+        /* Tablets e Telas Médias */
+        @media (max-width: 1024px) {
+            header { padding: 20px 5%; }
+            .content-area h1 { font-size: 2.2rem; }
+            .agro-svg { width: 210px; }
+        }
 
-        .google-btn {
-            width: 100%; padding: 10px; background: white; border: none;
-            border-radius: 25px; display: flex; align-items: center; justify-content: center;
-            gap: 10px; cursor: pointer; font-weight: 500; color: #333; margin-bottom: 15px;
-        }
-
-        .divider { margin: 15px 0; text-align: center; font-size: 0.8rem; opacity: 0.7; }
-
-        .dashboard-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-            gap: 15px; 
-            margin-top: 20px; 
-        }
-        
-        .service-card {
-            display: flex; align-items: center; gap: 14px; padding: 16px;
-            background: rgba(255, 255, 255, 0.15); border-radius: 14px; text-decoration: none;
-            color: white; border: 1px solid rgba(255, 255, 255, 0.15); transition: 0.3s;
-        }
-        .service-card:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-3px); }
-
-        .btn-logout { margin-top: 20px; width: 100%; padding: 10px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.4); color: white; border-radius: 20px; cursor: pointer; transition: 0.3s; }
-        .btn-logout:hover { background: rgba(255, 0, 0, 0.2); border-color: rgba(255, 100, 100, 0.6); }
-
-        /* ================= MEDIA QUERIES (RESPONSIVIDADE AJUSTADA) ================= */
-
-        /* Tablets e Telas Médias */
-        @media (max-width: 1024px) {
-            header { padding: 20px 5%; }
-            .content-area h1 { font-size: 2.2rem; }
-            .agro-svg { width: 210px; }
-        }
-
-       /* ================= AJUSTES RESPONSIVOS EXCLUSIVOS PARA CELULAR ================= */
+       /* ================= AJUSTES RESPONSIVOS EXCLUSIVOS PARA CELULAR ================= */
 
 @media (max-width: 768px) {
-    /* ----- HEADER NO CELULAR ----- */
-   header {
-        width: 94%;
-        margin: 10px auto;
-        padding: 10px 16px;
-        border-radius: 24px;
-        flex-direction: column;
-        gap: 10px;
-    }
+    /* ----- HEADER NO CELULAR ----- */
+    header {
+        padding: 14px 16px 10px;
+        flex-direction: column;
+        gap: 12px;
+        background: rgba(10, 41, 13, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
 
-    .logo {
-        font-size: 1.25rem;
-    }
+    /* Logo maior e mais bonito */
+    .logo {
+        font-size: 1.4rem;
+        font-weight: 800;
+        gap: 8px;
+        letter-spacing: -0.3px;
+    }
 
-    .logo-icon {
-        width: 32px;
-        height: 32px;
-    }
+    .logo img {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
 
-    nav ul {
-        width: 100%;
-        justify-content: center;
-        gap: 2px;
-        flex-wrap: wrap;
-    }
+    /* ----- NAVEGAÇÃO (NAV) ----- */
+    nav {
+        width: 100%;
+    }
 
-    nav a {
-        font-size: 0.78rem;
-        padding: 5px 10px;
-        border-radius: 12px;
-    }
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+    }
 
-    .btn-nav-login {
-        padding: 5px 14px !important;
-        font-size: 0.78rem !important;
-        margin-left: 0;
-    }
-    nav a:active {
-        background: rgba(255, 255, 255, 0.25);
-    }
+    /* Links transformados em botões touch amigáveis */
+    nav a {
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: inline-block;
+    }
 
-    
-    /* User Tag (Perfil Logado) */
-    .perfil-topo {
-        padding: 4px 10px;
-        gap: 6px;
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        max-width: 130px;
-    }
+    nav a:active {
+        background: rgba(255, 255, 255, 0.25);
+    }
 
-    .perfil-topo img {
-        width: 22px;
-        height: 22px;
-    }
+    /* Botão de Entrar */
+    .btn-nav-login {
+        padding: 6px 16px !important;
+        font-size: 0.8rem !important;
+        background: #ffffff !important;
+        color: #1b5e20 !important;
+    }
 
-    .perfil-topo span {
-        font-size: 0.75rem;
-        font-weight: 700;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+    /* User Tag (Perfil Logado) */
+    .perfil-topo {
+        padding: 4px 10px;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        max-width: 130px;
+    }
 
-    /* ----- CORPO / HERO E NUVEM ----- */
-    .hero-container {
-        padding: 10px 16px 0px;
-        margin-bottom: 0px;
-        gap: 10px;
-    }
+    .perfil-topo img {
+        width: 22px;
+        height: 22px;
+    }
 
-    .content-area h1 {
-        font-size: 1.55rem;
-        line-height: 1.2;
-        margin-bottom: 8px;
-    }
+    .perfil-topo span {
+        font-size: 0.75rem;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-    .content-area p {
-        font-size: 0.88rem;
-        line-height: 1.4;
-        margin-bottom: 16px;
-    }
+    /* ----- CORPO / HERO E NUVEM ----- */
+    .hero-container {
+        padding: 10px 16px 0px;
+        margin-bottom: 0px;
+        gap: 10px;
+    }
 
-    .btn-main {
-        width: 100%;
-        max-width: 280px;
-        padding: 12px 20px;
-        font-size: 0.9rem;
-    }
+    .content-area h1 {
+        font-size: 1.55rem;
+        line-height: 1.2;
+        margin-bottom: 8px;
+    }
 
-    .illustration-area {
-        margin-top: 5px;
-    }
+    .content-area p {
+        font-size: 0.88rem;
+        line-height: 1.4;
+        margin-bottom: 16px;
+    }
 
-    .agro-svg {
-        width: 110px;
-    }
+    .btn-main {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
 
-    .card-inline {
-        padding: 16px 12px;
-        border-radius: 16px;
-    }
+    .illustration-area {
+        margin-top: 5px;
+    }
 
-    /* Nuvem puxada pra cima no final da tela */
-    .clouds-bg {
-        height: 45px;
-        margin-top: auto;
-    }
+    .agro-svg {
+        width: 110px;
+    }
+
+    .card-inline {
+        padding: 16px 12px;
+        border-radius: 16px;
+    }
+
+    /* Nuvem puxada pra cima no final da tela */
+    .clouds-bg {
+        height: 45px;
+        margin-top: auto;
+    }
 }
 
 /* ================= AJUSTES EXCLUSIVOS PARA CELULARES (ATÉ 480PX) ================= */
 
 @media (max-width: 480px) {
-    /* ----- 1. AJUSTE DE TELA CHEIA E ALINHAMENTO ----- */
-    body {
-        justify-content: space-between;
-        min-height: 100vh;
-        min-height: 100dvh;
-    }
+    /* ----- 1. AJUSTE DE TELA CHEIA E ALINHAMENTO ----- */
+    body {
+        justify-content: space-between;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
 
-    /* ----- 2. HEADER ELEGANTE ----- */
-    header {
-        flex-direction: column !important;
-        align-items: center;
-        justify-content: center;
-        padding: 16px 12px 10px !important;
-        gap: 12px !important;
-        background: rgba(10, 41, 13, 0.5) !important;
-        backdrop-filter: blur(10px);
-    }
+    /* ----- 2. HEADER ELEGANTE ----- */
+    header {
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 12px 10px !important;
+        gap: 12px !important;
+        background: rgba(10, 41, 13, 0.5) !important;
+        backdrop-filter: blur(10px);
+    }
 
-    /* LOGO E TÍTULO DA MARCA (AUMENTADOS) */
-    .logo {
-        font-size: 1.95rem !important; /* Marca bem maior e imponente */
-        font-weight: 800;
-        letter-spacing: -0.5px;
-        gap: 10px;
-    }
+    /* LOGO E TÍTULO DA MARCA (AUMENTADOS) */
+    .logo {
+        font-size: 1.95rem !important; /* Marca bem maior e imponente */
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        gap: 10px;
+    }
 
-    .logo img {
-        width: 46px !important; /* Ícone da logo maior */
-        height: 46px !important;
-        border-radius: 10px;
-    }
+    .logo img {
+        width: 46px !important; /* Ícone da logo maior */
+        height: 46px !important;
+        border-radius: 10px;
+    }
 
-    /* NAVEGAÇÃO / BOTÕES */
-    nav ul {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        justify-content: center;
-        align-items: center;
-        gap: 5px !important;
-        width: 100%;
-    }
+    /* NAVEGAÇÃO / BOTÕES */
+    nav ul {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: center;
+        align-items: center;
+        gap: 5px !important;
+        width: 100%;
+    }
 
-    nav a {
-        font-size: 0.75rem !important;
-        padding: 6px 10px !important;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        white-space: nowrap;
-        font-weight: 500;
-        margin top:15px;
-    }
+    nav a {
+        font-size: 0.75rem !important;
+        padding: 6px 10px !important;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        white-space: nowrap;
+        font-weight: 500;
+        margin top:15px;
+    }
 
-    .btn-nav-login {
-        padding: 6px 14px !important;
-        font-size: 0.78rem !important;
-        background: #ffffff !important;
-        color: #1b5e20 !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
+    .btn-nav-login {
+        padding: 6px 14px !important;
+        font-size: 0.78rem !important;
+        background: #ffffff !important;
+        color: #1b5e20 !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
 
-    /* ----- 3. CONTEÚDO PRINCIPAL (TEXTO EM PARÁGRAFO) ----- */
-    .hero-container {
-        flex-direction: column !important;
-        padding: 15px 22px 0px !important;
-        margin: 0 auto !important;
-        justify-content: center;
-        align-items: center;
-        gap: 16px !important;
-        flex: 1;
-        width: 100%;
-    }
+    /* ----- 3. CONTEÚDO PRINCIPAL (TEXTO EM PARÁGRAFO) ----- */
+    .hero-container {
+        flex-direction: column !important;
+        padding: 15px 22px 0px !important;
+        margin: 0 auto !important;
+        justify-content: center;
+        align-items: center;
+        gap: 16px !important;
+        flex: 1;
+        width: 100%;
+    }
 
-    .content-area {
-        max-width: 100%;
-        text-align: left !important; /* ALINHAMENTO À ESQUERDA COMO PARÁGRAFO */
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start !important; /* Alinha o botão à esquerda com o texto */
-    }
+    .content-area {
+        max-width: 100%;
+        text-align: left !important; /* ALINHAMENTO À ESQUERDA COMO PARÁGRAFO */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start !important; /* Alinha o botão à esquerda com o texto */
+    }
 
-    /* TÍTULO PRINCIPAL (AUMENTADO E ALINHADO À ESQUERDA) */
-    .content-area h1 {
-        font-size: 1.7rem !important; /* Título maior */
-        font-weight: 800;
-        line-height: 1.2;
-        letter-spacing: -0.3px;
-        margin-bottom: 12px;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        text-align: left !important;
-    }
+    /* TÍTULO PRINCIPAL (AUMENTADO E ALINHADO À ESQUERDA) */
+    .content-area h1 {
+        font-size: 1.7rem !important; /* Título maior */
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: -0.3px;
+        margin-bottom: 12px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        text-align: left !important;
+    }
 
-    /* TEXTO DESCRITIVO */
-    .content-area p {
-        font-size: 0.92rem !important;
-        line-height: 1.5;
-        opacity: 0.9;
-        margin-bottom: 20px;
-        max-width: 100%;
-        text-align: left !important;
-    }
+    /* TEXTO DESCRITIVO */
+    .content-area p {
+        font-size: 0.92rem !important;
+        line-height: 1.5;
+        opacity: 0.9;
+        margin-bottom: 20px;
+        max-width: 100%;
+        text-align: left !important;
+    }
 
-    /* BOTÃO PRINCIPAL */
-    .btn-main {
-        padding: 14px 34px !important;
-        font-size: 0.95rem !important;
-        font-weight: 700;
-        border-radius: 30px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        align-self: flex-start; /* Mantém o botão alinhado com o texto */
-    }
+    /* BOTÃO PRINCIPAL */
+    .btn-main {
+        padding: 14px 34px !important;
+        font-size: 0.95rem !important;
+        font-weight: 700;
+        border-radius: 30px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        align-self: flex-start; /* Mantém o botão alinhado com o texto */
+    }
 
-    /* ----- 4. PLANTA (SVG) COLADA NA NUVEM ----- */
-    .illustration-area {
-        margin-top: 10px !important;
-        margin-bottom: -6px !important;
-        padding-bottom: 0 !important;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        width: 100%;
-    }
+    /* ----- 4. PLANTA (SVG) COLADA NA NUVEM ----- */
+    .illustration-area {
+        margin-top: 10px !important;
+        margin-bottom: -6px !important;
+        padding-bottom: 0 !important;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+    }
 
-    .agro-svg {
-        width: 85px !important;
-        height: auto;
-        filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
-    }
+    .agro-svg {
+        width: 85px !important;
+        height: auto;
+        filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+    }
 
-    /* ----- 5. NUVEM BRANCA (RODAPÉ) ----- */
-    .clouds-bg {
-        height: 60px !important;
-        width: 100%;
-        margin-top: 0 !important;
-        position: relative;
-        z-index: 1;
-    }
+    /* ----- 5. NUVEM BRANCA (RODAPÉ) ----- */
+    .clouds-bg {
+        height: 60px !important;
+        width: 100%;
+        margin-top: 0 !important;
+        position: relative;
+        z-index: 1;
+    }
 
-    .card-inline {
-        margin-top: 5px !important;
-        padding: 18px 14px;
-    }
+    .card-inline {
+        margin-top: 5px !important;
+        padding: 18px 14px;
+    }
 }
-    </style>
+    </style>
 </head>
 <body>
 
-    <header>
-    <a href="index.html" class="logo">
-        <div class="logo-icon">
-            <img src="logo.jpg" alt="Logo AgroInova">
-        </div>
-        <span>Agro<strong>Inova</strong></span>
-    </a>
-    
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">Início</a></li>
-            <li><a href="sobreprojeto.html">Sobre</a></li>
-            <li><a href="#" onclick="verDiagnosticos()">Histórico</a></li>
-            <li><a href="#" onclick="openContact()">Contato</a></li>
-            
-            <li id="userProfile" style="display:none;">
-                <div class="perfil-topo" onclick="openProfileModal()">
-                    <img id="userPhoto" src="logo.jpg" alt="Foto Perfil">
-                    <span id="userName">Usuário</span>
-                </div>
-            </li>
-            <li><a href="#" id="navLoginBtn" onclick="showAuth()" class="btn-nav-login">Entrar</a></li>
-        </ul>
-    </nav>
-</header>
-    <main class="hero-container" id="mainHeroContainer">
-        <div class="content-area">
-            
-            <article id="welcomeView" class="view-step">
-                <h1>🌱 SUA LAVOURA NA ERA DIGITAL</h1>
-                <p>Diagnóstico inteligente utilizando IA para identificar doenças e pragas em plantas de forma simples e rápida.</p>
-                <button class="btn-main" id="ctaBtn" onclick="showAuth()">Começar Agora</button>
-            </article>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.jpg" alt="Logo AgroInova">
+            <span><strong>Agro</strong>Inova</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobreprojeto.html">Sobre</a></li>
+                <li><a href="#" onclick="verDiagnosticos()">Histórico</a></li>
+                <li><a href="#" onclick="openContact()">Contato</a></li>
+                
+                <li id="userProfile" style="display:none;">
+                    <div class="perfil-topo" onclick="openProfileModal()">
+                        <img id="userPhoto" src="logo.jpg" alt="Foto Perfil">
+                        <span id="userName">Usuário</span>
+                    </div>
+                </li>
+                <li><a href="#" id="navLoginBtn" onclick="showAuth()" class="btn-nav-login">Entrar</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <article id="auth" class="view-step card-inline" style="display:none;">
-                <h2 id="formTitle">Bem-vindo ao AgroInova 👋</h2>
-                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 15px;">Acesse sua conta para continuar</p>
+    <main class="hero-container" id="mainHeroContainer">
+        <div class="content-area">
+            
+            <article id="welcomeView" class="view-step">
+                <h1>🌱 SUA LAVOURA NA ERA DIGITAL</h1>
+                <p>Diagnóstico inteligente utilizando IA para identificar doenças e pragas em plantas de forma simples e rápida.</p>
+                <button class="btn-main" id="ctaBtn" onclick="showAuth()">Começar Agora</button>
+            </article>
 
-                <button class="google-btn" onclick="loginGoogle()">
-                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style="width: 18px;">
-                    <span>Continuar com Google</span>
-                </button>
+            <article id="auth" class="view-step card-inline" style="display:none;">
+                <h2 id="formTitle">Bem-vindo ao AgroInova 👋</h2>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 15px;">Acesse sua conta para continuar</p>
 
-                <div class="divider"><span>ou e-mail</span></div>
+                <button class="google-btn" onclick="loginGoogle()">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style="width: 18px;">
+                    <span>Continuar com Google</span>
+                </button>
 
-                <div class="input-group modern"><input type="email" id="email" placeholder="E-mail"></div>
-                <div class="input-group modern" style="position: relative;">
-                    <input type="password" id="password" placeholder="Senha">
-                    <span onclick="togglePassword('password')" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #333;">👁️</span>
-                </div>
+                <div class="divider"><span>ou e-mail</span></div>
 
-                <div style="text-align: right; margin-top: -5px; margin-bottom: 12px;">
-                    <span onclick="recuperarSenha()" style="font-size: 0.75rem; cursor: pointer; text-decoration: underline;">Esqueceu a senha?</span>
-                </div>
+                <div class="input-group modern"><input type="email" id="email" placeholder="E-mail"></div>
+                <div class="input-group modern" style="position: relative;">
+                    <input type="password" id="password" placeholder="Senha">
+                    <span onclick="togglePassword('password')" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #333;">👁️</span>
+                </div>
 
-                <div class="input-group modern" id="confirmGroup" style="display:none; position: relative;">
-                    <input type="password" id="confirmPassword" placeholder="Confirme a Senha">
-                    <span onclick="togglePassword('confirmPassword')" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #333;">👁️</span>
-                </div>
+                <div style="text-align: right; margin-top: -5px; margin-bottom: 12px;">
+                    <span onclick="recuperarSenha()" style="font-size: 0.75rem; cursor: pointer; text-decoration: underline;">Esqueceu a senha?</span>
+                </div>
 
-                <button onclick="auth()" id="mainBtn" class="primary-btn">Entrar</button>
+                <div class="input-group modern" id="confirmGroup" style="display:none; position: relative;">
+                    <input type="password" id="confirmPassword" placeholder="Confirme a Senha">
+                    <span onclick="togglePassword('confirmPassword')" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #333;">👁️</span>
+                </div>
 
-                <div style="text-align: center; margin-top: 12px; font-size: 0.8rem;">
-                    <span onclick="toggleForm()" id="toggleText" style="cursor: pointer; text-decoration: underline;">Não tem conta? Cadastre-se</span>
-                </div>
-            </article>
+                <button onclick="auth()" id="mainBtn" class="primary-btn">Entrar</button>
 
-            <article class="view-step card-inline" id="dashboard" style="display:none;">
-                <h2>Painel do Produtor 🌱</h2>
-                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 15px;">Selecione uma ferramenta abaixo</p>
+                <div style="text-align: center; margin-top: 12px; font-size: 0.8rem;">
+                    <span onclick="toggleForm()" id="toggleText" style="cursor: pointer; text-decoration: underline;">Não tem conta? Cadastre-se</span>
+                </div>
+            </article>
 
-                <div class="dashboard-grid">
-                    <a href="sobre.html" class="service-card">
-                        <span style="font-size: 1.5rem;">📷</span>
-                        <div><strong>Diagnóstico por Imagem</strong><p style="font-size: 0.75rem; opacity: 0.8;">IA analisa fotos da folha</p></div>
-                    </a>
-                    <a href="bot.html" class="service-card">
-                        <span style="font-size: 1.5rem;">💬</span>
-                        <div><strong>Falar com Assistente</strong><p style="font-size: 0.75rem; opacity: 0.8;">Chat especializado em agro</p></div>
-                    </a>
-                </div>
-                <button class="btn-logout" onclick="logout()">Sair da conta</button>
-            </article>
+            <article class="view-step card-inline" id="dashboard" style="display:none;">
+                <h2>Painel do Produtor 🌱</h2>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 15px;">Selecione uma ferramenta abaixo</p>
 
-        </div>
+                <div class="dashboard-grid">
+                    <a href="sobre.html" class="service-card">
+                        <span style="font-size: 1.5rem;">📷</span>
+                        <div><strong>Diagnóstico por Imagem</strong><p style="font-size: 0.75rem; opacity: 0.8;">IA analisa fotos da folha</p></div>
+                    </a>
+                    <a href="bot.html" class="service-card">
+                        <span style="font-size: 1.5rem;">💬</span>
+                        <div><strong>Falar com Assistente</strong><p style="font-size: 0.75rem; opacity: 0.8;">Chat especializado em agro</p></div>
+                    </a>
+                </div>
+                <button class="btn-logout" onclick="logout()">Sair da conta</button>
+            </article>
 
-        <div class="illustration-area" id="illustrationArea">
-            <svg class="agro-svg" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M60 160L70 210H130L140 160H60Z" fill="#FFFFFF" fill-opacity="0.9"/>
-                <path d="M55 150H145V160H55V150Z" fill="#81C784"/>
-                
-                <path d="M100 150C100 110 100 80 100 50" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
-                
-                <path d="M100 110C70 110 50 85 45 70C65 70 90 85 100 110Z" fill="#81C784"/>
-                <path d="M100 110C70 110 50 85 45 70" stroke="#FFFFFF" stroke-width="2"/>
+        </div>
 
-                <path d="M100 90C130 90 150 65 155 50C135 50 110 65 100 90Z" fill="#81C784"/>
-                <path d="M100 90C130 90 150 65 155 50" stroke="#FFFFFF" stroke-width="2"/>
+        <div class="illustration-area" id="illustrationArea">
+            <svg class="agro-svg" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M60 160L70 210H130L140 160H60Z" fill="#FFFFFF" fill-opacity="0.9"/>
+                <path d="M55 150H145V160H55V150Z" fill="#81C784"/>
+                
+                <path d="M100 150C100 110 100 80 100 50" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+                
+                <path d="M100 110C70 110 50 85 45 70C65 70 90 85 100 110Z" fill="#81C784"/>
+                <path d="M100 110C70 110 50 85 45 70" stroke="#FFFFFF" stroke-width="2"/>
 
-                <path d="M100 50C90 35 95 20 100 15C105 20 110 35 100 50Z" fill="#FFFFFF"/>
-            </svg>
-        </div>
-    </main>
+                <path d="M100 90C130 90 150 65 155 50C135 50 110 65 100 90Z" fill="#81C784"/>
+                <path d="M100 90C130 90 150 65 155 50" stroke="#FFFFFF" stroke-width="2"/>
 
-    <div class="clouds-bg"></div>
+                <path d="M100 50C90 35 95 20 100 15C105 20 110 35 100 50Z" fill="#FFFFFF"/>
+            </svg>
+        </div>
+    </main>
 
-    <div id="contactModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(5px);">
-        <div style="background:white; color: #333; width:100%; max-width:400px; padding:30px; border-radius:20px; position:relative; text-align:center;">
-            <span onclick="closeContact()" style="position:absolute; top:15px; right:20px; font-size:1.5rem; cursor:pointer; color:#888;">&times;</span>
-            <h2 style="color:#1b5e20; margin-bottom:10px;">Fale Conosco 🌱</h2>
-            <p style="color:#666; margin-bottom:25px;">Escolha como deseja ser atendido:</p>
-            <a href="https://wa.me/5511999999999" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#25D366; color:white; text-decoration:none; padding:12px; border-radius:12px; font-weight:600; margin-bottom:12px;">WhatsApp</a>
-            <a href="mailto:contato@agroinova.com" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#1b5e20; color:white; text-decoration:none; padding:12px; border-radius:12px; font-weight:600;">Enviar E-mail</a>
-        </div>
-    </div>
+    <div class="clouds-bg"></div>
 
-    <div id="profileModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(5px);">
-        <div style="background:white; color: #333; width:100%; max-width:360px; padding:30px; border-radius:20px; position:relative; text-align:center; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-            <span onclick="closeProfileModal()" style="position:absolute; top:12px; right:18px; font-size:1.5rem; cursor:pointer; color:#888;">&times;</span>
-            
-            <img id="modalUserPhoto" src="logo.jpg" alt="Foto de perfil" style="width:85px; height:85px; border-radius:50%; object-fit:cover; margin-bottom:15px; border: 3px solid #2e7d32;">
-            
-            <h3 id="modalUserName" style="color:#1b5e20; font-size:1.2rem; margin-bottom:4px;">Nome do Usuário</h3>
-            <p id="modalUserEmail" style="color:#666; font-size:0.88rem; word-break: break-all; margin-bottom:20px;">email@exemplo.com</p>
+    <div id="contactModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(5px);">
+        <div style="background:white; color: #333; width:100%; max-width:400px; padding:30px; border-radius:20px; position:relative; text-align:center;">
+            <span onclick="closeContact()" style="position:absolute; top:15px; right:20px; font-size:1.5rem; cursor:pointer; color:#888;">&times;</span>
+            <h2 style="color:#1b5e20; margin-bottom:10px;">Fale Conosco 🌱</h2>
+            <p style="color:#666; margin-bottom:25px;">Escolha como deseja ser atendido:</p>
+            <a href="https://wa.me/5511999999999" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#25D366; color:white; text-decoration:none; padding:12px; border-radius:12px; font-weight:600; margin-bottom:12px;">WhatsApp</a>
+            <a href="mailto:contato@agroinova.com" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#1b5e20; color:white; text-decoration:none; padding:12px; border-radius:12px; font-weight:600;">Enviar E-mail</a>
+        </div>
+    </div>
 
-            <button onclick="logout()" style="width:100%; padding:10px; background:#d32f2f; color:white; border:none; border-radius:12px; font-weight:600; cursor:pointer; transition:0.3s;">Sair da Conta</button>
-        </div>
-    </div>
+    <div id="profileModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(5px);">
+        <div style="background:white; color: #333; width:100%; max-width:360px; padding:30px; border-radius:20px; position:relative; text-align:center; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <span onclick="closeProfileModal()" style="position:absolute; top:12px; right:18px; font-size:1.5rem; cursor:pointer; color:#888;">&times;</span>
+            
+            <img id="modalUserPhoto" src="logo.jpg" alt="Foto de perfil" style="width:85px; height:85px; border-radius:50%; object-fit:cover; margin-bottom:15px; border: 3px solid #2e7d32;">
+            
+            <h3 id="modalUserName" style="color:#1b5e20; font-size:1.2rem; margin-bottom:4px;">Nome do Usuário</h3>
+            <p id="modalUserEmail" style="color:#666; font-size:0.88rem; word-break: break-all; margin-bottom:20px;">email@exemplo.com</p>
 
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
-      import {
-        getAuth,
-        createUserWithEmailAndPassword,
-        signInWithEmailAndPassword,
-        sendPasswordResetEmail,
-        signOut,
-        onAuthStateChanged,
-        GoogleAuthProvider,
-        signInWithPopup,
-        setPersistence,
-        browserLocalPersistence
-      } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-      import {
-        getFirestore,
-        collection,
-        getDocs,
-        query,
-        where
-      } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+            <button onclick="logout()" style="width:100%; padding:10px; background:#d32f2f; color:white; border:none; border-radius:12px; font-weight:600; cursor:pointer; transition:0.3s;">Sair da Conta</button>
+        </div>
+    </div>
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyBbvAOfk3EXyQivxcc4ylHrtuWkKyXkuDw",
-        authDomain: "sitebot-2c952.firebaseapp.com",
-        projectId: "sitebot-2c952",
-        storageBucket: "sitebot-2c952.firebasestorage.app",
-        messagingSenderId: "410409250226",
-        appId: "1:410409250226:web:6a89bc59b81011317348ab",
-        measurementId: "G-RRR7DPL1CM"
-      };
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail,
+        signOut,
+        onAuthStateChanged,
+        GoogleAuthProvider,
+        signInWithPopup,
+        setPersistence,
+        browserLocalPersistence
+      } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+        query,
+        where
+      } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-      const app = initializeApp(firebaseConfig);
-      getAnalytics(app);
-      const auth = getAuth(app);
-      const db = getFirestore(app);
+      const firebaseConfig = {
+        apiKey: "AIzaSyBbvAOfk3EXyQivxcc4ylHrtuWkKyXkuDw",
+        authDomain: "sitebot-2c952.firebaseapp.com",
+        projectId: "sitebot-2c952",
+        storageBucket: "sitebot-2c952.firebasestorage.app",
+        messagingSenderId: "410409250226",
+        appId: "1:410409250226:web:6a89bc59b81011317348ab",
+        measurementId: "G-RRR7DPL1CM"
+      };
 
-      await setPersistence(auth, browserLocalPersistence);
-      let isLogin = true;
+      const app = initializeApp(firebaseConfig);
+      getAnalytics(app);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
 
-      window.showAuth = function() {
-        document.getElementById('welcomeView').style.display = 'none';
-        document.getElementById('auth').style.display = 'block';
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('illustrationArea').style.display = 'flex';
-        document.getElementById('mainHeroContainer').classList.remove('dashboard-active');
-      };
+      await setPersistence(auth, browserLocalPersistence);
+      let isLogin = true;
 
-      window.toggleForm = function() {
-        isLogin = !isLogin;
-        document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
-        document.getElementById("mainBtn").innerText = isLogin ? "Entrar" : "Cadastrar";
-        document.getElementById("confirmGroup").style.display = isLogin ? "none" : "block";
-        document.getElementById("toggleText").innerText = isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login";
-      }
+      window.showAuth = function() {
+        document.getElementById('welcomeView').style.display = 'none';
+        document.getElementById('auth').style.display = 'block';
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('illustrationArea').style.display = 'flex';
+        document.getElementById('mainHeroContainer').classList.remove('dashboard-active');
+      };
 
-      window.togglePassword = function(id) {
-        const input = document.getElementById(id);
-        input.type = input.type === "password" ? "text" : "password";
-      }
+      window.toggleForm = function() {
+        isLogin = !isLogin;
+        document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
+        document.getElementById("mainBtn").innerText = isLogin ? "Entrar" : "Cadastrar";
+        document.getElementById("confirmGroup").style.display = isLogin ? "none" : "block";
+        document.getElementById("toggleText").innerText = isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login";
+      }
 
-      window.auth = async function() {
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const confirm = document.getElementById("confirmPassword").value.trim();
+      window.togglePassword = function(id) {
+        const input = document.getElementById(id);
+        input.type = input.type === "password" ? "text" : "password";
+      }
 
-        if (!email || !password) {
-          alert("Preencha todos os campos!");
-          return;
-        }
+      window.auth = async function() {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const confirm = document.getElementById("confirmPassword").value.trim();
 
-        try {
-          if (isLogin) {
-            await signInWithEmailAndPassword(auth, email, password);
-            alert("Login realizado com sucesso!");
-          } else {
-            if (password !== confirm) {
-              alert("As senhas não coincidem!");
-              return;
-            }
-            await createUserWithEmailAndPassword(auth, email, password);
-            alert("Conta criada com sucesso!");
-          }
-        } catch (error) {
-          alert("Erro: " + error.message);
-        }
-      }
+        if (!email || !password) {
+          alert("Preencha todos os campos!");
+          return;
+        }
 
-      window.loginGoogle = async function() {
-        const provider = new GoogleAuthProvider();
-        try {
-          await signInWithPopup(auth, provider);
-        } catch (err) {
-          alert("Erro Google: " + err.message);
-        }
-      }
+        try {
+          if (isLogin) {
+            await signInWithEmailAndPassword(auth, email, password);
+            alert("Login realizado com sucesso!");
+          } else {
+            if (password !== confirm) {
+              alert("As senhas não coincidem!");
+              return;
+            }
+            await createUserWithEmailAndPassword(auth, email, password);
+            alert("Conta criada com sucesso!");
+          }
+        } catch (error) {
+          alert("Erro: " + error.message);
+        }
+      }
 
-      onAuthStateChanged(auth, (user) => {
-        const perfil = document.getElementById("userProfile");
-        const foto = document.getElementById("userPhoto");
-        const nome = document.getElementById("userName");
-        const welcomeView = document.getElementById("welcomeView");
-        const authView = document.getElementById("auth");
-        const dashboardView = document.getElementById("dashboard");
-        const navLoginBtn = document.getElementById("navLoginBtn");
-        const heroContainer = document.getElementById("mainHeroContainer");
-        const illustrationArea = document.getElementById("illustrationArea");
+      window.loginGoogle = async function() {
+        const provider = new GoogleAuthProvider();
+        try {
+          await signInWithPopup(auth, provider);
+        } catch (err) {
+          alert("Erro Google: " + err.message);
+        }
+      }
 
-        if (user) {
-          perfil.style.display = "block";
-          const displayName = user.displayName || user.email.split("@")[0];
-          nome.innerText = displayName;
-          if (user.photoURL) foto.src = user.photoURL;
+      onAuthStateChanged(auth, (user) => {
+        const perfil = document.getElementById("userProfile");
+        const foto = document.getElementById("userPhoto");
+        const nome = document.getElementById("userName");
+        const welcomeView = document.getElementById("welcomeView");
+        const authView = document.getElementById("auth");
+        const dashboardView = document.getElementById("dashboard");
+        const navLoginBtn = document.getElementById("navLoginBtn");
+        const heroContainer = document.getElementById("mainHeroContainer");
+        const illustrationArea = document.getElementById("illustrationArea");
 
-          // Preenche os dados do modal do perfil
-          document.getElementById("modalUserName").innerText = displayName;
-          document.getElementById("modalUserEmail").innerText = user.email || "";
-          document.getElementById("modalUserPhoto").src = user.photoURL || "logo.jpg";
+        if (user) {
+          perfil.style.display = "block";
+          const displayName = user.displayName || user.email.split("@")[0];
+          nome.innerText = displayName;
+          if (user.photoURL) foto.src = user.photoURL;
 
-          welcomeView.style.display = "none";
-          authView.style.display = "none";
-          dashboardView.style.display = "block";
-          if (navLoginBtn) navLoginBtn.style.display = "none";
+          // Preenche os dados do modal do perfil
+          document.getElementById("modalUserName").innerText = displayName;
+          document.getElementById("modalUserEmail").innerText = user.email || "";
+          document.getElementById("modalUserPhoto").src = user.photoURL || "logo.jpg";
 
-          // Expandir layout no painel logado
-          heroContainer.classList.add('dashboard-active');
-          illustrationArea.style.display = 'none'; // Esconde a ilustração apenas no dashboard para centralizar a caixa
-        } else {
-          perfil.style.display = "none";
-          welcomeView.style.display = "block";
-          authView.style.display = "none";
-          dashboardView.style.display = "none";
-          if (navLoginBtn) navLoginBtn.style.display = "block";
+          welcomeView.style.display = "none";
+          authView.style.display = "none";
+          dashboardView.style.display = "block";
+          if (navLoginBtn) navLoginBtn.style.display = "none";
 
-          heroContainer.classList.remove('dashboard-active');
-          illustrationArea.style.display = 'flex';
-        }
-      });
+          // Expandir layout no painel logado
+          heroContainer.classList.add('dashboard-active');
+          illustrationArea.style.display = 'none'; // Esconde a ilustração apenas no dashboard para centralizar a caixa
+        } else {
+          perfil.style.display = "none";
+          welcomeView.style.display = "block";
+          authView.style.display = "none";
+          dashboardView.style.display = "none";
+          if (navLoginBtn) navLoginBtn.style.display = "block";
 
-      // Funções Modais
-      window.openContact = function() { document.getElementById("contactModal").style.display = "flex"; }
-      window.closeContact = function() { document.getElementById("contactModal").style.display = "none"; }
+          heroContainer.classList.remove('dashboard-active');
+          illustrationArea.style.display = 'flex';
+        }
+      });
 
-      window.openProfileModal = function() { document.getElementById("profileModal").style.display = "flex"; }
-      window.closeProfileModal = function() { document.getElementById("profileModal").style.display = "none"; }
+      // Funções Modais
+      window.openContact = function() { document.getElementById("contactModal").style.display = "flex"; }
+      window.closeContact = function() { document.getElementById("contactModal").style.display = "none"; }
 
-      window.logout = async function() {
-        await signOut(auth);
-        location.reload();
-      }
+      window.openProfileModal = function() { document.getElementById("profileModal").style.display = "flex"; }
+      window.closeProfileModal = function() { document.getElementById("profileModal").style.display = "none"; }
 
-      window.recuperarSenha = async function() {
-        const email = document.getElementById("email").value.trim();
-        if (!email) {
-          alert("Digite seu email!");
-          return;
-        }
-        try {
-          await sendPasswordResetEmail(auth, email);
-          alert("📩 Enviamos um e-mail de verificação para você.");
-        } catch (error) {
-          alert("Erro: " + error.message);
-        }
-      }
+      window.logout = async function() {
+        await signOut(auth);
+        location.reload();
+      }
 
-      window.verDiagnosticos = async function() {
-        const user = auth.currentUser;
-        if (!user) {
-          alert("Faça login primeiro!");
-          return;
-        }
-        const q = query(collection(db, "diagnosticos"), where("uid", "==", user.uid));
-        const snapshot = await getDocs(q);
-        if (snapshot.empty) {
-          alert("Nenhum diagnóstico encontrado.");
-          return;
-        }
-        let texto = "Seus Diagnósticos:\n\n";
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          texto += data.resultado + " - " + data.data + "\n";
-        });
-        alert(texto);
-      }
-    </script> 
+      window.recuperarSenha = async function() {
+        const email = document.getElementById("email").value.trim();
+        if (!email) {
+          alert("Digite seu email!");
+          return;
+        }
+        try {
+          await sendPasswordResetEmail(auth, email);
+          alert("📩 Enviamos um e-mail de verificação para você.");
+        } catch (error) {
+          alert("Erro: " + error.message);
+        }
+      }
+
+      window.verDiagnosticos = async function() {
+        const user = auth.currentUser;
+        if (!user) {
+          alert("Faça login primeiro!");
+          return;
+        }
+        const q = query(collection(db, "diagnosticos"), where("uid", "==", user.uid));
+        const snapshot = await getDocs(q);
+        if (snapshot.empty) {
+          alert("Nenhum diagnóstico encontrado.");
+          return;
+        }
+        let texto = "Seus Diagnósticos:\n\n";
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          texto += data.resultado + " - " + data.data + "\n";
+        });
+        alert(texto);
+      }
+    </script> 
 </body>
 </html>
