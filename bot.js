@@ -34,7 +34,6 @@ window.addEventListener("load", function() {
     }, 2200);
 });
 
-// ================= GUIA DE INFORMAÇÕES =================
 function abrirGuiaRapido() {
     if (!baseDados) return;
     const listaDiv = document.getElementById("listaGuiaDoencas");
@@ -43,21 +42,18 @@ function abrirGuiaRapido() {
     listaDiv.innerHTML = "";
 
     Object.keys(baseDados).forEach(cultura => {
+        // Badge do Nome da Cultura
         const titulo = document.createElement("div");
         titulo.className = "titulo-cultura-guia";
-        titulo.style.fontWeight = "bold";
-        titulo.style.marginTop = "12px";
-        titulo.style.color = "#1b5e20";
-        
         const nomeFormatado = cultura.charAt(0).toUpperCase() + cultura.slice(1);
         titulo.innerHTML = `🌱 ${nomeFormatado}`;
         listaDiv.appendChild(titulo);
 
+        // Cards das Doenças
         Object.values(baseDados[cultura]).forEach(d => {
             const sintomaPrincipal = d?.sintomas?.praticos?.[0] || "Sintoma não informado";
             const item = document.createElement("div");
             item.className = "item-guia";
-            item.style.cursor = "default";
             item.innerHTML = `
                 <strong>${d.nome}</strong>
                 <span>👀 ${sintomaPrincipal}</span>
