@@ -6,7 +6,8 @@ let modeloCarregando = false; // Trava para evitar cliques enquanto carrega
 // Elementos do DOM
 const selectCultura = document.getElementById("cultura");
 const divResultado = document.getElementById("resultado");
-
+import { salvarDiagnosticoFirestore } from "./firebase.db.js";
+      
 // 1. Função dinâmica para carregar modelo
 async function carregarModelo(cultura) {
   // --- CORREÇÃO AQUI ---
