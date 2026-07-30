@@ -217,11 +217,71 @@
         .perfil-topo img { width: 30px; height: 30px; border-radius: 50%; }
 
         /* ================= RESPONSIVIDADE ================= */
-        @media (max-width: 850px) {
-            .hero-container { flex-direction: column; justify-content: center; text-align: center; }
-            .illustration-area { margin-right: 0; margin-top: 40px; }
-            nav ul { gap: 15px; }
-            .content-area h1 { font-size: 2.2rem; }
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 0.82rem;
+            }
+
+            .btn-nav-login {
+                padding: 6px 14px;
+                font-size: 0.82rem !important;
+            }
+
+            .hero-container {
+                flex-direction: column;
+                justify-content: flex-start;
+                text-align: center;
+                padding: 20px 5% 80px;
+                gap: 30px;
+            }
+
+            .content-area {
+                max-width: 100%;
+            }
+
+            .content-area h1 {
+                font-size: 1.8rem;
+                line-height: 1.2;
+                margin-bottom: 12px;
+            }
+
+            .content-area p {
+                font-size: 0.92rem;
+                margin-bottom: 24px;
+            }
+
+            .btn-main {
+                width: 100%;
+                max-width: 280px;
+                padding: 14px 20px;
+                font-size: 0.95rem;
+            }
+
+            .illustration-area {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .agro-svg {
+                width: 180px;
+            }
+
+            .card-inline {
+                padding: 20px 15px;
+                text-align: left;
+            }
+
+            .clouds-bg {
+                height: 60px;
+            }
         }
     </style>
 </head>
