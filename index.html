@@ -401,73 +401,91 @@
     }
 }
 
-        /* ================= AJUSTES EXCLUSIVOS PARA CELULARES MUITO PEQUENOS (ATÉ 480PX) ================= */
+/* ================= AJUSTES EXCLUSIVOS PARA CELULARES MUITO PEQUENOS (ATÉ 480PX) ================= */
 
 @media (max-width: 480px) {
-    /* Header ainda mais compacto e funcional */
+    /* 1. Removido padding inferior desnecessário do Header */
     header {
-        padding: 10px 10px 8px;
-        gap: 8px;
+        padding: 8px 10px 4px;
+        gap: 6px;
     }
 
     .logo {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         gap: 6px;
     }
 
     .logo img {
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
     }
 
-    /* Menu em formato de pílulas compactas */
+    /* 2. Menu compacto em linha única/pílulas */
     nav ul {
-        gap: 4px;
+        gap: 3px;
     }
 
     nav a {
-        font-size: 0.72rem;
-        padding: 5px 9px;
-        border-radius: 14px;
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        border-radius: 12px;
     }
 
     .btn-nav-login {
-        padding: 5px 12px !important;
-        font-size: 0.75rem !important;
+        padding: 4px 10px !important;
+        font-size: 0.72rem !important;
     }
 
-    /* Tag do Usuário ajustada para não estourar a tela */
     .perfil-topo {
-        padding: 3px 8px;
-        max-width: 110px;
+        padding: 2px 6px;
+        max-width: 100px;
     }
 
     .perfil-topo img {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
     }
 
     .perfil-topo span {
-        font-size: 0.7rem;
+        font-size: 0.68rem;
     }
 
-    /* Conteúdo Principal */
+    /* 3. AQUI ESTÁ O SEGREDO: Colamos a .hero-container no header sem folgas */
+    .hero-container {
+        padding: 5px 12px 0px; /* Zera espaços superiores extras */
+        margin-top: 0px;
+        margin-bottom: 0px;
+        gap: 8px;
+    }
+
+    .content-area {
+        margin-top: 5px; /* Controla a aproximação exata */
+    }
+
     .content-area h1 {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
+        margin-bottom: 6px;
     }
 
     .content-area p {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+    }
+
+    .btn-main {
+        padding: 10px 16px;
+        font-size: 0.85rem;
     }
 
     .agro-svg {
-        width: 95px;
+        width: 80px; /* Reduzido para caber melhor na tela sem empurrar o layout */
     }
 
     .clouds-bg {
-        height: 35px;
+        height: 25px;
     }
 }
+        
     </style>
 </head>
 <body>
