@@ -127,6 +127,7 @@ if (prob < 0.80) {
   doenca: d.nome,
   confianca: null
 });
+    
   };
 }
 
@@ -199,31 +200,6 @@ async function mostrarResultado(cultura, classe, prob) {
   }
 }
 
-
-// Depois de identificar a doença
-const resultado = `Cultura: ${cultura}, Doença: ${classe}, Confiança: ${(prob*100).toFixed(1)}%`;
-
-// Chama a função para salvar
-salvarDiagnostico(resultado);
-
-
-function salvarDiagnostico(texto) {
-  // Pega o usuário logado
-  const user = localStorage.getItem("loggedUser");
-  if (!user) return; // Não faz nada se não tiver login
-
-  // Pega histórico atual ou cria vazio
-  let historico = JSON.parse(localStorage.getItem(user + "_diagnosticos")) || [];
-
-  // Adiciona novo diagnóstico com data/hora
-  historico.push({
-    resultado: texto,
-    data: new Date().toLocaleString()
-  });
-
-  // Salva de volta no localStorage
-  localStorage.setItem(user + "_diagnosticos", JSON.stringify(historico));
-}
 
 function reiniciar() {
   document.getElementById("resultado").innerHTML = "";
