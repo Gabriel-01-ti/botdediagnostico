@@ -379,6 +379,11 @@ function diagnosticar(cultura, textoUsuario) {
         </div>
       </div>
     `;
+    await salvarDiagnosticoFirestore({
+  cultura: cultura,
+  doenca: d.nome,
+  confianca: null
+});
 
     addMsg(htmlCompleto, "bot", false);
     salvarDiagnostico(`Cultura: ${cultura}, Doença: ${d.nome}`);
