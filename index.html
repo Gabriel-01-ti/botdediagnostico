@@ -683,192 +683,192 @@
         </div>
     </div>
 
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
-      import {
-        getAuth,
-        createUserWithEmailAndPassword,
-        signInWithEmailAndPassword,
-        sendPasswordResetEmail,
-        signOut,
-        onAuthStateChanged,
-        GoogleAuthProvider,
-        signInWithPopup,
-        setPersistence,
-        browserLocalPersistence
-      } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-      import {
-        getFirestore,
-        collection,
-        getDocs,
-        query,
-        where
-      } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+   <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail,
+        signOut,
+        onAuthStateChanged,
+        GoogleAuthProvider,
+        signInWithPopup,
+        setPersistence,
+        browserLocalPersistence
+      } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+        query,
+        where
+      } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyBbvAOfk3EXyQivxcc4ylHrtuWkKyXkuDw",
-        authDomain: "sitebot-2c952.firebaseapp.com",
-        projectId: "sitebot-2c952",
-        storageBucket: "sitebot-2c952.firebasestorage.app",
-        messagingSenderId: "410409250226",
-        appId: "1:410409250226:web:6a89bc59b81011317348ab",
-        measurementId: "G-RRR7DPL1CM"
-      };
+      const firebaseConfig = {
+        apiKey: "AIzaSyBbvAOfk3EXyQivxcc4ylHrtuWkKyXkuDw",
+        authDomain: "sitebot-2c952.firebaseapp.com",
+        projectId: "sitebot-2c952",
+        storageBucket: "sitebot-2c952.firebasestorage.app",
+        messagingSenderId: "410409250226",
+        appId: "1:410409250226:web:6a89bc59b81011317348ab",
+        measurementId: "G-RRR7DPL1CM"
+      };
 
-      const app = initializeApp(firebaseConfig);
-      getAnalytics(app);
-      const auth = getAuth(app);
-      const db = getFirestore(app);
+      const app = initializeApp(firebaseConfig);
+      getAnalytics(app);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
 
-      await setPersistence(auth, browserLocalPersistence);
-      let isLogin = true;
+      setPersistence(auth, browserLocalPersistence);
+      let isLogin = true;
 
-      window.showAuth = function() {
-        document.getElementById('welcomeView').style.display = 'none';
-        document.getElementById('auth').style.display = 'block';
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('illustrationArea').style.display = 'flex';
-        document.getElementById('mainHeroContainer').classList.remove('dashboard-active');
-      };
+      window.showAuth = function() {
+        document.getElementById('welcomeView').style.display = 'none';
+        document.getElementById('auth').style.display = 'block';
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('illustrationArea').style.display = 'flex';
+        document.getElementById('mainHeroContainer').classList.remove('dashboard-active');
+      };
 
-      window.toggleForm = function() {
-        isLogin = !isLogin;
-        document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
-        document.getElementById("mainBtn").innerText = isLogin ? "Entrar" : "Cadastrar";
-        document.getElementById("confirmGroup").style.display = isLogin ? "none" : "block";
-        document.getElementById("toggleText").innerText = isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login";
-      }
+      window.toggleForm = function() {
+        isLogin = !isLogin;
+        document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
+        document.getElementById("mainBtn").innerText = isLogin ? "Entrar" : "Cadastrar";
+        document.getElementById("confirmGroup").style.display = isLogin ? "none" : "block";
+        document.getElementById("toggleText").innerText = isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login";
+      };
 
-      window.togglePassword = function(id) {
-        const input = document.getElementById(id);
-        input.type = input.type === "password" ? "text" : "password";
-      }
+      window.togglePassword = function(id) {
+        const input = document.getElementById(id);
+        input.type = input.type === "password" ? "text" : "password";
+      };
 
-      window.auth = async function() {
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const confirm = document.getElementById("confirmPassword").value.trim();
+      window.authAction = async function() {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const confirm = document.getElementById("confirmPassword").value.trim();
 
-        if (!email || !password) {
-          alert("Preencha todos os campos!");
-          return;
-        }
+        if (!email || !password) {
+          alert("Preencha todos os campos!");
+          return;
+        }
 
-        try {
-          if (isLogin) {
-            await signInWithEmailAndPassword(auth, email, password);
-            alert("Login realizado com sucesso!");
-          } else {
-            if (password !== confirm) {
-              alert("As senhas não coincidem!");
-              return;
-            }
-            await createUserWithEmailAndPassword(auth, email, password);
-            alert("Conta criada com sucesso!");
-          }
-        } catch (error) {
-          alert("Erro: " + error.message);
-        }
-      }
+        try {
+          if (isLogin) {
+            await signInWithEmailAndPassword(auth, email, password);
+            alert("Login realizado com sucesso!");
+          } else {
+            if (password !== confirm) {
+              alert("As senhas não coincidem!");
+              return;
+            }
+            await createUserWithEmailAndPassword(auth, email, password);
+            alert("Conta criada com sucesso!");
+          }
+        } catch (error) {
+          alert("Erro: " + error.message);
+        }
+      };
 
-      window.loginGoogle = async function() {
-        const provider = new GoogleAuthProvider();
-        try {
-          await signInWithPopup(auth, provider);
-        } catch (err) {
-          alert("Erro Google: " + err.message);
-        }
-      }
+      window.loginGoogle = async function() {
+        const provider = new GoogleAuthProvider();
+        try {
+          await signInWithPopup(auth, provider);
+        } catch (err) {
+          alert("Erro Google: " + err.message);
+        }
+      };
 
-      onAuthStateChanged(auth, (user) => {
-        const perfil = document.getElementById("userProfile");
-        const foto = document.getElementById("userPhoto");
-        const nome = document.getElementById("userName");
-        const welcomeView = document.getElementById("welcomeView");
-        const authView = document.getElementById("auth");
-        const dashboardView = document.getElementById("dashboard");
-        const navLoginBtn = document.getElementById("navLoginBtn");
-        const heroContainer = document.getElementById("mainHeroContainer");
-        const illustrationArea = document.getElementById("illustrationArea");
+      onAuthStateChanged(auth, (user) => {
+        const perfil = document.getElementById("userProfile");
+        const foto = document.getElementById("userPhoto");
+        const nome = document.getElementById("userName");
+        const welcomeView = document.getElementById("welcomeView");
+        const authView = document.getElementById("auth");
+        const dashboardView = document.getElementById("dashboard");
+        const navLoginBtn = document.getElementById("navLoginBtn");
+        const heroContainer = document.getElementById("mainHeroContainer");
+        const illustrationArea = document.getElementById("illustrationArea");
 
-        if (user) {
-          perfil.style.display = "block";
-          const displayName = user.displayName || user.email.split("@")[0];
-          nome.innerText = displayName;
-          if (user.photoURL) foto.src = user.photoURL;
+        if (user) {
+          perfil.style.display = "block";
+          const displayName = user.displayName || user.email.split("@")[0];
+          nome.innerText = displayName;
+          if (user.photoURL) foto.src = user.photoURL;
 
-          // Preenche os dados do modal do perfil
-          document.getElementById("modalUserName").innerText = displayName;
-          document.getElementById("modalUserEmail").innerText = user.email || "";
-          document.getElementById("modalUserPhoto").src = user.photoURL || "logo.jpg";
+          document.getElementById("modalUserName").innerText = displayName;
+          document.getElementById("modalUserEmail").innerText = user.email || "";
+          document.getElementById("modalUserPhoto").src = user.photoURL || "logo.jpg";
 
-          welcomeView.style.display = "none";
-          authView.style.display = "none";
-          dashboardView.style.display = "block";
-          if (navLoginBtn) navLoginBtn.style.display = "none";
+          welcomeView.style.display = "none";
+          authView.style.display = "none";
+          dashboardView.style.display = "block";
+          if (navLoginBtn) navLoginBtn.style.display = "none";
 
-          // Expandir layout no painel logado
-          heroContainer.classList.add('dashboard-active');
-          illustrationArea.style.display = 'none'; // Esconde a ilustração apenas no dashboard para centralizar a caixa
-        } else {
-          perfil.style.display = "none";
-          welcomeView.style.display = "block";
-          authView.style.display = "none";
-          dashboardView.style.display = "none";
-          if (navLoginBtn) navLoginBtn.style.display = "block";
+          heroContainer.classList.add('dashboard-active');
+          illustrationArea.style.display = 'none';
+        } else {
+          perfil.style.display = "none";
+          welcomeView.style.display = "block";
+          authView.style.display = "none";
+          dashboardView.style.display = "none";
+          if (navLoginBtn) navLoginBtn.style.display = "block";
 
-          heroContainer.classList.remove('dashboard-active');
-          illustrationArea.style.display = 'flex';
-        }
-      });
+          heroContainer.classList.remove('dashboard-active');
+          illustrationArea.style.display = 'flex';
+        }
+      });
 
-      // Funções Modais
-      window.openContact = function() { document.getElementById("contactModal").style.display = "flex"; }
-      window.closeContact = function() { document.getElementById("contactModal").style.display = "none"; }
+      window.openContact = function() { document.getElementById("contactModal").style.display = "flex"; };
+      window.closeContact = function() { document.getElementById("contactModal").style.display = "none"; };
 
-      window.openProfileModal = function() { document.getElementById("profileModal").style.display = "flex"; }
-      window.closeProfileModal = function() { document.getElementById("profileModal").style.display = "none"; }
+      window.openProfileModal = function() { document.getElementById("profileModal").style.display = "flex"; };
+      window.closeProfileModal = function() { document.getElementById("profileModal").style.display = "none"; };
 
-      window.logout = async function() {
-        await signOut(auth);
-        location.reload();
-      }
+      window.logout = async function() {
+        await signOut(auth);
+        location.reload();
+      };
 
-      window.recuperarSenha = async function() {
-        const email = document.getElementById("email").value.trim();
-        if (!email) {
-          alert("Digite seu email!");
-          return;
-        }
-        try {
-          await sendPasswordResetEmail(auth, email);
-          alert("📩 Enviamos um e-mail de verificação para você.");
-        } catch (error) {
-          alert("Erro: " + error.message);
-        }
-      }
+      window.recuperarSenha = async function() {
+        const email = document.getElementById("email").value.trim();
+        if (!email) {
+          alert("Digite seu email!");
+          return;
+        }
+        try {
+          await sendPasswordResetEmail(auth, email);
+          alert("📩 Enviamos um e-mail de verificação para você.");
+        } catch (error) {
+          alert("Erro: " + error.message);
+        }
+      };
 
-      window.verDiagnosticos = async function() {
-        const user = auth.currentUser;
-        if (!user) {
-          alert("Faça login primeiro!");
-          return;
-        }
-        const q = query(collection(db, "diagnosticos"), where("uid", "==", user.uid));
-        const snapshot = await getDocs(q);
-        if (snapshot.empty) {
-          alert("Nenhum diagnóstico encontrado.");
-          return;
-        }
-        let texto = "Seus Diagnósticos:\n\n";
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          texto += data.resultado + " - " + data.data + "\n";
-        });
-        alert(texto);
-      }
-            
-    </script> 
+      window.verDiagnosticos = async function() {
+        const user = auth.currentUser;
+        if (!user) {
+          alert("Faça login primeiro!");
+          return;
+        }
+        try {
+          const q = query(collection(db, "diagnosticos"), where("uid", "==", user.uid));
+          const snapshot = await getDocs(q);
+          if (snapshot.empty) {
+            alert("Nenhum diagnóstico encontrado.");
+            return;
+          }
+          let texto = "Seus Diagnósticos:\n\n";
+          snapshot.forEach(doc => {
+            const data = doc.data();
+            texto += (data.resultado || "Diagnóstico") + " - " + (data.data || "") + "\n";
+          });
+          alert(texto);
+        } catch (err) {
+          alert("Erro ao consultar histórico: " + err.message);
+        }
+      };
+    </script>
 </body>
 </html>
