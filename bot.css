@@ -88,29 +88,44 @@ body {
 .btn-circular {
     position: absolute;
     pointer-events: auto;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     background: linear-gradient(135deg, #2e7d32, #1b5e20);
     color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, background 0.2s ease;
+    -webkit-tap-highlight-color: transparent; /* Remove o quadrado de foco do toque no Android/iOS */
 }
 
-.btn-circular:hover {
-    transform: scale(1.08);
-    background: linear-gradient(135deg, #388e3c, #2e7d32);
+/* Ajuste fino na Seta de Voltar */
+.btn-voltar { 
+    top: 14px; 
+    left: 14px; 
+    font-size: 20px;
+    line-height: 1;
 }
 
-.btn-voltar { top: 16px; left: 16px; }
-#floating-guia-btn { bottom: 20px; right: 20px; }
+.btn-voltar span {
+    display: inline-block;
+    transform: translateY(-1px); /* Ajuste fino de 1px para centralização perfeita do símbolo */
+}
+
+#floating-guia-btn { 
+    bottom: 18px; 
+    right: 18px; 
+    font-size: 18px;
+}
+
+.btn-circular:active {
+    transform: scale(0.92); /* Efeito tátil suave ao tocar no celular */
+}
 
 /* ================= CONTAINER LIMPO (SEM CAIXA/FUNDO) ================= */
 .container {
@@ -480,16 +495,28 @@ input[type="text"]:disabled {
 @media (max-width: 480px) {
     body { padding: 8px 6px; }
 
-    .btn-circular { width: 42px; height: 42px; font-size: 17px; }
-    .btn-voltar { top: 10px; left: 10px; }
-    #floating-guia-btn { bottom: 12px; right: 12px; }
+    .btn-circular { 
+        width: 40px; 
+        height: 40px; 
+    }
 
+    .btn-voltar { 
+        top: 10px; 
+        left: 10px; 
+        font-size: 18px; 
+    }
+
+    #floating-guia-btn { 
+        bottom: 12px; 
+        right: 12px; 
+        font-size: 16px; 
+    }
     .container { margin-top: 40px; }
 
     .app-title { font-size: 1.4rem; }
     .descricao-app { font-size: 0.8rem; }
 
-    #chat-messages { padding: 10px 8px; min-height: 220px; }
+    #chat-messages { padding: 6px 4px; min-height: 220px; }
 
     .duas-colunas { grid-template-columns: 1fr; }
 
