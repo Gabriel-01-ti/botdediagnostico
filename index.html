@@ -262,6 +262,34 @@
         .btn-logout { margin-top: 20px; width: 100%; padding: 10px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.4); color: white; border-radius: 20px; cursor: pointer; transition: 0.3s; }
         .btn-logout:hover { background: rgba(255, 0, 0, 0.2); border-color: rgba(255, 100, 100, 0.6); }
 
+        /* Card do Histórico */
+.historico-card {
+  background: #ffffff;
+  border-left: 5px solid #2e7d32;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+.historico-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.badge-cultura {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.historico-data { font-size: 0.8rem; color: #777; }
+.historico-doenca { margin: 4px 0; font-size: 1.05rem; color: #1b5e20; font-weight: 700; }
+.historico-confianca { font-size: 0.85rem; color: #555; margin-top: 4px; }
+
         /* ================= RESPONSIVIDADE ================= */
         @media (max-width: 1024px) {
             header { padding: 20px 5%; }
@@ -458,7 +486,17 @@
             <button onclick="logout()" style="width:100%; padding:10px; background:#d32f2f; color:white; border:none; border-radius:12px; font-weight:600; cursor:pointer; transition:0.3s;">Sair da Conta</button>
         </div>
     </div>
-
+    <div id="historicoModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(5px);">
+  <div style="background:white; color: #333; width:100%; max-width:500px; padding:25px; border-radius:20px; position:relative; text-align:center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-height:85vh; display:flex; flex-direction:column;">
+    <span onclick="document.getElementById('historicoModal').style.display='none'" style="position:absolute; top:12px; right:18px; font-size:1.5rem; cursor:pointer; color:#888;">&times;</span>
+    
+    <h3 style="color:#1b5e20; font-size:1.3rem; margin-bottom:15px;">📜 Seu Histórico</h3>
+    
+    <div id="listaHistoricoContainer" style="overflow-y:auto; flex:1; padding-right:5px;">
+      </div>
+  </div>
+</div>
+   
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
@@ -622,29 +660,57 @@
         }
       };
 
-      window.verDiagnosticos = async function() {
-        const user = auth.currentUser;
-        if (!user) {
-          alert("Faça login primeiro!");
-          return;
-        }
-        try {
-          const q = query(collection(db, "diagnosticos"), where("uid", "==", user.uid));
-          const snapshot = await getDocs(q);
-          if (snapshot.empty) {
-            alert("Nenhum diagnóstico encontrado.");
-            return;
-          }
-          let texto = "Seus Diagnósticos:\n\n";
-          snapshot.forEach(doc => {
-            const data = doc.data();
-            texto += (data.resultado || "Diagnóstico") + " - " + (data.data || "") + "\n";
-          });
-          alert(texto);
-        } catch (err) {
-          alert("Erro ao consultar histórico: " + err.message);
-        }
-      };
+window.verDiagnosticos = async function() {
+  const user = auth.currentUser;
+  
+  // Se não estiver logado, redireciona para a tela de login/cadastro
+  if (!user) {
+    alert("Para ver seu histórico, faça login na sua conta!");
+    showAuth(); 
+    return;
+  }
+
+  // Se estiver logado, abre o modal
+  const modal = document.getElementById("historicoModal");
+  const container = document.getElementById("listaHistoricoContainer");
+
+  modal.style.display = "flex";
+  container.innerHTML = "<p style='color:#666; padding:20px;'>⏳ Carregando seus diagnósticos...</p>";
+
+  try {
+    const q = query(collection(db, "diagnosticos"), where("uid", "==", user.uid));
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+      container.innerHTML = "<p style='color:#777; padding:20px;'>📂 Você ainda não possui nenhum diagnóstico salvo.</p>";
+      return;
+    }
+
+    let htmlCards = "";
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const cultura = data.cultura ? data.cultura.toUpperCase() : "LAVOURA";
+      const doenca = data.doenca || data.resultado || "Diagnóstico Indefinido";
+      const dataFormatada = data.data || "Data não informada";
+
+      htmlCards += `
+        <div class="historico-card">
+          <div class="historico-header">
+            <span class="badge-cultura">${cultura}</span>
+            <span class="historico-data">📅 ${dataFormatada}</span>
+          </div>
+          <h4 class="historico-doenca">🦠 ${doenca}</h4>
+        </div>
+      `;
+    });
+
+    container.innerHTML = htmlCards;
+
+  } catch (err) {
+    console.error("Erro ao carregar histórico:", err);
+    container.innerHTML = "<p style='color:#d32f2f; padding:20px;'>❌ Erro ao consultar o histórico.</p>";
+  }
+};
     </script> 
 </body>
 </html>
