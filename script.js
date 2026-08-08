@@ -1,20 +1,21 @@
 console.log("JS carregado com sucesso");
 
+// Importa a função do Firebase
+import { salvarDiagnosticoFirestore } from "./firebase.db.js";
+
 let model;
 let modeloCarregando = false; // Trava para evitar cliques enquanto carrega
 
 // Elementos do DOM
 const selectCultura = document.getElementById("cultura");
 const divResultado = document.getElementById("resultado");
-import { salvarDiagnosticoFirestore } from "./firebase.db.js";
-      
+
 // 1. Função dinâmica para carregar modelo
 async function carregarModelo(cultura) {
-  // --- CORREÇÃO AQUI ---
   // Se a cultura for vazia ou "selecione", não faz nada e sai da função.
   if (!cultura || cultura === "selecione") {
-      console.log("Aguardando seleção de cultura...");
-      return;
+    console.log("Aguardando seleção de cultura...");
+    return;
   }
 
   modeloCarregando = true;
@@ -42,25 +43,32 @@ async function carregarModelo(cultura) {
 
 // 2. Carregar o modelo inicial (padrão do select) ao abrir a página
 window.addEventListener('DOMContentLoaded', () => {
+  if (selectCultura && selectCultura.value) {
     const culturaInicial = selectCultura.value.toLowerCase().trim();
     carregarModelo(culturaInicial);
+  }
 });
 
 // 3. Monitorar mudança no <select> para trocar o modelo
-selectCultura.addEventListener("change", (e) => {
+if (selectCultura) {
+  selectCultura.addEventListener("change", (e) => {
     const novaCultura = e.target.value.toLowerCase().trim();
     carregarModelo(novaCultura);
-});
+  });
+}
 
-document.getElementById('foto').addEventListener('change', function() {
+// 4. Exibir o nome do arquivo selecionado
+const inputFoto = document.getElementById('foto');
+if (inputFoto) {
+  inputFoto.addEventListener('change', function() {
     const fileName = this.files[0] ? this.files[0].name : "Toque para selecionar a foto da folha";
-    document.getElementById('file-name').innerText = fileName;
-});
+    const fileNameElement = document.getElementById('file-name');
+    if (fileNameElement) fileNameElement.innerText = fileName;
+  });
+}
 
-
-// Função Analisar (Ajustada)
+// 5. Função Analisar (Ajustada)
 async function analisar() {
-  
   // Verificações de segurança antes de começar
   if (modeloCarregando) {
     alert("Aguarde, o modelo ainda está carregando...");
@@ -73,7 +81,7 @@ async function analisar() {
   }
 
   const input = document.getElementById("foto");
-  const file = input.files[0];
+  const file = input ? input.files[0] : null;
 
   if (!file) {
     alert("Envie uma foto da lavoura");
@@ -95,21 +103,20 @@ async function analisar() {
       a.probability > b.probability ? a : b
     );
 
-  const classeOriginal = melhor.className;
-const prob = melhor.probability;
+    const classeOriginal = melhor.className;
+    const prob = melhor.probability;
 
-// REGRA DE CONFIANÇA
-if (prob < 0.80) {
-  divResultado.innerHTML = `
-    <div class="erro-box">
-      <p>❌ Não foi possível identificar a doença com segurança.</p>
-      <p>Confiança da IA: ${(prob * 100).toFixed(1)}%</p>
-      <p>Tente enviar outra foto da folha.</p>
-    </div>
-  `;
-  return; // PARA AQUI, não chama mostrarResultado
-}
-
+    // REGRA DE CONFIANÇA
+    if (prob < 0.80) {
+      divResultado.innerHTML = `
+        <div class="erro-box">
+          <p>❌ Não foi possível identificar a doença com segurança.</p>
+          <p>Confiança da IA: ${(prob * 100).toFixed(1)}%</p>
+          <p>Tente enviar outra foto da folha.</p>
+        </div>
+      `;
+      return; // PARA AQUI, não chama mostrarResultado
+    }
 
     // Normalização do nome da classe
     const classe = classeOriginal
@@ -123,15 +130,10 @@ if (prob < 0.80) {
     // Pega o valor atual do select para buscar no JSON
     const culturaAtual = selectCultura.value.toLowerCase().trim();
     mostrarResultado(culturaAtual, classe, prob);
-    await salvarDiagnosticoFirestore({
-  cultura: cultura,
-  doenca: d.nome,
-  confianca: null
-});
-    
   };
 }
 
+// 6. Função mostrarResultado (Mantida com toda a sua estrutura HTML original + Salvamento Firebase)
 async function mostrarResultado(cultura, classe, prob) {
   const res = document.getElementById("resultado");
 
@@ -150,15 +152,18 @@ async function mostrarResultado(cultura, classe, prob) {
     }
 
     const d = base[cultura][classe];
+    const porcentagemConfianca = (prob * 100).toFixed(1);
 
-    // Formata a lista de sintomas (Pega os práticos para mostrar ao usuário)
-    let listaSintomas = "";
-    if (d.sintomas && d.sintomas.praticos) {
-      listaSintomas = "<ul>" + d.sintomas.praticos.map(s => `<li>${s}</li>`).join("") + "</ul>";
-    } else {
-      listaSintomas = d.sintomas; // Caso seja apenas texto antigo
-    }
+    // Formata os sintomas exatamente no seu padrão
+    const sintomasPraticosHTML = Array.isArray(d.sintomas?.praticos) 
+      ? d.sintomas.praticos.map(s => `<li>${s}</li>`).join("")
+      : (d.sintomas?.praticos || d.sintomas || "");
 
+    const sintomasTecnicosHTML = Array.isArray(d.sintomas?.tecnicos) 
+      ? d.sintomas.tecnicos.map(s => `<li>${s}</li>`).join("")
+      : (d.sintomas?.tecnicos || "");
+
+    // Renderiza o card completo com todos os seus dados originais
     res.innerHTML = `
        <div class="doenca-card destaque">
         <h3>🦠 ${d.nome}</h3>
@@ -172,12 +177,12 @@ async function mostrarResultado(cultura, classe, prob) {
 
         <div class="secao-sintomas">
             <p><b>👀 Sintomas Práticos (Campo):</b></p>
-            <ul>${d.sintomas.praticos.join(", ")}</ul>
+            <ul>${sintomasPraticosHTML}</ul>
         </div>
 
         <div class="secao-tecnica">
             <p><b>🔬 Sintomas Técnicos (Laboratório/Análise):</b></p>
-            <ul>${d.sintomas.tecnicos.join(", ")}</ul>
+            <ul>${sintomasTecnicosHTML}</ul>
         </div>
 
         <p><b>⚠️ Danos:</b><br>${d.danos}</p>
@@ -190,34 +195,46 @@ async function mostrarResultado(cultura, classe, prob) {
             <p><b>💊 Controle Recomendado:</b><br>${d.controle}</p>
         </div>
       
-          <small class="aviso-legal">
-            ⚠️ Diagnóstico por IA é apenas um auxílio. Consulte sempre um engenheiro agrônomo.
-          </small>
+        <small class="aviso-legal">
+          ⚠️ Diagnóstico por IA é apenas um auxílio. Consulte sempre um engenheiro agrônomo.
+        </small>
       </div>
     `;
+
+    // 🚀 SALVA NO FIRESTORE COM OS DADOS REAIS EXTRAÍDOS
+    await salvarDiagnosticoFirestore({
+      cultura: cultura,
+      doenca: d.nome,
+      confianca: porcentagemConfianca
+    });
+
   } catch (err) {
     console.error(err);
     res.innerHTML = "<p>Erro ao ler base de dados. Verifique o JSON.</p>";
   }
 }
 
-
+// 7. Limpar/Reiniciar
 function reiniciar() {
   document.getElementById("resultado").innerHTML = "";
   document.getElementById("foto").value = "";
-  // Não reiniciamos o select para não forçar o recarregamento do modelo sem necessidade
+  const fileNameElement = document.getElementById('file-name');
+  if (fileNameElement) fileNameElement.innerText = "Toque para selecionar a foto da folha";
 }
 
-
+// 8. Toggle do Menu
 function toggleInfoMenu() {
-    const menu = document.getElementById('info-menu');
+  const menu = document.getElementById('info-menu');
+  if (menu) {
     if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
+      menu.classList.remove('hidden');
     } else {
-        menu.classList.add('hidden');
+      menu.classList.add('hidden');
     }
+  }
 }
 
-
-
-
+// Torna as funções visíveis globalmente para o HTML
+window.analisar = analisar;
+window.reiniciar = reiniciar;
+window.toggleInfoMenu = toggleInfoMenu;
