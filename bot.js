@@ -16,8 +16,10 @@ fetch("base.json")
     .then(res => res.json())
     .then(data => {
         baseDados = data;
-        inputSintomas.disabled = false;
-        inputSintomas.placeholder = "Digite 'Oi' para começar...";
+        if (inputSintomas) {
+            inputSintomas.disabled = false;
+            inputSintomas.placeholder = "Digite 'Oi' para começar...";
+        }
         abrirGuiaRapido();
     })
     .catch(err => {
@@ -36,6 +38,7 @@ window.addEventListener("load", function() {
     }, 2200);
 });
 
+// ================= GUIA RÁPIDO & MENU =================
 function abrirGuiaRapido() {
     if (!baseDados) return;
     const listaDiv = document.getElementById("listaGuiaDoencas");
@@ -63,13 +66,12 @@ function abrirGuiaRapido() {
     });
 }
 
-// 🎯 FIX: Expor toggleGuiaMenu para o HTML
-window.toggleGuiaMenu = function() {
+function toggleGuiaMenu() {
     const guiaMenu = document.getElementById("guia-menu");
     if (guiaMenu) {
         guiaMenu.classList.toggle("hidden");
     }
-};
+}
 
 // ================= FUNÇÕES UTILITÁRIAS =================
 function normalizar(txt) {
@@ -150,8 +152,7 @@ async function salvarDiagnostico(dados) {
 }
 
 // ================= MODOS DE DIAGNÓSTICO =================
-// 🎯 FIX: Expor escolherModo para o HTML
-window.escolherModo = function(modo) {
+function escolherModo(modo) {
     modoDiagnostico = modo;
     if (modo === "texto") {
         addMsg("✍️ Você escolheu descrever os sintomas.<br>Escreva o que está observando na planta:", "bot");
@@ -162,7 +163,7 @@ window.escolherModo = function(modo) {
         mostrarBotoesSintomas();
         etapa = 4;
     }
-};
+}
 
 function mostrarCulturasDisponiveis() {
     let html = "🌱 <b>Culturas disponíveis:</b><br><br>";
@@ -190,19 +191,17 @@ function mostrarBotoesSintomas() {
     html += `<div class="sintomas-botoes">`;
     
     sintomasSet.forEach(s => {
-        const sintomaEscapado = s.replace(/'/g, "\\'");
-        html += `<button class="btn-sintoma" onclick="toggleSintoma(this, '${sintomaEscapado}')">${s}</button>`;
+        html += `<button class="btn-sintoma" data-sintoma="${s}">${s}</button>`;
     });
     
     html += `</div>`;
-    html += `<button class="btn-diagnosticar-acao" onclick="finalizarSelecao()">🔍 Realizar Diagnóstico</button>`;
+    html += `<button class="btn-diagnosticar-acao" id="btn-executar-diagnostico">🔍 Realizar Diagnóstico</button>`;
     html += `</div>`;
 
     addMsg(html, "bot");
 }
 
-// 🎯 FIX: Expor toggleSintoma para o HTML
-window.toggleSintoma = function(btn, sintoma) {
+function toggleSintoma(btn, sintoma) {
     btn.classList.toggle("ativo");
     
     if (sintomasSelecionados.includes(sintoma)) {
@@ -210,77 +209,110 @@ window.toggleSintoma = function(btn, sintoma) {
     } else {
         sintomasSelecionados.push(sintoma);
     }
-};
+}
 
-// 🎯 FIX: Expor finalizarSelecao para o HTML
-window.finalizarSelecao = function() {
+function finalizarSelecao() {
     if (sintomasSelecionados.length === 0) {
         addMsg("⚠️ Selecione pelo menos um sintoma para continuar.", "bot");
         return;
     }
     addMsg("Sintomas selecionados: " + sintomasSelecionados.join(", "), "usuario");
     diagnosticar(culturaSelecionada, sintomasSelecionados.join(" "));
-};
+}
 
-// ================= EVENTO DE ENVIO =================
-btnEnviar.addEventListener("click", () => {
-    const texto = inputSintomas.value.trim();
-    if (!texto) return;
+// ================= DELEGAÇÃO DE CLIQUES NO CHAT (SEM ONCLICK INLINE) =================
+if (chatDiv) {
+    chatDiv.addEventListener("click", (e) => {
+        const target = e.target;
 
-    addMsg(texto, "usuario");
-    inputSintomas.value = "";
-    
-    const comando = normalizar(texto);
-
-    if (["oi", "ola", "reiniciar", "inicio", "comecar"].includes(comando)) {
-        iniciarBot();
-        return;
-    }
-
-    if (['finalizar', 'encerrar', 'parar', 'sair', 'cancelar', 'obrigado', 'muito obrigado'].includes(comando)) {
-        finalizarDiagnostico();
-        return;
-    }
-
-    if (etapa === 0) {
-        iniciarBot();
-    } else if (etapa === -1) {
-        const resposta = normalizar(texto);
-        if (["sim", "s", "quero", "claro"].includes(resposta)) {
-            mostrarCulturasDisponiveis();
-            etapa = 1;
-        } else if (["nao", "não", "n"].includes(resposta)) {
-            addMsg("Sem problema 😊<br>Digite o nome da cultura desejada (Ex: Milho, Soja, Feijão).", "bot");
-            etapa = 1;
-        } else {
-            addMsg("👉 Por favor, responda com <b>Sim</b> ou <b>Não</b>.", "bot");
-        }
-    } else if (etapa === 1) {
-        const culturaNorm = normalizar(texto);
-        if (!baseDados[culturaNorm]) {
-            addMsg("⚠️ Cultura não encontrada. As disponíveis no momento são: <b>Milho, Soja ou Feijão</b>.", "bot");
+        // Clique para escolher modo
+        if (target.id === "btn-modo-texto" || target.closest("#btn-modo-texto")) {
+            escolherModo("texto");
             return;
         }
-        culturaSelecionada = culturaNorm;
-        addMsg(`Excelente! Vamos analisar a cultura do(a) <b>${texto}</b>. 🌱`, "bot");
-        addMsg(`
-            Como prefere informar os sintomas?<br><br>
-            <div class="sintomas-container">
-                <button class="btn-diagnosticar-acao" onclick="escolherModo('texto')">✍️ Descrever por texto</button>
-                <button class="btn-diagnosticar-acao" style="background: linear-gradient(135deg, #1565c0, #0d47a1);" onclick="escolherModo('lista')">📋 Escolher de uma lista</button>
-            </div>
-        `, "bot");
-        etapa = 2;
-    } else if (etapa === 2) {
-        addMsg("👉 Por favor, clique em uma das opções acima para continuar (Descrever por texto ou Escolher de uma lista).", "bot");
-    } else if (etapa === 3 || etapa === 4) {
-        diagnosticar(culturaSelecionada, texto);
-    }
-});
+        if (target.id === "btn-modo-lista" || target.closest("#btn-modo-lista")) {
+            escolherModo("lista");
+            return;
+        }
 
-inputSintomas.addEventListener("keypress", e => {
-    if (e.key === "Enter") btnEnviar.click();
-});
+        // Clique em sintoma (chip)
+        if (target.classList.contains("btn-sintoma")) {
+            const sintoma = target.getAttribute("data-sintoma");
+            toggleSintoma(target, sintoma);
+            return;
+        }
+
+        // Clique no botão de realizar diagnóstico
+        if (target.id === "btn-executar-diagnostico") {
+            finalizarSelecao();
+            return;
+        }
+    });
+}
+
+// ================= EVENTO DE ENVIO =================
+if (btnEnviar) {
+    btnEnviar.addEventListener("click", () => {
+        const texto = inputSintomas.value.trim();
+        if (!texto) return;
+
+        addMsg(texto, "usuario");
+        inputSintomas.value = "";
+        
+        const comando = normalizar(texto);
+
+        if (["oi", "ola", "reiniciar", "inicio", "comecar"].includes(comando)) {
+            iniciarBot();
+            return;
+        }
+
+        if (['finalizar', 'encerrar', 'parar', 'sair', 'cancelar', 'obrigado', 'muito obrigado'].includes(comando)) {
+            finalizarDiagnostico();
+            return;
+        }
+
+        if (etapa === 0) {
+            iniciarBot();
+        } else if (etapa === -1) {
+            const resposta = normalizar(texto);
+            if (["sim", "s", "quero", "claro"].includes(resposta)) {
+                mostrarCulturasDisponiveis();
+                etapa = 1;
+            } else if (["nao", "não", "n"].includes(resposta)) {
+                addMsg("Sem problema 😊<br>Digite o nome da cultura desejada (Ex: Milho, Soja, Feijão).", "bot");
+                etapa = 1;
+            } else {
+                addMsg("👉 Por favor, responda com <b>Sim</b> ou <b>Não</b>.", "bot");
+            }
+        } else if (etapa === 1) {
+            const culturaNorm = normalizar(texto);
+            if (!baseDados[culturaNorm]) {
+                addMsg("⚠️ Cultura não encontrada. As disponíveis no momento são: <b>Milho, Soja ou Feijão</b>.", "bot");
+                return;
+            }
+            culturaSelecionada = culturaNorm;
+            addMsg(`Excelente! Vamos analisar a cultura do(a) <b>${texto}</b>. 🌱`, "bot");
+            addMsg(`
+                Como prefere informar os sintomas?<br><br>
+                <div class="sintomas-container">
+                    <button class="btn-diagnosticar-acao" id="btn-modo-texto">✍️ Descrever por texto</button>
+                    <button class="btn-diagnosticar-acao" id="btn-modo-lista" style="background: linear-gradient(135deg, #1565c0, #0d47a1);">📋 Escolher de uma lista</button>
+                </div>
+            `, "bot");
+            etapa = 2;
+        } else if (etapa === 2) {
+            addMsg("👉 Por favor, clique em uma das opções acima para continuar (Descrever por texto ou Escolher de uma lista).", "bot");
+        } else if (etapa === 3 || etapa === 4) {
+            diagnosticar(culturaSelecionada, texto);
+        }
+    });
+}
+
+if (inputSintomas) {
+    inputSintomas.addEventListener("keypress", e => {
+        if (e.key === "Enter") btnEnviar.click();
+    });
+}
 
 // ================= MOTOR DE DIAGNÓSTICO =================
 function diagnosticar(cultura, textoUsuario) {
@@ -453,11 +485,14 @@ if (btnGuia) {
         }));
     });
 
+    // Clique no botão flutuante para abrir o menu do Guia
     btnGuia.addEventListener("click", e => {
         if (moveu) {
             e.stopImmediatePropagation();
             e.preventDefault();
             moveu = false;
+        } else {
+            toggleGuiaMenu();
         }
     });
 }
