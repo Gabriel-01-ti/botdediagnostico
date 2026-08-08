@@ -696,7 +696,9 @@
                 alert("Erro: " + error.message);
             }
         };
-window.verDiagnosticos = async function() {
+
+
+        window.verDiagnosticos = async function() {
     const user = auth.currentUser;
     
     if (!user) {
@@ -739,30 +741,28 @@ window.verDiagnosticos = async function() {
             const doenca = data.doenca || data.resultado || "Diagnóstico Indefinido";
             const dataFormatada = data.data || "Data não informada";
 
-            // 🔍 DETECÇÃO MELHORADA: Checa múltiplos campos possíveis para saber se foi IA
+            // 1. Extrai a taxa de confiança/porcentagem (se existir)
             const confiancaValor = data.confianca || data.precisao || data.porcentagem || null;
-            
-            const isImagem = 
+
+            // 2. REGRA PRECISA: É imagem APENAS se tiver tipo/origem explícita de imagem OU se tiver % de confiança
+            const isImagem = (
                 data.tipo === "imagem" || 
-                data.tipo === "ia" ||
                 data.origem === "ia_imagem" || 
-                data.origem === "imagem" || 
-                data.metodo === "imagem" ||
-                Boolean(data.imagemUrl) ||
-                Boolean(data.imageUrl) ||
-                confiancaValor !== null; // Se tem porcentagem de confiança, obrigatoriamente foi por IA!
+                data.origem === "imagem" ||
+                (data.tipo !== "sintomas" && data.tipo !== "bot" && confiancaValor !== null)
+            );
 
             const badgeTipo = isImagem 
                 ? `<span class="badge-tipo badge-ia">📸 IA Por Imagem</span>`
                 : `<span class="badge-tipo badge-bot">💬 Bot Por Sintomas</span>`;
 
-            // 1. Confiança (Apenas para IA por Imagem)
+            // HTML da Confiança (%)
             let confiancaHtml = "";
             if (isImagem && confiancaValor) {
                 confiancaHtml = `<span style="font-size:0.85rem; color:#2e7d32; font-weight:bold; background:#e8f5e9; padding:2px 6px; border-radius:4px; margin-left:6px;">🎯 ${confiancaValor}%</span>`;
             }
 
-            // 2. Sintoma característico / informado
+            // HTML dos Sintomas
             let sintomaTexto = data.sintoma || data.sintomas || data.sintomaCaracteristico;
             if (Array.isArray(sintomaTexto)) {
                 sintomaTexto = sintomaTexto.join(", ");
