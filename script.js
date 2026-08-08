@@ -215,8 +215,10 @@ async function mostrarResultado(cultura, classe, prob) {
     await salvarDiagnosticoFirestore({
       cultura: cultura,
       doenca: d.nome,
+      tipo: "imagem",
       confianca: porcentagemConfianca,
-      sintoma: sintomasTecnicosHTML
+      sintomas: d.sintomas?.praticos || []
+      
     });
 
   } catch (err) {
