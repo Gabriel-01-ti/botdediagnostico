@@ -696,9 +696,7 @@
                 alert("Erro: " + error.message);
             }
         };
-
-        // ================= FUNÇÃO VER DIAGNÓSTICOS =================
-        window.verDiagnosticos = async function() {
+window.verDiagnosticos = async function() {
     const user = auth.currentUser;
     
     if (!user) {
@@ -741,24 +739,30 @@
             const doenca = data.doenca || data.resultado || "Diagnóstico Indefinido";
             const dataFormatada = data.data || "Data não informada";
 
-            // Identifica se veio por imagem ou sintomas
-            const isImagem = data.tipo === "imagem" || data.imagemUrl || data.origem === "ia_imagem";
+            // 🔍 DETECÇÃO MELHORADA: Checa múltiplos campos possíveis para saber se foi IA
+            const confiancaValor = data.confianca || data.precisao || data.porcentagem || null;
+            
+            const isImagem = 
+                data.tipo === "imagem" || 
+                data.tipo === "ia" ||
+                data.origem === "ia_imagem" || 
+                data.origem === "imagem" || 
+                data.metodo === "imagem" ||
+                Boolean(data.imagemUrl) ||
+                Boolean(data.imageUrl) ||
+                confiancaValor !== null; // Se tem porcentagem de confiança, obrigatoriamente foi por IA!
+
             const badgeTipo = isImagem 
                 ? `<span class="badge-tipo badge-ia">📸 IA Por Imagem</span>`
                 : `<span class="badge-tipo badge-bot">💬 Bot Por Sintomas</span>`;
 
             // 1. Confiança (Apenas para IA por Imagem)
             let confiancaHtml = "";
-            if (isImagem) {
-                // Tenta pegar de 'confianca' ou 'precisao'
-                const percentual = data.confianca || data.precisao || null; 
-                if (percentual) {
-                    confiancaHtml = `<span style="font-size:0.85rem; color:#2e7d32; font-weight:bold; background:#e8f5e9; padding:2px 6px; border-radius:4px; margin-left:6px;">🎯 ${percentual}%</span>`;
-                }
+            if (isImagem && confiancaValor) {
+                confiancaHtml = `<span style="font-size:0.85rem; color:#2e7d32; font-weight:bold; background:#e8f5e9; padding:2px 6px; border-radius:4px; margin-left:6px;">🎯 ${confiancaValor}%</span>`;
             }
 
             // 2. Sintoma característico / informado
-            // Trata se 'sintomas' for Array ou String
             let sintomaTexto = data.sintoma || data.sintomas || data.sintomaCaracteristico;
             if (Array.isArray(sintomaTexto)) {
                 sintomaTexto = sintomaTexto.join(", ");
