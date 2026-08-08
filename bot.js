@@ -18,7 +18,7 @@ fetch("base.json")
         baseDados = data;
         inputSintomas.disabled = false;
         inputSintomas.placeholder = "Digite 'Oi' para começar...";
-        abrirGuiaRapido(); // Carrega dinamicamente a lista de doenças no guia
+        abrirGuiaRapido();
     })
     .catch(err => {
         console.error("Erro ao carregar a base de dados:", err);
@@ -44,14 +44,12 @@ function abrirGuiaRapido() {
     listaDiv.innerHTML = "";
 
     Object.keys(baseDados).forEach(cultura => {
-        // Badge do Nome da Cultura
         const titulo = document.createElement("div");
         titulo.className = "titulo-cultura-guia";
         const nomeFormatado = cultura.charAt(0).toUpperCase() + cultura.slice(1);
         titulo.innerHTML = `🌱 ${nomeFormatado}`;
         listaDiv.appendChild(titulo);
 
-        // Cards das Doenças
         Object.values(baseDados[cultura]).forEach(d => {
             const sintomaPrincipal = d?.sintomas?.praticos?.[0] || "Sintoma não informado";
             const item = document.createElement("div");
@@ -65,12 +63,13 @@ function abrirGuiaRapido() {
     });
 }
 
-function toggleGuiaMenu() {
+// 🎯 FIX: Expor toggleGuiaMenu para o HTML
+window.toggleGuiaMenu = function() {
     const guiaMenu = document.getElementById("guia-menu");
     if (guiaMenu) {
         guiaMenu.classList.toggle("hidden");
     }
-}
+};
 
 // ================= FUNÇÕES UTILITÁRIAS =================
 function normalizar(txt) {
@@ -151,7 +150,8 @@ async function salvarDiagnostico(dados) {
 }
 
 // ================= MODOS DE DIAGNÓSTICO =================
-function escolherModo(modo) {
+// 🎯 FIX: Expor escolherModo para o HTML
+window.escolherModo = function(modo) {
     modoDiagnostico = modo;
     if (modo === "texto") {
         addMsg("✍️ Você escolheu descrever os sintomas.<br>Escreva o que está observando na planta:", "bot");
@@ -162,7 +162,7 @@ function escolherModo(modo) {
         mostrarBotoesSintomas();
         etapa = 4;
     }
-}
+};
 
 function mostrarCulturasDisponiveis() {
     let html = "🌱 <b>Culturas disponíveis:</b><br><br>";
@@ -176,6 +176,8 @@ function mostrarCulturasDisponiveis() {
 // ================= BOTÕES DE SINTOMAS (CHIPS) =================
 function mostrarBotoesSintomas() {
     const dados = baseDados[culturaSelecionada];
+    if (!dados) return;
+
     let sintomasSet = new Set();
     
     Object.values(dados).forEach(d => {
@@ -199,7 +201,8 @@ function mostrarBotoesSintomas() {
     addMsg(html, "bot");
 }
 
-function toggleSintoma(btn, sintoma) {
+// 🎯 FIX: Expor toggleSintoma para o HTML
+window.toggleSintoma = function(btn, sintoma) {
     btn.classList.toggle("ativo");
     
     if (sintomasSelecionados.includes(sintoma)) {
@@ -207,16 +210,17 @@ function toggleSintoma(btn, sintoma) {
     } else {
         sintomasSelecionados.push(sintoma);
     }
-}
+};
 
-function finalizarSelecao() {
+// 🎯 FIX: Expor finalizarSelecao para o HTML
+window.finalizarSelecao = function() {
     if (sintomasSelecionados.length === 0) {
         addMsg("⚠️ Selecione pelo menos um sintoma para continuar.", "bot");
         return;
     }
     addMsg("Sintomas selecionados: " + sintomasSelecionados.join(", "), "usuario");
     diagnosticar(culturaSelecionada, sintomasSelecionados.join(" "));
-}
+};
 
 // ================= EVENTO DE ENVIO =================
 btnEnviar.addEventListener("click", () => {
@@ -267,7 +271,9 @@ btnEnviar.addEventListener("click", () => {
             </div>
         `, "bot");
         etapa = 2;
-    } else if (etapa === 3) {
+    } else if (etapa === 2) {
+        addMsg("👉 Por favor, clique em uma das opções acima para continuar (Descrever por texto ou Escolher de uma lista).", "bot");
+    } else if (etapa === 3 || etapa === 4) {
         diagnosticar(culturaSelecionada, texto);
     }
 });
@@ -364,7 +370,6 @@ function diagnosticar(cultura, textoUsuario) {
         `;
         addMsg(htmlCompleto, "bot", false);
 
-        // Chamada atualizada passando os dados estruturados para o Firebase
         salvarDiagnostico({
             cultura: cultura,
             doenca: d.nome,
