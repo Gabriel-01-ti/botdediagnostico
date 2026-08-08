@@ -41,6 +41,16 @@ async function carregarModelo(cultura) {
   }
 }
 
+window.addEventListener("load", function() {
+    setTimeout(function() {
+        const splash = document.getElementById("splash");
+        if (splash) {
+            splash.style.opacity = "0";
+            splash.style.visibility = "hidden";
+        }
+    }, 2200);
+});
+
 // 2. Carregar o modelo inicial (padrão do select) ao abrir a página
 window.addEventListener('DOMContentLoaded', () => {
   if (selectCultura && selectCultura.value) {
