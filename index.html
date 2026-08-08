@@ -724,10 +724,13 @@ window.verDiagnosticos = async function() {
 
         let lista = [];
         snapshot.forEach(docSnap => {
-            lista.push({ id: docSnap.id, ...docSnap.data() });
+            const dataDoc = docSnap.data();
+            // 🚨 IMPRIME NO CONSOLE OS DADOS REAIS DE CADA ITEM DO BANCO
+            console.log("📄 Documento do Firestore:", { id: docSnap.id, ...dataDoc });
+            lista.push({ id: docSnap.id, ...dataDoc });
         });
 
-        // Ordenação por timestamp do Firebase
+        // Ordenação por timestamp
         lista.sort((a, b) => {
             const tA = a.criadoEm?.seconds || 0;
             const tB = b.criadoEm?.seconds || 0;
@@ -740,27 +743,25 @@ window.verDiagnosticos = async function() {
             const doenca = data.doenca || data.resultado || "Diagnóstico Indefinido";
             const dataFormatada = data.data || "Data não informada";
 
-            // Normaliza o campo 'tipo' removendo espaços e convertendo para minúsculas
-            const tipoTratado = (data.tipo || "").toString().toLowerCase().trim();
-            const origemTratada = (data.origem || "").toString().toLowerCase().trim();
+            // ⚠️ CHECAGEM SEVERA
+            // Se o tipo for "sintomas" OU se não houver imagem/confiança, força a ser BOT POR SINTOMAS
+            const ehSintomas = 
+                data.tipo === "sintomas" || 
+                data.origem === "bot" || 
+                (!data.confianca && !data.precisao && !data.imagemUrl);
 
-            // Determina se É BOT POR SINTOMAS
-            const isBotSintomas = tipoTratado === "sintomas" || origemTratada === "bot" || tipoTratado === "bot";
-
-            const badgeTipo = isBotSintomas 
+            const badgeTipo = ehSintomas 
                 ? `<span class="badge-tipo badge-bot">💬 Bot Por Sintomas</span>`
                 : `<span class="badge-tipo badge-ia">📸 IA Por Imagem</span>`;
 
-            // Confiança: SÓ MONTA SE NÃO FOR BOT
+            // Porcentagem de Confiança (APENAS se NÃO for bot por sintomas)
             let confiancaHtml = "";
-            if (!isBotSintomas) {
-                const confiancaValor = data.confianca || data.precisao || data.porcentagem;
-                if (confiancaValor) {
-                    confiancaHtml = `<span style="font-size:0.85rem; color:#2e7d32; font-weight:bold; background:#e8f5e9; padding:2px 6px; border-radius:4px; margin-left:6px;">🎯 ${confiancaValor}%</span>`;
-                }
+            if (!ehSintomas && (data.confianca || data.precisao)) {
+                const perc = data.confianca || data.precisao;
+                confiancaHtml = `<span style="font-size:0.85rem; color:#2e7d32; font-weight:bold; background:#e8f5e9; padding:2px 6px; border-radius:4px; margin-left:6px;">🎯 ${perc}%</span>`;
             }
 
-            // Exibição do Sintoma Característico
+            // Sintoma
             let sintomaTexto = data.sintoma || data.sintomas || data.sintomaCaracteristico;
             if (Array.isArray(sintomaTexto)) {
                 sintomaTexto = sintomaTexto.join(", ");
@@ -800,7 +801,8 @@ window.verDiagnosticos = async function() {
         console.error("Erro ao carregar histórico:", err);
         container.innerHTML = "<p style='color:#d32f2f; padding:20px;'>❌ Erro ao consultar o histórico.</p>";
     }
-};
+}; 
+        
         // ================= FUNÇÃO EXCLUIR DIAGNÓSTICO =================
         window.excluirDiagnostico = async function(docId) {
             if (!confirm("Tem certeza que deseja excluir este diagnóstico do histórico?")) return;
