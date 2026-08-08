@@ -517,7 +517,9 @@
         collection,
         getDocs,
         query,
-        where
+        where,
+        doc,
+        deleteDoc
       } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
       const firebaseConfig = {
@@ -659,58 +661,103 @@
           alert("Erro: " + error.message);
         }
       };
+// ================= FUNÇÃO VER DIAGNÓSTICOS =================
+        window.verDiagnosticos = async function() {
+            const user = auth.currentUser;
+            
+            if (!user) {
+                alert("Para ver seu histórico, faça login na sua conta!");
+                showAuth(); 
+                return;
+            }
 
-window.verDiagnosticos = async function() {
-  const user = auth.currentUser;
-  
-  // Se não estiver logado, redireciona para a tela de login/cadastro
-  if (!user) {
-    alert("Para ver seu histórico, faça login na sua conta!");
-    showAuth(); 
-    return;
-  }
+            const modal = document.getElementById("historicoModal");
+            const container = document.getElementById("listaHistoricoContainer");
 
-  // Se estiver logado, abre o modal
-  const modal = document.getElementById("historicoModal");
-  const container = document.getElementById("listaHistoricoContainer");
+            modal.style.display = "flex";
+            container.innerHTML = "<p style='color:#666; padding:20px;'>⏳ Carregando seus diagnósticos...</p>";
 
-  modal.style.display = "flex";
-  container.innerHTML = "<p style='color:#666; padding:20px;'>⏳ Carregando seus diagnósticos...</p>";
+            try {
+                const ordem = document.getElementById("ordemHistorico") ? document.getElementById("ordemHistorico").value : "desc";
+                const q = query(collection(db, "diagnosticos"), where("uid", "==", user.uid));
+                const snapshot = await getDocs(q);
 
-  try {
-    const q = query(collection(db, "diagnosticos"), where("uid", "==", user.uid));
-    const snapshot = await getDocs(q);
+                if (snapshot.empty) {
+                    container.innerHTML = "<p style='color:#777; padding:20px;'>📂 Você ainda não possui nenhum diagnóstico salvo.</p>";
+                    return;
+                }
 
-    if (snapshot.empty) {
-      container.innerHTML = "<p style='color:#777; padding:20px;'>📂 Você ainda não possui nenhum diagnóstico salvo.</p>";
-      return;
-    }
+                let lista = [];
+                snapshot.forEach(docSnap => {
+                    lista.push({ id: docSnap.id, ...docSnap.data() });
+                });
 
-    let htmlCards = "";
-    snapshot.forEach(doc => {
-      const data = doc.data();
-      const cultura = data.cultura ? data.cultura.toUpperCase() : "LAVOURA";
-      const doenca = data.doenca || data.resultado || "Diagnóstico Indefinido";
-      const dataFormatada = data.data || "Data não informada";
+                // Ordenação por timestamp do Firebase
+                lista.sort((a, b) => {
+                    const tA = a.criadoEm?.seconds || 0;
+                    const tB = b.criadoEm?.seconds || 0;
+                    return ordem === "desc" ? tB - tA : tA - tB;
+                });
 
-      htmlCards += `
-        <div class="historico-card">
-          <div class="historico-header">
-            <span class="badge-cultura">${cultura}</span>
-            <span class="historico-data">📅 ${dataFormatada}</span>
-          </div>
-          <h4 class="historico-doenca">🦠 ${doenca}</h4>
-        </div>
-      `;
-    });
+                let htmlCards = "";
+                lista.forEach(data => {
+                    const cultura = data.cultura ? data.cultura.toUpperCase() : "LAVOURA";
+                    const doenca = data.doenca || data.resultado || "Diagnóstico Indefinido";
+                    const dataFormatada = data.data || "Data não informada";
 
-    container.innerHTML = htmlCards;
+                    // Identifica se veio por imagem ou sintomas
+                    const isImagem = data.tipo === "imagem" || data.imagemUrl || data.origem === "ia_imagem";
+                    const badgeTipo = isImagem 
+                        ? `<span class="badge-tipo badge-ia">📸 IA Por Imagem</span>`
+                        : `<span class="badge-tipo badge-bot">💬 Bot Por Sintomas</span>`;
 
-  } catch (err) {
-    console.error("Erro ao carregar histórico:", err);
-    container.innerHTML = "<p style='color:#d32f2f; padding:20px;'>❌ Erro ao consultar o histórico.</p>";
-  }
-};
+                    htmlCards += `
+                        <div class="historico-card" id="card-${data.id}">
+                            <div class="historico-header">
+                                <div style="display:flex; gap: 6px; align-items:center;">
+                                    <span class="badge-cultura">${cultura}</span>
+                                    ${badgeTipo}
+                                </div>
+                                <span class="historico-data">📅 ${dataFormatada}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+                                <h4 class="historico-doenca" style="margin:0;">🦠 ${doenca}</h4>
+                                <button class="btn-excluir-historico" onclick="excluirDiagnostico('${data.id}')" title="Excluir Diagnóstico">
+                                    🗑️
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                container.innerHTML = htmlCards;
+
+            } catch (err) {
+                console.error("Erro ao carregar histórico:", err);
+                container.innerHTML = "<p style='color:#d32f2f; padding:20px;'>❌ Erro ao consultar o histórico.</p>";
+            }
+        };
+
+        // ================= FUNÇÃO EXCLUIR DIAGNÓSTICO =================
+        window.excluirDiagnostico = async function(docId) {
+            if (!confirm("Tem certeza que deseja excluir este diagnóstico do histórico?")) return;
+
+            try {
+                await deleteDoc(doc(db, "diagnosticos", docId));
+                
+                // Remove o card da tela
+                const card = document.getElementById(`card-${docId}`);
+                if (card) card.remove();
+
+                const container = document.getElementById("listaHistoricoContainer");
+                if (container && container.children.length === 0) {
+                    container.innerHTML = "<p style='color:#777; padding:20px;'>📂 Você ainda não possui nenhum diagnóstico salvo.</p>";
+                }
+            } catch (error) {
+                console.error("Erro ao excluir documento:", error);
+                alert("❌ Erro ao excluir diagnóstico. Tente novamente.");
+            }
+        };
     </script> 
 </body>
 </html>
