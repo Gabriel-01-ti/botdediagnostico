@@ -405,6 +405,7 @@ function diagnosticar(cultura, textoUsuario) {
         salvarDiagnostico({
             cultura: cultura,
             doenca: d.nome,
+            tipo: "sintomas",
             sintomas: d.sintomas?.praticos || []
         });
 
