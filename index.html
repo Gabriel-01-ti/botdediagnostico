@@ -697,8 +697,7 @@
             }
         };
 
-
-        window.verDiagnosticos = async function() {
+window.verDiagnosticos = async function() {
     const user = auth.currentUser;
     
     if (!user) {
@@ -741,18 +740,24 @@
             const doenca = data.doenca || data.resultado || "Diagnóstico Indefinido";
             const dataFormatada = data.data || "Data não informada";
 
-            // Checagem do tipo exato salvo no Firestore
-            const isBotSintomas = data.tipo === "sintomas";
-            
+            // Normaliza o campo 'tipo' removendo espaços e convertendo para minúsculas
+            const tipoTratado = (data.tipo || "").toString().toLowerCase().trim();
+            const origemTratada = (data.origem || "").toString().toLowerCase().trim();
+
+            // Determina se É BOT POR SINTOMAS
+            const isBotSintomas = tipoTratado === "sintomas" || origemTratada === "bot" || tipoTratado === "bot";
+
             const badgeTipo = isBotSintomas 
                 ? `<span class="badge-tipo badge-bot">💬 Bot Por Sintomas</span>`
                 : `<span class="badge-tipo badge-ia">📸 IA Por Imagem</span>`;
 
-            // Confiança (Exibida apenas quando for IA por Imagem)
+            // Confiança: SÓ MONTA SE NÃO FOR BOT
             let confiancaHtml = "";
-            const confiancaValor = data.confianca || data.precisao || data.porcentagem;
-            if (!isBotSintomas && confiancaValor) {
-                confiancaHtml = `<span style="font-size:0.85rem; color:#2e7d32; font-weight:bold; background:#e8f5e9; padding:2px 6px; border-radius:4px; margin-left:6px;">🎯 ${confiancaValor}%</span>`;
+            if (!isBotSintomas) {
+                const confiancaValor = data.confianca || data.precisao || data.porcentagem;
+                if (confiancaValor) {
+                    confiancaHtml = `<span style="font-size:0.85rem; color:#2e7d32; font-weight:bold; background:#e8f5e9; padding:2px 6px; border-radius:4px; margin-left:6px;">🎯 ${confiancaValor}%</span>`;
+                }
             }
 
             // Exibição do Sintoma Característico
