@@ -18,36 +18,53 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-let usuarioLogado = null;
-
-// Escuta a sessão do usuário logado em tempo real
-onAuthStateChanged(auth, (user) => {
-  usuarioLogado = user;
-});
+/**
+ * Função auxiliar que garante a busca do usuário atual mesmo que o Firebase demore a inicializar
+ */
+function obterUsuarioAtual() {
+  return new Promise((resolve) => {
+    // 1. Tenta pegar diretamente se já estiver disponível
+    if (auth.currentUser) {
+      resolve(auth.currentUser);
+      return;
+    }
+    // 2. Se ainda não carregou a sessão, aguarda o listener avisar
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      unsubscribe(); // Desconecta o ouvinte após receber a resposta
+      resolve(user);
+    });
+  });
+}
 
 /**
  * Função para salvar o diagnóstico na conta do usuário no Firestore
  */
 export async function salvarDiagnosticoFirestore(dados) {
-  if (!usuarioLogado) {
-    console.warn("⚠️ Nenhum usuário logado no momento. O diagnóstico não foi salvo no banco.");
-    return;
-  }
-
   try {
+    // Busca e aguarda a confirmação do usuário logado
+    const user = await obterUsuarioAtual();
+
+    if (!user) {
+      console.warn("⚠️ Sessão não encontrada. O usuário não está autenticado.");
+      return;
+    }
+
     const dataAtual = new Date().toLocaleDateString('pt-BR');
+    const confiancaValor = dados.confianca || 100;
 
     await addDoc(collection(db, "diagnosticos"), {
-      uid: usuarioLogado.uid,
-      email: usuarioLogado.email,
+      uid: user.uid,
+      email: user.email,
       cultura: dados.cultura,
-      resultado: `${dados.doenca} (${dados.confianca}%)`,
-      confianca: dados.confianca,
+      doenca: dados.doenca,
+      sintomas: dados.sintomas || [],
+      resultado: `${dados.doenca} (${confiancaValor}%)`,
+      confianca: confiancaValor,
       data: dataAtual,
       criadoEm: serverTimestamp()
     });
 
-    console.log("✅ Diagnóstico salvo no Firestore com sucesso!");
+    console.log("✅ Diagnóstico salvo no Firestore com sucesso para o usuário:", user.email);
   } catch (error) {
     console.error("❌ Erro ao salvar o diagnóstico no Firestore:", error);
   }
