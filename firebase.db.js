@@ -1,43 +1,54 @@
-// ================= FIREBASE DB GLOBAL =================
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-import { 
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+// Suas credenciais do Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBbvAOfk3EXyQivxcc4ylHrtuWkKyXkuDw",
+  authDomain: "sitebot-2c952.firebaseapp.com",
+  projectId: "sitebot-2c952",
+  storageBucket: "sitebot-2c952.firebasestorage.app",
+  messagingSenderId: "410409250226",
+  appId: "1:410409250226:web:6a89bc59b81011317348ab",
+  measurementId: "G-RRR7DPL1CM"
+};
 
-import { getAuth } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+// Inicialização do Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-// 🔥 Usa o app já inicializado
-const db = getFirestore();
-const auth = getAuth();
+let usuarioLogado = null;
 
-// ================= SALVAR DIAGNÓSTICO =================
-export async function salvarDiagnosticoFirestore({ cultura, doenca, confianca }) {
+// Escuta a sessão do usuário logado em tempo real
+onAuthStateChanged(auth, (user) => {
+  usuarioLogado = user;
+});
 
-  const user = auth.currentUser;
-
-  if (!user) {
-    console.warn("Usuário não logado, não salvou no Firebase");
+/**
+ * Função para salvar o diagnóstico na conta do usuário no Firestore
+ */
+export async function salvarDiagnosticoFirestore(dados) {
+  if (!usuarioLogado) {
+    console.warn("⚠️ Nenhum usuário logado no momento. O diagnóstico não foi salvo no banco.");
     return;
   }
 
   try {
+    const dataAtual = new Date().toLocaleDateString('pt-BR');
+
     await addDoc(collection(db, "diagnosticos"), {
-      uid: user.uid,
-      email: user.email,
-
-      cultura: cultura,
-      doenca: doenca,
-      confianca: confianca || null,
-
-      dataTexto: new Date().toLocaleString(),
+      uid: usuarioLogado.uid,
+      email: usuarioLogado.email,
+      cultura: dados.cultura,
+      resultado: `${dados.doenca} (${dados.confianca}%)`,
+      confianca: dados.confianca,
+      data: dataAtual,
       criadoEm: serverTimestamp()
     });
 
-    console.log("✅ Diagnóstico salvo no Firestore");
-  } catch (err) {
-    console.error("❌ Erro ao salvar:", err);
+    console.log("✅ Diagnóstico salvo no Firestore com sucesso!");
+  } catch (error) {
+    console.error("❌ Erro ao salvar o diagnóstico no Firestore:", error);
   }
 }
