@@ -1,3 +1,5 @@
+import { salvarDiagnosticoFirestore } from "./firebase.db.js";
+
 // ================= VARIÁVEIS DE ESTADO =================
 let baseDados = null;
 const inputSintomas = document.getElementById("sintomas");
@@ -138,16 +140,14 @@ function finalizarDiagnostico() {
     }, 5000);
 }
 
-function salvarDiagnostico(texto) {
-    const user = localStorage.getItem("loggedUser");
-    if (!user) return;
-
-    let historico = JSON.parse(localStorage.getItem(user + "_diagnosticos")) || [];
-    historico.push({
-        resultado: texto,
-        data: new Date().toLocaleString()
-    });
-    localStorage.setItem(user + "_diagnosticos", JSON.stringify(historico));
+// ================= SALVAMENTO DE DIAGNÓSTICO (FIREBASE) =================
+async function salvarDiagnostico(dados) {
+    try {
+        await salvarDiagnosticoFirestore(dados);
+        console.log("Diagnóstico salvo com sucesso no Firebase!");
+    } catch (error) {
+        console.error("Erro ao integrar com Firestore:", error);
+    }
 }
 
 // ================= MODOS DE DIAGNÓSTICO =================
@@ -363,7 +363,13 @@ function diagnosticar(cultura, textoUsuario) {
             </div>
         `;
         addMsg(htmlCompleto, "bot", false);
-        salvarDiagnostico(`Cultura: ${cultura}, Doença: ${d.nome}`);
+
+        // Chamada atualizada passando os dados estruturados para o Firebase
+        salvarDiagnostico({
+            cultura: cultura,
+            doenca: d.nome,
+            sintomas: d.sintomas?.praticos || []
+        });
 
         setTimeout(() => {
             addMsg("🏁 Diagnóstico concluído! Deseja analisar outra cultura ou encerrar?", "bot", false);
