@@ -262,33 +262,60 @@
         .btn-logout { margin-top: 20px; width: 100%; padding: 10px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.4); color: white; border-radius: 20px; cursor: pointer; transition: 0.3s; }
         .btn-logout:hover { background: rgba(255, 0, 0, 0.2); border-color: rgba(255, 100, 100, 0.6); }
 
-        /* Card do Histórico */
-.historico-card {
-  background: #ffffff;
-  border-left: 5px solid #2e7d32;
-  border-radius: 12px;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  text-align: left;
-}
-.historico-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-.badge-cultura {
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  font-weight: 700;
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-.historico-data { font-size: 0.8rem; color: #777; }
-.historico-doenca { margin: 4px 0; font-size: 1.05rem; color: #1b5e20; font-weight: 700; }
-.historico-confianca { font-size: 0.85rem; color: #555; margin-top: 4px; }
+        /* ================= CARD DO HISTÓRICO ================= */
+        .historico-card {
+            background: #ffffff;
+            border-left: 5px solid #2e7d32;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+        .historico-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .badge-cultura {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .badge-tipo {
+            font-size: 0.72rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+        .badge-ia {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #90caf9;
+        }
+        .badge-bot {
+            background-color: #f1f8e9;
+            color: #33691e;
+            border: 1px solid #c5e1a5;
+        }
+        .btn-excluir-historico {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 4px 6px;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        .btn-excluir-historico:hover {
+            background-color: #ffebee;
+        }
+        .historico-data { font-size: 0.8rem; color: #777; }
+        .historico-doenca { margin: 4px 0; font-size: 1.05rem; color: #1b5e20; font-weight: 700; }
 
         /* ================= RESPONSIVIDADE ================= */
         @media (max-width: 1024px) {
@@ -486,182 +513,191 @@
             <button onclick="logout()" style="width:100%; padding:10px; background:#d32f2f; color:white; border:none; border-radius:12px; font-weight:600; cursor:pointer; transition:0.3s;">Sair da Conta</button>
         </div>
     </div>
+
     <div id="historicoModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(5px);">
-  <div style="background:white; color: #333; width:100%; max-width:500px; padding:25px; border-radius:20px; position:relative; text-align:center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-height:85vh; display:flex; flex-direction:column;">
-    <span onclick="document.getElementById('historicoModal').style.display='none'" style="position:absolute; top:12px; right:18px; font-size:1.5rem; cursor:pointer; color:#888;">&times;</span>
-    
-    <h3 style="color:#1b5e20; font-size:1.3rem; margin-bottom:15px;">📜 Seu Histórico</h3>
-    
-    <div id="listaHistoricoContainer" style="overflow-y:auto; flex:1; padding-right:5px;">
-      </div>
-  </div>
-</div>
+        <div style="background:white; color: #333; width:100%; max-width:500px; padding:25px; border-radius:20px; position:relative; text-align:center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-height:85vh; display:flex; flex-direction:column;">
+            <span onclick="document.getElementById('historicoModal').style.display='none'" style="position:absolute; top:12px; right:18px; font-size:1.5rem; cursor:pointer; color:#888;">&times;</span>
+            
+            <h3 style="color:#1b5e20; font-size:1.3rem; margin-bottom:10px;">📜 Seu Histórico</h3>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; padding: 8px 12px; background: #f5f5f5; border-radius: 8px; margin-bottom: 12px;">
+                <label for="ordemHistorico" style="font-size: 0.85rem; font-weight: bold; color: #444;">Ordenar por:</label>
+                <select id="ordemHistorico" onchange="verDiagnosticos()" style="padding: 5px 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 0.82rem; cursor: pointer; outline: none;">
+                    <option value="desc">📅 Mais recentes primeiro</option>
+                    <option value="asc">📅 Mais antigas primeiro</option>
+                </select>
+            </div>
+            
+            <div id="listaHistoricoContainer" style="overflow-y:auto; flex:1; padding-right:5px;"></div>
+        </div>
+    </div>
    
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
-      import {
-        getAuth,
-        createUserWithEmailAndPassword,
-        signInWithEmailAndPassword,
-        sendPasswordResetEmail,
-        signOut,
-        onAuthStateChanged,
-        GoogleAuthProvider,
-        signInWithPopup,
-        setPersistence,
-        browserLocalPersistence
-      } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-      import {
-        getFirestore,
-        collection,
-        getDocs,
-        query,
-        where,
-        doc,
-        deleteDoc
-      } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            sendPasswordResetEmail,
+            signOut,
+            onAuthStateChanged,
+            GoogleAuthProvider,
+            signInWithPopup,
+            setPersistence,
+            browserLocalPersistence
+        } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+        import {
+            getFirestore,
+            collection,
+            getDocs,
+            query,
+            where,
+            doc,
+            deleteDoc
+        } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyBbvAOfk3EXyQivxcc4ylHrtuWkKyXkuDw",
-        authDomain: "sitebot-2c952.firebaseapp.com",
-        projectId: "sitebot-2c952",
-        storageBucket: "sitebot-2c952.firebasestorage.app",
-        messagingSenderId: "410409250226",
-        appId: "1:410409250226:web:6a89bc59b81011317348ab",
-        measurementId: "G-RRR7DPL1CM"
-      };
+        const firebaseConfig = {
+            apiKey: "AIzaSyBbvAOfk3EXyQivxcc4ylHrtuWkKyXkuDw",
+            authDomain: "sitebot-2c952.firebaseapp.com",
+            projectId: "sitebot-2c952",
+            storageBucket: "sitebot-2c952.firebasestorage.app",
+            messagingSenderId: "410409250226",
+            appId: "1:410409250226:web:6a89bc59b81011317348ab",
+            measurementId: "G-RRR7DPL1CM"
+        };
 
-      const app = initializeApp(firebaseConfig);
-      getAnalytics(app);
-      const auth = getAuth(app);
-      const db = getFirestore(app);
+        const app = initializeApp(firebaseConfig);
+        getAnalytics(app);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
 
-      setPersistence(auth, browserLocalPersistence);
-      let isLogin = true;
+        setPersistence(auth, browserLocalPersistence);
+        let isLogin = true;
 
-      window.showAuth = function() {
-        document.getElementById('welcomeView').style.display = 'none';
-        document.getElementById('auth').style.display = 'block';
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('illustrationArea').style.display = 'flex';
-        document.getElementById('mainHeroContainer').classList.remove('dashboard-active');
-      };
+        window.showAuth = function() {
+            document.getElementById('welcomeView').style.display = 'none';
+            document.getElementById('auth').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('illustrationArea').style.display = 'flex';
+            document.getElementById('mainHeroContainer').classList.remove('dashboard-active');
+        };
 
-      window.toggleForm = function() {
-        isLogin = !isLogin;
-        document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
-        document.getElementById("mainBtn").innerText = isLogin ? "Entrar" : "Cadastrar";
-        document.getElementById("confirmGroup").style.display = isLogin ? "none" : "block";
-        document.getElementById("toggleText").innerText = isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login";
-      };
+        window.toggleForm = function() {
+            isLogin = !isLogin;
+            document.getElementById("formTitle").innerText = isLogin ? "Login" : "Cadastro";
+            document.getElementById("mainBtn").innerText = isLogin ? "Entrar" : "Cadastrar";
+            document.getElementById("confirmGroup").style.display = isLogin ? "none" : "block";
+            document.getElementById("toggleText").innerText = isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login";
+        };
 
-      window.togglePassword = function(id) {
-        const input = document.getElementById(id);
-        input.type = input.type === "password" ? "text" : "password";
-      };
+        window.togglePassword = function(id) {
+            const input = document.getElementById(id);
+            input.type = input.type === "password" ? "text" : "password";
+        };
 
-      window.authAction = async function() {
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const confirm = document.getElementById("confirmPassword").value.trim();
+        window.authAction = async function() {
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const confirm = document.getElementById("confirmPassword").value.trim();
 
-        if (!email || !password) {
-          alert("Preencha todos os campos!");
-          return;
-        }
-
-        try {
-          if (isLogin) {
-            await signInWithEmailAndPassword(auth, email, password);
-            alert("Login realizado com sucesso!");
-          } else {
-            if (password !== confirm) {
-              alert("As senhas não coincidem!");
-              return;
+            if (!email || !password) {
+                alert("Preencha todos os campos!");
+                return;
             }
-            await createUserWithEmailAndPassword(auth, email, password);
-            alert("Conta criada com sucesso!");
-          }
-        } catch (error) {
-          alert("Erro: " + error.message);
-        }
-      };
 
-      window.loginGoogle = async function() {
-        const provider = new GoogleAuthProvider();
-        try {
-          await signInWithPopup(auth, provider);
-        } catch (err) {
-          alert("Erro Google: " + err.message);
-        }
-      };
+            try {
+                if (isLogin) {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    alert("Login realizado com sucesso!");
+                } else {
+                    if (password !== confirm) {
+                        alert("As senhas não coincidem!");
+                        return;
+                    }
+                    await createUserWithEmailAndPassword(auth, email, password);
+                    alert("Conta criada com sucesso!");
+                }
+            } catch (error) {
+                alert("Erro: " + error.message);
+            }
+        };
 
-      onAuthStateChanged(auth, (user) => {
-        const perfil = document.getElementById("userProfile");
-        const foto = document.getElementById("userPhoto");
-        const nome = document.getElementById("userName");
-        const welcomeView = document.getElementById("welcomeView");
-        const authView = document.getElementById("auth");
-        const dashboardView = document.getElementById("dashboard");
-        const navLoginBtn = document.getElementById("navLoginBtn");
-        const heroContainer = document.getElementById("mainHeroContainer");
-        const illustrationArea = document.getElementById("illustrationArea");
+        window.loginGoogle = async function() {
+            const provider = new GoogleAuthProvider();
+            try {
+                await signInWithPopup(auth, provider);
+            } catch (err) {
+                alert("Erro Google: " + err.message);
+            }
+        };
 
-        if (user) {
-          perfil.style.display = "block";
-          const displayName = user.displayName || user.email.split("@")[0];
-          nome.innerText = displayName;
-          if (user.photoURL) foto.src = user.photoURL;
+        onAuthStateChanged(auth, (user) => {
+            const perfil = document.getElementById("userProfile");
+            const foto = document.getElementById("userPhoto");
+            const nome = document.getElementById("userName");
+            const welcomeView = document.getElementById("welcomeView");
+            const authView = document.getElementById("auth");
+            const dashboardView = document.getElementById("dashboard");
+            const navLoginBtn = document.getElementById("navLoginBtn");
+            const heroContainer = document.getElementById("mainHeroContainer");
+            const illustrationArea = document.getElementById("illustrationArea");
 
-          document.getElementById("modalUserName").innerText = displayName;
-          document.getElementById("modalUserEmail").innerText = user.email || "";
-          document.getElementById("modalUserPhoto").src = user.photoURL || "logo.jpg";
+            if (user) {
+                perfil.style.display = "block";
+                const displayName = user.displayName || user.email.split("@")[0];
+                nome.innerText = displayName;
+                if (user.photoURL) foto.src = user.photoURL;
 
-          welcomeView.style.display = "none";
-          authView.style.display = "none";
-          dashboardView.style.display = "block";
-          if (navLoginBtn) navLoginBtn.style.display = "none";
+                document.getElementById("modalUserName").innerText = displayName;
+                document.getElementById("modalUserEmail").innerText = user.email || "";
+                document.getElementById("modalUserPhoto").src = user.photoURL || "logo.jpg";
 
-          heroContainer.classList.add('dashboard-active');
-          illustrationArea.style.display = 'none';
-        } else {
-          perfil.style.display = "none";
-          welcomeView.style.display = "block";
-          authView.style.display = "none";
-          dashboardView.style.display = "none";
-          if (navLoginBtn) navLoginBtn.style.display = "block";
+                welcomeView.style.display = "none";
+                authView.style.display = "none";
+                dashboardView.style.display = "block";
+                if (navLoginBtn) navLoginBtn.style.display = "none";
 
-          heroContainer.classList.remove('dashboard-active');
-          illustrationArea.style.display = 'flex';
-        }
-      });
+                heroContainer.classList.add('dashboard-active');
+                illustrationArea.style.display = 'none';
+            } else {
+                perfil.style.display = "none";
+                welcomeView.style.display = "block";
+                authView.style.display = "none";
+                dashboardView.style.display = "none";
+                if (navLoginBtn) navLoginBtn.style.display = "block";
 
-      window.openContact = function() { document.getElementById("contactModal").style.display = "flex"; };
-      window.closeContact = function() { document.getElementById("contactModal").style.display = "none"; };
+                heroContainer.classList.remove('dashboard-active');
+                illustrationArea.style.display = 'flex';
+            }
+        });
 
-      window.openProfileModal = function() { document.getElementById("profileModal").style.display = "flex"; };
-      window.closeProfileModal = function() { document.getElementById("profileModal").style.display = "none"; };
+        window.openContact = function() { document.getElementById("contactModal").style.display = "flex"; };
+        window.closeContact = function() { document.getElementById("contactModal").style.display = "none"; };
 
-      window.logout = async function() {
-        await signOut(auth);
-        location.reload();
-      };
+        window.openProfileModal = function() { document.getElementById("profileModal").style.display = "flex"; };
+        window.closeProfileModal = function() { document.getElementById("profileModal").style.display = "none"; };
 
-      window.recuperarSenha = async function() {
-        const email = document.getElementById("email").value.trim();
-        if (!email) {
-          alert("Digite seu email!");
-          return;
-        }
-        try {
-          await sendPasswordResetEmail(auth, email);
-          alert("📩 Enviamos um e-mail de verificação para você.");
-        } catch (error) {
-          alert("Erro: " + error.message);
-        }
-      };
-// ================= FUNÇÃO VER DIAGNÓSTICOS =================
+        window.logout = async function() {
+            await signOut(auth);
+            location.reload();
+        };
+
+        window.recuperarSenha = async function() {
+            const email = document.getElementById("email").value.trim();
+            if (!email) {
+                alert("Digite seu email!");
+                return;
+            }
+            try {
+                await sendPasswordResetEmail(auth, email);
+                alert("📩 Enviamos um e-mail de verificação para você.");
+            } catch (error) {
+                alert("Erro: " + error.message);
+            }
+        };
+
+        // ================= FUNÇÃO VER DIAGNÓSTICOS =================
         window.verDiagnosticos = async function() {
             const user = auth.currentUser;
             
