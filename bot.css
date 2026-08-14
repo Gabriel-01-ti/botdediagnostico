@@ -88,8 +88,8 @@ body {
 .btn-circular {
     position: absolute;
     pointer-events: auto;
-    width: 70px;
-    height: 44px;
+    width:100px;
+    height: auto;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     background: linear-gradient(135deg, #2e7d32, #1b5e20);
