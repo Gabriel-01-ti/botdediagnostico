@@ -91,9 +91,9 @@ body {
     width:150px;
     height: auto;
     border-radius: 10px;
-    padding: 7px;
+    padding: 4px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    background: linear-gradient(135deg, #2e9d32, #1b5e41);
+    background: linear-gradient(135deg, #2e9d52, #1b5e41);
     color: var(--white);
     display: flex;
     align-items: center;
