@@ -206,6 +206,7 @@ body {
 #chat-messages {
     padding: 16px;
     min-height: 280px;
+    min-width: 900px;
     display: flex;
     flex-direction: column;
     gap: 14px;
