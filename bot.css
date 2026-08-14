@@ -130,7 +130,7 @@ body {
 /* ================= CONTAINER LIMPO (SEM CAIXA/FUNDO) ================= */
 .container {
     width: 100%;
-    max-width: 800px;
+    max-width: 1300px;
     background: transparent; /* Removemos o container de vidro */
     box-shadow: none;
     border: none;
@@ -206,7 +206,6 @@ body {
 #chat-messages {
     padding: 16px;
     min-height: 280px;
-    min-width: 900px;
     display: flex;
     flex-direction: column;
     gap: 14px;
