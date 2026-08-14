@@ -99,6 +99,7 @@ body {
     justify-content: center;
     cursor: pointer;
     text-decoration: none;
+    text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
     transition: transform 0.2s ease, background 0.2s ease;
     -webkit-tap-highlight-color: transparent; /* Remove o quadrado de foco do toque no Android/iOS */
