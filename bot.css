@@ -594,8 +594,8 @@ input[type="text"]:disabled {
     body { padding: 8px 6px; }
 
     .btn-circular { 
-        width: 40px; 
-        height: 40px; 
+        width: 100px; 
+        
     }
 
     .btn-voltar { 
