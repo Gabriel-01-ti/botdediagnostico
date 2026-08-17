@@ -545,7 +545,8 @@
             GoogleAuthProvider,
             signInWithPopup,
             setPersistence,
-            browserLocalPersistence
+            browserLocalPersistence,
+            sendEmailVerification
         } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
         import {
             getFirestore,
@@ -597,31 +598,53 @@
         };
 
         window.authAction = async function() {
-            const email = document.getElementById("email").value.trim();
-            const password = document.getElementById("password").value.trim();
-            const confirm = document.getElementById("confirmPassword").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirm = document.getElementById("confirmPassword").value.trim();
 
-            if (!email || !password) {
-                alert("Preencha todos os campos!");
+    if (!email || !password) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    try {
+        if (isLogin) {
+            // Tenta fazer login
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Verifica se o e-mail foi verificado
+            if (!user.emailVerified) {
+                alert("Por favor, verifique sua caixa de entrada e confirme seu e-mail antes de acessar o painel!");
+                await signOut(auth); // Desconecta o usuário não verificado
                 return;
             }
 
-            try {
-                if (isLogin) {
-                    await signInWithEmailAndPassword(auth, email, password);
-                    alert("Login realizado com sucesso!");
-                } else {
-                    if (password !== confirm) {
-                        alert("As senhas não coincidem!");
-                        return;
-                    }
-                    await createUserWithEmailAndPassword(auth, email, password);
-                    alert("Conta criada com sucesso!");
-                }
-            } catch (error) {
-                alert("Erro: " + error.message);
+            alert("Login realizado com sucesso!");
+        } else {
+            // Processo de Cadastro
+            if (password !== confirm) {
+                alert("As senhas não coincidem!");
+                return;
             }
-        };
+
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            
+            // Envia o e-mail de confirmação
+            await sendEmailVerification(userCredential.user);
+            
+            alert("Conta criada com sucesso! Enviamos um e-mail de verificação para você. Por favor, confirme seu e-mail antes de fazer o login.");
+            
+            // Desconecta o usuário recém-criado até que ele confirme
+            await signOut(auth);
+            
+            // Alterna a tela de volta para a aba de Login
+            window.toggleForm();
+        }
+    } catch (error) {
+        alert("Erro: " + error.message);
+    }
+};
 
         window.loginGoogle = async function() {
             const provider = new GoogleAuthProvider();
@@ -643,34 +666,35 @@
             const heroContainer = document.getElementById("mainHeroContainer");
             const illustrationArea = document.getElementById("illustrationArea");
 
-            if (user) {
-                perfil.style.display = "block";
-                const displayName = user.displayName || user.email.split("@")[0];
-                nome.innerText = displayName;
-                if (user.photoURL) foto.src = user.photoURL;
+            if (user && user.emailVerified) {
+        perfil.style.display = "block";
+        const displayName = user.displayName || user.email.split("@")[0];
+        nome.innerText = displayName;
+        if (user.photoURL) foto.src = user.photoURL;
 
-                document.getElementById("modalUserName").innerText = displayName;
-                document.getElementById("modalUserEmail").innerText = user.email || "";
-                document.getElementById("modalUserPhoto").src = user.photoURL || "logo.jpg";
+        document.getElementById("modalUserName").innerText = displayName;
+        document.getElementById("modalUserEmail").innerText = user.email || "";
+        document.getElementById("modalUserPhoto").src = user.photoURL || "logo.jpg";
 
-                welcomeView.style.display = "none";
-                authView.style.display = "none";
-                dashboardView.style.display = "block";
-                if (navLoginBtn) navLoginBtn.style.display = "none";
+        welcomeView.style.display = "none";
+        authView.style.display = "none";
+        dashboardView.style.display = "block";
+        if (navLoginBtn) navLoginBtn.style.display = "none";
 
-                heroContainer.classList.add('dashboard-active');
-                illustrationArea.style.display = 'none';
-            } else {
-                perfil.style.display = "none";
-                welcomeView.style.display = "block";
-                authView.style.display = "none";
-                dashboardView.style.display = "none";
-                if (navLoginBtn) navLoginBtn.style.display = "block";
+        heroContainer.classList.add('dashboard-active');
+        illustrationArea.style.display = 'none';
+    } else {
+        // Se não estiver verificado ou não logado, volta para a tela inicial
+        perfil.style.display = "none";
+        welcomeView.style.display = "block";
+        authView.style.display = "none";
+        dashboardView.style.display = "none";
+        if (navLoginBtn) navLoginBtn.style.display = "block";
 
-                heroContainer.classList.remove('dashboard-active');
-                illustrationArea.style.display = 'flex';
-            }
-        });
+        heroContainer.classList.remove('dashboard-active');
+        illustrationArea.style.display = 'flex';
+    }
+});
 
         window.openContact = function() { document.getElementById("contactModal").style.display = "flex"; };
         window.closeContact = function() { document.getElementById("contactModal").style.display = "none"; };
