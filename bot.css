@@ -132,7 +132,7 @@ body {
 /* ================= CONTAINER LIMPO (SEM CAIXA/FUNDO) ================= */
 .container {
     width: 100%;
-    max-width: 1300px;
+    max-width: 90%;
     background: transparent; /* Removemos o container de vidro */
     box-shadow: none;
     border: none;
