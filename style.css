@@ -533,6 +533,16 @@ small {
     right: 5vw;
     bottom: 85px;
   }
+    .btn-circular { 
+        width: 100px; 
+        
+    }
+
+    .btn-voltar { 
+        top: 10px; 
+        left: 10px; 
+        font-size: 18px; 
+    }
    }
 
 
