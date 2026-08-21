@@ -30,7 +30,7 @@
   "helmintosporiose": {
     "nome": "Helmintosporiose do Milho",
     "nome_biologico": "Exserohilum turcicum",
-    "imagem": "imagens/milho.helmintospiriose.jpg",
+    "imagem": "imagens/milho.helmintospirose.jpg",
     "descricao": "Doença fúngica que causa manchas alongadas nas folhas, com aspecto de queimadura, podendo comprometer severamente a fotossíntese.",
     "condicoes_favoraveis": "Alta umidade, temperaturas entre 18°C e 27°C e cultivares suscetíveis.",
     "sintomas": {
