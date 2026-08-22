@@ -46,49 +46,56 @@ h1 {
   color: #1b5e20;
   margin-bottom: 15px;
 }
-
 .btn-circular {
-    position: absolute;
-    pointer-events: auto;
-    width:150px;
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 9999;
+
+    width: 150px;
     height: auto;
+    min-height: 42px;
+
     border-radius: 10px;
-    padding: 4px;
+    padding: 8px 14px;
+
     border: 1px solid rgba(255, 255, 255, 0.3);
     background: linear-gradient(135deg, #2e9d52, #1b5e41);
-    color: var(--white);
+    color: white;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     cursor: pointer;
     text-decoration: none;
     text-align: center;
+
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
     transition: transform 0.2s ease, background 0.2s ease;
-    -webkit-tap-highlight-color: transparent; /* Remove o quadrado de foco do toque no Android/iOS */
+
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Ajuste fino na Seta de Voltar */
-.btn-voltar { 
-    top: 14px; 
-    left: 14px; 
+.btn-voltar {
     font-size: 20px;
     line-height: 1;
 }
 
 .btn-voltar span {
-    display: inline-block;
-    transform: translateY(-1px); /* Ajuste fino de 1px para centralização perfeita do símbolo */
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transform: none;
 }
 
-#floating-guia-btn { 
-    bottom: 18px; 
-    right: 18px; 
-    font-size: 18px;
+.btn-circular:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
 }
 
 .btn-circular:active {
-    transform: scale(0.92); /* Efeito tátil suave ao tocar no celular */
+    transform: scale(0.94);
 }
 /* ================= SPLASH SCREEN ================= */
 #splash {
@@ -533,16 +540,17 @@ small {
     right: 5vw;
     bottom: 85px;
   }
-    .btn-circular { 
-        width: 100px; 
-        
-    }
+     .btn-circular {
+    width: 105px;
+    min-height: 38px;
+    padding: 7px 10px;
+  }
 
-    .btn-voltar { 
-        top: 10px; 
-        left: 10px; 
-        font-size: 18px; 
-    }
+  .btn-voltar {
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+  }
    }
 
 
