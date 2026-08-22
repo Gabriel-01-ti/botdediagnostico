@@ -67,13 +67,71 @@ if (selectCultura) {
   });
 }
 
-// 4. Exibir o nome do arquivo selecionado
+// 4. Upload de imagem: clicar OU arrastar e soltar
 const inputFoto = document.getElementById('foto');
+const dropzone = document.querySelector('.file-dropzone');
+const fileNameElement = document.getElementById('file-name');
+
+function carregarArquivo(file) {
+  // Verifica se existe arquivo
+  if (!file) return;
+
+  // Verifica se é uma imagem
+  if (!file.type.startsWith("image/")) {
+    alert("❌ Por favor, envie apenas uma imagem.");
+    return;
+  }
+
+  // Coloca o arquivo dentro do input #foto
+  const dataTransfer = new DataTransfer();
+  dataTransfer.items.add(file);
+  inputFoto.files = dataTransfer.files;
+
+  // Atualiza o nome mostrado na tela
+  if (fileNameElement) {
+    fileNameElement.innerText = file.name;
+  }
+
+  console.log("📸 Imagem carregada:", file.name);
+}
+
+// Selecionar normalmente pelo botão
 if (inputFoto) {
   inputFoto.addEventListener('change', function() {
-    const fileName = this.files[0] ? this.files[0].name : "Toque para selecionar a foto da folha";
-    const fileNameElement = document.getElementById('file-name');
-    if (fileNameElement) fileNameElement.innerText = fileName;
+    carregarArquivo(this.files[0]);
+  });
+}
+
+// Arrastar sobre a área
+if (dropzone) {
+
+  dropzone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+
+    // Efeito visual enquanto arrasta
+    dropzone.style.background = "#e8f5e9";
+    dropzone.style.borderColor = "#1b5e20";
+    dropzone.style.transform = "scale(1.01)";
+  });
+
+  // Quando sai da área
+  dropzone.addEventListener('dragleave', function() {
+    dropzone.style.background = "";
+    dropzone.style.borderColor = "";
+    dropzone.style.transform = "";
+  });
+
+  // Quando solta a imagem
+  dropzone.addEventListener('drop', function(e) {
+    e.preventDefault();
+
+    dropzone.style.background = "";
+    dropzone.style.borderColor = "";
+    dropzone.style.transform = "";
+
+    const file = e.dataTransfer.files[0];
+
+    carregarArquivo(file);
   });
 }
 
