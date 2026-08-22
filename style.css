@@ -54,7 +54,7 @@ h1 {
 
     width: 150px;
     height: auto;
-    min-height: 42px;
+
 
     border-radius: 10px;
     padding: 7x;
@@ -542,7 +542,7 @@ small {
   }
      .btn-circular {
     width: 105px;
-    min-height: 38px;
+  
     padding: 7px 10px;
   }
 
