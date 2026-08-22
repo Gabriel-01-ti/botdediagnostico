@@ -57,7 +57,7 @@ h1 {
     min-height: 42px;
 
     border-radius: 10px;
-    padding: 8px 14px;
+    padding: 7x;
 
     border: 1px solid rgba(255, 255, 255, 0.3);
     background: linear-gradient(135deg, #2e9d52, #1b5e41);
@@ -78,7 +78,7 @@ h1 {
 }
 
 .btn-voltar {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1;
 }
 
