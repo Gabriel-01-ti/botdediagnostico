@@ -764,19 +764,18 @@ window.verDiagnosticos = async function() {
             const doenca = data.doenca || data.resultado || "Diagnóstico Indefinido";
             const dataFormatada = data.data || "Data não informada";
 
-            const confiancaValor = data.confianca || data.precisao || data.porcentagem;
+           // Substitua a lógica de verificação por esta:
+const confiancaValor = data.confianca || data.precisao || data.porcentagem;
 
-            // 🎯 REGRA SOLICITADA:
-            // É Bot se: tiver 'sintomas' (array) OR tipo === 'sintomas' OR a confiança for exatamente 100
-            const isBotSintomas = 
-                Boolean(data.sintomas) || 
-                data.tipo === "sintomas" || 
-                data.origem === "bot" || 
-                Number(confiancaValor) === 100; // <--- Se for exatamente 100, é Bot!
+// É considerado BOT somente se o tipo for "sintomas" ou se a origem for "bot_sintomas"
+const isBotSintomas = 
+    data.tipo === "sintomas" || 
+    data.origem === "bot_sintomas" || 
+    data.origem === "bot";
 
-            const badgeTipo = isBotSintomas 
-                ? `<span class="badge-tipo badge-bot">💬 Bot Por Sintomas</span>`
-                : `<span class="badge-tipo badge-ia">📸 IA Por Imagem</span>`;
+const badgeTipo = isBotSintomas 
+    ? `<span class="badge-tipo badge-bot">💬 Bot Por Sintomas</span>`
+    : `<span class="badge-tipo badge-ia">📸 IA Por Imagem</span>`;
 
             // Confiança (%): Só exibe se NÃO for Bot e se houver valor
             let confiancaHtml = "";
