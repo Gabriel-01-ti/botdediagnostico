@@ -270,15 +270,15 @@ async function mostrarResultado(cultura, classe, prob) {
     `;
 
     // 🚀 SALVA NO FIRESTORE COM OS DADOS REAIS EXTRAÍDOS
-    await salvarDiagnosticoFirestore({
-      cultura: cultura,
-      doenca: d.nome,
-      tipo: "imagem",
-      origem: "bot_sintomas",
-      confianca: porcentagemConfianca,
-      sintomas: d.sintomas?.praticos || []
-      
-    });
+    // 🚀 SALVA NO FIRESTORE IDENTIFICANDO COMO IA POR IMAGEM
+await salvarDiagnosticoFirestore({
+  cultura: cultura,
+  doenca: d.nome,
+  tipo: "imagem",             // <--- Altera para "imagem"
+  origem: "ia_imagem",        // <--- Altera para "ia_imagem"
+  confianca: porcentagemConfianca, // <--- Garante o envio do número correto
+  sintomas: d.sintomas?.praticos || []
+});
 
   } catch (err) {
     console.error(err);
