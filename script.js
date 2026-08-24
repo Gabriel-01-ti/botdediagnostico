@@ -274,7 +274,7 @@ async function mostrarResultado(cultura, classe, prob) {
       cultura: cultura,
       doenca: d.nome,
       tipo: "imagem",
-      origem: "bot_sintomas"
+      origem: "bot_sintomas",
       confianca: porcentagemConfianca,
       sintomas: d.sintomas?.praticos || []
       
