@@ -406,6 +406,7 @@ function diagnosticar(cultura, textoUsuario) {
             cultura: cultura,
             doenca: d.nome,
             tipo: "sintomas",
+            origem: "bot_sintomas",
             sintomas: d.sintomas?.praticos || []
         });
 
