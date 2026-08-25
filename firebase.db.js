@@ -66,7 +66,8 @@ export async function salvarDiagnosticoFirestore(dados) {
   origem: dados.origem || "desconhecida",
 
   resultado: `${dados.doenca} (${confiancaValor}%)`,
-  dataHoraLocal = agora.toLocaleString('pt-BR'),
+  data: dataAtual,
+  dataHoraLocal: dataHoraLocal
   confianca: confiancaValor,
   criadoEm: serverTimestamp()
 });
