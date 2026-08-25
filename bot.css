@@ -551,10 +551,11 @@ input[type="text"]:disabled {
 .card-header-agro small { font-size: 0.8rem; color: #64748b; }
 
 .imagem-doenca-agro {
-   width: 100%;
+    width: 100%;
+    max-width: 900px;
     height: auto;
     display: block;
-    object-fit: contain;
+    margin: 0 auto;
     border-radius: 12px;
 }
 
@@ -613,7 +614,7 @@ input[type="text"]:disabled {
     padding: 12px 10px; 
     text-align: center; 
     color: rgba(255,255,255,0.8); 
-    font-size: 0.8rem; 
+    font-size: 0.9rem; 
     width: 100%; 
 }
 
