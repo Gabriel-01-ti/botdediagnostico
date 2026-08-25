@@ -461,7 +461,7 @@
   "mancha_marrom_alternaria": {
     "nome": "Mancha Marrom de Alternaria",
     "nome_biologico": "Alternaria alternata",
-    "imagem": "imagens/bergamota.mancha_marrom.jpg",
+    "imagem": "imagens/bergamota-manchaalternaria.jpg",
     "descricao": "Doença fúngica que afeta principalmente folhas, brotos e frutos de bergamoteiras, podendo causar queda de folhas e frutos e reduzir a produtividade.",
     "condicoes_favoraveis": "Temperaturas amenas a quentes, alta umidade, períodos de molhamento foliar e excesso de adubação nitrogenada.",
     "sintomas": {
@@ -489,7 +489,7 @@
   "cancro_citrico": {
     "nome": "Cancro Cítrico",
     "nome_biologico": "Xanthomonas citri",
-    "imagem": "imagens/bergamota.cancro_citrico.jpg",
+    "imagem": "imagens/bergamota-cancro.jpg",
     "descricao": "Doença bacteriana que afeta folhas, ramos e frutos da bergamoteira, provocando lesões elevadas, corticosas e de coloração marrom.",
     "condicoes_favoraveis": "Alta umidade, chuvas frequentes, presença de água sobre as plantas e tecidos jovens suscetíveis.",
     "sintomas": {
@@ -518,7 +518,7 @@
   "gomose": {
     "nome": "Gomose dos Citros",
     "nome_biologico": "Phytophthora spp.",
-    "imagem": "imagens/bergamota.gomose.jpg",
+    "imagem": "imagens/bergamota-gomose.jpg",
     "descricao": "Doença causada por Phytophthora spp. que afeta principalmente as raízes, o colo e o tronco da bergamoteira, podendo comprometer o desenvolvimento e causar a morte da planta.",
     "condicoes_favoraveis": "Excesso de umidade no solo, encharcamento, drenagem deficiente e ferimentos na região do tronco e colo da planta.",
     "sintomas": {
@@ -547,7 +547,7 @@
   "mancha_preta": {
     "nome": "Mancha Preta dos Citros",
     "nome_biologico": "Phyllosticta citricarpa",
-    "imagem": "imagens/bergamota.mancha_preta.jpg",
+    "imagem": "imagens/bergamota.pinta.jpg",
     "descricao": "Doença fúngica que provoca manchas escuras principalmente na casca dos frutos. Pode causar queda prematura e reduzir a qualidade comercial da bergamota.",
     "condicoes_favoraveis": "Alta umidade, chuvas frequentes e presença de folhas infectadas em decomposição no solo.",
     "sintomas": {
