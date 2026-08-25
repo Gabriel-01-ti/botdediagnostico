@@ -52,17 +52,24 @@ export async function salvarDiagnosticoFirestore(dados) {
     const dataAtual = new Date().toLocaleDateString('pt-BR');
     const confiancaValor = dados.confianca || 100;
 
-    await addDoc(collection(db, "diagnosticos"), {
-      uid: user.uid,
-      email: user.email,
-      cultura: dados.cultura,
-      doenca: dados.doenca,
-      sintomas: dados.sintomas || [],
-      resultado: `${dados.doenca} (${confiancaValor}%)`,
-      data: dataAtual,
-      confianca: confiancaValor,
-      criadoEm: serverTimestamp()
-    });
+   await addDoc(collection(db, "diagnosticos"), {
+  uid: user.uid,
+  email: user.email,
+
+  // Dados do diagnóstico
+  cultura: dados.cultura,
+  doenca: dados.doenca,
+  sintomas: dados.sintomas || [],
+
+  // Identificação da origem
+  tipo: dados.tipo || "desconhecido",
+  origem: dados.origem || "desconhecida",
+
+  resultado: `${dados.doenca} (${confiancaValor}%)`,
+  data: dataAtual,
+  confianca: confiancaValor,
+  criadoEm: serverTimestamp()
+});
 
     console.log("✅ Diagnóstico salvo no Firestore com sucesso para o usuário:", user.email);
   } catch (error) {
