@@ -455,6 +455,122 @@
     "controle": "Aplicação de fungicidas específicos e registrados para a cultura, conforme recomendação técnica e monitoramento da lavoura."
   }
  }
+
+
+"bergamota": {
+  "mancha_marrom_alternaria": {
+    "nome": "Mancha Marrom de Alternaria",
+    "nome_biologico": "Alternaria alternata",
+    "imagem": "imagens/bergamota.mancha_marrom.jpg",
+    "descricao": "Doença fúngica que afeta principalmente folhas, brotos e frutos de bergamoteiras, podendo causar queda de folhas e frutos e reduzir a produtividade.",
+    "condicoes_favoraveis": "Temperaturas amenas a quentes, alta umidade, períodos de molhamento foliar e excesso de adubação nitrogenada.",
+    "sintomas": {
+      "praticos": [
+        "manchas marrons nas folhas",
+        "manchas escuras nos frutos",
+        "folhas podem amarelar ao redor das manchas",
+        "folhas podem cair",
+        "frutos podem apresentar lesões afundadas",
+        "frutos jovens podem cair"
+      ],
+      "tecnicos": [
+        "lesões necróticas de coloração marrom a preta",
+        "presença de halos cloróticos ao redor das lesões",
+        "infecção de tecidos jovens",
+        "necrose progressiva do tecido foliar",
+        "queda prematura de folhas e frutos em ataques severos"
+      ]
+    },
+    "danos": "Redução da área fotossintética, queda de folhas e frutos, redução da qualidade dos frutos e perdas de produtividade.",
+    "manejo_preventivo": "Evitar excesso de nitrogênio, melhorar a ventilação da copa, evitar irrigação por aspersão e manter as plantas adequadamente nutridas e irrigadas.",
+    "controle": "Aplicação de fungicidas registrados para citros conforme recomendação técnica e monitoramento da severidade da doença."
+  },
+
+  "cancro_citrico": {
+    "nome": "Cancro Cítrico",
+    "nome_biologico": "Xanthomonas citri",
+    "imagem": "imagens/bergamota.cancro_citrico.jpg",
+    "descricao": "Doença bacteriana que afeta folhas, ramos e frutos da bergamoteira, provocando lesões elevadas, corticosas e de coloração marrom.",
+    "condicoes_favoraveis": "Alta umidade, chuvas frequentes, presença de água sobre as plantas e tecidos jovens suscetíveis.",
+    "sintomas": {
+      "praticos": [
+        "manchas elevadas nas folhas",
+        "manchas com halo amarelo",
+        "lesões com aparência de verruga",
+        "manchas corticosas nos frutos",
+        "lesões escuras nos ramos",
+        "frutos podem cair prematuramente"
+      ],
+      "tecnicos": [
+        "lesões inicialmente elevadas",
+        "halo clorótico ao redor das lesões",
+        "centro das lesões torna-se corticoso",
+        "lesões presentes em folhas, ramos e frutos",
+        "lesões nos frutos podem se tornar deprimidas",
+        "tecido ao redor das lesões pode apresentar aspecto encharcado"
+      ]
+    },
+    "danos": "Desfolha, queda prematura de frutos, redução da qualidade comercial e redução da produtividade.",
+    "manejo_preventivo": "Utilizar mudas sadias, evitar ferimentos nas plantas, controlar fontes de infecção e reduzir a disseminação da bactéria por água, ferramentas e materiais contaminados.",
+    "controle": "O manejo deve seguir as recomendações fitossanitárias oficiais, utilizando somente produtos registrados e autorizados para citros."
+  },
+
+  "gomose": {
+    "nome": "Gomose dos Citros",
+    "nome_biologico": "Phytophthora spp.",
+    "imagem": "imagens/bergamota.gomose.jpg",
+    "descricao": "Doença causada por Phytophthora spp. que afeta principalmente as raízes, o colo e o tronco da bergamoteira, podendo comprometer o desenvolvimento e causar a morte da planta.",
+    "condicoes_favoraveis": "Excesso de umidade no solo, encharcamento, drenagem deficiente e ferimentos na região do tronco e colo da planta.",
+    "sintomas": {
+      "praticos": [
+        "goma saindo do tronco",
+        "casca do tronco fica escura",
+        "casca pode rachar ou apodrecer",
+        "folhas ficam amareladas",
+        "planta perde vigor",
+        "em ataques severos a planta pode morrer"
+      ],
+      "tecnicos": [
+        "lesões necróticas na região do colo e tronco",
+        "exsudação de goma",
+        "apodrecimento progressivo da casca",
+        "comprometimento do sistema radicular",
+        "redução da absorção de água e nutrientes",
+        "anelamento progressivo do tronco em infecções severas"
+      ]
+    },
+    "danos": "Redução do vigor da planta, amarelecimento e queda de folhas, comprometimento das raízes e, em casos severos, morte da bergamoteira.",
+    "manejo_preventivo": "Evitar encharcamento, melhorar a drenagem do solo, evitar ferimentos no tronco e utilizar porta-enxertos tolerantes quando recomendados.",
+    "controle": "Corrigir problemas de drenagem, remover tecidos infectados quando possível e utilizar produtos registrados conforme recomendação técnica."
+  },
+
+  "mancha_preta": {
+    "nome": "Mancha Preta dos Citros",
+    "nome_biologico": "Phyllosticta citricarpa",
+    "imagem": "imagens/bergamota.mancha_preta.jpg",
+    "descricao": "Doença fúngica que provoca manchas escuras principalmente na casca dos frutos. Pode causar queda prematura e reduzir a qualidade comercial da bergamota.",
+    "condicoes_favoraveis": "Alta umidade, chuvas frequentes e presença de folhas infectadas em decomposição no solo.",
+    "sintomas": {
+      "praticos": [
+        "pequenas manchas pretas na casca dos frutos",
+        "pintas marrons ou escuras",
+        "manchas aumentam com o desenvolvimento do fruto",
+        "frutos apresentam aparência manchada",
+        "frutos podem cair antes da maturação"
+      ],
+      "tecnicos": [
+        "lesões pequenas, duras e deprimidas",
+        "margens marrons a pretas",
+        "tecido necrótico no centro das lesões",
+        "presença de estruturas reprodutivas do fungo",
+        "sintomas podem ser mais evidentes em frutos expostos à luz solar"
+      ]
+    },
+    "danos": "Redução da qualidade visual e comercial dos frutos, queda prematura e possíveis perdas de produção.",
+    "manejo_preventivo": "Remover folhas e restos vegetais infectados do solo, reduzir fontes de inóculo e realizar monitoramento frequente do pomar.",
+    "controle": "Aplicação de fungicidas registrados para citros nos períodos recomendados, seguindo orientação técnica e monitoramento da doença."
+  }
+ }
 }
 
 
