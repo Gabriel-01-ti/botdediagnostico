@@ -52,7 +52,7 @@ export async function salvarDiagnosticoFirestore(dados) {
     const dataAtual = new Date().toLocaleDateString('pt-BR');
     const confiancaValor = dados.confianca || 100;
 
-   await addDoc(collection(db, "diagnosticos"), {
+ await addDoc(collection(db, "diagnosticos"), {
   uid: user.uid,
   email: user.email,
 
@@ -66,7 +66,7 @@ export async function salvarDiagnosticoFirestore(dados) {
   origem: dados.origem || "desconhecida",
 
   resultado: `${dados.doenca} (${confiancaValor}%)`,
-  data: new Date().toLocaleString('pt-BR'), 
+  dataHoraLocal = agora.toLocaleString('pt-BR'),
   confianca: confiancaValor,
   criadoEm: serverTimestamp()
 });
