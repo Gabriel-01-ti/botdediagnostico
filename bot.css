@@ -551,9 +551,11 @@ input[type="text"]:disabled {
 .card-header-agro small { font-size: 0.8rem; color: #64748b; }
 
 .imagem-doenca-agro {
-    width: 100%;
-    max-height: 700px;
-    object-fit: cover;
+   width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: 12px;
 }
 
 /* ================= LISTAS DO CARD DE DIAGNÓSTICO ================= */
