@@ -67,7 +67,6 @@ export async function salvarDiagnosticoFirestore(dados) {
 
   resultado: `${dados.doenca} (${confiancaValor}%)`,
   data: dataAtual,
-  dataHoraLocal: dataHoraLocal,
   confianca: confiancaValor,
   criadoEm: serverTimestamp()
 });
