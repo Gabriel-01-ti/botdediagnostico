@@ -6,15 +6,394 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpg" href="logo-nova.png">
     <title>AgroInova 🌱 | Tecnologia no Campo</title>
+    <style>
+        /* ================= RESET E CORES ================= */
+        :root {
+            --green-dark: #0f3d13;
+            --green-mid: #1b5e20;
+            --green-light: #2e7d32;
+            --accent-green: #81c784;
+            --white: #ffffff;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <link rel="stylesheet" href="interface.css">
-    <script src="interface.js" defer></script>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: radial-gradient(circle at 50% 30%, #2e7d32 0%, #1b5e20 50%, #0a290d 100%);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h1, h2, .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            width: 100%;
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            -webkit-text-stroke-width: 1px; /* Grossura da borda */
+            -webkit-text-stroke-color: #000; 
+            
+        }
+
+        .logo img {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border: 1px solid #fff;
+            border-radius: 50%;
+        }
+        
+        .logo strong {
+            color: var(--accent-green);
+            font-weight: 800;
+        }
+
+        nav ul { display: flex; align-items: center; gap: 24px; list-style: none; }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            opacity: 0.85;
+        }
+        nav a:hover { opacity: 1; color: var(--accent-green); }
+
+        .btn-nav-login {
+            background: #ffffff;
+            color: #1b5e20 !important;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+        .btn-nav-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: #f0f7f1;
+        }
+
+        /* PERFIL NA TOPBAR */
+        .perfil-topo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .perfil-topo:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        .perfil-topo img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .perfil-topo span {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 80px;
+            width: 100%;
+        }
+
+        .hero-container.dashboard-active {
+            justify-content: center;
+        }
+
+        .content-area {
+            max-width: 520px;
+            width: 100%;
+            z-index: 5;
+            transition: all 0.3s ease;
+        }
+
+        .hero-container.dashboard-active .content-area {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .content-area h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .content-area p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .btn-main {
+            padding: 16px 40px;
+            background: white;
+            color: #1b5e20;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+        .btn-main:hover {
+            transform: scale(1.05);
+            background: #f0f7f1;
+        }
+
+        /* Ilustração Agro */
+        .illustration-area {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 4%;
+        }
+
+        .agro-svg {
+            width: 260px;
+            height: auto;
+            position: relative;
+            z-index: 3;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Nuvens Decorativas */
+        .clouds-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,256C960,245,1056,203,1152,186.7C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") bottom/cover no-repeat;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ================= FORMULÁRIOS E PAINEL ================= */
+        .card-inline {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .input-group.modern { margin-bottom: 15px; }
+        .input-group.modern input {
+            width: 100%; padding: 12px 16px; border-radius: 25px; border: none;
+            background: rgba(255, 255, 255, 0.95); font-size: 0.9rem; outline: none; color: #333;
+        }
+
+        .primary-btn {
+            width: 100%; padding: 12px; background: #2e7d32; color: white; border: none;
+            border-radius: 25px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
+        .primary-btn:hover { background: #1b5e20; }
+
+        .google-btn {
+            width: 100%; padding: 10px; background: white; border: none;
+            border-radius: 25px; display: flex; align-items: center; justify-content: center;
+            gap: 10px; cursor: pointer; font-weight: 500; color: #333; margin-bottom: 15px;
+        }
+
+        .divider { margin: 15px 0; text-align: center; font-size: 0.8rem; opacity: 0.7; }
+
+        .dashboard-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 15px; 
+            margin-top: 20px; 
+        }
+        
+        .service-card {
+            display: flex; align-items: center; gap: 14px; padding: 16px;
+            background: rgba(255, 255, 255, 0.15); border-radius: 14px; text-decoration: none;
+            color: white; border: 1px solid rgba(255, 255, 255, 0.15); transition: 0.3s;
+        }
+        .service-card:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-3px); }
+
+        .btn-logout { margin-top: 20px; width: 100%; padding: 10px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.4); color: white; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+        .btn-logout:hover { background: rgba(255, 0, 0, 0.2); border-color: rgba(255, 100, 100, 0.6); }
+
+        /* ================= CARD DO HISTÓRICO ================= */
+        .historico-card {
+            background: #ffffff;
+            border-left: 5px solid #2e7d32;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+        .historico-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .badge-cultura {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .badge-tipo {
+            font-size: 0.72rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+        .badge-ia {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #90caf9;
+        }
+        .badge-bot {
+            background-color: #f1f8e9;
+            color: #33691e;
+            border: 1px solid #c5e1a5;
+        }
+        .btn-excluir-historico {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 4px 6px;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        .btn-excluir-historico:hover {
+            background-color: #ffebee;
+        }
+        .historico-data { font-size: 0.8rem; color: #777; }
+        .historico-doenca { margin: 4px 0; font-size: 1.05rem; color: #1b5e20; font-weight: 700; }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 1024px) {
+            header { padding: 20px 5%; }
+            .content-area h1 { font-size: 2.2rem; }
+            .agro-svg { width: 210px; }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 14px 16px 10px;
+                flex-direction: column;
+                gap: 12px;
+                background: rgba(10, 41, 13, 0.4);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            }
+
+            .logo { font-size: 1.4rem; font-weight: 800; gap: 8px; letter-spacing: -0.3px; }
+            .logo img { width: 34px; height: 34px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+            nav { width: 100%; }
+            nav ul { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; width: 100%; }
+
+            nav a {
+                font-size: 0.78rem; font-weight: 600; padding: 6px 12px;
+                background: rgba(255, 255, 255, 0.1); border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.15); display: inline-block;
+            }
+
+            .btn-nav-login { padding: 6px 16px !important; font-size: 0.8rem !important; background: #ffffff !important; color: #1b5e20 !important; }
+
+            .perfil-topo { padding: 4px 10px; gap: 6px; background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); max-width: 130px; }
+            .perfil-topo img { width: 22px; height: 22px; }
+            .perfil-topo span { font-size: 0.75rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+            .hero-container { padding: 10px 16px 0px; margin-bottom: 0px; gap: 10px; }
+            .content-area h1 { font-size: 1.55rem; line-height: 1.2; margin-bottom: 8px; }
+            .content-area p { font-size: 0.88rem; line-height: 1.4; margin-bottom: 16px; }
+            .btn-main { width: 100%; max-width: 280px; padding: 12px 20px; font-size: 0.9rem; }
+            .illustration-area { margin-top: 5px; }
+            .agro-svg { width: 110px; }
+            .card-inline { padding: 16px 12px; border-radius: 16px; }
+            .clouds-bg { height: 45px; margin-top: auto; }
+        }
+
+        @media (max-width: 480px) {
+            body { justify-content: space-between; min-height: 100vh; min-height: 100dvh; }
+            header { flex-direction: column !important; align-items: center; justify-content: center; padding: 16px 12px 10px !important; gap: 12px !important; background: rgba(10, 41, 13, 0.5) !important; backdrop-filter: blur(10px); }
+            .logo { font-size: 1.95rem !important; font-weight: 800; letter-spacing: -0.5px; gap: 10px; }
+            .logo img { width: 48px !important; height: 48px !important; border-radius: 50%; }
+
+            nav ul { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; justify-content: center; align-items: center; gap: 5px !important; width: 100%; }
+            nav a { font-size: 0.75rem !important; padding: 6px 10px !important; border-radius: 10px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12); white-space: nowrap; font-weight: 500; }
+            .btn-nav-login { padding: 6px 14px !important; font-size: 0.78rem !important; background: #ffffff !important; color: #1b5e20 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+
+            .hero-container { flex-direction: column !important; padding: 15px 22px 0px !important; margin: 0 auto !important; justify-content: center; align-items: center; gap: 16px !important; flex: 1; width: 100%; }
+            .content-area { max-width: 100%; text-align: left !important; display: flex; flex-direction: column; align-items: flex-start !important; }
+            .content-area h1 { font-size: 1.7rem !important; font-weight: 800; line-height: 1.2; letter-spacing: -0.3px; margin-bottom: 12px; text-shadow: 0 2px 10px rgba(0,0,0,0.2); text-align: left !important; }
+            .content-area p { font-size: 0.92rem !important; line-height: 1.5; opacity: 0.9; margin-bottom: 20px; max-width: 100%; text-align: left !important; }
+            .btn-main { padding: 14px 34px !important; font-size: 0.95rem !important; font-weight: 700; border-radius: 30px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); align-self: flex-start; }
+
+            .illustration-area { margin-top: 10px !important; margin-bottom: -6px !important; padding-bottom: 0 !important; display: flex; justify-content: center; align-items: flex-end; width: 100%; }
+            .agro-svg { width: 85px !important; height: auto; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2)); }
+            .clouds-bg { height: 60px !important; width: 100%; margin-top: 0 !important; position: relative; z-index: 1; }
+            .card-inline { margin-top: 5px !important; padding: 18px 14px; }
+        }
+    </style>
 </head>
-<body class="home-page">
-<a class="skip-link" href="#mainHeroContainer">Ir para o conteúdo</a>
+<body>
 
     <header>
-        <a href="index.html" class="logo" aria-label="AgroInova — início">
+        <a href="logo.jpg" class="logo" target="_blank" >
             <img src="imagens/logo-nova.png" alt="Logo AgroInova">
             <span><strong>Agro</strong>Inova</span>
         </a>
@@ -40,12 +419,9 @@
         <div class="content-area">
             
             <article id="welcomeView" class="view-step">
-                <span class="eyebrow">Tecnologia que aproxima</span>
-                <h1>Um novo olhar para a sua lavoura.</h1>
-                <p>Observe a folha, descreva os sintomas e descubra possíveis doenças. Conhecimento do campo com a ajuda da tecnologia.</p>
-                <button class="btn-main" id="ctaBtn" onclick="showAuth()">Começar diagnóstico →</button>
-                <small class="hero-note">Uma ferramenta educativa para apoiar seu primeiro olhar.</small>
-                <div class="hero-tags"><span>📷 Análise por imagem</span><span>🌿 Assistente por sintomas</span></div>
+                <h1>🌱 SUA LAVOURA NA ERA DIGITAL</h1>
+                <p>Diagnóstico inteligente utilizando IA para identificar doenças e pragas em plantas de forma simples e rápida.</p>
+                <button class="btn-main" id="ctaBtn" onclick="showAuth()">Começar Agora</button>
             </article>
 
             <article id="auth" class="view-step card-inline" style="display:none;">
@@ -59,9 +435,9 @@
 
                 <div class="divider"><span>ou e-mail</span></div>
 
-                <div class="input-group modern"><input type="email" id="email" placeholder="E-mail" aria-label="E-mail" autocomplete="email"></div>
+                <div class="input-group modern"><input type="email" id="email" placeholder="E-mail"></div>
                 <div class="input-group modern" style="position: relative;">
-                    <input type="password" id="password" placeholder="Senha" aria-label="Senha" autocomplete="current-password">
+                    <input type="password" id="password" placeholder="Senha">
                     <span onclick="togglePassword('password')" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #333;">👁️</span>
                 </div>
 
@@ -100,7 +476,7 @@
 
         </div>
 
-        <div class="illustration-area" id="illustrationArea" aria-hidden="true">
+        <div class="illustration-area" id="illustrationArea">
             <svg class="agro-svg" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M60 160L70 210H130L140 160H60Z" fill="#FFFFFF" fill-opacity="0.9"/>
                 <path d="M55 150H145V160H55V150Z" fill="#81C784"/>
@@ -117,16 +493,15 @@
             </svg>
         </div>
     </main>
-    <footer class="site-footer">AgroInova © 2026 · Conectando o campo à tecnologia</footer>
 
-    <footer class="site-footer">AgroInova © 2026 · Conectando o campo à tecnologia</footer>
+    <div class="clouds-bg"></div>
 
     <div id="contactModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(5px);">
         <div style="background:white; color: #333; width:100%; max-width:400px; padding:30px; border-radius:20px; position:relative; text-align:center;">
             <span onclick="closeContact()" style="position:absolute; top:15px; right:20px; font-size:1.5rem; cursor:pointer; color:#888;">&times;</span>
             <h2 style="color:#1b5e20; margin-bottom:10px;">Fale Conosco 🌱</h2>
             <p style="color:#666; margin-bottom:25px;">Escolha como deseja ser atendido:</p>
-            <a href="https://wa.me/5555996698757" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#25D366; color:white; text-decoration:none; padding:12px; border-radius:12px; font-weight:600; margin-bottom:12px;">WhatsApp</a>
+            <a href="https://wa.me/55996698757" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#25D366; color:white; text-decoration:none; padding:12px; border-radius:12px; font-weight:600; margin-bottom:12px;">WhatsApp</a>
             <a href="mailto:siteagroinova@gmail.com" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#1b5e20; color:white; text-decoration:none; padding:12px; border-radius:12px; font-weight:600;">Enviar E-mail</a>
         </div>
     </div>
@@ -477,4 +852,3 @@ const badgeTipo = isBotSintomas
     </script> 
 </body>
 </html>
-
