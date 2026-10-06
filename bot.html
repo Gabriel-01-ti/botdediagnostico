@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroBot | Diagnóstico Agrícola Inteligente</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,8 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="bot.css">
+    <link rel="stylesheet" href="interface.css">
 </head>
-<body>
+<body class="bot-page">
 
     <div id="splash" aria-hidden="true">
         <div class="splash-content">
@@ -74,11 +75,12 @@
     </aside>
 
    <main class="container">
+<p class="account-note"><strong>Você pode testar sem conta.</strong> Para salvar novos resultados no histórico, <a href="index.html?acesso=entrar">entre na sua conta antes de analisar</a>.</p>
         
         <header class="app-info">
             <h1 class="app-title">🌱 AgroBot</h1>
             <p class="descricao-app">
-                Seu assistente digital para identificação rápida e prevenção de doenças no campo.
+                Descreva ou selecione sintomas para explorar possíveis doenças de milho, soja, feijão, trigo e bergamota.
             </p>
         </header>
 
@@ -114,5 +116,6 @@
     </footer>
 
     <script type="module" src="bot.js"></script>
+    <script src="interface.js" defer></script>
 </body>
 </html>
