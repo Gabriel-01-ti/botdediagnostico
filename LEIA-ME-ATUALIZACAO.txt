@@ -1,0 +1,46 @@
+AGROINOVA — ATUALIZAÇÃO VISUAL E RESPONSIVA
+
+Este pacote contém somente os arquivos alterados e os novos arquivos.
+Base: Gabriel-01-ti/botdediagnostico, commit 9af50b19aeb9424d21a75b41458ffc50f1bbc593.
+
+COMO APLICAR NO GITHUB
+1. Abra o repositório e confira se está na branch desejada.
+2. Extraia o ZIP.
+3. Na raiz do repositório, escolha Add file > Upload files.
+4. Envie os 7 arquivos de código abaixo, diretamente na raiz.
+5. Confira as alterações e faça o commit.
+
+SUBSTITUIR:
+- index.html
+- bot.html
+- sobre.html
+- sobreprojeto.html
+- script.js
+
+ADICIONAR:
+- interface.css
+- interface.js
+
+Não é necessário enviar este LEIA-ME.
+Os arquivos bot.css e style.css existentes continuam necessários.
+Mantenha as imagens, modelos, base.json, Firebase e demais arquivos existentes.
+
+O QUE MUDOU
+- Página inicial com tipografia, espaçamento e navegação reorganizados.
+- Layouts próprios para celular, tablet e computador.
+- Páginas de diagnóstico com superfícies claras e contraste melhor.
+- Assistente com campo de mensagem fixado à parte inferior durante a rolagem.
+- Guia da lavoura com altura limitada e rolagem interna.
+- Prévia da foto enviada e limpeza da prévia ao reiniciar a análise.
+- Upload acessível por teclado, zoom permitido e foco visível.
+- Janelas com navegação por teclado e fechamento por Esc.
+- Página da equipe organizada em 3, 2 ou 1 coluna conforme a largura.
+- Informação corrigida: o diagnóstico por imagem oferece milho e soja.
+
+Autenticação, banco de dados, modelos e regras do diagnóstico foram preservados.
+Nenhum commit ou publicação foi feito no GitHub.
+
+VALIDAÇÃO
+Sintaxe JavaScript, IDs únicos e referências locais verificados.
+O navegador de teste não pôde ser instalado neste ambiente.
+A aparência e os fluxos completos com login e IA precisam ser conferidos no navegador.

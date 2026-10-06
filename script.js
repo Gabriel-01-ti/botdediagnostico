@@ -70,6 +70,8 @@ if (selectCultura) {
 // 4. Upload de imagem: clicar OU arrastar e soltar
 const inputFoto = document.getElementById('foto');
 const dropzone = document.querySelector('.file-dropzone');
+let previewURL;
+const preview = document.getElementById("upload-preview");
 const fileNameElement = document.getElementById('file-name');
 
 function carregarArquivo(file) {
@@ -92,6 +94,12 @@ function carregarArquivo(file) {
     fileNameElement.innerText = file.name;
   }
 
+  if (preview) {
+    if (previewURL) URL.revokeObjectURL(previewURL);
+    previewURL = URL.createObjectURL(file);
+    preview.src = previewURL;
+    preview.hidden = false;
+  }
   console.log("📸 Imagem carregada:", file.name);
 }
 
@@ -104,6 +112,12 @@ if (inputFoto) {
 
 // Arrastar sobre a área
 if (dropzone) {
+  dropzone.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      inputFoto.click();
+    }
+  });
 
   dropzone.addEventListener('dragover', function(e) {
     e.preventDefault();
@@ -288,6 +302,9 @@ await salvarDiagnosticoFirestore({
 
 // 7. Limpar/Reiniciar
 function reiniciar() {
+  if (previewURL) URL.revokeObjectURL(previewURL);
+  previewURL = undefined;
+  if (preview) { preview.hidden = true; preview.removeAttribute("src"); }
   document.getElementById("resultado").innerHTML = "";
   document.getElementById("foto").value = "";
   const fileNameElement = document.getElementById('file-name');
@@ -310,3 +327,4 @@ function toggleInfoMenu() {
 window.analisar = analisar;
 window.reiniciar = reiniciar;
 window.toggleInfoMenu = toggleInfoMenu;
+
