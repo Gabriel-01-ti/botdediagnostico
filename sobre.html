@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, user-scalable=yes">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta charset="UTF-8">
   <title>Diagnóstico de Plantas</title>
   <link rel="stylesheet" href="style.css">
 
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <link rel="stylesheet" href="interface.css">
+    <script src="interface.js" defer></script>
 </head>
-<body>
+<body class="image-page">
  <div id="splash" aria-hidden="true">
         <div class="splash-content">
             <img src="logo.jpg" alt="Logo Agro Inova" class="logo-splash">
@@ -19,13 +21,9 @@
             <p class="texto-splash">Iniciando a IA do AgroInova...</p>
         </div>
     </div>
-  <a href="index.html" class="btn-circular btn-voltar" title="Voltar para a Página Inicial" aria-label="Voltar">
-            <span><b>⏎</b> Voltar</span>
-        </a>
+  <nav class="tool-nav" aria-label="Navegação principal"><a class="tool-brand" href="index.html">🌱 AgroInova</a><a href="index.html" class="btn-circular btn-voltar">← Voltar</a></nav>
 <div class="container">
-    <h1 class="app-title">
-  Agro<span>Inova📱🌱</span>
-</h1>
+    <span class="eyebrow">Diagnóstico por imagem</span><h1 class="app-title">Um olhar sobre sua planta.</h1>
 
 <div class="context-box">
   
@@ -33,6 +31,7 @@
   sintomas, diagnóstico e formas de controle.
 </div>
 
+<aside class="account-note"><strong>Você pode usar sem conta.</strong> Para salvar novos resultados no histórico, <a href="index.html#entrar">entre na sua conta antes de fazer a análise</a>.</aside>
     <label for="cultura">Cultura:</label>
     <select id="cultura">
       <option value="" disabled selected>O que vamos analisar?</option>
@@ -42,9 +41,9 @@
     </select>
 
     <input type="file" id="foto" accept="image/*" hidden>
-    <div class="file-dropzone" onclick="document.getElementById('foto').click()">
-        <span class="icon">📁</span>
-        <p id="file-name">📁 Clique ou arraste uma foto da folha para cá</p>
+    <div class="file-dropzone" role="button" tabindex="0" aria-label="Selecionar foto da folha" onclick="document.getElementById('foto').click()">
+        <img id="upload-preview" class="upload-preview" alt="Prévia da foto selecionada" hidden><span class="icon">📷</span>
+        <p id="file-name">Selecione ou arraste uma foto da folha</p>
     </div>
   <small class="hint">
   Dica 💡: fotos bem iluminadas e com fundo neutro aumentam a precisão do diagnóstico.
@@ -57,27 +56,27 @@
   📸 O resultado da análise aparecerá aqui após o envio da imagem.
     </div>
 
-    <div id="resultado" class="resultado"></div>
+    <div id="resultado" class="resultado" aria-live="polite"></div>
 </div>
 
 
 
-<div id="floating-info-btn" onclick="toggleInfoMenu()">?</div>
+<button id="floating-info-btn" onclick="toggleInfoMenu()" aria-label="Informações sobre o diagnóstico">?</button>
 
 <div id="info-menu" class="hidden">
     <div class="info-header">
         <div class="title-badge">AgroBot Info</div>
-        <button class="close-btn" onclick="toggleInfoMenu()">✕</button>
+        <button class="close-btn" aria-label="Fechar informações" onclick="toggleInfoMenu()">✕</button>
     </div>
     <div class="info-body">
         <p>
   🌱 <strong>AgroInova</strong> é um projeto educacional que utiliza inteligência artificial
   para auxiliar no reconhecimento de doenças em culturas agrícolas.
         </p>
-        <p><strong>📸 Diagnóstico por Imagem:</strong> Atualmente disponível para <strong>3 culturas</strong>.</p>
+        <p><strong>📸 Diagnóstico por Imagem:</strong> Atualmente disponível para <strong>milho e soja</strong>.</p>
         
         <div class="explanation-box">
-            "Por que só 3? Como ainda somos iniciantes, focamos nas culturas mais populares, pois é mais fácil conseguir fotos de qualidade para treinar nossa IA com precisão."
+            "Por que essas culturas? Como ainda somos iniciantes, focamos nas culturas mais populares, pois é mais fácil conseguir fotos de qualidade para treinar nossa IA com precisão."
         </div>
 
         <p><strong>🤖 Outras Culturas:</strong> Pelo <strong>chat de texto</strong>, você pode consultar várias outras variedades! Nossa base de dados é bem ampla.</p>
@@ -86,7 +85,7 @@
         
         <p><strong>📞 Fale Conosco:</strong></p>
         <a href="mailto:siteagroinova@gmail.com" class="contact-link">📧 Enviar E-mail</a>
-        <a href="https://wa.me/5555996698757" target="_blank" class="contact-link">💬 WhatsApp</a>
+        <a href="https://wa.me/5555996698757" target="_blank" rel="noopener noreferrer" class="contact-link">💬 WhatsApp</a>
 
         <p class="thanks-msg">🙏 Muito obrigado por nos escolher!</p>
     </div>
@@ -94,6 +93,7 @@
   <script type="module" src="script.js"></script>
 </body>
 </html>
+
 
 
 

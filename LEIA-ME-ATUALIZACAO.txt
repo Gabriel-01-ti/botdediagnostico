@@ -26,6 +26,11 @@ Os arquivos bot.css e style.css existentes continuam necessários.
 Mantenha as imagens, modelos, base.json, Firebase e demais arquivos existentes.
 
 O QUE MUDOU
+- Explicações e links diretos para diagnóstico por foto e por sintomas.
+- Uso sem conta; login opcional antes de analisar para salvar novos resultados.
+- Foto real da base do projeto em destaque, identificada como ilustrativa.
+- Sobre com objetivo, IFFar Campus Frederico Westphalen, culturas e funcionamento.
+- Textos ajustados às doenças atendidas, sem prometer identificação de pragas ou deficiências.
 - Página inicial com tipografia, espaçamento e navegação reorganizados.
 - Layouts próprios para celular, tablet e computador.
 - Páginas de diagnóstico com superfícies claras e contraste melhor.
@@ -37,10 +42,11 @@ O QUE MUDOU
 - Página da equipe organizada em 3, 2 ou 1 coluna conforme a largura.
 - Informação corrigida: o diagnóstico por imagem oferece milho e soja.
 
-Autenticação, banco de dados, modelos e regras do diagnóstico foram preservados.
+O fluxo de apresentação do login foi ajustado. As operações de autenticação, banco de dados, modelos e regras do diagnóstico foram preservadas.
 Nenhum commit ou publicação foi feito no GitHub.
 
 VALIDAÇÃO
 Sintaxe JavaScript, IDs únicos e referências locais verificados.
+Fluxos de apresentação para visitante, link #entrar e painel autenticado verificados com simulação da sessão (sem conexão real ao Firebase).
 O navegador de teste não pôde ser instalado neste ambiente.
 A aparência e os fluxos completos com login e IA precisam ser conferidos no navegador.
