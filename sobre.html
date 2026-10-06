@@ -10,8 +10,10 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="interface.css">
 </head>
-<body>
+<body class="image-page">
  <div id="splash" aria-hidden="true">
         <div class="splash-content">
             <img src="logo.jpg" alt="Logo Agro Inova" class="logo-splash">
@@ -19,20 +21,17 @@
             <p class="texto-splash">Iniciando a IA do AgroInova...</p>
         </div>
     </div>
-  <a href="index.html" class="btn-circular btn-voltar" title="Voltar para a Página Inicial" aria-label="Voltar">
-            <span><b>⏎</b> Voltar</span>
-        </a>
+  <nav class="tool-nav" aria-label="Navegação"><a href="index.html" class="tool-brand">🌱 AgroInova</a><a href="sobreprojeto.html">Sobre o projeto</a><a href="index.html" class="btn-circular btn-voltar">Início</a></nav>
 <div class="container">
-    <h1 class="app-title">
-  Agro<span>Inova📱🌱</span>
-</h1>
+    <span class="eyebrow">Foto da folha · milho e soja</span><h1 class="app-title">Diagnóstico por foto</h1>
 
 <div class="context-box">
   
   📸 Envie uma foto da <strong>folha da planta</strong> para receber uma análise com possíveis
-  sintomas, diagnóstico e formas de controle.
+  doenças cadastradas e informações educativas sobre seus sintomas e manejo.
 </div>
 
+<p class="account-note"><strong>Você pode testar sem conta.</strong> Para salvar novos resultados no histórico, <a href="index.html?acesso=entrar">entre na sua conta antes de analisar</a>.</p>
     <label for="cultura">Cultura:</label>
     <select id="cultura">
       <option value="" disabled selected>O que vamos analisar?</option>
@@ -42,7 +41,7 @@
     </select>
 
     <input type="file" id="foto" accept="image/*" hidden>
-    <div class="file-dropzone" onclick="document.getElementById('foto').click()">
+    <div class="file-dropzone" role="button" tabindex="0" aria-label="Selecionar foto da folha" onkeydown="if(event.key==='Enter' || event.key===' '){event.preventDefault();document.getElementById('foto').click()}" onclick="document.getElementById('foto').click()">
         <span class="icon">📁</span>
         <p id="file-name">📁 Clique ou arraste uma foto da folha para cá</p>
     </div>
@@ -74,13 +73,11 @@
   🌱 <strong>AgroInova</strong> é um projeto educacional que utiliza inteligência artificial
   para auxiliar no reconhecimento de doenças em culturas agrícolas.
         </p>
-        <p><strong>📸 Diagnóstico por Imagem:</strong> Atualmente disponível para <strong>3 culturas</strong>.</p>
+        <p><strong>📸 Diagnóstico por Imagem:</strong> Disponível para <strong>milho e soja</strong>.</p>
         
-        <div class="explanation-box">
-            "Por que só 3? Como ainda somos iniciantes, focamos nas culturas mais populares, pois é mais fácil conseguir fotos de qualidade para treinar nossa IA com precisão."
-        </div>
+        <div class="explanation-box">A IA compara a foto com as doenças presentes nos modelos. Imagens de outras culturas ou de sinais não cadastrados podem gerar resultados incorretos.</div>
 
-        <p><strong>🤖 Outras Culturas:</strong> Pelo <strong>chat de texto</strong>, você pode consultar várias outras variedades! Nossa base de dados é bem ampla.</p>
+        <p><strong>💬 Assistente por sintomas:</strong> Consulte milho, soja, feijão, trigo e bergamota no <a href="bot.html">assistente</a>.</p>
         
         <hr class="divider">
         
@@ -92,6 +89,7 @@
     </div>
 </div>
   <script type="module" src="script.js"></script>
+  <script src="interface.js" defer></script>
 </body>
 </html>
 

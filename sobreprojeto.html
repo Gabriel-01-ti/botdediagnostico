@@ -5,200 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nós | AgroInova 🌱</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0f3d13;
-            --accent: #81c784;
-            --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.05);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('fundo.jpg') center/cover no-repeat fixed;
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* HEADER E BOTÃO VOLTAR */
-        header {
-            padding: 15px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(15, 61, 19, 0.95);
-            backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.5rem; color: white; text-decoration: none; }
-        
-        .btn-voltar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .btn-voltar:hover {
-            background: var(--accent);
-            color: var(--primary);
-            transform: translateX(-5px);
-        }
-
-        /* SEÇÃO DE TEXTO (GLASSMORPHISM) */
-        .content-wrap {
-            padding:20px 8% 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 40px;
-            border-radius: 0 30px 30px 0;
-            border-left: 6px solid var(--accent);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            border-right: 1px solid rgba(255,255,255,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
-
-        h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; line-height: 1.1; }
-        .intro-text { font-size: 1.2rem; color: var(--accent); margin-bottom: 30px; font-weight: 600; }
-        .main-text { font-size: 1.05rem; opacity: 0.9; text-align: justify; }
-
-        /* TECNOLOGIAS INTERNAS */
-        .tech-box-inner {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .tech-box-inner h3 { margin-bottom: 15px; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--accent); }
-        .tech-box-inner ul { list-style: none; }
-        .tech-box-inner li { margin-bottom: 10px; padding-left: 20px; position: relative; }
-        .tech-box-inner li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
-
-        /* NOSSA EQUIPE */
-        .section-title {
-            text-align: center;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 2.5rem;
-            margin: 80px 0 40px;
-            color: white;
-        }
-
-       .team-grid {
-           display: grid;
-           grid-template-columns: repeat(3, 1fr); /* Força 4 colunas em telas grandes */
-           gap: 20px;
-           margin-bottom: 100px;
-       }
-
-        .member-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .member-card:hover { 
-            transform: translateY(-10px); 
-            background: rgba(255, 255, 255, 0.1); 
-            border-color: var(--accent); 
-        }
-
-        .member-card img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px; border: 3px solid var(--accent); object-fit: cover; }
-        .instagram-link { display: block; color: var(--accent); font-weight: 700; margin-top: 10px; font-size: 0.9rem; }
-
-        /* RESPONSIVIDADE */
-        @media (max-width: 768px) {
-            header { padding: 15px 5%; }
-            .glass-panel { padding: 25px; border-radius: 20px; border-left-width: 4px; }
-            .content-wrap { padding: 30px 5%; }
-            .section-title { font-size: 2rem; }
-            div[style*="padding: 60px"] {
-            padding: 40px 5% 10px 5% !important;}
-            
-        .team-grid {
-        grid-template-columns: repeat(2, 1fr); /* Força 2 colunas em telas pequenas */
-        gap: 15px; /* Diminui um pouco o espaço para caber melhor */
-    }
-    
-    .member-card {
-        padding: 15px; /* Reduz o padding interno no celular */
-    }
-
-    .member-card img {
-        width: 70px; /* Reduz um pouco a foto no celular para não apertar o texto */
-        height: 70px;
-    }
-    
-    .member-card h4 {
-        font-size: 0.9rem; /* Diminui a fonte do nome no celular */
-    }
-}
-        }
-    </style>
+    <link rel="stylesheet" href="interface.css">
 </head>
-<body>
+<body class="about-page">
 
     <header>
-        <a href="index.html" class="logo">🌱 AgroInova</a>
+        <a href="index.html" class="logo"><img src="imagens/logo-nova.png" width="44" height="44" alt="">AgroInova</a>
         <a href="index.html" class="btn-voltar">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             <span>Voltar</span>
         </a>
     </header>
-    <div style="text-align: center; padding: 60px 5% 20px 5%;">
-    <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 4px; font-weight: 800; margin-bottom: 10px;">
-        Conheça nossa história
-    </h2>
-    <h1 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem); color: white; font-weight: 800; letter-spacing: -2px;">
-        Sobre o AgroInova
-    </h1>
-</div>
-    <div class="content-wrap">
+    <div class="about-heading"><span class="eyebrow">Conheça o projeto</span><h1>Sobre o AgroInova</h1></div>
+    <main class="content-wrap">
         <section class="glass-panel">
-            <h1>Inovação que brota da terra.</h1>
-            <p class="intro-text">Unindo inteligência artificial e paixão pelo agronegócio.</p>
-            
+            <h2>Conectando o campo à tecnologia.</h2>
+            <p class="intro-text">Um projeto educativo para conhecer doenças agrícolas e seus sintomas.</p>
             <div class="main-text">
-                <p>O AgroInova nasceu da necessidade de aproximar a alta tecnologia do dia a dia do produtor rural. Entendemos que o campo não pode parar e que cada segundo conta na identificação de uma praga ou deficiência nutricional.</p>
-                <br>
-                <p>Acreditamos na sustentabilidade e na eficiência. Nosso compromisso é com o futuro da agricultura digital, tornando-a acessível, intuitiva e, acima de tudo, útil para quem alimenta o mundo.</p>
+                <p>Desenvolvido por estudantes do Instituto Federal Farroupilha, campus Frederico Westphalen, o AgroInova aproxima os conhecimentos de Informática e Agropecuária. Nosso objetivo é apoiar o aprendizado e a observação inicial de sinais de doenças na lavoura.</p>
+                <p>Os resultados indicam possibilidades entre as doenças cadastradas. A ferramenta não confirma um diagnóstico e não substitui a avaliação de um engenheiro agrônomo.</p>
             </div>
-
-            <div class="tech-box-inner">
-                <h3>🛠️ Tecnologia de Ponta</h3>
-                <ul>
-                    <li><strong>Firebase:</strong> Segurança e banco de dados em tempo real.</li>
-                    <li><strong>HTML5 & CSS3:</strong> Design moderno com Glassmorphism.</li>
-                    <li><strong>JavaScript (ES6+):</strong> Lógica dinâmica e integração com IA.</li>
-                    <li><strong>Google Fonts:</strong> Tipografia Premium para leitura clara.</li>
-                </ul>
+            <div class="about-facts">
+                <section><h3>📷 Análise por foto</h3><p>Selecione milho ou soja, envie uma foto da folha e execute a análise. O modelo só apresenta uma identificação quando sua confiança atinge 80%. Essa confiança não garante a correção do resultado.</p></section>
+                <section><h3>💬 Assistente por sintomas</h3><p>Escolha a cultura e descreva ou selecione os sinais observados. O assistente compara os sintomas com a base de milho, soja, feijão, trigo e bergamota.</p></section>
+                <section><h3>📘 Informações para aprender</h3><p>Consulte sintomas, condições favoráveis, danos e informações sobre prevenção e manejo das doenças presentes na base.</p></section>
+                <section><h3>🔖 Acesso e histórico</h3><p>Experimente os dois modos sem conta. Faça login antes de analisar para salvar novos resultados no histórico pessoal.</p></section>
             </div>
+            <details class="tech-box-inner"><summary>Tecnologias do projeto</summary><p>HTML, CSS e JavaScript compõem a interface. O classificador de imagens utiliza Teachable Machine e TensorFlow.js. O Firebase oferece autenticação e armazenamento do histórico.</p></details>
+            <p><a href="sobre.html">Testar por foto →</a> · <a href="bot.html">Abrir assistente →</a></p>
         </section>
-
         <h2 class="section-title">Nossa Equipe</h2>
         
         <div class="team-grid">
@@ -242,9 +77,9 @@
                 <span class="instagram-link">📸 @lucas.andrefuhr</span>
             </a>
         </div>
-    </div>
+    </main>
 
-    <footer style="width:80%; padding: 40px; text-align: center; font-size: 0.8rem; opacity: 0.5; border-top: 1px solid rgba(255,255,255,0.1);">
+    <footer class="site-footer">
         © 2026 AgroInova - Tecnologia Integrada ao Campo
     </footer>
 
