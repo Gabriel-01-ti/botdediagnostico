@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AgroBot | Diagnóstico Agrícola Inteligente</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,10 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="bot.css">
-    <link rel="stylesheet" href="interface.css">
-    <script src="interface.js" defer></script>
 </head>
-<body class="bot-page">
+<body>
 
     <div id="splash" aria-hidden="true">
         <div class="splash-content">
@@ -27,8 +25,8 @@
         <a href="index.html" class="btn-circular btn-voltar" title="Voltar para a Página Inicial" aria-label="Voltar">
             <span><b>⏎</b> Voltar</span>
         </a>
-        <button id="floating-guia-btn" class="btn-circular" onclick="toggleGuiaMenu()" aria-label="Abrir Guia de Informações" title="Guia de Informações">
-            <span>📖 Guia da lavoura</span>
+        <button style="width: 60px; height: 60px;" id="floating-guia-btn" class="btn-circular" onclick="toggleGuiaMenu()" aria-label="Abrir Guia de Informações" title="Guia de Informações">
+            <span>📖</span>
         </button>
     </nav>
 
@@ -78,13 +76,12 @@
    <main class="container">
         
         <header class="app-info">
-            <span class="eyebrow">Diagnóstico por sintomas</span><h1 class="app-title">Converse com o AgroBot.</h1>
+            <h1 class="app-title">🌱 AgroBot</h1>
             <p class="descricao-app">
                 Seu assistente digital para identificação rápida e prevenção de doenças no campo.
             </p>
         </header>
 
-<aside class="account-note"><strong>Você pode usar sem conta.</strong> Para salvar novos resultados no histórico, <a href="index.html#entrar">entre na sua conta antes de fazer a análise</a>.</aside>
         <section id="chat" aria-live="polite">
             <header class="chat-header">
                 <div class="avatar-wrapper">
@@ -119,4 +116,3 @@
     <script type="module" src="bot.js"></script>
 </body>
 </html>
-
