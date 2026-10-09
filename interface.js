@@ -1,5 +1,20 @@
 /* Comportamentos de interface, sem alterar autenticação ou diagnóstico. */
 (() => {
+  if (document.body.classList.contains('home-page')) {
+    window.showAuth = () => {
+      document.getElementById('welcomeView').style.display = 'none';
+      document.getElementById('auth').style.display = 'block';
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('illustrationArea').style.display = 'block';
+      document.getElementById('mainHeroContainer').classList.remove('dashboard-active');
+    };
+    for (const [name, id, display] of [
+      ['openContact','contactModal','flex'],['closeContact','contactModal','none'],
+      ['openProfileModal','profileModal','flex'],['closeProfileModal','profileModal','none']
+    ]) window[name] = () => { document.getElementById(id).style.display = display; };
+    if (location.hash === '#entrar') window.showAuth();
+    window.addEventListener('hashchange', () => { if (location.hash === '#entrar') window.showAuth(); });
+  }
   const focusable = 'a[href],button:not([disabled]),input:not([disabled]),select,[tabindex="0"]';
   const panels = [...document.querySelectorAll('#contactModal,#profileModal,#historicoModal,#guia-menu,#info-menu')];
   let activePanel = null;
@@ -45,6 +60,9 @@
     if (!first) { event.preventDefault(); activePanel.focus(); }
     else if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
+  document.querySelector('.file-dropzone')?.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); document.getElementById('foto').click(); }
   });
   document.querySelectorAll('.home-page a[href="#"]').forEach(link => link.addEventListener('click', event => event.preventDefault()));
   document.querySelectorAll('.perfil-topo,.home-page span[onclick]').forEach(element => {

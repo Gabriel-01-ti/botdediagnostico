@@ -72,6 +72,9 @@ const inputFoto = document.getElementById('foto');
 const dropzone = document.querySelector('.file-dropzone');
 const fileNameElement = document.getElementById('file-name');
 
+let previewUrl;
+const preview = document.getElementById("upload-preview");
+
 function carregarArquivo(file) {
   // Verifica se existe arquivo
   if (!file) return;
@@ -92,6 +95,12 @@ function carregarArquivo(file) {
     fileNameElement.innerText = file.name;
   }
 
+  if (preview) {
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    previewUrl = URL.createObjectURL(file);
+    preview.src = previewUrl;
+    preview.hidden = false;
+  }
   console.log("📸 Imagem carregada:", file.name);
 }
 
@@ -288,6 +297,9 @@ await salvarDiagnosticoFirestore({
 
 // 7. Limpar/Reiniciar
 function reiniciar() {
+  if (previewUrl) URL.revokeObjectURL(previewUrl);
+  previewUrl = null;
+  if (preview) { preview.removeAttribute('src'); preview.hidden = true; }
   document.getElementById("resultado").innerHTML = "";
   document.getElementById("foto").value = "";
   const fileNameElement = document.getElementById('file-name');

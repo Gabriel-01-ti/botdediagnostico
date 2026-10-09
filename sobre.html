@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, user-scalable=yes">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
-  <title>Diagnóstico de Plantas</title>
+  <title>Diagnóstico por foto | AgroInova</title>
   <link rel="stylesheet" href="style.css">
 
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <link rel="stylesheet" href="interface.css">
+<link rel="icon" href="logo-nova.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="image-page">
  <div id="splash" aria-hidden="true">
         <div class="splash-content">
             <img src="logo.jpg" alt="Logo Agro Inova" class="logo-splash">
@@ -19,20 +20,17 @@
             <p class="texto-splash">Iniciando a IA do AgroInova...</p>
         </div>
     </div>
-  <a href="index.html" class="btn-circular btn-voltar" title="Voltar para a Página Inicial" aria-label="Voltar">
-            <span><b>⏎</b> Voltar</span>
-        </a>
+  <nav class="tool-nav" aria-label="Navegação principal"><a href="index.html" class="tool-brand">🌱 AgroInova</a><a href="sobreprojeto.html">Sobre</a><a href="bot.html">Por sintomas</a></nav>
 <div class="container">
-    <h1 class="app-title">
-  Agro<span>Inova📱🌱</span>
-</h1>
+    <span class="eyebrow">Observe os sinais da folha</span><h1 class="app-title">Diagnóstico por foto</h1>
 
 <div class="context-box">
   
   📸 Envie uma foto da <strong>folha da planta</strong> para receber uma análise com possíveis
-  sintomas, diagnóstico e formas de controle.
+  doenças cadastradas no modelo de milho ou soja. A análise tem caráter educativo.
 </div>
 
+<p class="account-note"><strong>Experimente sem conta.</strong> Para salvar novos resultados no histórico, <a href="index.html#entrar">entre antes de analisar</a>.</p>
     <label for="cultura">Cultura:</label>
     <select id="cultura">
       <option value="" disabled selected>O que vamos analisar?</option>
@@ -42,7 +40,7 @@
     </select>
 
     <input type="file" id="foto" accept="image/*" hidden>
-    <div class="file-dropzone" onclick="document.getElementById('foto').click()">
+    <div class="file-dropzone" role="button" tabindex="0" aria-label="Selecionar foto da folha" onclick="document.getElementById('foto').click()">
         <span class="icon">📁</span>
         <p id="file-name">📁 Clique ou arraste uma foto da folha para cá</p>
     </div>
@@ -50,6 +48,7 @@
   Dica 💡: fotos bem iluminadas e com fundo neutro aumentam a precisão do diagnóstico.
   </small>
 
+    <img id="upload-preview" class="upload-preview" alt="Prévia da foto selecionada" hidden>
     <button onclick="analisar()">Analisar planta 🔍🌱</button>
     <button onclick="reiniciar()" class="btn-reiniciar">Reiniciar análise 🔄</button>
 
@@ -74,13 +73,13 @@
   🌱 <strong>AgroInova</strong> é um projeto educacional que utiliza inteligência artificial
   para auxiliar no reconhecimento de doenças em culturas agrícolas.
         </p>
-        <p><strong>📸 Diagnóstico por Imagem:</strong> Atualmente disponível para <strong>3 culturas</strong>.</p>
+        <p><strong>📸 Diagnóstico por Imagem:</strong> Atualmente disponível para <strong>milho e soja</strong>.</p>
         
         <div class="explanation-box">
-            "Por que só 3? Como ainda somos iniciantes, focamos nas culturas mais populares, pois é mais fácil conseguir fotos de qualidade para treinar nossa IA com precisão."
+            Os modelos atuais foram treinados para milho e soja. A qualidade da foto e a variedade das imagens de treinamento influenciam os resultados.
         </div>
 
-        <p><strong>🤖 Outras Culturas:</strong> Pelo <strong>chat de texto</strong>, você pode consultar várias outras variedades! Nossa base de dados é bem ampla.</p>
+        <p><strong>🤖 Outras Culturas:</strong> Pelo <strong>chat de texto</strong>, você pode consultar milho, soja, feijão, trigo e bergamota, com as doenças cadastradas na base do projeto.</p>
         
         <hr class="divider">
         
@@ -92,6 +91,7 @@
     </div>
 </div>
   <script type="module" src="script.js"></script>
+<script src="interface.js" defer></script>
 </body>
 </html>
 

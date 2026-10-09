@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroBot | Diagnóstico Agrícola Inteligente</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,8 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="bot.css">
+    <link rel="stylesheet" href="interface.css">
+<link rel="icon" href="logo-nova.png">
 </head>
-<body>
+<body class="bot-page">
 
     <div id="splash" aria-hidden="true">
         <div class="splash-content">
@@ -23,10 +25,11 @@
 
     <nav class="controles-flutuantes" aria-label="Controles de Navegação">
         <a href="index.html" class="btn-circular btn-voltar" title="Voltar para a Página Inicial" aria-label="Voltar">
-            <span><b>⏎</b> Voltar</span>
+            <span>🌱 AgroInova · Início</span>
         </a>
+        <a href="sobre.html" class="tool-link">Por foto</a>
         <button style="width: 60px; height: 60px;" id="floating-guia-btn" class="btn-circular" onclick="toggleGuiaMenu()" aria-label="Abrir Guia de Informações" title="Guia de Informações">
-            <span>📖</span>
+            <span>📖 Guia</span>
         </button>
     </nav>
 
@@ -78,10 +81,11 @@
         <header class="app-info">
             <h1 class="app-title">🌱 AgroBot</h1>
             <p class="descricao-app">
-                Seu assistente digital para identificação rápida e prevenção de doenças no campo.
+                Descreva ou escolha sintomas de milho, soja, feijão, trigo ou bergamota para consultar possíveis doenças.
             </p>
         </header>
 
+        <p class="account-note"><strong>Experimente sem conta.</strong> Para salvar novos resultados no histórico, <a href="index.html#entrar">entre antes de analisar</a>.</p>
         <section id="chat" aria-live="polite">
             <header class="chat-header">
                 <div class="avatar-wrapper">
@@ -89,7 +93,7 @@
                     <span class="status-dot"></span>
                 </div>
                 <div class="chat-info">
-                    <span class="chat-name">AgroBot IA</span>
+                    <span class="chat-name">AgroBot · Sintomas</span>
                     <span class="chat-status">Online</span>
                 </div>
             </header>
@@ -114,5 +118,6 @@
     </footer>
 
     <script type="module" src="bot.js"></script>
+<script src="interface.js" defer></script>
 </body>
 </html>
