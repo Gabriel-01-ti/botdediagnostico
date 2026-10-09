@@ -11,6 +11,110 @@
     <link rel="stylesheet" href="interface.css">
 <link rel="icon" href="logo-nova.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Ajustes exclusivos desta página; preserva os estilos e scripts compartilhados. -->
+<style>
+  .image-page .skip-link:not(:focus) { clip-path: inset(50%); }
+  .image-page .container {
+    width: min(1280px, calc(100% - 64px));
+    max-width: 1280px;
+    padding: clamp(24px, 3vw, 40px);
+    margin: 32px auto 48px;
+  }
+  .image-page .photo-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 24px;
+  }
+  .image-page .photo-heading > div:first-child { min-width: 0; max-width: 780px; }
+  .image-page .context-box { margin: 14px 0 0; line-height: 1.7; }
+  .image-page .tool-context-actions { margin: 8px 0 0; flex-shrink: 0; }
+  .image-page .account-note { margin: 0 0 28px; }
+  .image-page .photo-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+    gap: 32px;
+    align-items: start;
+  }
+  .image-page .photo-input, .image-page .photo-output { min-width: 0; }
+  .image-page .workspace-title {
+    color: var(--forest);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1.15rem;
+    margin: 0 0 20px;
+    letter-spacing: -.025em;
+  }
+  .image-page .photo-input label { display: block; font-size: .9rem; font-weight: 600; margin: 0 0 8px; }
+  .image-page .photo-input select { width: 100%; min-height: 50px; margin: 0 0 22px; font-size: 1rem; }
+  .image-page .photo-input .file-dropzone {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 28px 24px;
+    margin-top: 0;
+  }
+  .image-page .file-dropzone .icon { display: flex; color: var(--leaf); }
+  .image-page #file-name { margin: 0; font-size: .95rem; font-weight: 600; line-height: 1.6; }
+  .image-page .hint { margin: 12px 0 20px; font-size: .8rem; }
+  .image-page .upload-preview { max-height: 320px; background: #f5faf5; padding: 12px; }
+  .image-page .photo-buttons { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; }
+  .image-page .photo-buttons button { width: 100%; margin: 0; min-height: 50px; padding: 12px 18px; }
+  .image-page .photo-output {
+    background: #f7faf7;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px;
+  }
+  .image-page .photo-output .workspace-title { margin-bottom: 16px; }
+  .image-page .photo-output .resultado { margin: 0; padding: 0; border: 0; background: transparent; }
+  .image-page .photo-output .resultado.placeholder {
+    min-height: 300px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: center;
+    font-style: normal;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .image-page .photo-output .resultado.placeholder svg { color: #699b77; flex-shrink: 0; }
+  .image-page .photo-output .resultado.placeholder p { max-width: 36ch; margin: 0; font-size: .95rem; }
+  .image-page .photo-output .resultado.placeholder:has(~ #resultado:not(:empty)) { display: none; }
+  .image-page .photo-output .doenca-card {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  .image-page .photo-output .doenca-card > p { max-width: 70ch; }
+  .image-page .photo-output .doenca-card .info-box,
+  .image-page .photo-output .doenca-card .secao-prevencao { background: white; border: 1px solid var(--line); font-size: .9rem; }
+  .image-page .tool-disclaimer { border-top: 1px solid var(--line); padding-top: 20px; margin-top: 28px; }
+  @media (max-width: 999px) {
+    .image-page .container { width: calc(100% - 40px); }
+    .image-page .photo-workspace { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .image-page .photo-heading { display: block; }
+    .image-page .tool-context-actions { margin-top: 18px; }
+    .image-page .photo-output .resultado.placeholder { min-height: 180px; }
+  }
+  @media (max-width: 600px) {
+    .image-page .container { width: calc(100% - 32px); padding: 24px 18px; margin-top: 20px; }
+    .image-page .app-title { font-size: clamp(1.65rem, 7vw, 2.1rem); }
+    .image-page .account-note { padding: 14px; }
+    .image-page .photo-input .file-dropzone { min-height: 180px; padding: 24px 16px; }
+    .image-page .photo-buttons { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+    .image-page .photo-output { padding: 20px 16px; }
+    .image-page .photo-output .resultado.placeholder { padding: 12px 0; }
+  }
+</style>
 </head>
 <body class="image-page">
 <a class="skip-link" href="#tool-main">Pular para o conteúdo</a>
@@ -27,6 +131,8 @@
         <nav id="site-navigation" aria-label="Navegação principal"><ul><li><a href="index.html">Início</a></li><li><a href="sobreprojeto.html">Sobre</a></li><li><a href="sobre.html" aria-current="page">Por foto</a></li><li><a href="bot.html">Por sintomas</a></li><li><a href="index.html#historico">Histórico</a></li><li><a href="index.html#contato">Contato</a></li><li><a href="index.html#entrar" class="btn-nav-login">Entrar</a></li></ul></nav>
     </header>
 <main class="container" id="tool-main">
+  <div class="photo-heading">
+    <div>
     <span class="eyebrow">Observe os sinais da folha</span><h1 class="app-title">Diagnóstico por foto</h1>
 
 <div class="context-box">
@@ -34,9 +140,13 @@
   Envie uma foto da <strong>folha da planta</strong> para receber uma análise com possíveis
   doenças cadastradas no modelo de milho ou soja. A análise tem caráter educativo.
 </div>
-
+    </div>
 <div class="tool-context-actions"><button type="button" id="floating-info-btn" onclick="toggleInfoMenu()" aria-label="Sobre o diagnóstico por foto" aria-controls="info-menu" aria-expanded="false">Sobre esta análise</button></div>
+  </div>
 <p class="account-note"><strong>Experimente sem conta.</strong> Para salvar novos resultados no histórico, <a href="index.html#entrar">entre antes de analisar</a>.</p>
+  <div class="photo-workspace">
+    <section class="photo-input" aria-labelledby="envio-title">
+    <h2 class="workspace-title" id="envio-title">Envie sua foto</h2>
     <label for="cultura">Cultura:</label>
     <select id="cultura">
       <option value="" disabled selected>O que vamos analisar?</option>
@@ -56,15 +166,22 @@
   </small>
 
     <img id="upload-preview" class="upload-preview" alt="Prévia da foto selecionada" hidden>
+    <div class="photo-buttons">
     <button id="analyzeBtn" onclick="analisar()">Analisar planta</button>
     <button onclick="reiniciar()" class="btn-reiniciar">Reiniciar análise</button>
-
+    </div>
+    </section>
+    <section class="photo-output" aria-labelledby="resultado-title">
+    <h2 class="workspace-title" id="resultado-title">Resultado da análise</h2>
     <div class="resultado placeholder">
-  O resultado da análise aparecerá aqui após o envio da imagem.
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20 3C9 2 3 7 5 14c1 4 7 6 11 2 3-3 4-8 4-13Z"/><path d="M4 21c2-6 6-10 11-13"/></svg>
+      <p>O resultado da análise aparecerá aqui após o envio da imagem.</p>
     </div>
 
     <div id="resultado" class="resultado" role="status" aria-live="polite" aria-busy="false"></div>
     <p id="saveStatus" class="save-status" role="status" hidden></p>
+    </section>
+  </div>
     <p class="tool-disclaimer">Ferramenta educativa de diagnóstico inicial. Não substitui a avaliação de um profissional.</p>
 </main>
 
