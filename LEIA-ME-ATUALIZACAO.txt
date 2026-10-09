@@ -1,52 +1,72 @@
-AGROINOVA — ATUALIZAÇÃO VISUAL E RESPONSIVA
+AGROINOVA — ATUALIZAÇÃO SOMENTE DAS INTERFACES
+Base: arquivo AGROINOVA.rar enviado nesta conversa.
 
-Este pacote contém somente os arquivos alterados e os novos arquivos.
-Base: Gabriel-01-ti/botdediagnostico, commit 9af50b19aeb9424d21a75b41458ffc50f1bbc593.
+COMO APLICAR
+1. Faça uma cópia de segurança da sua pasta atual do site.
+2. Extraia este ZIP.
+3. Copie os 7 arquivos abaixo para a RAIZ da pasta do site, substituindo os existentes:
+   index.html
+   sobreprojeto.html
+   sobre.html
+   bot.html
+   interface.css
+   interface.js
+   bot.js
+4. Mantenha todos os outros arquivos e as pastas imagens e modelos.
+5. Teste localmente com Live Server ou um servidor local antes de subir a atualização.
 
-COMO APLICAR NO GITHUB
-1. Abra o repositório e confira se está na branch desejada.
-2. Extraia o ZIP.
-3. Na raiz do repositório, escolha Add file > Upload files.
-4. Envie os 7 arquivos de código abaixo, diretamente na raiz.
-5. Confira as alterações e faça o commit.
+O pacote contém versões completas dos arquivos alterados, não trechos de código.
+Não é necessário copiar este LEIA-ME para a hospedagem.
+Não é necessário configurar serviços novos nem alterar as regras do Firebase.
+Nenhum commit, push ou publicação foi realizado.
 
-SUBSTITUIR:
-- index.html
-- bot.html
-- sobre.html
-- sobreprojeto.html
-- script.js
-
-ADICIONAR:
-- interface.css
-- interface.js
-
-Não é necessário enviar este LEIA-ME.
-Os arquivos bot.css e style.css existentes continuam necessários.
-Mantenha as imagens, modelos, base.json, Firebase e demais arquivos existentes.
+ARQUIVOS E PASTAS QUE VOCÊ DEVE MANTER
+script.js, firebase.db.js, base.json, style.css, bot.css,
+logo.jpg, logo-nova.png, fundo.jpg e todos os demais recursos atuais.
+Mantenha imagens e modelos nos caminhos já utilizados pelo site.
+A imagem de destaque é imagens/mancha_branca.jpeg, já referenciada pelo projeto.
+As fotos da equipe e seus links foram preservados.
+A base enviada também referencia imagens/bergamota.pinta.jpg; use esse nome
+exato para essa imagem. Nenhum caminho da base foi alterado.
 
 O QUE MUDOU
-- Explicações e links diretos para diagnóstico por foto e por sintomas.
-- Uso sem conta; login opcional antes de analisar para salvar novos resultados.
-- Foto real da base do projeto em destaque, identificada como ilustrativa.
-- Sobre com objetivo, IFFar Campus Frederico Westphalen, culturas e funcionamento.
-- Textos ajustados às doenças atendidas, sem prometer identificação de pragas ou deficiências.
-- Página inicial com tipografia, espaçamento e navegação reorganizados.
-- Layouts próprios para celular, tablet e computador.
-- Páginas de diagnóstico com superfícies claras e contraste melhor.
-- Assistente com campo de mensagem fixado à parte inferior durante a rolagem.
-- Guia da lavoura com altura limitada e rolagem interna.
-- Prévia da foto enviada e limpeza da prévia ao reiniciar a análise.
-- Upload acessível por teclado, zoom permitido e foco visível.
-- Janelas com navegação por teclado e fechamento por Esc.
-- Página da equipe organizada em 3, 2 ou 1 coluna conforme a largura.
-- Informação corrigida: o diagnóstico por imagem oferece milho e soja.
+- Título e descrição da página inicial conforme solicitado.
+- Cards com Analisar uma foto e Descrever sintomas.
+- Foto real da base educativa, sem resultados ou métricas fictícias.
+- Seção Como funciona com três passos.
+- Lista das culturas realmente disponíveis.
+- Cabeçalho, logo, menu, cores, fontes, cards e botões padronizados.
+- Menu compacto e cards em uma coluna no celular.
+- Sobre com objetivo, funcionamento, equipe e tecnologias em seção recolhível.
+- Login apresentado como acesso ao histórico, com campos rotulados e estados de carregamento.
+- Prévia da foto enviada, menus por teclado, foco visível e fechamento com Esc.
+- Movimento reduzido respeitado no CSS e na rolagem do chat.
 
-O fluxo de apresentação do login foi ajustado. As operações de autenticação, banco de dados, modelos e regras do diagnóstico foram preservadas.
-Nenhum commit ou publicação foi feito no GitHub.
+PRESERVAÇÃO DO FUNCIONAMENTO
+O script de inferência (script.js), a integração Firebase (firebase.db.js),
+a base de doenças (base.json), style.css e bot.css são idênticos aos enviados.
+As operações de login Google/e-mail/senha, recuperação, verificação de e-mail,
+persistência e histórico foram mantidas. O histórico continua consultando o
+UID do usuário autenticado. Nenhuma regra de segurança foi alterada.
+O bot.js tem apenas ajustes de textos, estado visual, rolagem e controle do guia;
+o fluxo de conversa, comparação dos sintomas e salvamento existentes permanecem.
+A regra original de pelo menos 80% para classificação por imagem foi preservada.
 
-VALIDAÇÃO
-Sintaxe JavaScript, IDs únicos e referências locais verificados.
-Fluxos de apresentação para visitante, link #entrar e painel autenticado verificados com simulação da sessão (sem conexão real ao Firebase).
-O navegador de teste não pôde ser instalado neste ambiente.
-A aparência e os fluxos completos com login e IA precisam ser conferidos no navegador.
+VALIDAÇÃO REALIZADA
+- Quatro páginas no Chromium, em larguras de 320, 390, 768 e 1440 pixels.
+- Ausência de rolagem horizontal, carregamento das imagens dos HTMLs e menus compactos.
+- Capturas das páginas inspecionadas em desktop e celular.
+- Navegação por teclado, fechamento com Esc e movimento reduzido.
+- Apresentação de login/cadastro e painel com sessão simulada.
+- Histórico com filtro pelo UID em Firestore simulado.
+- Assistente sem conta até o resultado, incluindo seleção de sintomas e guia.
+- Upload de imagem, prévia, reinício e menus.
+- Limite de confiança: 79% rejeitado e 80% aceito, com classificador simulado.
+- Sintaxe JavaScript, IDs únicos e referências locais dos HTMLs.
+
+NÃO TESTADO
+Login Google ou e-mail/senha reais, envio real de recuperação/verificação,
+leitura/escrita real no Firestore e inferência real dos modelos de IA.
+Os testes utilizaram serviços simulados, não gravaram na conta e não alteraram o site publicado.
+Para testar localmente, Firebase e as bibliotecas externas exigem internet;
+o domínio usado no login deve continuar autorizado na configuração já existente.

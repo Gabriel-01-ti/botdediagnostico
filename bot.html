@@ -7,13 +7,14 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="bot.css">
     <link rel="stylesheet" href="interface.css">
 <link rel="icon" href="logo-nova.png">
 </head>
 <body class="bot-page">
+<a class="skip-link" href="#tool-main">Pular para o conteúdo</a>
 
     <div id="splash" aria-hidden="true">
         <div class="splash-content">
@@ -23,15 +24,12 @@
         </div>
     </div>
 
-    <nav class="controles-flutuantes" aria-label="Controles de Navegação">
-        <a href="index.html" class="btn-circular btn-voltar" title="Voltar para a Página Inicial" aria-label="Voltar">
-            <span>🌱 AgroInova · Início</span>
-        </a>
-        <a href="sobre.html" class="tool-link">Por foto</a>
-        <button style="width: 60px; height: 60px;" id="floating-guia-btn" class="btn-circular" onclick="toggleGuiaMenu()" aria-label="Abrir Guia de Informações" title="Guia de Informações">
-            <span>📖 Guia</span>
-        </button>
-    </nav>
+<header class="site-header">
+        <a href="index.html" class="logo" aria-label="AgroInova — início"><img src="imagens/logo-nova.png" alt="" width="48" height="48"><span>Agro<strong>Inova</strong></span></a>
+        <button type="button" class="menu-toggle" aria-controls="site-navigation" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
+        <nav id="site-navigation" aria-label="Navegação principal"><ul><li><a href="index.html">Início</a></li><li><a href="sobreprojeto.html">Sobre</a></li><li><a href="sobre.html">Por foto</a></li><li><a href="bot.html" aria-current="page">Por sintomas</a></li><li><a href="index.html#historico">Histórico</a></li><li><a href="index.html#contato">Contato</a></li><li><a href="index.html#entrar" class="btn-nav-login">Entrar</a></li></ul></nav>
+    </header>
+    <div class="tool-actions"><button type="button" id="floating-guia-btn" onclick="toggleGuiaMenu()" aria-controls="guia-menu" aria-expanded="false">📖 Guia de doenças</button></div>
 
     <aside id="guia-menu" class="hidden" aria-label="Guia de Informações da Lavoura">
         <header class="guia-header">
@@ -76,10 +74,10 @@
         </div>
     </aside>
 
-   <main class="container">
+   <main class="container" id="tool-main">
         
         <header class="app-info">
-            <h1 class="app-title">🌱 AgroBot</h1>
+            <span class="eyebrow">Observe os sinais no campo</span><h1 class="app-title">Assistente por sintomas</h1>
             <p class="descricao-app">
                 Descreva ou escolha sintomas de milho, soja, feijão, trigo ou bergamota para consultar possíveis doenças.
             </p>
@@ -94,7 +92,7 @@
                 </div>
                 <div class="chat-info">
                     <span class="chat-name">AgroBot · Sintomas</span>
-                    <span class="chat-status">Online</span>
+                    <span class="chat-status" id="botStatus">Carregando a base…</span>
                 </div>
             </header>
 
@@ -102,6 +100,8 @@
                 </div>
         </section>
 
+        <div class="message-composer">
+        <label class="field-label symptom-label" for="sintomas">Sua mensagem ou os sintomas observados</label>
         <section class="input-area">
             <input type="text" id="sintomas" disabled placeholder="Carregando dados da lavoura..." aria-label="Digite ou selecione os sintomas">
             <button id="btn-diagnosticar" aria-label="Enviar Mensagem">
@@ -111,7 +111,9 @@
                 </svg>
             </button>
         </section>
-
+        </div>
+        <p id="saveStatus" class="save-status" role="status" hidden></p>
+        <p class="tool-disclaimer">Ferramenta educativa de diagnóstico inicial. Não substitui a avaliação de um profissional.</p>
     </main>
     <footer class="rodape">
         <small>Agro Inova © 2026 🌱 Tecnologia em favor do campo</small>

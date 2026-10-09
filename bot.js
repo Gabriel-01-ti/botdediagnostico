@@ -19,11 +19,13 @@ fetch("base.json")
         if (inputSintomas) {
             inputSintomas.disabled = false;
             inputSintomas.placeholder = "Digite 'Oi' para começar...";
+            document.getElementById('botStatus').textContent = 'Pronto para conversar';
         }
         abrirGuiaRapido();
     })
     .catch(err => {
         console.error("Erro ao carregar a base de dados:", err);
+        document.getElementById('botStatus').textContent = 'Falha no carregamento';
         addMsg("❌ Erro ao carregar a base de dados. Tente recarregar a página.", "bot");
     });
 
@@ -107,7 +109,7 @@ function addMsg(texto, tipo, rolar = true) {
             chatDiv.scrollTop = chatDiv.scrollHeight;
             window.scrollTo({
                 top: document.documentElement.scrollHeight,
-                behavior: 'smooth'
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
             });
         }, 50);
     }
@@ -395,7 +397,7 @@ function diagnosticar(cultura, textoUsuario) {
                     </section>
                     
                     <div class="aviso-responsabilidade">
-                        <p>🚨 <b>AVISO IMPORTANTE:</b> Diagnóstico gerado por IA. Para prescrições técnicas e aplicação de defensivos, consulte um <b>Engenheiro Agrônomo</b>.</p>
+                        <p>🚨 <b>AVISO IMPORTANTE:</b> Consulta inicial baseada nos sintomas informados. Para prescrições técnicas e aplicação de defensivos, consulte um <b>Engenheiro Agrônomo</b>.</p>
                     </div>
                 </div>
             </div>
@@ -417,5 +419,5 @@ function diagnosticar(cultura, textoUsuario) {
     }
 }
 
-// O guia fica na navegação; expõe a ação aos botões de abrir e fechar.
+// Abertura e fechamento do guia pelos controles da interface.
 window.toggleGuiaMenu = toggleGuiaMenu;
