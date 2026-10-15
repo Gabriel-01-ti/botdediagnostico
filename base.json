@@ -1,585 +1,1335 @@
 {
   "milho": {
-  "mancha_branca": {
-    "nome": "Mancha Branca do Milho",
-    "nome_biologico": "Phaeosphaeria maydis / Pantoea ananatis",
-    "imagem": "imagens/mancha_branca.jpeg",
-    "descricao": "Doença foliar comum em condições de clima ameno e úmido, podendo causar perdas significativas de produtividade.",
-    "condicoes_favoraveis": "Temperaturas entre 14°C e 20°C, alta umidade, presença de orvalho prolongado e restos culturais infectados.",
-    "sintomas": {
-      "praticos": [
-        "manchas claras ou esbranquiçadas nas folhas",
-        "folha parece desbotada em algumas áreas",
-        "manchas começam pequenas e aumentam com o tempo",
-        "manchas se juntam e cobrem grande parte da folha",
-        "aparece primeiro nas folhas mais velhas"
-      ],
-      "tecnicos": [
-        "lesões inicialmente aquosas que evoluem para coloração esbranquiçada",
-        "bordas irregulares e mal definidas",
-        "pontos escuros no centro das lesões",
-        "coalescência das lesões em ataques severos",
-        "redução progressiva da área fotossintética"
-      ]
+    "mancha_branca": {
+      "nome": "Mancha Branca do Milho",
+      "nome_biologico": "Phaeosphaeria maydis / Pantoea ananatis",
+      "imagem": "imagens/mancha_branca.jpeg",
+      "descricao": "Doença foliar comum em condições de clima ameno e úmido, podendo causar perdas significativas de produtividade.",
+      "condicoes_favoraveis": "Temperaturas entre 14°C e 20°C, alta umidade, presença de orvalho prolongado e restos culturais infectados.",
+      "sintomas": {
+        "praticos": [
+          "manchas claras ou esbranquiçadas nas folhas",
+          "folha parece desbotada em algumas áreas",
+          "manchas começam pequenas e aumentam com o tempo",
+          "manchas se juntam e cobrem grande parte da folha",
+          "aparece primeiro nas folhas mais velhas"
+        ],
+        "tecnicos": [
+          "lesões inicialmente aquosas que evoluem para coloração esbranquiçada",
+          "bordas irregulares e mal definidas",
+          "pontos escuros no centro das lesões",
+          "coalescência das lesões em ataques severos",
+          "redução progressiva da área fotossintética"
+        ]
+      },
+      "danos": "Redução da área fotossintética, secamento precoce das folhas e queda de produtividade.",
+      "manejo_preventivo": "Uso de híbridos tolerantes, evitar plantios tardios, rotação de culturas e monitoramento frequente da lavoura.",
+      "controle": "Aplicação de fungicidas recomendados para a cultura conforme nível de severidade e recomendação técnica."
     },
-    "danos": "Redução da área fotossintética, secamento precoce das folhas e queda de produtividade.",
-    "manejo_preventivo": "Uso de híbridos tolerantes, evitar plantios tardios, rotação de culturas e monitoramento frequente da lavoura.",
-    "controle": "Aplicação de fungicidas recomendados para a cultura conforme nível de severidade e recomendação técnica."
+    "helmintosporiose": {
+      "nome": "Helmintosporiose do Milho",
+      "nome_biologico": "Exserohilum turcicum",
+      "imagem": "imagens/milho.helmintospirose.jpg",
+      "descricao": "Doença fúngica que causa manchas alongadas nas folhas, com aspecto de queimadura, podendo comprometer severamente a fotossíntese.",
+      "condicoes_favoraveis": "Alta umidade, temperaturas entre 18°C e 27°C e cultivares suscetíveis.",
+      "sintomas": {
+        "praticos": [
+          "manchas longas e escuras nas folhas",
+          "parece que a folha foi queimada em faixas",
+          "manchas seguem o comprimento da folha",
+          "começa nas folhas de baixo",
+          "folhas muito atacadas secam"
+        ],
+        "tecnicos": [
+          "lesões elípticas e alongadas paralelas às nervuras",
+          "coloração castanha a cinzenta",
+          "coalescência formando grandes áreas necróticas",
+          "redução acentuada da área foliar"
+        ]
+      },
+      "danos": "Redução intensa da área foliar, queda da fotossíntese e perdas de produtividade.",
+      "manejo_preventivo": "Uso de cultivares resistentes, rotação de culturas e adubação equilibrada.",
+      "controle": "Aplicação de fungicidas nos estádios recomendados, conforme monitoramento da doença."
+    },
+    "cercosporiose": {
+      "nome": "Cercosporiose do Milho",
+      "nome_biologico": "Cercospora zeae-maydis",
+      "imagem": "imagens/milho.cercospiriose.jpg",
+      "descricao": "Doença foliar que causa manchas retangulares bem definidas, podendo levar à seca precoce das folhas.",
+      "condicoes_favoraveis": "Alta umidade, presença de restos culturais infectados e monocultivo.",
+      "sintomas": {
+        "praticos": [
+          "manchas retangulares ou quadradas nas folhas",
+          "manchas acinzentadas ou marrom claro",
+          "manchas alinhadas com as linhas da folha",
+          "manchas não atravessam as nervuras",
+          "folhas secam aos poucos"
+        ],
+        "tecnicos": [
+          "lesões retangulares paralelas às nervuras",
+          "bordas bem definidas",
+          "coloração cinza a marrom-clara",
+          "necrose progressiva da lâmina foliar"
+        ]
+      },
+      "danos": "Queda precoce das folhas, redução da fotossíntese e perdas de produtividade.",
+      "manejo_preventivo": "Rotação de culturas, manejo adequado dos restos culturais e uso de híbridos tolerantes.",
+      "controle": "Aplicação de fungicidas quando houver risco econômico, conforme monitoramento."
+    },
+    "ferrugem_polisora": {
+      "nome": "Ferrugem Polisora do Milho",
+      "nome_biologico": "Puccinia polysora",
+      "imagem": "imagens/ferrugem.milho.jpg",
+      "descricao": "Doença fúngica agressiva que provoca pústulas alaranjadas nas folhas e pode se espalhar rapidamente em condições favoráveis.",
+      "condicoes_favoraveis": "Clima quente e úmido, regiões de baixa altitude e plantios tardios.",
+      "sintomas": {
+        "praticos": [
+          "pontinhos alaranjados ou amarelados nas folhas",
+          "parece que a folha tem poeira de ferrugem",
+          "quando esfrega a folha solta um pó laranja-amarelado",
+          "pontos aumentam e se espalham rápido",
+          "folhas secam rapidamente em ataques fortes"
+        ],
+        "tecnicos": [
+          "pústulas pulverulentas com liberação de esporos",
+          "distribuição intensa na lâmina foliar",
+          "clorose e necrose ao redor das pústulas",
+          "rápida perda da área fotossintética"
+        ]
+      },
+      "danos": "Destruição da área foliar, desfolha precoce e redução significativa da produtividade.",
+      "manejo_preventivo": "Uso de cultivares resistentes, evitar épocas muito favoráveis ao fungo e monitoramento constante.",
+      "controle": "Aplicação de fungicidas registrados para a cultura conforme recomendação técnica."
+    }
   },
-
-  "helmintosporiose": {
-    "nome": "Helmintosporiose do Milho",
-    "nome_biologico": "Exserohilum turcicum",
-    "imagem": "imagens/milho.helmintospirose.jpg",
-    "descricao": "Doença fúngica que causa manchas alongadas nas folhas, com aspecto de queimadura, podendo comprometer severamente a fotossíntese.",
-    "condicoes_favoraveis": "Alta umidade, temperaturas entre 18°C e 27°C e cultivares suscetíveis.",
-    "sintomas": {
-      "praticos": [
-        "manchas longas e escuras nas folhas",
-        "parece que a folha foi queimada em faixas",
-        "manchas seguem o comprimento da folha",
-        "começa nas folhas de baixo",
-        "folhas muito atacadas secam"
-      ],
-      "tecnicos": [
-        "lesões elípticas e alongadas paralelas às nervuras",
-        "coloração castanha a cinzenta",
-        "coalescência formando grandes áreas necróticas",
-        "redução acentuada da área foliar"
-      ]
+  "soja": {
+    "ferrugem_asiatica": {
+      "nome": "Ferrugem Asiática da Soja",
+      "nome_biologico": "Phakopsora pachyrhizi",
+      "imagem": "imagens/soja.ferrugem.jpg",
+      "descricao": "Doença fúngica agressiva que causa desfolha precoce na soja e pode provocar grandes perdas de produtividade.",
+      "condicoes_favoraveis": "Alta umidade, longos períodos de molhamento foliar, presença de orvalho frequente e temperaturas entre 18°C e 26°C.",
+      "sintomas": {
+        "praticos": [
+          "pontinhos escuros no verso da folha",
+          "manchas muito pequenas espalhadas pela folha",
+          "parece sujeira grudada na parte de baixo da folha",
+          "folhas ficam amareladas antes do tempo",
+          "queda rápida das folhas começando de baixo para cima",
+          "planta fica rala e com poucas folhas"
+        ],
+        "tecnicos": [
+          "pústulas urédicas no verso das folhas com liberação de esporos",
+          "lesões puntiformes de coloração castanho-clara a castanho-escura",
+          "distribuição intensa das pústulas na lâmina foliar",
+          "clorose ao redor das lesões em estágios iniciais",
+          "necrose foliar em infecções severas",
+          "desfolha intensa iniciando nas folhas inferiores"
+        ]
+      },
+      "danos": "Queda precoce das folhas, redução da fotossíntese, enchimento incompleto de grãos e perdas drásticas na produtividade.",
+      "manejo_preventivo": "Cumprimento do vazio sanitário, uso de cultivares tolerantes, eliminação de plantas voluntárias e monitoramento constante da lavoura.",
+      "controle": "Aplicação de fungicidas sistêmicos e protetores conforme recomendação técnica e nível de risco, respeitando rotação de ingredientes ativos."
     },
-    "danos": "Redução intensa da área foliar, queda da fotossíntese e perdas de produtividade.",
-    "manejo_preventivo": "Uso de cultivares resistentes, rotação de culturas e adubação equilibrada.",
-    "controle": "Aplicação de fungicidas nos estádios recomendados, conforme monitoramento da doença."
+    "mancha_alvo": {
+      "nome": "Mancha Alvo",
+      "nome_biologico": "Corynespora cassiicola",
+      "imagem": "imagens/soja.manchaalvo.png",
+      "descricao": "Doença de final de ciclo também conhecida como crestamento foliar, causada por um fungo cosmopolita e altamente polífago.",
+      "condicoes_favoraveis": "Alta umidade, temperaturas elevadas e presença de restos culturais infectados no solo.",
+      "sintomas": {
+        "praticos": [
+          "manchas redondas nas folhas",
+          "manchas com desenho de alvo (anéis circulares)",
+          "centro escuro com bordas mais claras",
+          "começa nas folhas de baixo",
+          "folhas amarelam e caem antes do tempo",
+          "planta parece amadurecer mais cedo"
+        ],
+        "tecnicos": [
+          "lesões circulares de até 2 cm de diâmetro",
+          "centro necrótico com pontuação escura",
+          "anéis concêntricos bem definidos",
+          "halo amarelado ao redor das lesões iniciais",
+          "necrose em raízes com coloração castanho-clara",
+          "presença de estruturas escuras do fungo em solo úmido após morte da planta"
+        ]
+      },
+      "danos": "Redução da área fotossintética, amarelecimento e queda precoce das folhas, maturação antecipada das plantas e perdas de produtividade.",
+      "manejo_preventivo": "Uso de sementes sadias e tratadas, cultivares resistentes, rotação de culturas com gramíneas e incorporação de restos culturais.",
+      "controle": "Aplicações de fungicidas podem ser necessárias conforme nível de severidade e recomendação técnica."
+    },
+    "antracnose": {
+      "nome": "Antracnose da Soja",
+      "nome_biologico": "Colletotrichum dematium var. truncata",
+      "imagem": "imagens/soja.antracnose.png",
+      "descricao": "Doença que afeta a soja principalmente na fase inicial de formação das vagens, podendo causar perdas severas em anos chuvosos.",
+      "condicoes_favoraveis": "Alta precipitação, temperaturas elevadas, sementes infectadas, atraso na colheita e deficiência de potássio.",
+      "sintomas": {
+        "praticos": [
+          "manchas escuras nas vagens",
+          "vagens tortas e deformadas",
+          "folhas presas na planta (retenção foliar)",
+          "planta fica verde mesmo perto da colheita",
+          "falhas na lavoura por morte de plântulas",
+          "sementes manchadas e escuras"
+        ],
+        "tecnicos": [
+          "necrose em pecíolos, hastes e vagens",
+          "lesões castanho-escuras a negras em vagens jovens",
+          "frutificações negras do fungo sob alta umidade",
+          "infecção latente no tecido cortical",
+          "necrose de cotilédones e hipocótilo em plântulas",
+          "tombamento de plântulas"
+        ]
+      },
+      "danos": "Redução do número de vagens, retenção foliar, haste verde, deterioração de sementes e, em casos severos, perda total da produção.",
+      "manejo_preventivo": "Uso de sementes livres do patógeno, rotação de culturas, espaçamento adequado, controle de plantas daninhas e adubação equilibrada com potássio.",
+      "controle": "Tratamento de sementes com fungicidas e manejo adequado de restos culturais. Boas práticas agronômicas são essenciais."
+    },
+    "oidio": {
+      "nome": "Oídio da Soja",
+      "nome_biologico": "Erysiphe diffusa",
+      "imagem": "imagens/soja.oidio.jpg",
+      "descricao": "Doença fúngica causada por um parasita obrigatório que se desenvolve em toda a parte aérea da soja. Pode se tornar severa em períodos de estiagem.",
+      "condicoes_favoraveis": "Períodos de estiagem, temperaturas amenas, cultivares suscetíveis, semeaduras tardias e presença do patógeno em plantas voluntárias.",
+      "sintomas": {
+        "praticos": [
+          "pó branco ou cinza nas folhas",
+          "folha parece polvilhada com farinha",
+          "manchas brancas que aumentam e se espalham",
+          "folhas secam e caem antes do tempo",
+          "lavoura fica com aparência de planta dessecada"
+        ],
+        "tecnicos": [
+          "micélio e conídios pulverulentos sobre folhas, hastes e pecíolos",
+          "coloração branca evoluindo para castanho-acinzentada",
+          "necrose foliar e desfolha prematura",
+          "colonização da epiderme das hastes com escurecimento dos tecidos",
+          "infecção mais evidente no início da floração"
+        ]
+      },
+      "danos": "Redução da área fotossintética, desfolha precoce e perdas de rendimento que podem ser altas quando a infecção ocorre cedo.",
+      "manejo_preventivo": "Uso de cultivares resistentes, evitar semeaduras tardias, manejo de plantas voluntárias e adubação equilibrada.",
+      "controle": "Aplicação de fungicidas em cultivares suscetíveis até o estádio R6, conforme recomendação técnica."
+    }
   },
-
-  "cercosporiose": {
-    "nome": "Cercosporiose do Milho",
-    "nome_biologico": "Cercospora zeae-maydis",
-    "imagem": "imagens/milho.cercospiriose.jpg",
-    "descricao": "Doença foliar que causa manchas retangulares bem definidas, podendo levar à seca precoce das folhas.",
-    "condicoes_favoraveis": "Alta umidade, presença de restos culturais infectados e monocultivo.",
-    "sintomas": {
-      "praticos": [
-        "manchas retangulares ou quadradas nas folhas",
-        "manchas acinzentadas ou marrom claro",
-        "manchas alinhadas com as linhas da folha",
-        "manchas não atravessam as nervuras",
-        "folhas secam aos poucos"
-      ],
-      "tecnicos": [
-        "lesões retangulares paralelas às nervuras",
-        "bordas bem definidas",
-        "coloração cinza a marrom-clara",
-        "necrose progressiva da lâmina foliar"
-      ]
-    },
-    "danos": "Queda precoce das folhas, redução da fotossíntese e perdas de produtividade.",
-    "manejo_preventivo": "Rotação de culturas, manejo adequado dos restos culturais e uso de híbridos tolerantes.",
-    "controle": "Aplicação de fungicidas quando houver risco econômico, conforme monitoramento."
-  },
-
-  "ferrugem_polisora": {
-    "nome": "Ferrugem Polisora do Milho",
-    "nome_biologico": "Puccinia polysora",
-    "imagem": "imagens/ferrugem.milho.jpg",
-    "descricao": "Doença fúngica agressiva que provoca pústulas alaranjadas nas folhas e pode se espalhar rapidamente em condições favoráveis.",
-    "condicoes_favoraveis": "Clima quente e úmido, regiões de baixa altitude e plantios tardios.",
-    "sintomas": {
-      "praticos": [
-        "pontinhos alaranjados ou amarelados nas folhas",
-        "parece que a folha tem poeira de ferrugem",
-        "quando esfrega a folha solta um pó laranja-amarelado",
-        "pontos aumentam e se espalham rápido",
-        "folhas secam rapidamente em ataques fortes"
-      ],
-      "tecnicos": [
-        "pústulas pulverulentas com liberação de esporos",
-        "distribuição intensa na lâmina foliar",
-        "clorose e necrose ao redor das pústulas",
-        "rápida perda da área fotossintética"
-      ]
-    },
-    "danos": "Destruição da área foliar, desfolha precoce e redução significativa da produtividade.",
-    "manejo_preventivo": "Uso de cultivares resistentes, evitar épocas muito favoráveis ao fungo e monitoramento constante.",
-    "controle": "Aplicação de fungicidas registrados para a cultura conforme recomendação técnica."
-  }
-},
-
-"soja": {
-  "ferrugem_asiatica": {
-    "nome": "Ferrugem Asiática da Soja",
-    "nome_biologico": "Phakopsora pachyrhizi",
-    "imagem": "imagens/soja.ferrugem.jpg",
-    "descricao": "Doença fúngica agressiva que causa desfolha precoce na soja e pode provocar grandes perdas de produtividade.",
-    "condicoes_favoraveis": "Alta umidade, longos períodos de molhamento foliar, presença de orvalho frequente e temperaturas entre 18°C e 26°C.",
-    "sintomas": {
-      "praticos": [
-        "pontinhos escuros no verso da folha",
-        "manchas muito pequenas espalhadas pela folha",
-        "parece sujeira grudada na parte de baixo da folha",
-        "folhas ficam amareladas antes do tempo",
-        "queda rápida das folhas começando de baixo para cima",
-        "planta fica rala e com poucas folhas"
-      ],
-      "tecnicos": [
-        "pústulas urédicas no verso das folhas com liberação de esporos",
-        "lesões puntiformes de coloração castanho-clara a castanho-escura",
-        "distribuição intensa das pústulas na lâmina foliar",
-        "clorose ao redor das lesões em estágios iniciais",
-        "necrose foliar em infecções severas",
-        "desfolha intensa iniciando nas folhas inferiores"
-      ]
-    },
-    "danos": "Queda precoce das folhas, redução da fotossíntese, enchimento incompleto de grãos e perdas drásticas na produtividade.",
-    "manejo_preventivo": "Cumprimento do vazio sanitário, uso de cultivares tolerantes, eliminação de plantas voluntárias e monitoramento constante da lavoura.",
-    "controle": "Aplicação de fungicidas sistêmicos e protetores conforme recomendação técnica e nível de risco, respeitando rotação de ingredientes ativos."
-  },
-
-  "mancha_alvo": {
-    "nome": "Mancha Alvo",
-    "nome_biologico": "Corynespora cassiicola",
-    "imagem": "imagens/soja.manchaalvo.png",
-    "descricao": "Doença de final de ciclo também conhecida como crestamento foliar, causada por um fungo cosmopolita e altamente polífago.",
-    "condicoes_favoraveis": "Alta umidade, temperaturas elevadas e presença de restos culturais infectados no solo.",
-    "sintomas": {
-      "praticos": [
-        "manchas redondas nas folhas",
-        "manchas com desenho de alvo (anéis circulares)",
-        "centro escuro com bordas mais claras",
-        "começa nas folhas de baixo",
-        "folhas amarelam e caem antes do tempo",
-        "planta parece amadurecer mais cedo"
-      ],
-      "tecnicos": [
-        "lesões circulares de até 2 cm de diâmetro",
-        "centro necrótico com pontuação escura",
-        "anéis concêntricos bem definidos",
-        "halo amarelado ao redor das lesões iniciais",
-        "necrose em raízes com coloração castanho-clara",
-        "presença de estruturas escuras do fungo em solo úmido após morte da planta"
-      ]
-    },
-    "danos": "Redução da área fotossintética, amarelecimento e queda precoce das folhas, maturação antecipada das plantas e perdas de produtividade.",
-    "manejo_preventivo": "Uso de sementes sadias e tratadas, cultivares resistentes, rotação de culturas com gramíneas e incorporação de restos culturais.",
-    "controle": "Aplicações de fungicidas podem ser necessárias conforme nível de severidade e recomendação técnica."
-  },
-
-  "antracnose": {
-    "nome": "Antracnose da Soja",
-    "nome_biologico": "Colletotrichum dematium var. truncata",
-    "imagem": "imagens/soja.antracnose.png",
-    "descricao": "Doença que afeta a soja principalmente na fase inicial de formação das vagens, podendo causar perdas severas em anos chuvosos.",
-    "condicoes_favoraveis": "Alta precipitação, temperaturas elevadas, sementes infectadas, atraso na colheita e deficiência de potássio.",
-    "sintomas": {
-      "praticos": [
-        "manchas escuras nas vagens",
-        "vagens tortas e deformadas",
-        "folhas presas na planta (retenção foliar)",
-        "planta fica verde mesmo perto da colheita",
-        "falhas na lavoura por morte de plântulas",
-        "sementes manchadas e escuras"
-      ],
-      "tecnicos": [
-        "necrose em pecíolos, hastes e vagens",
-        "lesões castanho-escuras a negras em vagens jovens",
-        "frutificações negras do fungo sob alta umidade",
-        "infecção latente no tecido cortical",
-        "necrose de cotilédones e hipocótilo em plântulas",
-        "tombamento de plântulas"
-      ]
-    },
-    "danos": "Redução do número de vagens, retenção foliar, haste verde, deterioração de sementes e, em casos severos, perda total da produção.",
-    "manejo_preventivo": "Uso de sementes livres do patógeno, rotação de culturas, espaçamento adequado, controle de plantas daninhas e adubação equilibrada com potássio.",
-    "controle": "Tratamento de sementes com fungicidas e manejo adequado de restos culturais. Boas práticas agronômicas são essenciais."
-  },
-
-  "oidio": {
-    "nome": "Oídio da Soja",
-    "nome_biologico": "Erysiphe diffusa",
-    "imagem": "imagens/soja.oidio.jpg",
-    "descricao": "Doença fúngica causada por um parasita obrigatório que se desenvolve em toda a parte aérea da soja. Pode se tornar severa em períodos de estiagem.",
-    "condicoes_favoraveis": "Períodos de estiagem, temperaturas amenas, cultivares suscetíveis, semeaduras tardias e presença do patógeno em plantas voluntárias.",
-    "sintomas": {
-      "praticos": [
-        "pó branco ou cinza nas folhas",
-        "folha parece polvilhada com farinha",
-        "manchas brancas que aumentam e se espalham",
-        "folhas secam e caem antes do tempo",
-        "lavoura fica com aparência de planta dessecada"
-      ],
-      "tecnicos": [
-        "micélio e conídios pulverulentos sobre folhas, hastes e pecíolos",
-        "coloração branca evoluindo para castanho-acinzentada",
-        "necrose foliar e desfolha prematura",
-        "colonização da epiderme das hastes com escurecimento dos tecidos",
-        "infecção mais evidente no início da floração"
-      ]
-    },
-    "danos": "Redução da área fotossintética, desfolha precoce e perdas de rendimento que podem ser altas quando a infecção ocorre cedo.",
-    "manejo_preventivo": "Uso de cultivares resistentes, evitar semeaduras tardias, manejo de plantas voluntárias e adubação equilibrada.",
-    "controle": "Aplicação de fungicidas em cultivares suscetíveis até o estádio R6, conforme recomendação técnica."
-  }
-},
-
-
   "feijao": {
-  "antracnose": {
-    "nome": "Antracnose do Feijoeiro",
-    "nome_biologico": "Colletotrichum lindemuthianum",
-    "imagem": "imagens/feijao.antracnose.jpg",
-    "descricao": "Uma das doenças mais importantes do feijoeiro, podendo causar perdas de até 100%. Ocorre principalmente em regiões de clima temperado e subtropical, sendo favorecida por temperaturas baixas a moderadas e alta umidade.",
-    "condicoes_favoraveis": "Alta umidade, temperaturas amenas, sementes infectadas, restos culturais contaminados e cultivo contínuo da cultura na mesma área.",
-    "sintomas": {
-      "praticos": [
-        "manchas escuras nas nervuras das folhas",
-        "folhas podem entortar para baixo",
-        "manchas escuras e afundadas nas vagens",
-        "vagens com centro mais claro ou rosado",
-        "manchas escuras no caule e pecíolos",
-        "plântulas podem morrer logo após nascer",
-        "sementes manchadas e descoloridas"
-      ],
-      "tecnicos": [
-        "lesões necróticas marrom-escuras nas nervuras da face inferior das folhas",
-        "clorose ao redor das lesões quando visíveis na face superior",
-        "necrose do limbo foliar em ataques severos",
-        "lesões alongadas, escuras e deprimidas em caule e pecíolos",
-        "lesões circulares e deprimidas nas vagens com bordos escuros e anel pardo-avermelhado",
-        "esporulação rosada no centro das lesões em vagens",
-        "infecção de cotilédones com lesões marrons ou pretas",
-        "estrangulamento do hipocótilo e morte de plântulas",
-        "sementes descoloridas com lesões levemente deprimidas"
-      ]
+    "antracnose": {
+      "nome": "Antracnose do Feijoeiro",
+      "nome_biologico": "Colletotrichum lindemuthianum",
+      "imagem": "imagens/feijao.antracnose.jpg",
+      "descricao": "Uma das doenças mais importantes do feijoeiro, podendo causar perdas de até 100%. Ocorre principalmente em regiões de clima temperado e subtropical, sendo favorecida por temperaturas baixas a moderadas e alta umidade.",
+      "condicoes_favoraveis": "Alta umidade, temperaturas amenas, sementes infectadas, restos culturais contaminados e cultivo contínuo da cultura na mesma área.",
+      "sintomas": {
+        "praticos": [
+          "manchas escuras nas nervuras das folhas",
+          "folhas podem entortar para baixo",
+          "manchas escuras e afundadas nas vagens",
+          "vagens com centro mais claro ou rosado",
+          "manchas escuras no caule e pecíolos",
+          "plântulas podem morrer logo após nascer",
+          "sementes manchadas e descoloridas"
+        ],
+        "tecnicos": [
+          "lesões necróticas marrom-escuras nas nervuras da face inferior das folhas",
+          "clorose ao redor das lesões quando visíveis na face superior",
+          "necrose do limbo foliar em ataques severos",
+          "lesões alongadas, escuras e deprimidas em caule e pecíolos",
+          "lesões circulares e deprimidas nas vagens com bordos escuros e anel pardo-avermelhado",
+          "esporulação rosada no centro das lesões em vagens",
+          "infecção de cotilédones com lesões marrons ou pretas",
+          "estrangulamento do hipocótilo e morte de plântulas",
+          "sementes descoloridas com lesões levemente deprimidas"
+        ]
+      },
+      "danos": "Pode afetar toda a parte aérea da planta, causar morte de plântulas, redução severa da área foliar, infecção de vagens e sementes, resultando em perdas que podem chegar a 100% da produção.",
+      "manejo_preventivo": "Uso de sementes sadias, tratamento de sementes, rotação de culturas por no mínimo um ano, eliminação de restos culturais infectados e uso de cultivares resistentes.",
+      "controle": "Aplicação de fungicidas deve considerar o nível tecnológico da lavoura, o potencial produtivo, o retorno econômico e a presença de condições climáticas favoráveis à doença."
     },
-    "danos": "Pode afetar toda a parte aérea da planta, causar morte de plântulas, redução severa da área foliar, infecção de vagens e sementes, resultando em perdas que podem chegar a 100% da produção.",
-    "manejo_preventivo": "Uso de sementes sadias, tratamento de sementes, rotação de culturas por no mínimo um ano, eliminação de restos culturais infectados e uso de cultivares resistentes.",
-    "controle": "Aplicação de fungicidas deve considerar o nível tecnológico da lavoura, o potencial produtivo, o retorno econômico e a presença de condições climáticas favoráveis à doença."
+    "ferrugem": {
+      "nome": "Ferrugem do Feijoeiro",
+      "nome_biologico": "Uromyces appendiculatus",
+      "imagem": "imagens/feijao.ferrugem.jpg",
+      "descricao": "Doença fúngica de ampla distribuição que pode causar perdas importantes quando ocorre cedo no ciclo da cultura.",
+      "condicoes_favoraveis": "Alta umidade, presença frequente de orvalho e temperaturas moderadas, especialmente durante o pré-florescimento e florescimento.",
+      "sintomas": {
+        "praticos": [
+          "pontinhos claros nas folhas que depois ficam amarelos",
+          "pequenas bolinhas marrom-avermelhadas nas folhas",
+          "parece que a folha tem poeira de ferrugem",
+          "quando esfrega a folha sai um pozinho laranja ou marrom",
+          "folhas amarelam e secam antes do tempo"
+        ],
+        "tecnicos": [
+          "pontuações esbranquiçadas levemente salientes poucos dias após a infecção",
+          "lesões evoluem para coloração amarelada",
+          "formação de pústulas pardo-avermelhadas",
+          "pústulas de 1 a 2 mm de diâmetro com liberação de uredósporos",
+          "presença de halo clorótico ao redor das pústulas"
+        ]
+      },
+      "danos": "Redução da área fotossintética, desfolha precoce e perdas de produtividade, principalmente quando a infecção ocorre nas fases iniciais da cultura.",
+      "manejo_preventivo": "Rotação de culturas, eliminação de restos culturais e plantas voluntárias hospedeiras, além de ajuste da época de plantio para evitar períodos prolongados de umidade.",
+      "controle": "Aplicação de fungicidas registrados para a cultura ao surgimento das primeiras pústulas, conforme recomendação técnica e monitoramento da lavoura."
+    },
+    "mancha_angular": {
+      "nome": "Mancha Angular do Feijoeiro",
+      "nome_biologico": "Phaeoisariopsis griseola",
+      "imagem": "imagens/feijao.manchaangular.jpg",
+      "descricao": "Doença que tem aumentado em frequência nas regiões produtoras e pode causar grandes prejuízos quando surge cedo na lavoura. É especialmente importante na região Sul durante o cultivo da safrinha.",
+      "condicoes_favoraveis": "Alta umidade, temperaturas amenas, presença de restos culturais infectados, sementes contaminadas e cultivo contínuo de feijão na área.",
+      "sintomas": {
+        "praticos": [
+          "manchas marrons nas folhas que depois ficam escuras",
+          "manchas com formato meio quadrado ou angular",
+          "folhas ficam amareladas quando a doença avança",
+          "folhas podem cair quando tem muita mancha",
+          "manchas escuras também podem aparecer nas vagens",
+          "sementes podem ficar enrugadas e mal formadas"
+        ],
+        "tecnicos": [
+          "lesões inicialmente circulares de coloração castanha nas folhas primárias",
+          "lesões necróticas acinzentadas e irregulares em folhas trifoliadas",
+          "lesões angulares delimitadas pelas nervuras, de coloração marrom-escura",
+          "esporulação do fungo na face inferior das folhas",
+          "coalescência das lesões causando clorose e desfolha",
+          "lesões alongadas e escuras em ramos e pecíolos",
+          "lesões superficiais castanho-escuras nas vagens, podendo coalescer",
+          "infecção de sementes pelo hilo, resultando em sementes enrugadas e mal desenvolvidas"
+        ]
+      },
+      "danos": "Redução da área foliar, desfolha precoce, infecção de vagens e sementes, queda na germinação e perdas de produtividade que podem variar de 7% a 70%, dependendo das condições.",
+      "manejo_preventivo": "Uso de cultivares com melhor nível de resistência, rotação de culturas com gramíneas, eliminação e incorporação de restos culturais, controle de plantas daninhas e uso de sementes de alta qualidade tratadas com fungicidas.",
+      "controle": "Tratamento de sementes com fungicidas registrados e aplicações foliares preventivas iniciando entre 20 e 30 dias após a emergência, com intervalos de 10 a 15 dias conforme recomendação técnica."
+    },
+    "crestamento_bacteriano": {
+      "nome": "Crestamento Bacteriano Comum",
+      "nome_biologico": "Xanthomonas axonopodis pv. phaseoli",
+      "imagem": "imagens/feijao.crestamento.jpg",
+      "descricao": "Importante bacteriose do feijoeiro presente em quase todas as regiões produtoras. Pode comprometer severamente a lavoura quando ocorre em condições favoráveis.",
+      "condicoes_favoraveis": "Alta umidade, chuvas frequentes, presença de sementes infectadas, restos culturais contaminados e disseminação por respingos de água e insetos.",
+      "sintomas": {
+        "praticos": [
+          "manchas encharcadas nas folhas que depois ficam marrons",
+          "folhas com aparência de queimadas",
+          "bordas amareladas ao redor das manchas",
+          "folhas podem cair em ataques fortes",
+          "vagens com manchas úmidas e escuras",
+          "sementes enrugadas ou apodrecidas"
+        ],
+        "tecnicos": [
+          "lesões aquosas que evoluem para necrose marrom com halo clorótico estreito",
+          "coalescência das lesões formando grandes áreas necrosadas",
+          "desfolha em infecções severas",
+          "manchas e estrias úmidas em caules com possível rachadura e exsudação bacteriana",
+          "lesões encharcadas em vagens com presença de exsudato bacteriano",
+          "infecção de sementes resultando em podridão ou enrugamento",
+          "danos ao meristema apical de plântulas originadas de sementes infectadas"
+        ]
+      },
+      "danos": "Redução da área foliar, desfolha, infecção de vagens e sementes, queda na germinação e desenvolvimento de plantas raquíticas ou morte de plântulas.",
+      "manejo_preventivo": "Uso de sementes sadias e de boa qualidade sanitária, rotação de culturas com espécies não hospedeiras, incorporação de restos culturais infectados, eliminação de plantas voluntárias e controle de insetos vetores.",
+      "controle": "Tratamento de sementes com produtos registrados para a cultura e adoção de medidas preventivas no campo, pois o controle curativo é limitado após a instalação da doença."
+    }
   },
-
-  "ferrugem": {
-    "nome": "Ferrugem do Feijoeiro",
-    "nome_biologico": "Uromyces appendiculatus",
-    "imagem": "imagens/feijao.ferrugem.jpg",
-    "descricao": "Doença fúngica de ampla distribuição que pode causar perdas importantes quando ocorre cedo no ciclo da cultura.",
-    "condicoes_favoraveis": "Alta umidade, presença frequente de orvalho e temperaturas moderadas, especialmente durante o pré-florescimento e florescimento.",
-    "sintomas": {
-      "praticos": [
-        "pontinhos claros nas folhas que depois ficam amarelos",
-        "pequenas bolinhas marrom-avermelhadas nas folhas",
-        "parece que a folha tem poeira de ferrugem",
-        "quando esfrega a folha sai um pozinho laranja ou marrom",
-        "folhas amarelam e secam antes do tempo"
-      ],
-      "tecnicos": [
-        "pontuações esbranquiçadas levemente salientes poucos dias após a infecção",
-        "lesões evoluem para coloração amarelada",
-        "formação de pústulas pardo-avermelhadas",
-        "pústulas de 1 a 2 mm de diâmetro com liberação de uredósporos",
-        "presença de halo clorótico ao redor das pústulas"
-      ]
+  "trigo": {
+    "oidio": {
+      "nome": "Oídio do Trigo",
+      "nome_biologico": "Blumeria graminis f. sp. tritici",
+      "imagem": "imagens/trigo.oidio.jpg",
+      "descricao": "Doença fúngica de grande importância econômica no trigo, podendo causar perdas de até 40% na produtividade. No Brasil ocorre principalmente na Região Sul, sendo favorecida por clima ameno. O fungo enfraquece as plantas ao reduzir a fotossíntese e aumentar a respiração e a transpiração.",
+      "condicoes_favoraveis": "Clima ameno, alta umidade relativa do ar, presença frequente de orvalho, lavouras densas com pouca ventilação e adubação nitrogenada excessiva.",
+      "sintomas": {
+        "praticos": [
+          "pó branco nas folhas",
+          "folhas parecem polvilhadas com farinha",
+          "manchas brancas que aumentam e se espalham",
+          "folhas podem amarelar ao redor das manchas",
+          "em ataques fortes atinge espigas e aristas",
+          "plantas ficam fracas e menores"
+        ],
+        "tecnicos": [
+          "crescimento superficial de micélio e conídios com aspecto pulverulento",
+          "colonização principalmente na face superior das folhas",
+          "clorose na face oposta às lesões e formação de halo necrótico em folhas velhas",
+          "formação de cleistotécios escuros em lesões antigas",
+          "infecção restrita às células epidérmicas"
+        ]
+      },
+      "danos": "Redução da fotossíntese, aumento da respiração e transpiração, enfraquecimento das plantas, espigas menores e perdas de rendimento que podem chegar a 40%.",
+      "manejo_preventivo": "Uso de cultivares com resistência genética, rotação de culturas com espécies não hospedeiras, eliminação de plantas voluntárias e gramíneas hospedeiras próximas, evitar excesso de nitrogênio e reduzir restos culturais infectados.",
+      "controle": "Aplicação de fungicidas específicos para oídio conforme recomendação técnica e nível de severidade. Pode-se utilizar tratamento de sementes com fungicidas sistêmicos. A rotação de ingredientes ativos é importante devido à variabilidade e resistência do fungo."
     },
-    "danos": "Redução da área fotossintética, desfolha precoce e perdas de produtividade, principalmente quando a infecção ocorre nas fases iniciais da cultura.",
-    "manejo_preventivo": "Rotação de culturas, eliminação de restos culturais e plantas voluntárias hospedeiras, além de ajuste da época de plantio para evitar períodos prolongados de umidade.",
-    "controle": "Aplicação de fungicidas registrados para a cultura ao surgimento das primeiras pústulas, conforme recomendação técnica e monitoramento da lavoura."
+    "ferrugem_folha": {
+      "nome": "Ferrugem da Folha do Trigo",
+      "nome_biologico": "Puccinia triticina",
+      "imagem": "imagens/trigo.ferrugemdafolha.jpg",
+      "descricao": "É a ferrugem mais comum do trigo, ocorrendo em diversas regiões produtoras do Brasil. Pode causar perdas de até 50% no rendimento de grãos, dependendo da suscetibilidade da cultivar e das condições ambientais.",
+      "condicoes_favoraveis": "Temperaturas amenas, alta umidade, presença de orvalho frequente e cultivares suscetíveis.",
+      "sintomas": {
+        "praticos": [
+          "pontinhos alaranjados nas folhas",
+          "parece ferrugem em pó quando esfrega",
+          "manchas pequenas que aumentam com o tempo",
+          "aparece principalmente nas folhas",
+          "folhas muito atacadas secam mais cedo"
+        ],
+        "tecnicos": [
+          "urédias pequenas, arredondadas e amarelo-alaranjadas",
+          "ocorrência predominante na face superior das folhas",
+          "infecção também em bainhas foliares",
+          "formação posterior de pústulas teliais pretas e ovais",
+          "teliósporos permanecem recobertos pela epiderme até o final do ciclo"
+        ]
+      },
+      "danos": "Redução da área fotossintética, enfraquecimento das plantas e perdas de produtividade que podem chegar a 50% em cultivares suscetíveis.",
+      "manejo_preventivo": "Uso de cultivares resistentes e eliminação de plantas voluntárias de trigo que servem como fonte de inóculo.",
+      "controle": "Aplicação de fungicidas sistêmicos, como triazóis, em cultivares suscetíveis, conforme recomendação técnica e uso de produtos registrados para a cultura."
+    },
+    "mancha_amarela": {
+      "nome": "Mancha Amarela do Trigo",
+      "nome_biologico": "Drechslera tritici-repentis",
+      "imagem": "imagens/trigo.manchaamarela.jpg",
+      "descricao": "Principal mancha foliar do trigo, com aumento de importância em áreas de plantio direto e monocultura. Pode comprometer severamente a área foliar e a produtividade.",
+      "condicoes_favoraveis": "Sistema de plantio direto, monocultura de trigo, presença de restos culturais infectados, clima úmido e temperaturas amenas.",
+      "sintomas": {
+        "praticos": [
+          "manchas amarelas nas folhas",
+          "manchas aumentam e ficam com centro marrom",
+          "manchas alongadas em formato oval",
+          "folha parece queimada no centro da mancha",
+          "folhas atacadas secam mais cedo"
+        ],
+        "tecnicos": [
+          "lesões inicialmente cloróticas evoluindo para necrose parda no centro",
+          "lesões elípticas podendo atingir até 12 mm de comprimento",
+          "presença de halo amarelo ao redor das lesões",
+          "formação de conidióforos e conídios no centro das manchas",
+          "redução progressiva da área fotossintética"
+        ]
+      },
+      "danos": "Redução da área foliar ativa, seca precoce das folhas e queda no rendimento de grãos.",
+      "manejo_preventivo": "Rotação de culturas com espécies não hospedeiras, eliminação de plantas voluntárias e manejo adequado dos restos culturais. Não há cultivares com resistência efetiva disponível no Brasil.",
+      "controle": "Tratamento de sementes com fungicidas protetores e aplicação de fungicidas sistêmicos, como triazóis, quando a incidência nas folhas atingir níveis elevados, conforme recomendação técnica."
+    },
+    "ferrugem_amarela": {
+      "nome": "Ferrugem Linear do Trigo",
+      "nome_biologico": "Puccinia striiformis",
+      "imagem": "imagens/trigo.ferrugemamarela.jpg",
+      "descricao": "Doença fúngica conhecida como ferrugem amarela do trigo. Tem ocorrência esporádica no Brasil, mas pode causar perdas significativas, variando de 5% a 50% conforme a severidade da infecção.",
+      "condicoes_favoraveis": "Clima ameno a frio, alta umidade, presença frequente de orvalho e cultivares suscetíveis.",
+      "sintomas": {
+        "praticos": [
+          "listras amarelas compridas nas folhas",
+          "fileiras de pontinhos amarelos alinhados",
+          "manchas seguem o sentido das nervuras",
+          "folhas ficam amareladas e enfraquecidas",
+          "plantas muito atacadas produzem menos"
+        ],
+        "tecnicos": [
+          "urédias amarelas dispostas em estrias lineares paralelas às nervuras",
+          "distribuição organizada das pústulas ao longo da lâmina foliar",
+          "clorose e posterior necrose do tecido foliar",
+          "redução da área fotossintética em ataques severos"
+        ]
+      },
+      "danos": "Redução da área fotossintética, enfraquecimento das plantas e perdas de produtividade que podem variar de 5% a 50% conforme a intensidade da doença.",
+      "manejo_preventivo": "Uso de cultivares resistentes e eliminação de plantas voluntárias de trigo que servem como fonte de inóculo.",
+      "controle": "Aplicação de fungicidas específicos e registrados para a cultura, conforme recomendação técnica e monitoramento da lavoura."
+    }
   },
-
-  "mancha_angular": {
-    "nome": "Mancha Angular do Feijoeiro",
-    "nome_biologico": "Phaeoisariopsis griseola",
-    "imagem": "imagens/feijao.manchaangular.jpg",
-    "descricao": "Doença que tem aumentado em frequência nas regiões produtoras e pode causar grandes prejuízos quando surge cedo na lavoura. É especialmente importante na região Sul durante o cultivo da safrinha.",
-    "condicoes_favoraveis": "Alta umidade, temperaturas amenas, presença de restos culturais infectados, sementes contaminadas e cultivo contínuo de feijão na área.",
-    "sintomas": {
-      "praticos": [
-        "manchas marrons nas folhas que depois ficam escuras",
-        "manchas com formato meio quadrado ou angular",
-        "folhas ficam amareladas quando a doença avança",
-        "folhas podem cair quando tem muita mancha",
-        "manchas escuras também podem aparecer nas vagens",
-        "sementes podem ficar enrugadas e mal formadas"
-      ],
-      "tecnicos": [
-        "lesões inicialmente circulares de coloração castanha nas folhas primárias",
-        "lesões necróticas acinzentadas e irregulares em folhas trifoliadas",
-        "lesões angulares delimitadas pelas nervuras, de coloração marrom-escura",
-        "esporulação do fungo na face inferior das folhas",
-        "coalescência das lesões causando clorose e desfolha",
-        "lesões alongadas e escuras em ramos e pecíolos",
-        "lesões superficiais castanho-escuras nas vagens, podendo coalescer",
-        "infecção de sementes pelo hilo, resultando em sementes enrugadas e mal desenvolvidas"
-      ]
+  "bergamota": {
+    "mancha_marrom_alternaria": {
+      "nome": "Mancha Marrom de Alternaria",
+      "nome_biologico": "Alternaria alternata",
+      "imagem": "imagens/bergamota-manchaalternaria.jpg",
+      "descricao": "Doença fúngica que afeta principalmente folhas, brotos e frutos de bergamoteiras, podendo causar queda de folhas e frutos e reduzir a produtividade.",
+      "condicoes_favoraveis": "Temperaturas amenas a quentes, alta umidade, períodos de molhamento foliar e excesso de adubação nitrogenada.",
+      "sintomas": {
+        "praticos": [
+          "manchas marrons nas folhas",
+          "manchas escuras nos frutos",
+          "folhas podem amarelar ao redor das manchas",
+          "folhas podem cair",
+          "frutos podem apresentar lesões afundadas",
+          "frutos jovens podem cair"
+        ],
+        "tecnicos": [
+          "lesões necróticas de coloração marrom a preta",
+          "presença de halos cloróticos ao redor das lesões",
+          "infecção de tecidos jovens",
+          "necrose progressiva do tecido foliar",
+          "queda prematura de folhas e frutos em ataques severos"
+        ]
+      },
+      "danos": "Redução da área fotossintética, queda de folhas e frutos, redução da qualidade dos frutos e perdas de produtividade.",
+      "manejo_preventivo": "Evitar excesso de nitrogênio, melhorar a ventilação da copa, evitar irrigação por aspersão e manter as plantas adequadamente nutridas e irrigadas.",
+      "controle": "Aplicação de fungicidas registrados para citros conforme recomendação técnica e monitoramento da severidade da doença."
     },
-    "danos": "Redução da área foliar, desfolha precoce, infecção de vagens e sementes, queda na germinação e perdas de produtividade que podem variar de 7% a 70%, dependendo das condições.",
-    "manejo_preventivo": "Uso de cultivares com melhor nível de resistência, rotação de culturas com gramíneas, eliminação e incorporação de restos culturais, controle de plantas daninhas e uso de sementes de alta qualidade tratadas com fungicidas.",
-    "controle": "Tratamento de sementes com fungicidas registrados e aplicações foliares preventivas iniciando entre 20 e 30 dias após a emergência, com intervalos de 10 a 15 dias conforme recomendação técnica."
+    "cancro_citrico": {
+      "nome": "Cancro Cítrico",
+      "nome_biologico": "Xanthomonas citri",
+      "imagem": "imagens/bergamota-cancro.jpg",
+      "descricao": "Doença bacteriana que afeta folhas, ramos e frutos da bergamoteira, provocando lesões elevadas, corticosas e de coloração marrom.",
+      "condicoes_favoraveis": "Alta umidade, chuvas frequentes, presença de água sobre as plantas e tecidos jovens suscetíveis.",
+      "sintomas": {
+        "praticos": [
+          "manchas elevadas nas folhas",
+          "manchas com halo amarelo",
+          "lesões com aparência de verruga",
+          "manchas corticosas nos frutos",
+          "lesões escuras nos ramos",
+          "frutos podem cair prematuramente"
+        ],
+        "tecnicos": [
+          "lesões inicialmente elevadas",
+          "halo clorótico ao redor das lesões",
+          "centro das lesões torna-se corticoso",
+          "lesões presentes em folhas, ramos e frutos",
+          "lesões nos frutos podem se tornar deprimidas",
+          "tecido ao redor das lesões pode apresentar aspecto encharcado"
+        ]
+      },
+      "danos": "Desfolha, queda prematura de frutos, redução da qualidade comercial e redução da produtividade.",
+      "manejo_preventivo": "Utilizar mudas sadias, evitar ferimentos nas plantas, controlar fontes de infecção e reduzir a disseminação da bactéria por água, ferramentas e materiais contaminados.",
+      "controle": "O manejo deve seguir as recomendações fitossanitárias oficiais, utilizando somente produtos registrados e autorizados para citros."
+    },
+    "gomose": {
+      "nome": "Gomose dos Citros",
+      "nome_biologico": "Phytophthora spp.",
+      "imagem": "imagens/bergamota-gomose.jpg",
+      "descricao": "Doença causada por Phytophthora spp. que afeta principalmente as raízes, o colo e o tronco da bergamoteira, podendo comprometer o desenvolvimento e causar a morte da planta.",
+      "condicoes_favoraveis": "Excesso de umidade no solo, encharcamento, drenagem deficiente e ferimentos na região do tronco e colo da planta.",
+      "sintomas": {
+        "praticos": [
+          "goma saindo do tronco",
+          "casca do tronco fica escura",
+          "casca pode rachar ou apodrecer",
+          "folhas ficam amareladas",
+          "planta perde vigor",
+          "em ataques severos a planta pode morrer"
+        ],
+        "tecnicos": [
+          "lesões necróticas na região do colo e tronco",
+          "exsudação de goma",
+          "apodrecimento progressivo da casca",
+          "comprometimento do sistema radicular",
+          "redução da absorção de água e nutrientes",
+          "anelamento progressivo do tronco em infecções severas"
+        ]
+      },
+      "danos": "Redução do vigor da planta, amarelecimento e queda de folhas, comprometimento das raízes e, em casos severos, morte da bergamoteira.",
+      "manejo_preventivo": "Evitar encharcamento, melhorar a drenagem do solo, evitar ferimentos no tronco e utilizar porta-enxertos tolerantes quando recomendados.",
+      "controle": "Corrigir problemas de drenagem, remover tecidos infectados quando possível e utilizar produtos registrados conforme recomendação técnica."
+    },
+    "mancha_preta": {
+      "nome": "Mancha Preta dos Citros",
+      "nome_biologico": "Phyllosticta citricarpa",
+      "imagem": "imagens/bergamota.pinta.jpg",
+      "descricao": "Doença fúngica que provoca manchas escuras principalmente na casca dos frutos. Pode causar queda prematura e reduzir a qualidade comercial da bergamota.",
+      "condicoes_favoraveis": "Alta umidade, chuvas frequentes e presença de folhas infectadas em decomposição no solo.",
+      "sintomas": {
+        "praticos": [
+          "pequenas manchas pretas na casca dos frutos",
+          "pintas marrons ou escuras",
+          "manchas aumentam com o desenvolvimento do fruto",
+          "frutos apresentam aparência manchada",
+          "frutos podem cair antes da maturação"
+        ],
+        "tecnicos": [
+          "lesões pequenas, duras e deprimidas",
+          "margens marrons a pretas",
+          "tecido necrótico no centro das lesões",
+          "presença de estruturas reprodutivas do fungo",
+          "sintomas podem ser mais evidentes em frutos expostos à luz solar"
+        ]
+      },
+      "danos": "Redução da qualidade visual e comercial dos frutos, queda prematura e possíveis perdas de produção.",
+      "manejo_preventivo": "Remover folhas e restos vegetais infectados do solo, reduzir fontes de inóculo e realizar monitoramento frequente do pomar.",
+      "controle": "Aplicação de fungicidas registrados para citros nos períodos recomendados, seguindo orientação técnica e monitoramento da doença."
+    }
   },
-
-  "crestamento_bacteriano": {
-    "nome": "Crestamento Bacteriano Comum",
-    "nome_biologico": "Xanthomonas axonopodis pv. phaseoli",
-    "imagem": "imagens/feijao.crestamento.jpg",
-    "descricao": "Importante bacteriose do feijoeiro presente em quase todas as regiões produtoras. Pode comprometer severamente a lavoura quando ocorre em condições favoráveis.",
-    "condicoes_favoraveis": "Alta umidade, chuvas frequentes, presença de sementes infectadas, restos culturais contaminados e disseminação por respingos de água e insetos.",
-    "sintomas": {
-      "praticos": [
-        "manchas encharcadas nas folhas que depois ficam marrons",
-        "folhas com aparência de queimadas",
-        "bordas amareladas ao redor das manchas",
-        "folhas podem cair em ataques fortes",
-        "vagens com manchas úmidas e escuras",
-        "sementes enrugadas ou apodrecidas"
-      ],
-      "tecnicos": [
-        "lesões aquosas que evoluem para necrose marrom com halo clorótico estreito",
-        "coalescência das lesões formando grandes áreas necrosadas",
-        "desfolha em infecções severas",
-        "manchas e estrias úmidas em caules com possível rachadura e exsudação bacteriana",
-        "lesões encharcadas em vagens com presença de exsudato bacteriano",
-        "infecção de sementes resultando em podridão ou enrugamento",
-        "danos ao meristema apical de plântulas originadas de sementes infectadas"
+  "morango": {
+    "antracnose": {
+      "nome": "Antracnose do Morangueiro",
+      "nome_biologico": "Colletotrichum spp. (incluindo C. acutatum, C. fragariae e C. gloeosporioides)",
+      "imagem": "",
+      "descricao": "Doença fúngica que pode atingir flores, frutos, pecíolos, estolões e coroa. O escurecimento das flores também é conhecido como flor-preta.",
+      "condicoes_favoraveis": "Calor, alta umidade, respingos de chuva ou irrigação e entrada de mudas infectadas.",
+      "sintomas": {
+        "praticos": [
+          "flores ficam pretas e secam",
+          "morangos com manchas escuras e afundadas",
+          "massa rosada ou alaranjada nas manchas dos frutos",
+          "cabinhos e estolões com feridas escuras",
+          "planta murcha mesmo com substrato úmido",
+          "parte interna da coroa fica avermelhada ou marrom"
+        ],
+        "tecnicos": [
+          "necrose de flores e pedúnculos",
+          "lesões circulares e deprimidas nos frutos",
+          "produção de massas de conídios salmão a alaranjadas sob umidade",
+          "lesões alongadas e deprimidas em pecíolos e estolões",
+          "necrose interna da coroa associada à murcha"
+        ]
+      },
+      "danos": "Perda de flores e frutos, deterioração dos morangos e morte de plantas quando a coroa é atingida.",
+      "manejo_preventivo": "Utilizar mudas sadias, preferir irrigação por gotejamento, evitar respingos, retirar órgãos doentes e higienizar utensílios.",
+      "controle": "Combinar saneamento e manejo da umidade. Se necessário, adotar produtos registrados para morangueiro e antracnose, com orientação técnica e alternância de mecanismos de ação.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "UZUM Morango: Antracnose",
+          "url": "https://www.cnpuv.embrapa.br/uzum/morango/antracnose.html",
+          "acesso_em": "2026-10-15"
+        }
       ]
     },
-    "danos": "Redução da área foliar, desfolha, infecção de vagens e sementes, queda na germinação e desenvolvimento de plantas raquíticas ou morte de plântulas.",
-    "manejo_preventivo": "Uso de sementes sadias e de boa qualidade sanitária, rotação de culturas com espécies não hospedeiras, incorporação de restos culturais infectados, eliminação de plantas voluntárias e controle de insetos vetores.",
-    "controle": "Tratamento de sementes com produtos registrados para a cultura e adoção de medidas preventivas no campo, pois o controle curativo é limitado após a instalação da doença."
+    "mofo_cinzento": {
+      "nome": "Mofo Cinzento do Morangueiro",
+      "nome_biologico": "Botrytis cinerea",
+      "imagem": "",
+      "descricao": "Podridão que afeta principalmente flores e frutos e pode continuar se desenvolvendo após a colheita.",
+      "condicoes_favoraveis": "Alta umidade, molhamento prolongado, pouca ventilação, plantas adensadas e presença de tecidos mortos.",
+      "sintomas": {
+        "praticos": [
+          "morango com bolor cinza e aspecto de algodão",
+          "frutos com manchas marrons que aumentam",
+          "morangos apodrecem ainda na planta",
+          "flores escurecem e secam",
+          "fruto doente contamina os morangos encostados nele",
+          "bolor aparece depois da colheita"
+        ],
+        "tecnicos": [
+          "podridão de coloração castanha nos frutos",
+          "crescimento superficial de micélio e esporulação acinzentada",
+          "necrose de flores e restos florais",
+          "infecções latentes com manifestação na maturação",
+          "disseminação por contato entre frutos e por conídios"
+        ]
+      },
+      "danos": "Descarte de frutos, redução da vida útil e perdas no campo, armazenamento e transporte.",
+      "manejo_preventivo": "Retirar flores, folhas e frutos doentes; melhorar a ventilação, evitar excesso de nitrogênio e colher sem ferir os frutos.",
+      "controle": "Reduzir a umidade e as fontes de inóculo; manter os frutos refrigerados após a colheita. Avaliar controle biológico ou químico registrado, conforme orientação técnica e intervalo de segurança.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "UZUM Morango: Mofo-cinzento",
+          "url": "https://www.cnpuv.embrapa.br/uzum/morango/mofo_cinzento.html",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "oidio": {
+      "nome": "Oídio do Morangueiro",
+      "nome_biologico": "Podosphaera aphanis (sin. Sphaerotheca macularis f. sp. fragariae)",
+      "imagem": "",
+      "descricao": "Doença fúngica superficial que produz crescimento esbranquiçado em folhas e pode atingir flores e frutos.",
+      "condicoes_favoraveis": "Cultivo protegido, cultivares suscetíveis, temperaturas amenas a quentes e umidade favorável no dossel; não depende de água livre sobre as folhas.",
+      "sintomas": {
+        "praticos": [
+          "pó branco principalmente embaixo das folhas",
+          "bordas das folhas enrolam para cima",
+          "folhas ficam avermelhadas ou arroxeadas",
+          "morango com película branca na superfície",
+          "frutos ficam deformados ou com qualidade ruim",
+          "folhas parecem polvilhadas com farinha"
+        ],
+        "tecnicos": [
+          "micélio e conídios de aspecto pulverulento",
+          "colonização inicialmente mais evidente na face inferior das folhas",
+          "encarquilhamento e enrolamento dos folíolos",
+          "manchas avermelhadas e necrose em ataques intensos",
+          "colonização de flores, cálices e frutos"
+        ]
+      },
+      "danos": "Redução da área foliar funcional e da qualidade comercial dos frutos.",
+      "manejo_preventivo": "Usar mudas sadias e cultivares menos suscetíveis, monitorar a face inferior das folhas e retirar tecidos muito afetados.",
+      "controle": "Ajustar o ambiente do cultivo protegido e, quando necessário, utilizar controle registrado para oídio em morangueiro, conforme orientação técnica, alternando mecanismos de ação.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "UZUM Morango: Oídio",
+          "url": "https://www.cnpuv.embrapa.br/uzum/morango/oidio.html",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "mancha_micosferela": {
+      "nome": "Mancha de Micosferela do Morangueiro",
+      "nome_biologico": "Mycosphaerella fragariae (forma assexuada: Ramularia tulasnei)",
+      "imagem": "",
+      "descricao": "Mancha foliar também chamada de pinta ou mancha-comum, que reduz a área saudável das folhas.",
+      "condicoes_favoraveis": "Umidade elevada, molhamento das folhas, respingos de água, mudas infectadas e cultivares suscetíveis.",
+      "sintomas": {
+        "praticos": [
+          "pintinhas roxas ou avermelhadas nas folhas",
+          "centro das manchas fica branco ou cinza-claro",
+          "borda das manchas continua roxa",
+          "manchas redondas espalhadas pela folha",
+          "muitas pintas se juntam e a folha seca",
+          "cabinhos e cálices também podem ficar manchados"
+        ],
+        "tecnicos": [
+          "lesões pequenas e aproximadamente circulares",
+          "bordas púrpuras e centro progressivamente claro",
+          "necrose central esbranquiçada a acinzentada",
+          "coalescência das lesões em folhas muito afetadas",
+          "lesões também possíveis em pecíolos, cálices, pedúnculos e estolões"
+        ]
+      },
+      "danos": "Perda de área fotossintética, secamento de folhas e enfraquecimento das plantas.",
+      "manejo_preventivo": "Utilizar mudas sadias, reduzir o molhamento foliar, retirar folhas doentes e manter espaçamento e nutrição adequados.",
+      "controle": "Monitorar as manchas e integrar saneamento com controle registrado para a cultura e a doença, quando tecnicamente necessário.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "UZUM Morango: Micosferela",
+          "url": "https://www.cnpuv.embrapa.br/uzum/morango/micosferela.html",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    }
+  },
+  "tabaco": {
+    "mosaico": {
+      "nome": "Mosaico do Tabaco",
+      "nome_biologico": "Tobacco mosaic virus (TMV)",
+      "imagem": "",
+      "descricao": "Virose que causa alterações de coloração e deformação das folhas. Pode se disseminar pelo contato com seiva e materiais contaminados.",
+      "condicoes_favoraveis": "Presença de plantas infectadas, cultivares suscetíveis e operações de manejo com mãos, ferramentas ou materiais contaminados.",
+      "sintomas": {
+        "praticos": [
+          "folhas com partes verde-claras e verde-escuras misturadas",
+          "folha com desenho de mosaico",
+          "folhas novas ficam enrugadas ou deformadas",
+          "folhas ficam mais estreitas",
+          "planta cresce menos que as outras",
+          "manchas claras não formam pó nem bolor"
+        ],
+        "tecnicos": [
+          "mosqueado clorótico com alternância de tecidos verdes e claros",
+          "deformação e enrugamento do limbo foliar",
+          "redução da expansão de folhas jovens",
+          "nanismo de intensidade variável conforme a cultivar e a estirpe viral",
+          "infecção sistêmica sem sinais visíveis de fungos"
+        ]
+      },
+      "danos": "Redução do crescimento, da produção e da qualidade das folhas.",
+      "manejo_preventivo": "Usar mudas sadias e materiais resistentes quando disponíveis; higienizar mãos e ferramentas, retirar fontes de infecção e evitar contato de produtos de tabaco com mudas.",
+      "controle": "Não existe tratamento curativo para a planta infectada. O manejo depende de prevenção e redução da transmissão mecânica; inseticidas não curam o mosaico.",
+      "fontes": [
+        {
+          "instituicao": "INRAE - ePhytia",
+          "titulo": "Vírus do mosaico do tabaco (TMV)",
+          "url": "https://ephytia.inrae.fr/pt/C/10812/Tabaco-Virus-do-mosaico-do-tabaco-TMV",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "INRAE - ePhytia",
+          "titulo": "Tobacco: Protection Methods - TMV",
+          "url": "https://ephytia.inrae.fr/en/C/10887/Tobacco-Protection-Methods",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "mancha_parda": {
+      "nome": "Mancha Parda do Tabaco",
+      "nome_biologico": "Alternaria alternata e outras espécies associadas de Alternaria",
+      "imagem": "",
+      "descricao": "Doença fúngica também conhecida como alternariose, que atinge principalmente folhas inferiores maduras e pode prejudicar a qualidade na cura.",
+      "condicoes_favoraveis": "Clima quente e úmido, períodos de molhamento e folhas maduras, senescentes ou debilitadas.",
+      "sintomas": {
+        "praticos": [
+          "manchas marrons redondas nas folhas de baixo",
+          "manchas com desenhos de anéis",
+          "borda amarelada em volta das manchas",
+          "centro da mancha fica seco",
+          "manchas aumentam e se juntam",
+          "folhas ficam manchadas mesmo depois de secas"
+        ],
+        "tecnicos": [
+          "lesões inicialmente pequenas e de aspecto úmido",
+          "evolução para lesões circulares castanhas",
+          "anéis concêntricos frequentemente presentes",
+          "halo clorótico ao redor das lesões",
+          "necrose e coalescência em folhas maduras"
+        ]
+      },
+      "danos": "Perda de área foliar, deterioração das folhas e redução do valor comercial do produto curado.",
+      "manejo_preventivo": "Evitar atraso na colheita e excesso de umidade, manter nutrição equilibrada, reduzir restos infectados e utilizar mudas sadias.",
+      "controle": "Integrar manejo da lavoura e da cura com monitoramento. Produtos fitossanitários somente quando registrados para tabaco e o alvo, com orientação técnica.",
+      "fontes": [
+        {
+          "instituicao": "INRAE - ePhytia",
+          "titulo": "Alternariose (Alternaria alternata)",
+          "url": "https://ephytia.inrae.fr/pt/C/10798/Tabaco-Alternariose-Alternaria-alternata",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "INRAE - ePhytia",
+          "titulo": "Alternaria alternata: principais sintomas",
+          "url": "https://ephytia.inra.fr/pt/C/10930/Tabaco-Principais-Sintomas",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "murcha_bacteriana": {
+      "nome": "Murcha Bacteriana do Tabaco",
+      "nome_biologico": "Complexo de espécies Ralstonia solanacearum",
+      "imagem": "",
+      "descricao": "Bacteriose vascular que prejudica o transporte de água e causa murcha e morte de plantas.",
+      "condicoes_favoraveis": "Solo quente e úmido, área ou água contaminada, ferimentos nas raízes e presença de hospedeiros suscetíveis.",
+      "sintomas": {
+        "praticos": [
+          "planta murcha mesmo com terra úmida",
+          "um lado da planta pode murchar primeiro",
+          "folhas perdem firmeza e depois secam",
+          "parte interna do caule fica escurecida",
+          "plantas doentes aparecem em grupos na lavoura",
+          "planta pode morrer rapidamente"
+        ],
+        "tecnicos": [
+          "murcha vascular inicialmente unilateral ou parcial",
+          "escurecimento dos vasos condutores",
+          "clorose variável seguida de necrose e morte",
+          "colonização bacteriana do xilema",
+          "possível exsudação bacteriana em tecido cortado, exigindo confirmação especializada"
+        ]
+      },
+      "danos": "Falhas na lavoura, morte de plantas e persistência do inóculo na área.",
+      "manejo_preventivo": "Utilizar mudas e água sadias, evitar trânsito de solo contaminado, melhorar a drenagem e planejar rotação com espécies não hospedeiras.",
+      "controle": "Não há controle curativo confiável para plantas já infectadas. Confirmar o diagnóstico e priorizar contenção do foco, higiene de equipamentos e prevenção em novos plantios.",
+      "fontes": [
+        {
+          "instituicao": "INRAE - ePhytia",
+          "titulo": "Ralstonia solanacearum: murcha bacteriana do tabaco",
+          "url": "https://ephytia.inrae.fr/pt/C/10810/Tabaco-Ralstonia-solanacearum-Murcha-bacteriana-do-tabaco",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "INRAE - ePhytia",
+          "titulo": "Ralstonia solanacearum: diagnóstico",
+          "url": "https://ephytia.inrae.fr/pt/Contents/view/10998/Tabaco-Ralstonia-solanacearum",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "mofo_azul": {
+      "nome": "Mofo Azul do Tabaco",
+      "nome_biologico": "Peronospora hyoscyami f. sp. tabacina (sin. Peronospora tabacina)",
+      "imagem": "",
+      "descricao": "Doença causada por um oomiceto, também chamada de míldio do tabaco. Pode causar danos importantes em mudas.",
+      "condicoes_favoraveis": "Umidade elevada, molhamento prolongado, temperaturas amenas, pouca ventilação e presença de mudas infectadas.",
+      "sintomas": {
+        "praticos": [
+          "manchas amareladas na parte de cima da folha",
+          "bolor azul-acinzentado embaixo da folha",
+          "folhas ficam murchas e deformadas",
+          "mudas crescem pouco",
+          "manchas amarelas depois ficam marrons e secas",
+          "mudas muito atacadas podem morrer"
+        ],
+        "tecnicos": [
+          "lesões cloróticas na face superior dos folíolos",
+          "esporulação azulada a acinzentada na face inferior correspondente",
+          "necrose posterior das áreas lesionadas",
+          "distorções foliares e redução do crescimento",
+          "possível infecção sistêmica de tecidos vasculares"
+        ]
+      },
+      "danos": "Redução da área foliar, enfraquecimento e morte de mudas.",
+      "manejo_preventivo": "Usar mudas sadias, ventilar os viveiros, reduzir molhamento das folhas e inspecionar lotes antes do transplante.",
+      "controle": "Isolar focos e corrigir o ambiente do viveiro. Quando necessário, seguir programa técnico com produtos registrados para tabaco e mofo azul, alternando mecanismos de ação.",
+      "fontes": [
+        {
+          "instituicao": "INRAE - ePhytia",
+          "titulo": "Mofo azul: Peronospora hyoscyami",
+          "url": "https://ephytia.inra.fr/pt/C/10795/Tabaco-Mofo-azul-Peronospora-hyoscyami",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "INRAE - ePhytia",
+          "titulo": "Mofo azul: sintomas principais",
+          "url": "https://ephytia.inra.fr/pt/C/10947/Tabaco-Sintomas-principais",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    }
+  },
+  "uva": {
+    "mildio": {
+      "nome": "Míldio da Videira",
+      "nome_biologico": "Plasmopara viticola",
+      "imagem": "",
+      "descricao": "Doença causada por um oomiceto que ataca órgãos verdes da videira, incluindo folhas e cachos.",
+      "condicoes_favoraveis": "Chuvas frequentes, água livre sobre os tecidos, alta umidade e temperaturas amenas a quentes.",
+      "sintomas": {
+        "praticos": [
+          "manchas amareladas que parecem óleo nas folhas",
+          "mofo branco embaixo da mancha de óleo",
+          "folhas ficam marrons e secam",
+          "flores e cachinhos podem escurecer",
+          "bagas jovens podem ter mofo branco",
+          "bagas mais desenvolvidas podem ficar escuras e endurecidas"
+        ],
+        "tecnicos": [
+          "manchas cloróticas translúcidas de aspecto oleoso",
+          "esporulação branca na face inferior sob alta umidade",
+          "necrose progressiva e lesões em mosaico nas folhas velhas",
+          "necrose de inflorescências e ráquis",
+          "podridão branca em bagas jovens e podridão parda em bagas desenvolvidas"
+        ]
+      },
+      "danos": "Desfolha, perda de flores e cachos e redução de produção e qualidade.",
+      "manejo_preventivo": "Melhorar a aeração do dossel, evitar excesso de vigor e molhamento e monitorar brotações, florescimento e cachos.",
+      "controle": "Integrar previsão de risco e medidas culturais com produtos registrados para videira e míldio, quando indicados, alternando mecanismos de ação e respeitando a bula.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "UZUM Uva: Míldio",
+          "url": "https://www.cnpuv.embrapa.br/uzum/uva/mildio.html",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "Agro Bayer",
+          "titulo": "Xivana Smart: manejo de requeima e míldio",
+          "url": "https://www.agro.bayer.com.br/marcas/xivana-smart",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "oidio": {
+      "nome": "Oídio da Videira",
+      "nome_biologico": "Erysiphe necator (sin. Uncinula necator)",
+      "imagem": "",
+      "descricao": "Doença fúngica também chamada de cinza ou mufeta, com crescimento pulverulento sobre órgãos verdes.",
+      "condicoes_favoraveis": "Cultivares suscetíveis, temperaturas amenas a quentes e dossel pouco arejado; não necessita de água livre para infectar.",
+      "sintomas": {
+        "praticos": [
+          "pó branco ou cinza nas folhas e cachos",
+          "uva parece coberta de farinha",
+          "folhas novas ficam deformadas",
+          "bagas podem rachar e mostrar as sementes",
+          "casca da uva fica marcada ou áspera",
+          "ramos novos também apresentam manchas de pó"
+        ],
+        "tecnicos": [
+          "micélio e conídios superficiais branco-acinzentados",
+          "colonização de folhas, brotos, inflorescências e bagas",
+          "necrose e deformação de tecidos jovens",
+          "rachadura de bagas por restrição do crescimento da epiderme",
+          "reticulado ou cicatrizes na casca de bagas afetadas"
+        ]
+      },
+      "danos": "Redução da qualidade e da produção; rachaduras favorecem podridões secundárias.",
+      "manejo_preventivo": "Monitorar tecidos jovens e cachos, melhorar a ventilação por manejo da copa e reduzir fontes de inóculo.",
+      "controle": "Adotar manejo preventivo nas fases suscetíveis com produtos registrados, conforme orientação técnica e condições locais, alternando mecanismos de ação.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "UZUM Uva: Oídio",
+          "url": "https://www.cnpuv.embrapa.br/uzum/uva/oidio.html",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "Embrapa",
+          "titulo": "Doenças: Uva para processamento",
+          "url": "https://www.atermaisdigital.cnptia.embrapa.br/web/uva-para-processamento/doencas",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "antracnose": {
+      "nome": "Antracnose da Videira",
+      "nome_biologico": "Elsinoe ampelina (forma assexuada: Sphaceloma ampelinum)",
+      "imagem": "",
+      "descricao": "Doença fúngica conhecida como olho-de-passarinho, que ataca tecidos jovens, folhas, ramos e bagas.",
+      "condicoes_favoraveis": "Chuvas, molhamento prolongado, brotações suscetíveis e sobrevivência do patógeno em tecidos infectados.",
+      "sintomas": {
+        "praticos": [
+          "pintinhas escuras nas folhas novas",
+          "centro das manchas seca e pode cair, deixando furos",
+          "ramos novos com feridas escuras e afundadas",
+          "bagas com manchas que parecem olho-de-passarinho",
+          "centro claro com borda escura na casca da uva",
+          "brotos podem entortar ou secar"
+        ],
+        "tecnicos": [
+          "lesões foliares necróticas com margens escuras",
+          "desprendimento do tecido central e perfuração do limbo",
+          "cancros deprimidos em ramos e pecíolos",
+          "lesões circulares e deprimidas nas bagas, com centro acinzentado",
+          "necrose de brotações e inflorescências"
+        ]
+      },
+      "danos": "Redução da área foliar, morte de brotos e perda de qualidade e produção dos cachos.",
+      "manejo_preventivo": "Utilizar material de propagação sadio, retirar ramos infectados e conduzir o parreiral com boa ventilação.",
+      "controle": "Reduzir fontes de inóculo na poda e proteger tecidos suscetíveis, quando necessário, com manejo registrado para antracnose da videira e orientação técnica.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "UZUM Uva: Antracnose",
+          "url": "https://www.cnpuv.embrapa.br/uzum/uva/antracnose.html",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "ferrugem": {
+      "nome": "Ferrugem da Videira",
+      "nome_biologico": "Phakopsora euvitis",
+      "imagem": "",
+      "descricao": "Doença fúngica que forma pústulas nas folhas e pode causar desfolha intensa, inclusive após a colheita.",
+      "condicoes_favoraveis": "Umidade elevada, temperaturas favoráveis à infecção, folhas suscetíveis e presença do patógeno no vinhedo.",
+      "sintomas": {
+        "praticos": [
+          "pontinhos amarelo-alaranjados embaixo das folhas",
+          "parte de cima da folha fica manchada de amarelo",
+          "pó de ferrugem na parte de baixo da folha",
+          "folhas amarelam e caem cedo",
+          "começa com frequência nas folhas mais velhas",
+          "parreira perde folhas depois da colheita"
+        ],
+        "tecnicos": [
+          "urédias amareladas a alaranjadas na face inferior",
+          "manchas cloróticas a necróticas na face superior correspondente",
+          "produção abundante de uredósporos",
+          "formação de estruturas escuras em lesões envelhecidas",
+          "desfolha prematura sob alta severidade"
+        ]
+      },
+      "danos": "Redução da fotossíntese e das reservas da planta, com possível prejuízo ao ciclo seguinte.",
+      "manejo_preventivo": "Monitorar especialmente maturação e pós-colheita, preservar folhas sadias e manter nutrição e manejo do dossel adequados.",
+      "controle": "Realizar manejo integrado e, quando indicado, utilizar fungicidas registrados para ferrugem da videira, com alternância de mecanismos de ação e orientação técnica.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "UZUM Uva: Ferrugem",
+          "url": "https://www.cnpuv.embrapa.br/uzum/uva/ferrugem.html",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    }
+  },
+  "arroz": {
+    "brusone": {
+      "nome": "Brusone do Arroz",
+      "nome_biologico": "Pyricularia oryzae (sin. Magnaporthe oryzae)",
+      "imagem": "",
+      "descricao": "Doença fúngica que pode atingir folhas, nós, colmos e panículas. A infecção na base da panícula é chamada de brusone do pescoço.",
+      "condicoes_favoraveis": "Molhamento prolongado, orvalho, cultivares suscetíveis, excesso de nitrogênio e alta densidade de plantas.",
+      "sintomas": {
+        "praticos": [
+          "manchas compridas com pontas afinadas nas folhas",
+          "centro cinza ou esbranquiçado e borda marrom",
+          "manchas aumentam e a folha seca",
+          "base do cacho fica escura",
+          "cacho seca antes de encher os grãos",
+          "grãos ficam chochos"
+        ],
+        "tecnicos": [
+          "lesões elípticas a fusiformes com centro acinzentado",
+          "bordas necróticas castanhas",
+          "coalescência e queima foliar em alta severidade",
+          "necrose em nós e na base da panícula",
+          "esterilidade ou enchimento incompleto de grãos conforme a época da infecção"
+        ]
+      },
+      "danos": "Perda de área foliar e falhas no enchimento, com redução de rendimento e qualidade.",
+      "manejo_preventivo": "Usar sementes sadias e cultivares recomendadas com resistência, equilibrar nitrogênio e ajustar densidade e manejo da água.",
+      "controle": "Monitorar folhas e panículas e integrar práticas culturais com tratamento registrado de sementes ou proteção foliar, quando recomendados tecnicamente.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "Manejo de doenças: arroz irrigado na região tropical",
+          "url": "https://www.embrapa.br/en/web/agencia-de-informacao-tecnologica/cultivos/arroz/producao/sistema-de-cultivo/arroz-irrigado-na-regiao-tropical/manejo-de-pragas/manejo-de-doencas",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "mancha_parda": {
+      "nome": "Mancha Parda do Arroz",
+      "nome_biologico": "Bipolaris oryzae (sin. Drechslera oryzae)",
+      "imagem": "",
+      "descricao": "Doença fúngica que causa manchas nas folhas e também pode afetar sementes, plântulas e grãos.",
+      "condicoes_favoraveis": "Sementes infectadas, umidade favorável à infecção e plantas submetidas a desequilíbrio nutricional ou estresse.",
+      "sintomas": {
+        "praticos": [
+          "pontinhos marrons nas folhas",
+          "manchas redondas ou ovais",
+          "centro da mancha fica mais claro e a borda continua escura",
+          "folhas com muitas pintas secam",
+          "casca dos grãos fica manchada",
+          "mudas podem nascer fracas"
+        ],
+        "tecnicos": [
+          "lesões inicialmente circulares e castanhas",
+          "evolução para lesões ovaladas com centro mais claro",
+          "halo clorótico variável",
+          "infecção de glumas e descoloração dos grãos",
+          "necrose foliar e comprometimento de plântulas em infecções intensas"
+        ]
+      },
+      "danos": "Redução da fotossíntese, da qualidade dos grãos e do vigor das sementes.",
+      "manejo_preventivo": "Utilizar sementes sadias, corrigir a fertilidade com análise do solo e evitar estresse hídrico e nutricional.",
+      "controle": "Priorizar sementes de qualidade e manejo equilibrado. Avaliar tratamento de sementes e fungicidas registrados para arroz e mancha parda, conforme orientação técnica.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "Critérios para avaliação da resistência à mancha parda em arroz",
+          "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/980018/1/BolPesq39.pdf",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "Embrapa",
+          "titulo": "Incidência de mancha-parda em arroz no estado do Piauí",
+          "url": "https://www.infoteca.cnptia.embrapa.br/handle/doc/1156789",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "escaldadura": {
+      "nome": "Escaldadura do Arroz",
+      "nome_biologico": "Microdochium oryzae (sin. Monographella albescens)",
+      "imagem": "",
+      "descricao": "Doença fúngica que produz áreas com aparência de queimadura, geralmente iniciadas nas pontas ou bordas das folhas.",
+      "condicoes_favoraveis": "Alta umidade, molhamento prolongado, crescimento vegetativo intenso e cultivares suscetíveis.",
+      "sintomas": {
+        "praticos": [
+          "ponta da folha parece queimada",
+          "mancha começa na ponta ou na borda e avança",
+          "faixas claras e escuras alternadas na folha",
+          "folha fica com desenho de ondas",
+          "áreas marrons aumentam e secam",
+          "folhas mais velhas podem ficar bastante queimadas"
+        ],
+        "tecnicos": [
+          "lesões inicialmente nas extremidades ou margens da lâmina",
+          "expansão de áreas necróticas com bordas onduladas",
+          "zonas concêntricas alternando castanho-claro e castanho-escuro",
+          "necrose extensa do limbo",
+          "possível comprometimento de bainhas e glumas"
+        ]
+      },
+      "danos": "Redução da área fotossintética e possível prejuízo ao rendimento e à qualidade das sementes.",
+      "manejo_preventivo": "Usar sementes sadias, evitar excesso de nitrogênio e adensamento e adotar cultivares recomendadas para a região.",
+      "controle": "Monitorar a progressão das lesões e integrar práticas culturais com controle registrado para a cultura e a doença, se tecnicamente indicado.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "Identificação e controle das principais doenças do arroz",
+          "url": "https://www.infoteca.cnptia.embrapa.br/bitstream/doc/996801/1/doc279.pdf",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "Embrapa",
+          "titulo": "Arroz: perguntas e respostas sobre doenças",
+          "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/964869/1/CNPAF2013500PR12.pdf",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "mancha_estreita": {
+      "nome": "Mancha Estreita do Arroz",
+      "nome_biologico": "Cercospora janseana (sin. Cercospora oryzae)",
+      "imagem": "",
+      "descricao": "Doença fúngica caracterizada por lesões finas e alongadas, mais evidentes nas fases avançadas da lavoura.",
+      "condicoes_favoraveis": "Clima quente e úmido, cultivares suscetíveis e presença do patógeno em sementes ou resíduos infectados.",
+      "sintomas": {
+        "praticos": [
+          "risquinhos marrons finos nas folhas",
+          "manchas compridas e estreitas",
+          "riscos seguem o sentido das nervuras",
+          "folhas com muitos riscos ficam amareladas",
+          "manchas se juntam e a folha seca",
+          "sintomas ficam mais visíveis perto do fim do ciclo"
+        ],
+        "tecnicos": [
+          "lesões lineares estreitas, paralelas às nervuras",
+          "coloração castanha a castanho-avermelhada",
+          "restrição lateral das lesões pelas nervuras",
+          "coalescência e necrose em infecções intensas",
+          "possíveis lesões em bainhas e glumas"
+        ]
+      },
+      "danos": "Redução da área foliar funcional e possível perda de qualidade e rendimento.",
+      "manejo_preventivo": "Usar sementes sadias, cultivares menos suscetíveis, nutrição equilibrada e rotação adequada.",
+      "controle": "Confirmar a distinção em relação a outras manchas foliares. Adotar manejo integrado e utilizar produtos registrados para o alvo apenas quando houver indicação técnica.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "Doenças do arroz: identificação e manejo",
+          "url": "https://www.infoteca.cnptia.embrapa.br/bitstream/doc/969086/1/documento360web.pdf",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "Embrapa",
+          "titulo": "Manual de identificação de doenças da cultura do arroz",
+          "url": "https://www.infoteca.cnptia.embrapa.br/handle/doc/1070298",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    }
+  },
+  "laranja": {
+    "greening": {
+      "nome": "Greening ou Huanglongbing (HLB)",
+      "nome_biologico": "Candidatus Liberibacter spp., principalmente Ca. Liberibacter asiaticus no Brasil",
+      "imagem": "",
+      "descricao": "Doença bacteriana sistêmica dos citros, transmitida pelo psilídeo Diaphorina citri e por material de propagação infectado.",
+      "condicoes_favoraveis": "Mudas infectadas, presença do psilídeo vetor e fontes de inóculo no pomar e arredores.",
+      "sintomas": {
+        "praticos": [
+          "folha com manchas amarelas irregulares dos dois lados da nervura",
+          "um lado da folha fica diferente do outro",
+          "um ou poucos ramos amarelam primeiro",
+          "laranjas ficam pequenas e tortas",
+          "fruto fica verde em parte da casca mesmo maduro",
+          "frutos caem cedo e sementes podem ficar escuras"
+        ],
+        "tecnicos": [
+          "mosqueado clorótico assimétrico em folhas maduras",
+          "amarelecimento setorial da copa",
+          "frutos assimétricos e com maturação irregular",
+          "sementes abortadas ou escurecidas",
+          "redução do crescimento e seca progressiva de ramos"
+        ]
+      },
+      "danos": "Redução da produção, da qualidade dos frutos e da vida útil das plantas.",
+      "manejo_preventivo": "Plantar mudas sadias, inspecionar regularmente o pomar e realizar manejo regional do psilídeo e das fontes de infecção.",
+      "controle": "Não há cura comprovada para plantas infectadas. Confirmar o diagnóstico e seguir a orientação da defesa fitossanitária local para manejo de plantas doentes e controle do vetor.",
+      "fontes": [
+        {
+          "instituicao": "Agro Bayer",
+          "titulo": "Greening: estratégias nos pomares de citros",
+          "url": "https://www.agro.bayer.com.br/conteudos-impulso-bayer/impacto-nos-pomares-de-citros",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "Ministério da Agricultura e Pecuária",
+          "titulo": "Prevenção e Erradicação do HLB ou Greening",
+          "url": "https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/sanidade-vegetal/pragas-quarentenarias-presentes/HLB",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "cancro_citrico": {
+      "nome": "Cancro Cítrico da Laranjeira",
+      "nome_biologico": "Xanthomonas citri subsp. citri",
+      "imagem": "",
+      "descricao": "Bacteriose que provoca lesões corticosas em folhas, ramos e frutos.",
+      "condicoes_favoraveis": "Chuvas com vento, presença de água nos tecidos, brotações jovens e ferimentos, inclusive os associados ao minador dos citros.",
+      "sintomas": {
+        "praticos": [
+          "pintinhas elevadas que parecem verrugas nas folhas",
+          "manchas marrons com borda amarela",
+          "lesões aparecem dos dois lados da folha",
+          "casca da laranja fica com feridas ásperas",
+          "ramos novos apresentam lesões de cortiça",
+          "frutos podem cair antes da hora"
+        ],
+        "tecnicos": [
+          "lesões inicialmente pequenas e elevadas",
+          "evolução para lesões necróticas e corticosas",
+          "halo clorótico e margem de aspecto encharcado",
+          "lesões nas duas faces do limbo",
+          "infecção de folhas, ramos e casca dos frutos"
+        ]
+      },
+      "danos": "Desfolha, queda de frutos e redução da qualidade comercial.",
+      "manejo_preventivo": "Usar mudas sadias, instalar quebra-ventos quando adequados, higienizar equipamentos e evitar manejo com plantas molhadas.",
+      "controle": "Seguir o programa fitossanitário local, reduzir a disseminação e manejar o minador. Produtos registrados podem proteger tecidos suscetíveis, mas não recuperam lesões já formadas.",
+      "fontes": [
+        {
+          "instituicao": "Agrolink",
+          "titulo": "Cancro cítrico: fitossanidade dos citros",
+          "url": "https://www.agrolink.com.br/culturas/citros/informacoes-da-cultura/fitossanidade/cancro-citrico_438478.html",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "Agrolink",
+          "titulo": "Cancro Cítrico: prevenção",
+          "url": "https://www.agrolink.com.br/agrolinkfito/artigo/cancro-citrico_41526.html",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "gomose": {
+      "nome": "Gomose da Laranjeira",
+      "nome_biologico": "Phytophthora spp., incluindo P. nicotianae e P. citrophthora",
+      "imagem": "",
+      "descricao": "Doença causada por oomicetos que afetam raízes, colo e tronco, podendo levar ao declínio e à morte da planta.",
+      "condicoes_favoraveis": "Solo encharcado, drenagem deficiente, plantio profundo, umidade junto ao tronco e porta-enxertos suscetíveis.",
+      "sintomas": {
+        "praticos": [
+          "goma escorrendo do tronco perto do chão",
+          "casca escura ou rachada no colo da planta",
+          "casca se solta e o tecido por baixo fica marrom",
+          "folhas amarelam e a copa perde vigor",
+          "raízes finas ficam apodrecidas",
+          "planta pode secar quando a lesão cerca o tronco"
+        ],
+        "tecnicos": [
+          "necrose da casca na região do colo e tronco",
+          "exsudação de goma e delimitação entre tecidos sadios e doentes",
+          "podridão de raízes e redução das radicelas",
+          "clorose e rarefação da copa",
+          "anelamento do tronco em casos avançados"
+        ]
+      },
+      "danos": "Redução da absorção de água e nutrientes, queda de produção e morte de plantas.",
+      "manejo_preventivo": "Utilizar mudas sadias e porta-enxertos adequados, melhorar a drenagem e evitar terra, adubo e água acumulados no colo.",
+      "controle": "Corrigir as condições de solo e irrigação e confirmar o agente causal. Tratamentos registrados devem seguir diagnóstico e orientação técnica, sem ferir desnecessariamente o tronco.",
+      "fontes": [
+        {
+          "instituicao": "Embrapa",
+          "titulo": "Doenças dos citros: gomose",
+          "url": "https://sistemasdeproducao.cnptia.embrapa.br/FontesHTML/Citros/CitrosNordeste/doencas.htm",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    },
+    "mancha_preta": {
+      "nome": "Mancha Preta ou Pinta Preta dos Citros",
+      "nome_biologico": "Phyllosticta citricarpa (sin. Guignardia citricarpa)",
+      "imagem": "",
+      "descricao": "Doença fúngica que afeta sobretudo a casca dos frutos, causando manchas de diferentes formas e possível queda precoce.",
+      "condicoes_favoraveis": "Chuvas, umidade favorável, presença de folhas infectadas no chão e tecidos suscetíveis.",
+      "sintomas": {
+        "praticos": [
+          "laranja com pintas pretas ou marrons na casca",
+          "manchas com centro mais claro e borda escura",
+          "pequenos pontos pretos dentro de algumas manchas",
+          "pintas ficam mais evidentes quando a fruta amadurece",
+          "frutos ficam manchados e perdem valor",
+          "laranjas podem cair antes da colheita"
+        ],
+        "tecnicos": [
+          "lesões de mancha dura com centro deprimido e margem escura",
+          "presença variável de picnídios nas lesões",
+          "outros tipos de lesão possíveis conforme cultivar e ambiente",
+          "expressão tardia de sintomas na maturação",
+          "queda de frutos em infecções severas"
+        ]
+      },
+      "danos": "Depreciação da aparência dos frutos e perdas por queda prematura.",
+      "manejo_preventivo": "Reduzir fontes de inóculo em folhas caídas, manter o pomar equilibrado e monitorar os frutos durante o desenvolvimento.",
+      "controle": "Integrar manejo de resíduos com proteção dos frutos por produtos registrados, quando indicada tecnicamente; respeitar períodos de proteção, bula e alternância de mecanismos de ação.",
+      "fontes": [
+        {
+          "instituicao": "Agrolink",
+          "titulo": "Mancha preta: Phyllosticta citricarpa",
+          "url": "https://www.agrolink.com.br/problemas/mancha-preta_2952.html",
+          "acesso_em": "2026-10-15"
+        },
+        {
+          "instituicao": "Ministério da Agricultura e Pecuária",
+          "titulo": "Prevenção e Controle da Mancha Preta ou Pinta Preta dos Citros",
+          "url": "https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/sanidade-vegetal/Pinta%20Preta",
+          "acesso_em": "2026-10-15"
+        }
+      ]
+    }
   }
-},
-  
- "trigo": {
-  "oidio": {
-    "nome": "Oídio do Trigo",
-    "nome_biologico": "Blumeria graminis f. sp. tritici",
-    "imagem": "imagens/trigo.oidio.jpg",
-    "descricao": "Doença fúngica de grande importância econômica no trigo, podendo causar perdas de até 40% na produtividade. No Brasil ocorre principalmente na Região Sul, sendo favorecida por clima ameno. O fungo enfraquece as plantas ao reduzir a fotossíntese e aumentar a respiração e a transpiração.",
-    "condicoes_favoraveis": "Clima ameno, alta umidade relativa do ar, presença frequente de orvalho, lavouras densas com pouca ventilação e adubação nitrogenada excessiva.",
-    "sintomas": {
-      "praticos": [
-        "pó branco nas folhas",
-        "folhas parecem polvilhadas com farinha",
-        "manchas brancas que aumentam e se espalham",
-        "folhas podem amarelar ao redor das manchas",
-        "em ataques fortes atinge espigas e aristas",
-        "plantas ficam fracas e menores"
-      ],
-      "tecnicos": [
-        "crescimento superficial de micélio e conídios com aspecto pulverulento",
-        "colonização principalmente na face superior das folhas",
-        "clorose na face oposta às lesões e formação de halo necrótico em folhas velhas",
-        "formação de cleistotécios escuros em lesões antigas",
-        "infecção restrita às células epidérmicas"
-      ]
-    },
-    "danos": "Redução da fotossíntese, aumento da respiração e transpiração, enfraquecimento das plantas, espigas menores e perdas de rendimento que podem chegar a 40%.",
-    "manejo_preventivo": "Uso de cultivares com resistência genética, rotação de culturas com espécies não hospedeiras, eliminação de plantas voluntárias e gramíneas hospedeiras próximas, evitar excesso de nitrogênio e reduzir restos culturais infectados.",
-    "controle": "Aplicação de fungicidas específicos para oídio conforme recomendação técnica e nível de severidade. Pode-se utilizar tratamento de sementes com fungicidas sistêmicos. A rotação de ingredientes ativos é importante devido à variabilidade e resistência do fungo."
-  },
-
-  "ferrugem_folha": {
-    "nome": "Ferrugem da Folha do Trigo",
-    "nome_biologico": "Puccinia triticina",
-    "imagem": "imagens/trigo.ferrugemdafolha.jpg",
-    "descricao": "É a ferrugem mais comum do trigo, ocorrendo em diversas regiões produtoras do Brasil. Pode causar perdas de até 50% no rendimento de grãos, dependendo da suscetibilidade da cultivar e das condições ambientais.",
-    "condicoes_favoraveis": "Temperaturas amenas, alta umidade, presença de orvalho frequente e cultivares suscetíveis.",
-    "sintomas": {
-      "praticos": [
-        "pontinhos alaranjados nas folhas",
-        "parece ferrugem em pó quando esfrega",
-        "manchas pequenas que aumentam com o tempo",
-        "aparece principalmente nas folhas",
-        "folhas muito atacadas secam mais cedo"
-      ],
-      "tecnicos": [
-        "urédias pequenas, arredondadas e amarelo-alaranjadas",
-        "ocorrência predominante na face superior das folhas",
-        "infecção também em bainhas foliares",
-        "formação posterior de pústulas teliais pretas e ovais",
-        "teliósporos permanecem recobertos pela epiderme até o final do ciclo"
-      ]
-    },
-    "danos": "Redução da área fotossintética, enfraquecimento das plantas e perdas de produtividade que podem chegar a 50% em cultivares suscetíveis.",
-    "manejo_preventivo": "Uso de cultivares resistentes e eliminação de plantas voluntárias de trigo que servem como fonte de inóculo.",
-    "controle": "Aplicação de fungicidas sistêmicos, como triazóis, em cultivares suscetíveis, conforme recomendação técnica e uso de produtos registrados para a cultura."
-  },
-
-  "mancha_amarela": {
-    "nome": "Mancha Amarela do Trigo",
-    "nome_biologico": "Drechslera tritici-repentis",
-    "imagem": "imagens/trigo.manchaamarela.jpg",
-    "descricao": "Principal mancha foliar do trigo, com aumento de importância em áreas de plantio direto e monocultura. Pode comprometer severamente a área foliar e a produtividade.",
-    "condicoes_favoraveis": "Sistema de plantio direto, monocultura de trigo, presença de restos culturais infectados, clima úmido e temperaturas amenas.",
-    "sintomas": {
-      "praticos": [
-        "manchas amarelas nas folhas",
-        "manchas aumentam e ficam com centro marrom",
-        "manchas alongadas em formato oval",
-        "folha parece queimada no centro da mancha",
-        "folhas atacadas secam mais cedo"
-      ],
-      "tecnicos": [
-        "lesões inicialmente cloróticas evoluindo para necrose parda no centro",
-        "lesões elípticas podendo atingir até 12 mm de comprimento",
-        "presença de halo amarelo ao redor das lesões",
-        "formação de conidióforos e conídios no centro das manchas",
-        "redução progressiva da área fotossintética"
-      ]
-    },
-    "danos": "Redução da área foliar ativa, seca precoce das folhas e queda no rendimento de grãos.",
-    "manejo_preventivo": "Rotação de culturas com espécies não hospedeiras, eliminação de plantas voluntárias e manejo adequado dos restos culturais. Não há cultivares com resistência efetiva disponível no Brasil.",
-    "controle": "Tratamento de sementes com fungicidas protetores e aplicação de fungicidas sistêmicos, como triazóis, quando a incidência nas folhas atingir níveis elevados, conforme recomendação técnica."
-  },
-
-  "ferrugem_amarela": {
-    "nome": "Ferrugem Linear do Trigo",
-    "nome_biologico": "Puccinia striiformis",
-    "imagem": "imagens/trigo.ferrugemamarela.jpg",
-    "descricao": "Doença fúngica conhecida como ferrugem amarela do trigo. Tem ocorrência esporádica no Brasil, mas pode causar perdas significativas, variando de 5% a 50% conforme a severidade da infecção.",
-    "condicoes_favoraveis": "Clima ameno a frio, alta umidade, presença frequente de orvalho e cultivares suscetíveis.",
-    "sintomas": {
-      "praticos": [
-        "listras amarelas compridas nas folhas",
-        "fileiras de pontinhos amarelos alinhados",
-        "manchas seguem o sentido das nervuras",
-        "folhas ficam amareladas e enfraquecidas",
-        "plantas muito atacadas produzem menos"
-      ],
-      "tecnicos": [
-        "urédias amarelas dispostas em estrias lineares paralelas às nervuras",
-        "distribuição organizada das pústulas ao longo da lâmina foliar",
-        "clorose e posterior necrose do tecido foliar",
-        "redução da área fotossintética em ataques severos"
-      ]
-    },
-    "danos": "Redução da área fotossintética, enfraquecimento das plantas e perdas de produtividade que podem variar de 5% a 50% conforme a intensidade da doença.",
-    "manejo_preventivo": "Uso de cultivares resistentes e eliminação de plantas voluntárias de trigo que servem como fonte de inóculo.",
-    "controle": "Aplicação de fungicidas específicos e registrados para a cultura, conforme recomendação técnica e monitoramento da lavoura."
-  }
- },
-
-
-"bergamota": {
-  "mancha_marrom_alternaria": {
-    "nome": "Mancha Marrom de Alternaria",
-    "nome_biologico": "Alternaria alternata",
-    "imagem": "imagens/bergamota-manchaalternaria.jpg",
-    "descricao": "Doença fúngica que afeta principalmente folhas, brotos e frutos de bergamoteiras, podendo causar queda de folhas e frutos e reduzir a produtividade.",
-    "condicoes_favoraveis": "Temperaturas amenas a quentes, alta umidade, períodos de molhamento foliar e excesso de adubação nitrogenada.",
-    "sintomas": {
-      "praticos": [
-        "manchas marrons nas folhas",
-        "manchas escuras nos frutos",
-        "folhas podem amarelar ao redor das manchas",
-        "folhas podem cair",
-        "frutos podem apresentar lesões afundadas",
-        "frutos jovens podem cair"
-      ],
-      "tecnicos": [
-        "lesões necróticas de coloração marrom a preta",
-        "presença de halos cloróticos ao redor das lesões",
-        "infecção de tecidos jovens",
-        "necrose progressiva do tecido foliar",
-        "queda prematura de folhas e frutos em ataques severos"
-      ]
-    },
-    "danos": "Redução da área fotossintética, queda de folhas e frutos, redução da qualidade dos frutos e perdas de produtividade.",
-    "manejo_preventivo": "Evitar excesso de nitrogênio, melhorar a ventilação da copa, evitar irrigação por aspersão e manter as plantas adequadamente nutridas e irrigadas.",
-    "controle": "Aplicação de fungicidas registrados para citros conforme recomendação técnica e monitoramento da severidade da doença."
-  },
-
-  "cancro_citrico": {
-    "nome": "Cancro Cítrico",
-    "nome_biologico": "Xanthomonas citri",
-    "imagem": "imagens/bergamota-cancro.jpg",
-    "descricao": "Doença bacteriana que afeta folhas, ramos e frutos da bergamoteira, provocando lesões elevadas, corticosas e de coloração marrom.",
-    "condicoes_favoraveis": "Alta umidade, chuvas frequentes, presença de água sobre as plantas e tecidos jovens suscetíveis.",
-    "sintomas": {
-      "praticos": [
-        "manchas elevadas nas folhas",
-        "manchas com halo amarelo",
-        "lesões com aparência de verruga",
-        "manchas corticosas nos frutos",
-        "lesões escuras nos ramos",
-        "frutos podem cair prematuramente"
-      ],
-      "tecnicos": [
-        "lesões inicialmente elevadas",
-        "halo clorótico ao redor das lesões",
-        "centro das lesões torna-se corticoso",
-        "lesões presentes em folhas, ramos e frutos",
-        "lesões nos frutos podem se tornar deprimidas",
-        "tecido ao redor das lesões pode apresentar aspecto encharcado"
-      ]
-    },
-    "danos": "Desfolha, queda prematura de frutos, redução da qualidade comercial e redução da produtividade.",
-    "manejo_preventivo": "Utilizar mudas sadias, evitar ferimentos nas plantas, controlar fontes de infecção e reduzir a disseminação da bactéria por água, ferramentas e materiais contaminados.",
-    "controle": "O manejo deve seguir as recomendações fitossanitárias oficiais, utilizando somente produtos registrados e autorizados para citros."
-  },
-
-  "gomose": {
-    "nome": "Gomose dos Citros",
-    "nome_biologico": "Phytophthora spp.",
-    "imagem": "imagens/bergamota-gomose.jpg",
-    "descricao": "Doença causada por Phytophthora spp. que afeta principalmente as raízes, o colo e o tronco da bergamoteira, podendo comprometer o desenvolvimento e causar a morte da planta.",
-    "condicoes_favoraveis": "Excesso de umidade no solo, encharcamento, drenagem deficiente e ferimentos na região do tronco e colo da planta.",
-    "sintomas": {
-      "praticos": [
-        "goma saindo do tronco",
-        "casca do tronco fica escura",
-        "casca pode rachar ou apodrecer",
-        "folhas ficam amareladas",
-        "planta perde vigor",
-        "em ataques severos a planta pode morrer"
-      ],
-      "tecnicos": [
-        "lesões necróticas na região do colo e tronco",
-        "exsudação de goma",
-        "apodrecimento progressivo da casca",
-        "comprometimento do sistema radicular",
-        "redução da absorção de água e nutrientes",
-        "anelamento progressivo do tronco em infecções severas"
-      ]
-    },
-    "danos": "Redução do vigor da planta, amarelecimento e queda de folhas, comprometimento das raízes e, em casos severos, morte da bergamoteira.",
-    "manejo_preventivo": "Evitar encharcamento, melhorar a drenagem do solo, evitar ferimentos no tronco e utilizar porta-enxertos tolerantes quando recomendados.",
-    "controle": "Corrigir problemas de drenagem, remover tecidos infectados quando possível e utilizar produtos registrados conforme recomendação técnica."
-  },
-
-  "mancha_preta": {
-    "nome": "Mancha Preta dos Citros",
-    "nome_biologico": "Phyllosticta citricarpa",
-    "imagem": "imagens/bergamota.pinta.jpg",
-    "descricao": "Doença fúngica que provoca manchas escuras principalmente na casca dos frutos. Pode causar queda prematura e reduzir a qualidade comercial da bergamota.",
-    "condicoes_favoraveis": "Alta umidade, chuvas frequentes e presença de folhas infectadas em decomposição no solo.",
-    "sintomas": {
-      "praticos": [
-        "pequenas manchas pretas na casca dos frutos",
-        "pintas marrons ou escuras",
-        "manchas aumentam com o desenvolvimento do fruto",
-        "frutos apresentam aparência manchada",
-        "frutos podem cair antes da maturação"
-      ],
-      "tecnicos": [
-        "lesões pequenas, duras e deprimidas",
-        "margens marrons a pretas",
-        "tecido necrótico no centro das lesões",
-        "presença de estruturas reprodutivas do fungo",
-        "sintomas podem ser mais evidentes em frutos expostos à luz solar"
-      ]
-    },
-    "danos": "Redução da qualidade visual e comercial dos frutos, queda prematura e possíveis perdas de produção.",
-    "manejo_preventivo": "Remover folhas e restos vegetais infectados do solo, reduzir fontes de inóculo e realizar monitoramento frequente do pomar.",
-    "controle": "Aplicação de fungicidas registrados para citros nos períodos recomendados, seguindo orientação técnica e monitoramento da doença."
-  }
- }
 }
-
-
-
-
-
-
-
-
-
-
-
