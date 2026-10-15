@@ -554,7 +554,7 @@
     "antracnose": {
       "nome": "Antracnose do Morangueiro",
       "nome_biologico": "Colletotrichum spp. (incluindo C. acutatum, C. fragariae e C. gloeosporioides)",
-      "imagem": "",
+      "imagem": "imagens/morango.antracnose.jpg",
       "descricao": "Doença fúngica que pode atingir flores, frutos, pecíolos, estolões e coroa. O escurecimento das flores também é conhecido como flor-preta.",
       "condicoes_favoraveis": "Calor, alta umidade, respingos de chuva ou irrigação e entrada de mudas infectadas.",
       "sintomas": {
@@ -584,12 +584,18 @@
           "url": "https://www.cnpuv.embrapa.br/uzum/morango/antracnose.html",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "Agrolink",
+        "pagina": "https://www.agrolink.com.br/problemas/flor-preta_2773.html",
+        "url": "https://www.agrolink.com.br/upload/problemas/Colletotrichum%20acutatum6.jpg",
+        "acesso_em": "2026-10-15"
+      }
     },
     "mofo_cinzento": {
       "nome": "Mofo Cinzento do Morangueiro",
       "nome_biologico": "Botrytis cinerea",
-      "imagem": "",
+      "imagem": "imagens/morango.mofo_cinzento.webp",
       "descricao": "Podridão que afeta principalmente flores e frutos e pode continuar se desenvolvendo após a colheita.",
       "condicoes_favoraveis": "Alta umidade, molhamento prolongado, pouca ventilação, plantas adensadas e presença de tecidos mortos.",
       "sintomas": {
@@ -619,12 +625,18 @@
           "url": "https://www.cnpuv.embrapa.br/uzum/morango/mofo_cinzento.html",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "University of Florida - IFAS",
+        "pagina": "https://ask.ifas.ufl.edu/publication/PP152",
+        "url": "https://edis.ifas.ufl.edu/image/PP152/D8hp88uh8x/D8ti4aunir/D8ti4aunir-2048.webp",
+        "acesso_em": "2026-10-15"
+      }
     },
     "oidio": {
       "nome": "Oídio do Morangueiro",
       "nome_biologico": "Podosphaera aphanis (sin. Sphaerotheca macularis f. sp. fragariae)",
-      "imagem": "",
+      "imagem": "imagens/morango.oidio.jpg",
       "descricao": "Doença fúngica superficial que produz crescimento esbranquiçado em folhas e pode atingir flores e frutos.",
       "condicoes_favoraveis": "Cultivo protegido, cultivares suscetíveis, temperaturas amenas a quentes e umidade favorável no dossel; não depende de água livre sobre as folhas.",
       "sintomas": {
@@ -654,12 +666,18 @@
           "url": "https://www.cnpuv.embrapa.br/uzum/morango/oidio.html",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "University of Minnesota Extension",
+        "pagina": "https://apps.extension.umn.edu/garden/diagnose/plant/fruit/strawberry/leavescoating.html",
+        "url": "https://apps.extension.umn.edu/garden/diagnose/plant/images/strawberry/diseases/pmildew1_600px.jpg",
+        "acesso_em": "2026-10-15"
+      }
     },
     "mancha_micosferela": {
       "nome": "Mancha de Micosferela do Morangueiro",
       "nome_biologico": "Mycosphaerella fragariae (forma assexuada: Ramularia tulasnei)",
-      "imagem": "",
+      "imagem": "imagens/morango.mancha_micosferela.jpg",
       "descricao": "Mancha foliar também chamada de pinta ou mancha-comum, que reduz a área saudável das folhas.",
       "condicoes_favoraveis": "Umidade elevada, molhamento das folhas, respingos de água, mudas infectadas e cultivares suscetíveis.",
       "sintomas": {
@@ -689,14 +707,20 @@
           "url": "https://www.cnpuv.embrapa.br/uzum/morango/micosferela.html",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "Agrolink",
+        "pagina": "https://www.agrolink.com.br/problemas/mancha-foliar_1516.html",
+        "url": "https://www.agrolink.com.br/upload/problemas/Mycosphaerella_fragariae67.jpg",
+        "acesso_em": "2026-10-15"
+      }
     }
   },
   "tabaco": {
     "mosaico": {
       "nome": "Mosaico do Tabaco",
       "nome_biologico": "Tobacco mosaic virus (TMV)",
-      "imagem": "",
+      "imagem": "imagens/tabaco.mosaico.jpg",
       "descricao": "Virose que causa alterações de coloração e deformação das folhas. Pode se disseminar pelo contato com seiva e materiais contaminados.",
       "condicoes_favoraveis": "Presença de plantas infectadas, cultivares suscetíveis e operações de manejo com mãos, ferramentas ou materiais contaminados.",
       "sintomas": {
@@ -732,12 +756,18 @@
           "url": "https://ephytia.inrae.fr/en/C/10887/Tobacco-Protection-Methods",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "University of Kentucky - Burley Tobacco Extension",
+        "pagina": "https://burleytobaccoextension.ca.uky.edu/content/tobacco-mosaic-virus-tmv",
+        "url": "https://burleytobaccoextension.ca.uky.edu/files/styles/panopoly_image_original/public/tmv_seebold_img_5217.jpg?itok=vFo2_BhF",
+        "acesso_em": "2026-10-15"
+      }
     },
     "mancha_parda": {
       "nome": "Mancha Parda do Tabaco",
       "nome_biologico": "Alternaria alternata e outras espécies associadas de Alternaria",
-      "imagem": "",
+      "imagem": "imagens/tabaco.mancha_parda.jpg",
       "descricao": "Doença fúngica também conhecida como alternariose, que atinge principalmente folhas inferiores maduras e pode prejudicar a qualidade na cura.",
       "condicoes_favoraveis": "Clima quente e úmido, períodos de molhamento e folhas maduras, senescentes ou debilitadas.",
       "sintomas": {
@@ -773,12 +803,18 @@
           "url": "https://ephytia.inra.fr/pt/C/10930/Tabaco-Principais-Sintomas",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "INRAE - ePhytia",
+        "pagina": "https://ephytia.inrae.fr/en/D/2230",
+        "url": "https://ephytia.inrae.fr/en/I/19464/Alternaria-tabac3",
+        "acesso_em": "2026-10-15"
+      }
     },
     "murcha_bacteriana": {
       "nome": "Murcha Bacteriana do Tabaco",
       "nome_biologico": "Complexo de espécies Ralstonia solanacearum",
-      "imagem": "",
+      "imagem": "imagens/tabaco.murcha_bacteriana.jpg",
       "descricao": "Bacteriose vascular que prejudica o transporte de água e causa murcha e morte de plantas.",
       "condicoes_favoraveis": "Solo quente e úmido, área ou água contaminada, ferimentos nas raízes e presença de hospedeiros suscetíveis.",
       "sintomas": {
@@ -814,12 +850,18 @@
           "url": "https://ephytia.inrae.fr/pt/Contents/view/10998/Tabaco-Ralstonia-solanacearum",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "INRAE - ePhytia",
+        "pagina": "https://ephytia.inrae.fr/fr/C/10998/Tabac-Ralstonia-solanacearum",
+        "url": "https://ephytia.inrae.fr/fr/I/18891/tabac448",
+        "acesso_em": "2026-10-15"
+      }
     },
     "mofo_azul": {
       "nome": "Mofo Azul do Tabaco",
       "nome_biologico": "Peronospora hyoscyami f. sp. tabacina (sin. Peronospora tabacina)",
-      "imagem": "",
+      "imagem": "imagens/tabaco.mofo_azul.jpg",
       "descricao": "Doença causada por um oomiceto, também chamada de míldio do tabaco. Pode causar danos importantes em mudas.",
       "condicoes_favoraveis": "Umidade elevada, molhamento prolongado, temperaturas amenas, pouca ventilação e presença de mudas infectadas.",
       "sintomas": {
@@ -855,14 +897,20 @@
           "url": "https://ephytia.inra.fr/pt/C/10947/Tabaco-Sintomas-principais",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "INRAE - ePhytia",
+        "pagina": "https://ephytia.inrae.fr/en/C/10947/Tobacco-Main-Symptoms",
+        "url": "https://ephytia.inrae.fr/en/I/18685/tabac292-293",
+        "acesso_em": "2026-10-15"
+      }
     }
   },
   "uva": {
     "mildio": {
       "nome": "Míldio da Videira",
       "nome_biologico": "Plasmopara viticola",
-      "imagem": "",
+      "imagem": "imagens/uva.mildio.jpg",
       "descricao": "Doença causada por um oomiceto que ataca órgãos verdes da videira, incluindo folhas e cachos.",
       "condicoes_favoraveis": "Chuvas frequentes, água livre sobre os tecidos, alta umidade e temperaturas amenas a quentes.",
       "sintomas": {
@@ -898,12 +946,18 @@
           "url": "https://www.agro.bayer.com.br/marcas/xivana-smart",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "Agrolink",
+        "pagina": "https://www.agrolink.com.br/problema/mildio_1837.html",
+        "url": "https://www.agrolink.com.br/upload/problemas/Plasmopara_viticola53.JPG",
+        "acesso_em": "2026-10-15"
+      }
     },
     "oidio": {
       "nome": "Oídio da Videira",
       "nome_biologico": "Erysiphe necator (sin. Uncinula necator)",
-      "imagem": "",
+      "imagem": "imagens/uva.oidio.jpg",
       "descricao": "Doença fúngica também chamada de cinza ou mufeta, com crescimento pulverulento sobre órgãos verdes.",
       "condicoes_favoraveis": "Cultivares suscetíveis, temperaturas amenas a quentes e dossel pouco arejado; não necessita de água livre para infectar.",
       "sintomas": {
@@ -939,12 +993,18 @@
           "url": "https://www.atermaisdigital.cnptia.embrapa.br/web/uva-para-processamento/doencas",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "INRAE - ePhytia",
+        "pagina": "https://ephytia.inrae.fr/fr/C/6968/Vigne-Principaux-symptomes",
+        "url": "https://ephytia.inrae.fr/fr/I/8937/oidium3",
+        "acesso_em": "2026-10-15"
+      }
     },
     "antracnose": {
       "nome": "Antracnose da Videira",
       "nome_biologico": "Elsinoe ampelina (forma assexuada: Sphaceloma ampelinum)",
-      "imagem": "",
+      "imagem": "imagens/uva.antracnose.jpg",
       "descricao": "Doença fúngica conhecida como olho-de-passarinho, que ataca tecidos jovens, folhas, ramos e bagas.",
       "condicoes_favoraveis": "Chuvas, molhamento prolongado, brotações suscetíveis e sobrevivência do patógeno em tecidos infectados.",
       "sintomas": {
@@ -974,12 +1034,18 @@
           "url": "https://www.cnpuv.embrapa.br/uzum/uva/antracnose.html",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "INRAE - ePhytia",
+        "pagina": "https://ephytia.inrae.fr/es/D/8280",
+        "url": "https://ephytia.inrae.fr/es/I/34520/Anthracnose4",
+        "acesso_em": "2026-10-15"
+      }
     },
     "ferrugem": {
       "nome": "Ferrugem da Videira",
       "nome_biologico": "Phakopsora euvitis",
-      "imagem": "",
+      "imagem": "imagens/uva.ferrugem.jpg",
       "descricao": "Doença fúngica que forma pústulas nas folhas e pode causar desfolha intensa, inclusive após a colheita.",
       "condicoes_favoraveis": "Umidade elevada, temperaturas favoráveis à infecção, folhas suscetíveis e presença do patógeno no vinhedo.",
       "sintomas": {
@@ -1009,14 +1075,20 @@
           "url": "https://www.cnpuv.embrapa.br/uzum/uva/ferrugem.html",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "Agrolink",
+        "pagina": "https://www.agrolink.com.br/problemas/ferrugem-da-videira_2622.html",
+        "url": "https://www.agrolink.com.br/upload/problemas/Phakopsora_euvitis55.jpg",
+        "acesso_em": "2026-10-15"
+      }
     }
   },
   "arroz": {
     "brusone": {
       "nome": "Brusone do Arroz",
       "nome_biologico": "Pyricularia oryzae (sin. Magnaporthe oryzae)",
-      "imagem": "",
+      "imagem": "imagens/arroz.brusone.jpg",
       "descricao": "Doença fúngica que pode atingir folhas, nós, colmos e panículas. A infecção na base da panícula é chamada de brusone do pescoço.",
       "condicoes_favoraveis": "Molhamento prolongado, orvalho, cultivares suscetíveis, excesso de nitrogênio e alta densidade de plantas.",
       "sintomas": {
@@ -1046,12 +1118,18 @@
           "url": "https://www.embrapa.br/en/web/agencia-de-informacao-tecnologica/cultivos/arroz/producao/sistema-de-cultivo/arroz-irrigado-na-regiao-tropical/manejo-de-pragas/manejo-de-doencas",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "Syngenta",
+        "pagina": "https://www.syngenta.es/blog/pyricularia-en-arroz-un-enemigo-que-afecta-al-rendimiento",
+        "url": "https://www.syngenta.es/sites/g/files/kgtney1561/files/media/image/2023/11/18/piricularia-en-arroz.jpg",
+        "acesso_em": "2026-10-15"
+      }
     },
     "mancha_parda": {
       "nome": "Mancha Parda do Arroz",
       "nome_biologico": "Bipolaris oryzae (sin. Drechslera oryzae)",
-      "imagem": "",
+      "imagem": "imagens/arroz.mancha_parda.jpg",
       "descricao": "Doença fúngica que causa manchas nas folhas e também pode afetar sementes, plântulas e grãos.",
       "condicoes_favoraveis": "Sementes infectadas, umidade favorável à infecção e plantas submetidas a desequilíbrio nutricional ou estresse.",
       "sintomas": {
@@ -1087,12 +1165,18 @@
           "url": "https://www.infoteca.cnptia.embrapa.br/handle/doc/1156789",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "Embrapa",
+        "pagina": "https://www.embrapa.br/agencia-de-informacao-tecnologica/cultivos/arroz/producao/sistema-de-cultivo/arroz-irrigado-na-regiao-tropical/manejo-de-pragas/manejo-de-doencas",
+        "url": "https://www.embrapa.br/documents/58057223/64023528/_prod_i_tropical_man_prag_doencas_9_fig%2B6c_mancha_parda_fl.jpg/1d8f39fa-b7a7-81e1-4c65-d822e3cb27aa?t=1628273869207",
+        "acesso_em": "2026-10-15"
+      }
     },
     "escaldadura": {
       "nome": "Escaldadura do Arroz",
       "nome_biologico": "Microdochium oryzae (sin. Monographella albescens)",
-      "imagem": "",
+      "imagem": "imagens/arroz.escaldadura.jpg",
       "descricao": "Doença fúngica que produz áreas com aparência de queimadura, geralmente iniciadas nas pontas ou bordas das folhas.",
       "condicoes_favoraveis": "Alta umidade, molhamento prolongado, crescimento vegetativo intenso e cultivares suscetíveis.",
       "sintomas": {
@@ -1128,12 +1212,18 @@
           "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/964869/1/CNPAF2013500PR12.pdf",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "Agrolink",
+        "pagina": "https://www.agrolink.com.br/problemas/queima-foliar_1751.html",
+        "url": "https://www.agrolink.com.br/upload/problemas/Microdochium_oryzae71.jpg",
+        "acesso_em": "2026-10-15"
+      }
     },
     "mancha_estreita": {
       "nome": "Mancha Estreita do Arroz",
       "nome_biologico": "Cercospora janseana (sin. Cercospora oryzae)",
-      "imagem": "",
+      "imagem": "imagens/arroz.mancha_estreita.jpg",
       "descricao": "Doença fúngica caracterizada por lesões finas e alongadas, mais evidentes nas fases avançadas da lavoura.",
       "condicoes_favoraveis": "Clima quente e úmido, cultivares suscetíveis e presença do patógeno em sementes ou resíduos infectados.",
       "sintomas": {
@@ -1169,14 +1259,20 @@
           "url": "https://www.infoteca.cnptia.embrapa.br/handle/doc/1070298",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "American Phytopathological Society / Uppala et al., 2026",
+        "pagina": "https://www.apsnet.org/edcenter/learningPP/Pages/PHI-P-2025-07-0003.aspx",
+        "url": "https://www.apsnet.org/edcenter/learningPP/Article%20Images/PHI-P-2025_-07-0003__fig1.jpg",
+        "acesso_em": "2026-10-15"
+      }
     }
   },
   "laranja": {
     "greening": {
       "nome": "Greening ou Huanglongbing (HLB)",
       "nome_biologico": "Candidatus Liberibacter spp., principalmente Ca. Liberibacter asiaticus no Brasil",
-      "imagem": "",
+      "imagem": "imagens/laranja.greening.jpg",
       "descricao": "Doença bacteriana sistêmica dos citros, transmitida pelo psilídeo Diaphorina citri e por material de propagação infectado.",
       "condicoes_favoraveis": "Mudas infectadas, presença do psilídeo vetor e fontes de inóculo no pomar e arredores.",
       "sintomas": {
@@ -1212,12 +1308,18 @@
           "url": "https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/sanidade-vegetal/pragas-quarentenarias-presentes/HLB",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "International Organization of Citrus Virologists / UC Riverside",
+        "pagina": "https://iocv.ucr.edu/citrus-diseases/huanglongbing",
+        "url": "https://iocv.ucr.edu/sites/default/files/huanglongbing-044b.jpg",
+        "acesso_em": "2026-10-15"
+      }
     },
     "cancro_citrico": {
       "nome": "Cancro Cítrico da Laranjeira",
       "nome_biologico": "Xanthomonas citri subsp. citri",
-      "imagem": "",
+      "imagem": "imagens/laranja.cancro_citrico.jpg",
       "descricao": "Bacteriose que provoca lesões corticosas em folhas, ramos e frutos.",
       "condicoes_favoraveis": "Chuvas com vento, presença de água nos tecidos, brotações jovens e ferimentos, inclusive os associados ao minador dos citros.",
       "sintomas": {
@@ -1253,12 +1355,18 @@
           "url": "https://www.agrolink.com.br/agrolinkfito/artigo/cancro-citrico_41526.html",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "University of Florida; reprodução catalogada pela UC IPM",
+        "pagina": "https://ipm.ucanr.edu/PMG/X/D-CI-XAXO-FO.001.html",
+        "url": "https://ipm.ucanr.edu/PMG/IMAGES/X/D-CI-XAXO-FO.001.jpg",
+        "acesso_em": "2026-10-15"
+      }
     },
     "gomose": {
       "nome": "Gomose da Laranjeira",
       "nome_biologico": "Phytophthora spp., incluindo P. nicotianae e P. citrophthora",
-      "imagem": "",
+      "imagem": "imagens/laranja.gomose.jpg",
       "descricao": "Doença causada por oomicetos que afetam raízes, colo e tronco, podendo levar ao declínio e à morte da planta.",
       "condicoes_favoraveis": "Solo encharcado, drenagem deficiente, plantio profundo, umidade junto ao tronco e porta-enxertos suscetíveis.",
       "sintomas": {
@@ -1288,12 +1396,18 @@
           "url": "https://sistemasdeproducao.cnptia.embrapa.br/FontesHTML/Citros/CitrosNordeste/doencas.htm",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "USDA - IDtools, Citrus Diseases",
+        "pagina": "https://idtools.org/citrus_diseases/index.cfm?entityID=180&packageID=2",
+        "url": "https://idtools.org/citrus_diseases/images/06Phytophthora.jpg",
+        "acesso_em": "2026-10-15"
+      }
     },
     "mancha_preta": {
       "nome": "Mancha Preta ou Pinta Preta dos Citros",
       "nome_biologico": "Phyllosticta citricarpa (sin. Guignardia citricarpa)",
-      "imagem": "",
+      "imagem": "imagens/laranja.mancha_preta.jpg",
       "descricao": "Doença fúngica que afeta sobretudo a casca dos frutos, causando manchas de diferentes formas e possível queda precoce.",
       "condicoes_favoraveis": "Chuvas, umidade favorável, presença de folhas infectadas no chão e tecidos suscetíveis.",
       "sintomas": {
@@ -1329,7 +1443,13 @@
           "url": "https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/sanidade-vegetal/Pinta%20Preta",
           "acesso_em": "2026-10-15"
         }
-      ]
+      ],
+      "fonte_imagem": {
+        "instituicao": "Agrolink",
+        "pagina": "https://www.agrolink.com.br/problemas/mancha-preta_2952.html",
+        "url": "https://www.agrolink.com.br/upload/problemas/Phyllosticta_citricarpa76.jpg",
+        "acesso_em": "2026-10-15"
+      }
     }
   }
 }
