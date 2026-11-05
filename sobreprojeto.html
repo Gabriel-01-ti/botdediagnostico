@@ -86,6 +86,104 @@
         .about-page .member-card { padding: 22px 18px; gap: 6px 16px; }
         .about-page .member-card img { width: 80px; height: 80px; }
       }
+        
+/* SOBRE - OTIMIZAÇÃO PARA MONITORES GRANDES */
+@media (min-width: 1440px) {
+
+    .about-page .about-heading {
+        padding: 65px max(60px, calc((100vw - 1550px) / 2)) 65px;
+    }
+
+    .about-page .about-heading h1 {
+        font-size: 3.8rem;
+    }
+
+    .about-page .content-wrap {
+        width: min(1600px, calc(100% - 100px));
+        max-width: none;
+        padding: 0;
+        margin: 45px auto 0;
+    }
+
+    .about-page .about-intro {
+        grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+        gap: 65px;
+        padding: 55px;
+    }
+
+    .about-page .about-intro h2 {
+        font-size: 2.7rem;
+    }
+
+    .about-page .about-intro .intro-text {
+        font-size: 1.2rem;
+    }
+
+    .about-page .about-intro .main-text {
+        font-size: 1.1rem;
+        padding-left: 45px;
+    }
+
+    .about-page .about-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 26px;
+        margin-top: 32px;
+    }
+
+    .about-page .about-facts section {
+        padding: 36px;
+        min-height: 230px;
+    }
+
+    .about-page .about-facts h3 {
+        font-size: 1.2rem;
+    }
+
+    .about-page .about-facts p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+
+    .about-page .team-heading {
+        margin-top: 65px;
+    }
+
+    .about-page .section-title {
+        font-size: 2.5rem;
+    }
+
+    .about-page .team-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .about-page .member-card {
+        padding: 30px;
+        min-height: 190px;
+        grid-template-columns: 100px minmax(0, 1fr);
+        gap: 10px 22px;
+    }
+
+    .about-page .member-card img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .about-page .member-card h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1900px) {
+    .about-page .content-wrap {
+        width: min(1700px, calc(100% - 120px));
+    }
+
+    .about-page .about-intro {
+        padding: 65px;
+    }
+}
+
     </style>
 </head>
 <body class="about-page">
