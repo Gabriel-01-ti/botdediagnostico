@@ -553,6 +553,89 @@ small {
   }
    }
 
+/* POR FOTO - MONITORES GRANDES */
+@media (min-width: 1440px) {
+
+    html body.image-page main.container {
+        width: min(1550px, calc(100vw - 120px));
+        max-width: none;
+        margin: 45px auto 70px;
+        padding: 55px;
+    }
+
+    html body.image-page .photo-heading {
+        gap: 50px;
+        margin-bottom: 40px;
+    }
+
+    html body.image-page .photo-heading > div:first-child {
+        max-width: 1100px;
+    }
+
+    html body.image-page .app-title {
+        font-size: 3.4rem;
+    }
+
+    html body.image-page .context-box {
+        font-size: 1.15rem;
+        max-width: 950px;
+    }
+
+    html body.image-page .photo-workspace {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 45px;
+        align-items: stretch;
+    }
+
+    html body.image-page .photo-input,
+    html body.image-page .photo-output {
+        min-width: 0;
+        width: 100%;
+    }
+
+    html body.image-page .workspace-title {
+        font-size: 1.4rem;
+        margin-bottom: 25px;
+    }
+
+    html body.image-page .photo-input .file-dropzone {
+        min-height: 290px;
+        padding: 45px;
+    }
+
+    html body.image-page .upload-preview {
+        max-height: 420px;
+    }
+
+    html body.image-page .photo-output {
+        padding: 35px;
+    }
+
+    html body.image-page .photo-output .resultado.placeholder {
+        min-height: 390px;
+        font-size: 1.05rem;
+    }
+
+    html body.image-page .photo-output .doenca-card {
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+
+    html body.image-page .tool-disclaimer {
+        font-size: .95rem;
+    }
+}
+
+@media (min-width: 1900px) {
+    html body.image-page main.container {
+        width: min(1650px, calc(100vw - 150px));
+    }
+
+    html body.image-page .photo-workspace {
+        gap: 55px;
+    }
+}
+
 
 
 
