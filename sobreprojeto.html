@@ -157,23 +157,26 @@
         gap: 24px;
     }
 
-    .about-page .member-card {
-        padding: 30px;
-        min-height: 190px;
-        grid-template-columns: 100px minmax(0, 1fr);
-        gap: 10px 22px;
+   .about-page .member-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
     }
 
     .about-page .member-card img {
-      
-    width: 150px;
-    height: 150px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
-    flex-shrink: 0;
-
+        display: block;
+        width: 130px !important;
+        height: 130px !important;
+        min-width: 130px;
+        min-height: 130px;
+        max-width: 130px;
+        max-height: 130px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 50%;
+        flex: 0 0 130px;
     }
 
     .about-page .member-card h3 {
