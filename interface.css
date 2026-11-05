@@ -265,3 +265,92 @@ body .site-header .perfil-topo{font:inherit;background:#ffffff12;color:white;bor
     }
 }
 
+/* PAINEL DO PRODUTOR - TELAS GRANDES */
+@media (min-width: 1440px) {
+
+    .home-page[data-view="dashboard"] .hero-container {
+        width: min(1500px, calc(100% - 80px));
+        max-width: none;
+        margin: 0 auto;
+        padding: 65px 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home-page[data-view="dashboard"] .content-area {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .home-page #dashboard {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 55px 65px;
+        text-align: center;
+    }
+
+    .home-page #dashboard h2 {
+        font-size: 2.8rem;
+        margin-bottom: 18px;
+    }
+
+    .home-page #dashboard > p {
+        font-size: 1.15rem !important;
+        margin-bottom: 30px !important;
+    }
+
+    .home-page .dashboard-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+        margin: 35px auto;
+    }
+
+    .home-page .service-card {
+        min-height: 170px;
+        padding: 35px;
+        gap: 22px;
+        justify-content: center;
+        text-align: left;
+        border-radius: 22px;
+    }
+
+    .home-page .service-card strong {
+        font-size: 1.25rem;
+    }
+
+    .home-page .service-card p {
+        font-size: 1rem !important;
+        line-height: 1.6;
+    }
+
+    .home-page #dashboard .btn-logout {
+        font-size: 1rem;
+        padding: 15px 35px;
+        margin-top: 15px;
+    }
+}
+
+/* Monitores ultrawide */
+@media (min-width: 1900px) {
+    .home-page[data-view="dashboard"] .hero-container {
+        width: min(1700px, calc(100% - 100px));
+    }
+
+    .home-page #dashboard {
+        max-width: 1250px;
+        padding: 65px 80px;
+    }
+
+    .home-page .service-card {
+        min-height: 190px;
+        padding: 42px;
+    }
+}
+
