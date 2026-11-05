@@ -662,3 +662,130 @@ input[type="text"]:disabled {
         height: 14px;
     }
 }
+
+
+/* POR SINTOMAS - MONITORES GRANDES */
+@media (min-width: 1440px) {
+
+    html body.bot-page .container {
+        width: min(1500px, calc(100vw - 120px));
+        max-width: none;
+        margin: 35px auto 60px;
+        padding: 0;
+    }
+
+    html body.bot-page .controles-flutuantes,
+    html body.bot-page .tool-actions {
+        width: min(1500px, calc(100vw - 120px));
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    html body.bot-page .app-info {
+        text-align: left;
+        margin-bottom: 38px;
+    }
+
+    html body.bot-page .app-title {
+        font-size: 3.4rem;
+        line-height: 1.2;
+    }
+
+    html body.bot-page .descricao-app {
+        max-width: 1050px;
+        font-size: 1.15rem;
+        line-height: 1.8;
+    }
+
+    html body.bot-page #chat {
+        width: 100%;
+        border-radius: 24px;
+    }
+
+    html body.bot-page .chat-header {
+        padding: 26px 35px;
+    }
+
+    html body.bot-page .chat-avatar {
+        width: 52px;
+        height: 52px;
+    }
+
+    html body.bot-page .chat-name {
+        font-size: 1.15rem;
+    }
+
+    html body.bot-page #chat-messages {
+        width: 100%;
+        min-height: 480px;
+        padding: 40px 45px;
+        gap: 28px;
+    }
+
+    html body.bot-page .msg-bot-wrapper {
+        width: 100%;
+        max-width: 100%;
+        gap: 18px;
+    }
+
+    html body.bot-page .bot-bubble {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        padding: 26px;
+    }
+
+    html body.bot-page .usuario {
+        max-width: 75%;
+        font-size: 1.05rem;
+        padding: 17px 24px;
+    }
+
+    html body.bot-page .sintomas-botoes {
+        max-height: 400px;
+        gap: 12px;
+    }
+
+    html body.bot-page .btn-sintoma {
+        font-size: .95rem;
+        padding: 12px 18px;
+    }
+
+    html body.bot-page .message-composer {
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    html body.bot-page #sintomas {
+        font-size: 1.05rem;
+        min-height: 55px;
+    }
+
+    html body.bot-page #btn-diagnosticar {
+        min-width: 55px;
+        height: 55px;
+    }
+
+    html body.bot-page .rodape {
+        font-size: .95rem;
+        padding: 30px;
+    }
+}
+
+@media (min-width: 1900px) {
+
+    html body.bot-page .container {
+        width: min(1650px, calc(100vw - 150px));
+    }
+
+    html body.bot-page .controles-flutuantes,
+    html body.bot-page .tool-actions {
+        width: min(1650px, calc(100vw - 150px));
+    }
+
+    html body.bot-page #chat-messages {
+        min-height: 550px;
+        padding: 50px 55px;
+    }
+}
+
