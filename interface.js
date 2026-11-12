@@ -17,16 +17,19 @@
       const status = document.getElementById('authStatus');
       status.textContent = message; status.dataset.kind = kind; status.hidden = !message;
     };
-    const routeHash = () => {
+    const routeHash = (initial = false) => {
       if (location.hash === '#entrar') window.showAuth();
       if (location.hash === '#contato') window.openContact();
       if (location.hash === '#historico') {
-        if (window.verDiagnosticos) document.dispatchEvent(new Event('agro:history'));
-        else window.showAuth();
+        if (window.verDiagnosticos && (!initial || !window.agroInitialHistoryRequested)) {
+          window.agroInitialHistoryRequested = true;
+          document.dispatchEvent(new Event('agro:history'));
+        }
       }
+      if (location.hash === '#perfil') window.openProfileModal?.();
     };
-    routeHash();
-    window.addEventListener('hashchange', routeHash);
+    routeHash(true);
+    window.addEventListener('hashchange', () => routeHash(false));
   }
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.getElementById('site-navigation');

@@ -24,6 +24,29 @@
 @media(max-width:380px){.content-area h1{font-size:2.1rem}.about-page .team-grid{grid-template-columns:minmax(0,1fr)}.bot-page .bot-avatar{display:none}.tool-brand{font-size:1rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 
+/* Modal de contato */
+.contact-modal{position:fixed;inset:0;z-index:2000;align-items:center;justify-content:center;padding:20px;background:radial-gradient(ellipse at 50% 0,#245b42aa,transparent 60%),#0b2119b8;backdrop-filter:blur(8px);overflow-y:auto}
+.contact-dialog{position:relative;width:min(100%,480px);margin:auto;padding:38px;border:1px solid #e4eee6;border-radius:26px;background:linear-gradient(180deg,#fff,#f8fbf8);color:var(--ink);text-align:center;box-shadow:0 28px 80px #071b1280}
+.contact-close{position:absolute;top:14px;right:14px;display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--line);border-radius:14px;background:white;color:var(--muted);font-size:1.6rem;line-height:1}
+.contact-close:hover{background:#eff6ef;color:var(--forest)}
+.contact-logo{display:block;width:68px;height:68px;margin:0 auto 16px;border:4px solid white;border-radius:21px;object-fit:cover;box-shadow:0 6px 22px #153d2a1e}
+.contact-eyebrow{color:var(--leaf);font-size:.72rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+.contact-dialog h2{margin:8px 20px 10px;color:var(--forest);font-size:1.55rem;letter-spacing:-.04em}
+.contact-intro{max-width:340px;margin:0 auto 24px;color:var(--muted);font-size:.94rem}
+.contact-options{display:grid;gap:12px;text-align:left}
+.contact-option{display:flex;align-items:center;gap:14px;min-height:78px;padding:14px 16px;border:1px solid var(--line);border-radius:17px;background:white;color:var(--ink);text-decoration:none;box-shadow:0 4px 14px #173b2910;transition:transform .18s,border-color .18s,box-shadow .18s}
+.contact-option:hover{transform:translateY(-2px);border-color:#b5d6bb;box-shadow:0 10px 24px #173b2918}
+.contact-option-icon{display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:15px}
+.contact-option-icon svg{width:28px;height:28px}
+.whatsapp-icon{background:#25d366;color:white}
+.gmail-icon{background:#f3f6fa}
+.contact-option-copy{display:grid;gap:2px;min-width:0}
+.contact-option-copy strong{font-size:.98rem;color:var(--forest)}
+.contact-option-copy small{overflow-wrap:anywhere;color:var(--muted);font-size:.8rem}
+.contact-arrow{margin-left:auto;color:#789083;font-size:1.2rem}
+.contact-footer{margin:22px 0 0;color:#829188;font-size:.72rem}
+@media(max-width:640px){.contact-dialog{padding:32px 20px 24px;border-radius:22px}.contact-dialog h2{font-size:1.35rem}.contact-intro{font-size:.9rem}}
+
 /* Navegação e tipografia consistentes nas páginas. */
 .home-page .content-area h1{text-transform:none}.auth-back{display:inline-block;margin-bottom:20px;color:var(--mint);font-size:.85rem;text-underline-offset:4px}
 .about-page header{position:static}.about-page header nav{display:flex;gap:8px;flex-wrap:wrap}.about-page header nav a{padding:8px 12px;border-radius:12px;text-decoration:none;min-height:44px;color:#e0eee5}.about-page header nav a:hover,.about-page header nav a[aria-current]{background:#ffffff18}.about-page .about-facts a{display:inline-block;margin-top:16px;color:var(--leaf);font-weight:600;font-size:.9rem}.about-page .main-text p+p{margin-top:16px}.about-page .site-footer{width:100%}

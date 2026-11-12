@@ -128,7 +128,7 @@
 <header class="site-header">
         <a href="index.html" class="logo" aria-label="AgroInova — início"><img src="imagens/logo-nova.png" alt="" width="48" height="48"><span>Agro<strong>Inova</strong></span></a>
         <button type="button" class="menu-toggle" aria-controls="site-navigation" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
-        <nav id="site-navigation" aria-label="Navegação principal"><ul><li><a href="index.html">Início</a></li><li><a href="sobreprojeto.html">Sobre</a></li><li><a href="sobre.html" aria-current="page">Por foto</a></li><li><a href="bot.html">Por sintomas</a></li><li><a href="index.html#historico">Histórico</a></li><li><a href="index.html#contato">Contato</a></li><li><a href="index.html#entrar" class="btn-nav-login">Entrar</a></li></ul></nav>
+        <nav id="site-navigation" aria-label="Navegação principal"><ul><li><a href="index.html">Início</a></li><li><a href="sobreprojeto.html">Sobre</a></li><li><a href="sobre.html" aria-current="page">Por foto</a></li><li><a href="bot.html">Por sintomas</a></li><li><a href="index.html#historico">Histórico</a></li><li><a href="index.html#contato">Contato</a></li><li id="userProfile" style="display:none"><a class="perfil-topo" href="index.html#perfil" aria-label="Abrir minha conta"><img id="userPhoto" src="logo.jpg" alt=""><span id="userName">Usuário</span></a></li><li><a href="index.html#entrar" id="navLoginBtn" class="btn-nav-login">Entrar</a></li></ul></nav>
     </header>
 <main class="container" id="tool-main">
   <div class="photo-heading">
@@ -215,6 +215,7 @@
     </div>
 </div>
   <script type="module" src="script.js"></script>
+<script type="module" src="auth-ui.js"></script>
 <script src="interface.js" defer></script>
 </body>
 </html>
