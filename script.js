@@ -283,6 +283,7 @@ async function mostrarResultado(cultura, classe, prob) {
 await salvarDiagnosticoFirestore({
   cultura: cultura,
   doenca: d.nome,
+  chaveDoenca: classe,
   tipo: "imagem",             // <--- Altera para "imagem"
   origem: "ia_imagem",        // <--- Altera para "ia_imagem"
   confianca: porcentagemConfianca, // <--- Garante o envio do número correto

@@ -47,6 +47,36 @@
 .contact-footer{margin:22px 0 0;color:#829188;font-size:.72rem}
 @media(max-width:640px){.contact-dialog{padding:32px 20px 24px;border-radius:22px}.contact-dialog h2{font-size:1.35rem}.contact-intro{font-size:.9rem}}
 
+/* Histórico: abrir novamente o diagnóstico e apagar a lista de uma vez. */
+.home-page #historicoModal>div{max-width:760px!important}
+.historico-lista-view{display:flex;flex:1;flex-direction:column;min-height:0}
+.historico-lista-view[hidden]{display:none!important}
+.historico-controles{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 12px;margin-bottom:12px;border-radius:12px;background:#f5f8f5;text-align:left}
+.historico-controles label{font-size:.85rem;font-weight:700;color:#444}
+.historico-controles select{max-width:100%;padding:8px 10px;border:1px solid #ccd9ce;border-radius:8px;background:white;font-size:.82rem}
+.btn-excluir-todos{min-height:40px;padding:8px 12px;border:1px solid #f0c8c5;border-radius:9px;background:#fff5f4;color:#a42d26;font-size:.8rem;font-weight:700}
+.btn-excluir-todos:hover:not(:disabled){background:#ffe8e6}
+.btn-excluir-todos:disabled{opacity:.55;cursor:not-allowed}
+.home-page #listaHistoricoContainer{flex:1;overflow-y:auto;min-height:0;padding-right:5px}
+.historico-acoes{display:flex;align-items:center;gap:6px;flex:none}
+.btn-abrir-historico{min-height:40px;padding:7px 11px;border:1px solid #c9dfcc;border-radius:9px;background:#f1f8f1;color:var(--forest);font-size:.8rem;font-weight:700;white-space:nowrap}
+.btn-abrir-historico:hover{background:#e5f2e6}
+.historico-detalhe-view{flex:1;min-height:0;overflow-y:auto;text-align:left}
+.historico-detalhe-view[hidden]{display:none!important}
+.btn-voltar-historico{min-height:44px;margin:0 0 14px;padding:9px 14px;border:1px solid var(--line);border-radius:10px;background:#f5faf5;color:var(--forest);font-weight:700}
+.historico-resultado{padding:20px;border:1px solid var(--line);border-radius:16px;background:#fff;text-align:left;color:var(--ink)}
+.historico-resultado h2{margin:8px 0 4px;color:var(--forest);font-size:1.35rem}
+.historico-resultado h3{margin:18px 0 6px;color:var(--forest);font-size:.98rem}
+.historico-resultado p{margin:6px 0;color:#53665a;font-size:.9rem;line-height:1.7}
+.historico-resultado ul{margin:6px 0;padding-left:22px;color:#53665a;font-size:.88rem;line-height:1.65}
+.historico-tipo{display:inline-flex;padding:5px 9px;border-radius:99px;background:#edf6ee;color:var(--leaf);font-size:.73rem;font-weight:700}
+.historico-biologico{font-size:.85rem!important}
+.historico-metadados{margin:12px 0!important;padding:10px 12px;border-radius:10px;background:#f5f8f5;font-size:.8rem!important}
+.historico-imagem-doenca{display:block;width:100%;max-height:280px;margin:12px auto 16px;border-radius:12px;object-fit:contain;background:#f6f8f6}
+.historico-aviso{margin-top:18px!important;padding:12px;border-radius:10px;background:#fff8e9;color:#785b19!important;font-size:.8rem!important}
+.historico-vazio,.historico-carregando{padding:20px;color:var(--muted);text-align:center}
+@media(max-width:640px){.historico-controles{align-items:stretch}.historico-controles label{width:100%}.historico-controles select{flex:1;min-width:0}.btn-excluir-todos{flex:1}.historico-acoes{gap:4px}.btn-abrir-historico{padding:6px 8px;font-size:.74rem}.historico-resultado{padding:16px}.historico-resultado h2{font-size:1.15rem}}
+
 /* Navegação e tipografia consistentes nas páginas. */
 .home-page .content-area h1{text-transform:none}.auth-back{display:inline-block;margin-bottom:20px;color:var(--mint);font-size:.85rem;text-underline-offset:4px}
 .about-page header{position:static}.about-page header nav{display:flex;gap:8px;flex-wrap:wrap}.about-page header nav a{padding:8px 12px;border-radius:12px;text-decoration:none;min-height:44px;color:#e0eee5}.about-page header nav a:hover,.about-page header nav a[aria-current]{background:#ffffff18}.about-page .about-facts a{display:inline-block;margin-top:16px;color:var(--leaf);font-weight:600;font-size:.9rem}.about-page .main-text p+p{margin-top:16px}.about-page .site-footer{width:100%}

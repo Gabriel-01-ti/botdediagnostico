@@ -59,6 +59,7 @@ export async function salvarDiagnosticoFirestore(dados) {
   // Dados do diagnóstico
   cultura: dados.cultura,
   doenca: dados.doenca,
+  ...(dados.chaveDoenca ? { chaveDoenca: dados.chaveDoenca } : {}),
   sintomas: dados.sintomas || [],
 
   // Identificação da origem

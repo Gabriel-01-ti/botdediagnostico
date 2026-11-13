@@ -340,7 +340,7 @@ function diagnosticar(cultura, textoUsuario) {
         });
 
         if (pontos > 0) {
-            resultados.push({ ...d, pontos });
+            resultados.push({ ...d, chaveDoenca: id, pontos });
         }
     }
 
@@ -407,6 +407,7 @@ function diagnosticar(cultura, textoUsuario) {
         salvarDiagnostico({
             cultura: cultura,
             doenca: d.nome,
+            chaveDoenca: d.chaveDoenca,
             tipo: "sintomas",
             origem: 'bot_sintomas',
             sintomas: d.sintomas?.praticos || []
